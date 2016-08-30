@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>Untitled</title>
+<script src="/global/html/cookie.js" language="Javascript"></script>
+<script src="/eyefinity/html/navigation.js" language="JavaScript1.2"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script><script src="/eyefinity/html/eBuy.js" type="text/javascript"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+<script src="/idc/html/reports.js" language="JavaScript1.2"></script>
+
+<!-- DR-2002: ICD-10 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/idc/html/validate_icd.js" language="JavaScript"></script>
+
+<script src="/global/html/common.js" language="Javascript"></script>
+<script language="JavaScript">
+function encrypt(text) {
+    num_out = "";
+    str_in = escape(text);
+    for(i = 0; i &lt; str_in.length; i++) {
+      num_out += str_in.charCodeAt(i) - 23;
+    }
+    return num_out;
+}
+
+// DIABETES/DIABETESRETINOPATHY (diabetes flyer)
+function displayDiabetesFlyer()
+{   
+    var displayFlyer=false
+    var d=opener.parent.d
+    var diabeticDiag          = diabetesDiag                                
+    var diabeticRetinDiag     = diabRetinDiagMdctPilot
+                                  
+    var diagA = ""
+    var diagB = ""
+    var diagC = ""
+    var diagD = ""
+    var diagE = ""
+    var diagF = ""
+    var diagG = ""
+    var diagH = ""
+    var diagI = ""
+    var diagJ = ""
+    var diagK = ""
+    var diagL = ""
+   
+if(d["h21A"])
+ diagA = d["h21A"]
+if(d["h21B"])
+ diagB = d["h21B"]
+if(d["h21C"])
+ diagC = d["h21C"]
+if(d["h21D"])
+ diagD = d["h21D"]
+if(d["h21E"])
+ diagE = d["h21E"]
+if(d["h21F"])
+ diagF = d["h21F"]
+if(d["h21G"])
+ diagG = d["h21G"]
+if(d["h21H"])
+ diagH = d["h21H"]
+if(d["h21I"])
+ diagI = d["h21I"]
+if(d["h21J"])
+ diagJ = d["h21J"]
+if(d["h21K"])
+ diagK = d["h21K"]
+if(d["h21L"])
+ diagL = d["h21L"]
+    
+    var diabeticDiagFound=false
+    var diabeticRetinDiagFound=false
+    
+    for(i=0; i &lt; diabeticDiag.length; i++)
+    {
+      if( diabeticDiag[i] == diagA || 
+          diabeticDiag[i] == diagB || 
+          diabeticDiag[i] == diagC || 
+          diabeticDiag[i] == diagD || 
+          diabeticDiag[i] == diagE || 
+          diabeticDiag[i] == diagF || 
+          diabeticDiag[i] == diagG || 
+          diabeticDiag[i] == diagH || 
+          diabeticDiag[i] == diagI || 
+          diabeticDiag[i] == diagJ || 
+          diabeticDiag[i] == diagK || 
+          diabeticDiag[i] == diagL )
+      {
+        diabeticDiagFound=true 
+        i=diabeticDiag.length 
+      }
+    }
+    
+    for(i=0; i &lt; diabeticRetinDiag.length; i++)
+    {      
+      if( diabeticRetinDiag[i] == diagA || 
+          diabeticRetinDiag[i] == diagB || 
+          diabeticRetinDiag[i] == diagC || 
+          diabeticRetinDiag[i] == diagD || 
+          diabeticRetinDiag[i] == diagE || 
+          diabeticRetinDiag[i] == diagF || 
+          diabeticRetinDiag[i] == diagG || 
+          diabeticRetinDiag[i] == diagH || 
+          diabeticRetinDiag[i] == diagI || 
+          diabeticRetinDiag[i] == diagJ || 
+          diabeticRetinDiag[i] == diagK || 
+          diabeticRetinDiag[i] == diagL )
+      {
+        diabeticRetinDiagFound=true 
+        i=diabeticRetinDiag.length 
+      }  
+    }
+
+    if (  diabeticDiagFound || 
+            diabeticRetinDiagFound  )
+    {
+      displayFlyer=true
+    }
+ 
+    return displayFlyer  
+}
+
+// HYPERTENSION/HIGHCHOLESTOROL (heart disease flyer)
+function displayHeartDiseaseFlyer()
+{
+    var displayFlyer=false
+    var d=opener.parent.d
+ 
+    var heartDiseaseDiag      = hyprTensionDiagMdctPilot
+    var highCholesterolDiag   = highCholDiagMdct
+                                  
+    var diagA = ""
+    var diagB = ""
+    var diagC = ""
+    var diagD = ""
+    var diagE = ""
+    var diagF = ""
+    var diagG = ""
+    var diagH = ""
+    var diagI = ""
+    var diagJ = ""
+    var diagK = ""
+    var diagL = ""
+       
+    if(d["h21A"])
+     diagA = d["h21A"]
+    if(d["h21B"])
+     diagB = d["h21B"]
+    if(d["h21C"])
+     diagC = d["h21C"]
+    if(d["h21D"])
+     diagD = d["h21D"]
+    if(d["h21E"])
+     diagE = d["h21E"]
+    if(d["h21F"])
+     diagF = d["h21F"]
+    if(d["h21G"])
+     diagG = d["h21G"]
+    if(d["h21H"])
+     diagH = d["h21H"]
+    if(d["h21I"])
+     diagI = d["h21I"]
+    if(d["h21J"])
+     diagJ = d["h21J"]
+    if(d["h21K"])
+     diagK = d["h21K"]
+    if(d["h21L"])
+     diagL = d["h21L"]
+    
+    var heartDiseaseDiagFound=false
+    var highCholesterolDiagFound=false
+    
+    for(i=0; i &lt; heartDiseaseDiag.length; i++)
+    {
+      if( heartDiseaseDiag[i] == diagA || 
+          heartDiseaseDiag[i] == diagB || 
+          heartDiseaseDiag[i] == diagC || 
+          heartDiseaseDiag[i] == diagD || 
+          heartDiseaseDiag[i] == diagE || 
+          heartDiseaseDiag[i] == diagF || 
+          heartDiseaseDiag[i] == diagG || 
+          heartDiseaseDiag[i] == diagH || 
+          heartDiseaseDiag[i] == diagI || 
+          heartDiseaseDiag[i] == diagJ || 
+          heartDiseaseDiag[i] == diagK || 
+          heartDiseaseDiag[i] == diagL )
+      {
+        heartDiseaseDiagFound=true  
+        i=heartDiseaseDiag.length
+      } 
+    }
+    
+    for(i=0; i &lt; highCholesterolDiag.length; i++)
+    {        
+      if( highCholesterolDiag[i] == diagA || 
+          highCholesterolDiag[i] == diagB || 
+          highCholesterolDiag[i] == diagC || 
+          highCholesterolDiag[i] == diagD || 
+          highCholesterolDiag[i] == diagE || 
+          highCholesterolDiag[i] == diagF || 
+          highCholesterolDiag[i] == diagG || 
+          highCholesterolDiag[i] == diagH || 
+          highCholesterolDiag[i] == diagI || 
+          highCholesterolDiag[i] == diagJ || 
+          highCholesterolDiag[i] == diagK || 
+          highCholesterolDiag[i] == diagL )
+      {
+        highCholesterolDiagFound=true 
+        i=highCholesterolDiag.length 
+      }           
+    }
+
+    if (  heartDiseaseDiagFound ||
+            highCholesterolDiagFound  )
+    {
+      displayFlyer=true
+    }
+ 
+    return displayFlyer  
+}
+
+function displayLabIdWarning()
+{
+    var displayLabIdWarning=false
+    var d=opener.parent.d
+    
+    if ( d["labId"] == "0100" )
+    {
+      displayLabIdWarning=true  
+    }
+    return displayLabIdWarning;
+}
+
+function init(){
+
+ // reloading for chrome to render dr reports. But this reload breaks IE.  So commented.
+ //location.reload(true);
+ var d=opener.parent.d
+ // get parms for wvss:
+ var claimSubmitted=(d["orderStatusCd"]!="00"&amp;&amp;d["orderStatusCd"]!="04")
+ var msgProcessor=claimSubmitted?2:1
+ // get parms for wvps:
+ var memberId=encrypt(escape(d["mbrID"]))
+ var ns71ss=isNetscape71()?"t":"f"
+ //if PCP Form link is clicked from within eClaim, 'report window' should open with PCPForm shown first
+ //We need to set the MDCT_PILOT_SHOWPCPFORMFIRST to "N" so that if user
+ //decides to click on "REPORTS" next, the "PCPForm" will no longer be the first
+ //one that displays.
+ var firstReportShowName =""
+ if  (getChip('BATCH','MDCT_SHOWPCPFORMFIRST')=="Y")
+ {
+   firstReportShowName="pcp"
+   setChip('BATCH','MDCT_SHOWPCPFORMFIRST', "N")
+ }
+ else
+ {
+   firstReportShowName="ptrec"
+ }
+ var msgProc=(!claimSubmitted) ? firstReportShowName :
+   (d["authNum"].charAt(0) == 'L' || (d["benefitType"] &amp;&amp; d["benefitType"] == "N")) ? "cms" : "wvss"
+ var benType=((typeof d["benefitType"] != "undefined" &amp;&amp; d["benefitType"] != null) ? d["benefitType"] : '?')
+ var parms='msgProcessor='+msgProcessor+'&amp;authNum='+d["authNum"]+'&amp;phone='+d["officePhone"]+
+           '&amp;origSys=C&amp;memberid='+memberId+
+           '&amp;Opas='+d['Opas']+
+           '&amp;patRecOnly=true&amp;rep=rep&amp;msgProc='+msgProc+'&amp;ns71ss='+ns71ss
+
+if ( displayDiabetesFlyer() )
+{
+  parms+='&amp;educationFlyer=true'
+  parms+='&amp;diabetesFlyer=true'
+}
+
+if ( displayHeartDiseaseFlyer() )
+{
+  parms+='&amp;educationFlyer=true'
+  parms+='&amp;diseaseFlyer=true'
+}
+
+if ( displayLabIdWarning() )
+{
+  parms+='&amp;labIdWarning=true'
+}
+else
+{
+  parms+='&amp;labIdWarning=false'
+}
+
+TransferToVSP('/reports/html/reports.jsp?'+parms)
+
+this.window.focus()
+
+}
+
+</script>
+</head>
+<body onload="init()">
+<form name="TransferToVSP" method="POST" action="Required?">
+<input type="HIDDEN" value="" name="access" />
+<input type="HIDDEN" value="" name="phone" />
+<input type="HIDDEN" value="" name="formnbr" />
+<input type="HIDDEN" value="" name="cookies" />
+<input type="HIDDEN" value="" name="dest" />
+<input type="HIDDEN" value="" name="referringHost" />
+</form>
+
+
+</body></html>

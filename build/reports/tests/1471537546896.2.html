@@ -1,0 +1,855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="RG, BO, MD, KA, JB" name="author" />
+<basefont size="3" />
+<title>VSP - ENCOUNTER/CLAIM</title>
+<link href="/idc/html/rde1form.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+	/* Needed for Mac, because the checkboxes are relatively too large there. */
+	#claimLineTable input[type="checkbox"] {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+    .eclaim_button {
+     width:24px;
+     height:16px;
+     background-image:url(/idc/images/eclaim_button.png);
+     font-family:"Times New Roman", Times, serif;
+     font-size:10px;
+     text-align:center;
+    }
+    .flft {
+     float:left;
+    }
+</style>
+
+<script src="/eyefinity/html/eyefinity.js" type="text/javascript"></script>
+<script src="/idc/html/jointinvoice.js" type="text/javascript"></script>
+<script src="/global/html/prototype-1.6.0.3.js" type="text/javascript"></script>
+<script src="/idc/html/rde1common.js" language="Javascript"></script>
+
+<!-- DR-2002: log-back modified for debugging. -->
+<script type="text/javascript">
+    onerror = eyefinity.onErrorShowCacheWarning;
+
+    // Enable ICD-10 dynamic diagnosis lists.
+    var loadIcdDiagnoses = true;
+</script>
+
+<script src="/global/html/cookie.js" language="Javascript"></script>
+<script language="Javascript">
+function loadData(){
+
+  clearHCPCSvcs(parent.guiPage.document.forms[0])
+  loadContactLensManufacturer();
+  loadContactLensModality();
+  buildDoctorList(parent.guiPage.document.forms[0])
+  prefillHCFA()
+  shouldWePopulateRefraction()
+  loadForm(parent.guiPage.document.forms[0],parent.d)
+  showFieldsForFSAAmt(parent.d)
+  sumHCFACharges(parent.d, document.forms[0])
+  checkH23Field()
+  changeContactLensManufacturer(document.hcfa1500.contactsManufacturer);
+}
+
+function shouldWePopulateRefraction() {
+// if there is an s code exam in the claim lines don't check the refraction box
+    var sCodeProc = false
+    var RefractionProc = false
+    for(i=0;i&lt;15;i++){
+        var fld=parent.d["h24dc_"+i]
+        if(fld=="S0620" || fld=="S0621"){
+            sCodeProc = true;
+        }
+        if(fld=="92015"){
+            RefractionProc = true;
+        }
+    }
+    if ( RefractionProc &amp;&amp; sCodeProc) {
+        parent.d["ExamIsRefraction"]="N";
+    }
+}
+
+function setPCPFormChip()
+{
+ setChip('BATCH','MDCT_SHOWPCPFORMFIRST', "Y")
+}
+
+	function populateDefaultOnlyForICD9(form){
+		
+		if (form.enteredDateOfService &amp;&amp; form.enteredDateOfService.value != "undefined" &amp;&amp; form.enteredDateOfService.value != ""){
+		
+			if(!editDate(form.enteredDateOfService.value)) {
+				alert("Date of Service must be entered in MM/DD/YYYY format.");
+				form.enteredDateOfService.focus();
+			}
+			
+			var rawDos = form.enteredDateOfService.value;
+			var defaultICD9Code = "V72.0";
+			//var ICDCutOffDate = "03/31/2015";
+			var ICDProdCutOffDate = "09/30/2015";			
+			
+			if (compareDates(rawDos, ICDProdCutOffDate) &gt;= 0) {
+			
+				if (form.h21A &amp;&amp; (form.h21A.value == "undefined" || form.h21A.value == ""))
+				{
+					if ( parent.d["benefitType"] &amp;&amp; 
+					        (parent.d["benefitType"]=="D" || parent.d["benefitType"]=="M" || parent.d["benefitType"]=="J" || parent.d["benefitType"]=="N") )
+					{
+					    form.h21A.value = "";   
+					}
+					else
+					{
+					    form.h21A.value = defaultICD9Code;  
+					}
+				}
+			}
+		}
+	}
+
+    function checkDOS() {
+        setHCFADateOfService(document.hcfa1500);
+        setCLReason();
+        if (parent.d["enteredDateOfService"] == "") {
+            document.hcfa1500.enteredDateOfService.focus();
+        } else {
+            parent.populateIcdDiagnoses(document.hcfa1500.enteredDateOfService.value);
+			populateDefaultOnlyForICD9(document.hcfa1500);
+        }
+    }
+
+    function setDOS() {
+        if (!parent.d["dateOfService"] || parent.d["dateOfService"] == "") {
+            parent.d["dateOfService"] = "";
+            //removeCookie("DATE_OF_SVC")
+            delChip("BATCH", "DATE_OF_SVC");
+        }
+        if (parent.d["dateOfService"] &amp;&amp; editDate(parent.d["dateOfService"]))
+            //setCookie("DATE_OF_SVC", parent.d["dateOfService"])
+            setChip("BATCH", "DATE_OF_SVC", parent.d["dateOfService"]);
+    }
+
+    function setCLReason() {
+        var showclcp = showCLCP();
+        var datapageReason = parent.d["contactsReason"];
+        var selectedReason = document.hcfa1500.contactsReason.value;
+        var reasonType = showclcp ? 'clcp' : 'cl';
+        if (selectedReason) {
+            selectedReason = selectedReason;
+        } else if (datapageReason) {
+            selectedReason = datapageReason;
+        } else {
+            selectedReason = '';
+        }
+        selectedReason = selectedReason &gt; 1 &amp;&amp; !showclcp ? '' : selectedReason;
+
+        var reasonValues = new Array();
+        reasonValues['clcp'] = [ '', '', 'Initial Supply Tier 1', '4',
+                'Initial Supply Tier 2', '6', 'Initial Supply Tier 3', '7',
+                'Initial &amp; Additinal Tier1', '5', 'Initial &amp; Additinal Tier2',
+                '8', 'Initial &amp; Additinal Tier3', '9',
+                'Not Qualified for Contact Lens Care Program', '0',
+                'Necessary Contact Lenses', '1' ]
+        reasonValues['cl'] = [ '', '', 'Elective Contact Lenses', '0',
+                'Necessary Contact Lenses', '1' ]
+        d = document.getElementById('contactsReason');
+        var listLength = reasonValues[reasonType].length / 2;
+        d.options.length = listLength;
+        for (var i = 0; i &lt; listLength; i++) {
+            d.options[i].text = reasonValues[reasonType][i * 2];
+            d.options[i].value = reasonValues[reasonType][i * 2 + 1];
+        }
+        document.hcfa1500.contactsReason.value = selectedReason
+    }
+
+    function showCLCP() {
+        var clstart = parent["clcpCOD"];
+        var autheff = parent.d["authEffDate"];
+        var dos = document.hcfa1500.enteredDateOfService.value;
+        if (!dos || dos == null)
+            dos = parent.d["dateOfService"];
+        if (dos &amp;&amp; dos != null &amp;&amp; autheff &amp;&amp; autheff != null &amp;&amp; clstart
+                &amp;&amp; clstart != null) {
+            if (editDate(dos) &amp;&amp; editDate(autheff) &amp;&amp; editDate(clstart)) {
+                if (compareDates(clstart, dos) &lt; 0
+                        &amp;&amp; compareDates(clstart, autheff) &lt; 0) {
+                    return true
+                }
+            }
+        } else if ((!dos || dos == null) &amp;&amp; autheff &amp;&amp; autheff != null
+                &amp;&amp; clstart &amp;&amp; clstart != null) {
+            if (editDate(autheff) &amp;&amp; editDate(clstart)) {
+                if (compareDates(clstart, autheff) &lt; 0) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    function init() {
+        addhandlers(document.hcfa1500)
+        if (parent.guiPage) {
+            setDOS()
+            loadData()
+            if (!parent.d["cursorFocus"] || parent.d["cursorFocus"] == "") {
+                parent.d["cursorFocus"] = "h21A"
+                parent.d["cfAnchor"] = "Diagnosis And Services"
+            }
+            //115231 - FSA
+            /*
+            if(parent.d["fsaAmt"]&gt;0)
+             if(confirm("We have calculated the FSA amount based on the patient\'s plan and claim information. If the patient obtained any additional out of pocket expenses, select OK. Otherwise, select CANCEL.")){
+              parent.d["cfAnchor"]="Diagnosis And Services"
+              parent.d["cursorFocus"]="fsaAmt"
+             }
+             else
+              parent.sendWork();
+             */
+            setCursorFocus()
+            if (navigator.userAgent.toUpperCase().indexOf("MSIE") &gt;= 0)
+                parent.guiPage.scrollBy(0, -80)
+            parent.getDateOfService();
+            //svcDate=getCookie("DATE_OF_SVC")
+            svcDate = getChip("BATCH", "DATE_OF_SVC")
+            if (svcDate != null)
+                document.hcfa1500.enteredDateOfService.value = svcDate
+            else
+                document.hcfa1500.enteredDateOfService.focus()
+            setCLReason();
+            whichProc = document.hcfa1500.h24dc_0; // default to first CPT
+			
+			populateDefaultOnlyForICD9(document.hcfa1500);
+        }
+				
+        if (("Y" == parent.d["showReports"] || "" == parent.d["showReports"])
+                &amp;&amp; "G" == parent.d["popId"]) {
+            parent.windowReports(parent.pC);
+            // We only want it to pop on the first time, reset the value to N, or anything other than Y
+            parent.d["showReports"] = "N";
+
+        }
+    }
+
+    function validateForm() {
+        if (top.location == self.location)
+            return false;
+        if (!parent.getSessionCookie())
+            return false;
+        if (!editHCFA(parent.guiPage.document.forms[0]))
+            return false;
+        if (!validateContactsManufacturer())
+            return false; 
+
+        return true
+    }
+
+    function goAddl(which) {
+
+        parent.captureForm(parent.guiPage.document.forms[0], parent.d)
+        parent.d["cursorFocus"] = which
+        parent.d["cfPage"] = 4
+        parent.d["cfAnchor"] = "Additional Info Detail"
+        parent.setCursorFocus()
+        parent.d["nosubmit"] = "true"
+    }
+
+    function clickAddl() {
+        f = document.forms[0]
+        if (f.C14.checked) {
+            parent.captureForm(parent.guiPage.document.forms[0], parent.d)
+            parent.d["cfPage"] = 4
+            parent.d["cfAnchor"] = "Additional Info Detail"
+            parent.setCursorFocus()
+        }
+    }
+
+    function checkH23Field() {
+        f = document.forms[0]
+        if (parent.d["h23"] != "" &amp;&amp; parent.d["h23"] != null) {
+            f.C13[0].checked = true
+        }
+    }
+
+    function chkCPT(elem) {
+        if (trimSpaces(elem.value) == "") {
+            elem.value = "";
+            var chg = "h24f_" + elem.name.substring(elem.name.indexOf("_") + 1);
+            document.forms[0][chg].value = "";
+        }
+    }
+
+    function forceCPTCode(elem) {
+        var lineNbr = elem.name.substring(elem.name.indexOf("_") + 1);
+        var cptElem = "h24dc_" + lineNbr;
+        var cpt = document.forms[0][cptElem];
+        if (cpt.value == "") {
+            elem.value = "";
+            alert("Please begin a new line by entering the CPT code.")
+            document.forms[0][cptElem].focus();
+        }
+    }
+
+    function trimSpaces(s)
+    {
+    	 var iStart=0,iEnd=s.length-1
+    	 while(iStart&lt;=iEnd&amp;&amp;s.charAt(iStart)&lt;=' ')
+    	  iStart++
+    	 while(iEnd&gt;=iStart&amp;&amp;s.charAt(iEnd)&lt;=' ')
+    	  iEnd--
+    	 if(iStart&gt;iEnd)
+    	  s=""
+    	 else
+    	  s=s.substring(iStart,iEnd+1)
+    	 return s
+    	}
+    
+    function isEmpty( code )
+    {
+    	if ( code != null )
+    	{
+    		code = trimSpaces( code )
+    	}
+        return ((code == null) || (code.length == 0))
+    } 
+    
+    function doIcdListPopup(elem) 
+    {
+        if (document.hcfa1500.enteredDateOfService.value == "") 
+        {
+           alert('Please enter the date of service');
+           document.hcfa1500.enteredDateOfService.focus();
+        } 
+        else 
+        {
+        	var popIcdList=true;
+        	if ( elem.name == "h21G" || elem.name == "h21H" ||	 elem.name == "h21I" || 
+        		 elem.name == "h21J" || elem.name == "h21K" || elem.name == "h21L" )     
+        	{
+        		if ( (document.hcfa1500.h21A &amp;&amp; isEmpty(document.hcfa1500.h21A.value)) ||	(document.hcfa1500.h21B &amp;&amp; isEmpty(document.hcfa1500.h21B.value)) ||
+        			 (document.hcfa1500.h21C &amp;&amp; isEmpty(document.hcfa1500.h21C.value)) || (document.hcfa1500.h21D &amp;&amp; isEmpty(document.hcfa1500.h21D.value)) ||
+        			 (document.hcfa1500.h21E &amp;&amp; isEmpty(document.hcfa1500.h21E.value)) || (document.hcfa1500.h21F &amp;&amp; isEmpty(document.hcfa1500.h21F.value)) )
+        		{    
+        			// This means that daigA,B,C,D,E or F is empty and we are coming from button G,H,I,J,K or L
+        	    	popIcdList=false;
+        	    	setDiagnosisLine2disabled(true);
+        	    }
+        	}
+        	
+        	if ( popIcdList )
+        	{
+                if ( elem.name == "h21G" || elem.name == "h21H" ||   elem.name == "h21I" || 
+                        elem.name == "h21J" || elem.name == "h21K" || elem.name == "h21L" )
+                {
+                	setDiagnosisLine2disabled(false);
+                }
+                
+        		parent.popSelect(elem, getIcdListCall());  	
+        		
+                if ( elem.name == "h21A" &amp;&amp;
+                        (document.hcfa1500.h21F &amp;&amp; !isEmpty(document.hcfa1500.h21F.value)) &amp;&amp; (document.hcfa1500.h21B &amp;&amp; !isEmpty(document.hcfa1500.h21B.value)) &amp;&amp;
+                        (document.hcfa1500.h21C &amp;&amp; !isEmpty(document.hcfa1500.h21C.value)) &amp;&amp; (document.hcfa1500.h21D &amp;&amp; !isEmpty(document.hcfa1500.h21D.value)) &amp;&amp;
+                        (document.hcfa1500.h21E &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) )
+               {   
+                    setDiagnosisLine2disabled(false);   
+               }
+                
+               if ( elem.name == "h21B" &amp;&amp;
+                		(document.hcfa1500.h21A &amp;&amp; !isEmpty(document.hcfa1500.h21A.value)) &amp;&amp; (document.hcfa1500.h21F &amp;&amp; !isEmpty(document.hcfa1500.h21F.value)) &amp;&amp;
+                        (document.hcfa1500.h21C &amp;&amp; !isEmpty(document.hcfa1500.h21C.value)) &amp;&amp; (document.hcfa1500.h21D &amp;&amp; !isEmpty(document.hcfa1500.h21D.value)) &amp;&amp;
+                        (document.hcfa1500.h21E &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) )
+               {   
+                	setDiagnosisLine2disabled(false);	
+               }
+               
+               if ( elem.name == "h21C" &amp;&amp;
+                       (document.hcfa1500.h21A &amp;&amp; !isEmpty(document.hcfa1500.h21A.value)) &amp;&amp; (document.hcfa1500.h21B &amp;&amp; !isEmpty(document.hcfa1500.h21B.value)) &amp;&amp;
+                       (document.hcfa1500.h21F &amp;&amp; !isEmpty(document.hcfa1500.h21F.value)) &amp;&amp; (document.hcfa1500.h21D &amp;&amp; !isEmpty(document.hcfa1500.h21D.value)) &amp;&amp;
+                       (document.hcfa1500.h21E &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) )
+               {   
+                   setDiagnosisLine2disabled(false);   
+               }
+               
+               if ( elem.name == "h21D" &amp;&amp;
+                       (document.hcfa1500.h21A &amp;&amp; !isEmpty(document.hcfa1500.h21A.value)) &amp;&amp; (document.hcfa1500.h21B &amp;&amp; !isEmpty(document.hcfa1500.h21B.value)) &amp;&amp;
+                       (document.hcfa1500.h21C &amp;&amp; !isEmpty(document.hcfa1500.h21C.value)) &amp;&amp; (document.hcfa1500.h21F &amp;&amp; !isEmpty(document.hcfa1500.h21F.value)) &amp;&amp;
+                       (document.hcfa1500.h21E &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) )
+              {   
+                   setDiagnosisLine2disabled(false);   
+              }
+              
+              if ( elem.name == "h21E" &amp;&amp;
+                       (document.hcfa1500.h21A &amp;&amp; !isEmpty(document.hcfa1500.h21A.value)) &amp;&amp; (document.hcfa1500.h21B &amp;&amp; !isEmpty(document.hcfa1500.h21B.value)) &amp;&amp;
+                       (document.hcfa1500.h21C &amp;&amp; !isEmpty(document.hcfa1500.h21C.value)) &amp;&amp; (document.hcfa1500.h21D &amp;&amp; !isEmpty(document.hcfa1500.h21D.value)) &amp;&amp;
+                       (document.hcfa1500.h21F &amp;&amp; !isEmpty(document.hcfa1500.h21F.value)) )
+              {   
+                   setDiagnosisLine2disabled(false);   
+              }
+               
+               if ( elem.name == "h21F" &amp;&amp;
+                       (document.hcfa1500.h21A &amp;&amp; !isEmpty(document.hcfa1500.h21A.value)) &amp;&amp; (document.hcfa1500.h21B &amp;&amp; !isEmpty(document.hcfa1500.h21B.value)) &amp;&amp;
+                       (document.hcfa1500.h21C &amp;&amp; !isEmpty(document.hcfa1500.h21C.value)) &amp;&amp; (document.hcfa1500.h21D &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) &amp;&amp;
+                       (document.hcfa1500.h21E &amp;&amp; !isEmpty(document.hcfa1500.h21E.value)) )
+              {   
+                   setDiagnosisLine2disabled(false);   
+              }
+        	}
+        }
+    }
+    
+    function checkToDisableDiagnosisLine2( elem )
+    {
+        if ( elem.name == "h21A" || elem.name == "h21B" ||   elem.name == "h21C" || 
+             elem.name == "h21D" || elem.name == "h21E" || elem.name == "h21F" )     
+        {
+            if ( (document.hcfa1500.h21A &amp;&amp; isEmpty(document.hcfa1500.h21A.value)) ||   (document.hcfa1500.h21B &amp;&amp; isEmpty(document.hcfa1500.h21B.value)) ||
+                    (document.hcfa1500.h21C &amp;&amp; isEmpty(document.hcfa1500.h21C.value)) || (document.hcfa1500.h21D &amp;&amp; isEmpty(document.hcfa1500.h21D.value)) ||
+                    (document.hcfa1500.h21E &amp;&amp; isEmpty(document.hcfa1500.h21E.value)) || (document.hcfa1500.h21F &amp;&amp; isEmpty(document.hcfa1500.h21F.value)) )
+           {   
+            	document.hcfa1500.h21G.value="";
+            	document.hcfa1500.h21H.value="";
+            	document.hcfa1500.h21I.value="";
+            	document.hcfa1500.h21J.value="";
+            	document.hcfa1500.h21K.value="";
+            	document.hcfa1500.h21L.value="";
+            	setDiagnosisLine2disabled(true);	
+           }
+           else
+           {
+        	   setDiagnosisLine2disabled(false);  	
+           }
+        }
+        else
+        {
+            if ( (document.hcfa1500.h21A &amp;&amp; isEmpty(document.hcfa1500.h21A.value)) || (document.hcfa1500.h21B &amp;&amp; isEmpty(document.hcfa1500.h21B.value)) ||
+                    (document.hcfa1500.h21C &amp;&amp; isEmpty(document.hcfa1500.h21C.value)) || (document.hcfa1500.h21D &amp;&amp; isEmpty(document.hcfa1500.h21D.value)) ||
+                    (document.hcfa1500.h21E &amp;&amp; isEmpty(document.hcfa1500.h21E.value)) || (document.hcfa1500.h21F &amp;&amp; isEmpty(document.hcfa1500.h21F.value)) )
+           {   
+                document.hcfa1500.h21G.value="";
+                document.hcfa1500.h21H.value="";
+                document.hcfa1500.h21I.value="";
+                document.hcfa1500.h21J.value="";
+                document.hcfa1500.h21K.value="";
+                document.hcfa1500.h21L.value="";
+                setDiagnosisLine2disabled(true);    	
+           }
+        }
+    }
+    function getIcdListCall() {
+        var params = '/servlet/IcdList?feeRuleCode=' + parent.d["feeRuleCode"]
+        + '&amp;benefitType=' + parent.d["benefitType"] + '&amp;dateOfService='
+        + parent.d["dateOfService"]; 
+        
+        try {
+            console.log("IcdListCall: params=" + params);           
+        } catch (err) {
+            
+        }
+        
+        return params; 
+    }
+</script>
+<script src="/idc/html/rde1onchange.js" language="Javascript1.2"></script>
+<script src="/idc/html/rde1hcfa.js" language="Javascript"></script>
+<script>
+  var whichProc;  // track which CPT is selected for pick list
+</script>
+
+</head>
+
+<body background="/eyefinity/images/gradient.jpg" onload="init()">
+<form name="hcfa1500">
+<input type="HIDDEN" name="fullGrpId" value="3004409300010001" />
+<input type="HIDDEN" name="hRendNpin" />
+<!-- claimtype -->
+<table width="550" cellspacing="0" cellpadding="0">
+<tbody><tr><td><font color="#FF0000"><b>*</b></font> <a name="Indicates Required Information"><i>INDICATES REQUIRED INFORMATION</i></a></td><td align="RIGHT" colspan="6"></td></tr>
+</tbody></table>
+<table cellspacing="1" cellpadding="3" border="0">
+<tbody><tr><td valign="BOTTOM"> <font color="#FF0000"><b>*</b></font> 1. MEDICARE<br /> <input type="CHECKBOX" tabindex="120" value="Y" name="h1Medicare" />(Medicare#)</td>
+<td valign="BOTTOM">MEDICAID<br /><input type="CHECKBOX" tabindex="121" value="Y" name="h1Medicaid" />(Medicaid#)</td>
+<td valign="BOTTOM">TRICARE<br /><input type="CHECKBOX" tabindex="122" value="Y" name="h1Champus" />(ID#/DoD#)</td>
+<td valign="BOTTOM">CHAMPVA<br /><input type="CHECKBOX" tabindex="123" value="Y" name="h1ChampVA" />(Member ID#)</td>
+<td valign="BOTTOM">GROUP<br />HEALTH PLAN<br /><input type="CHECKBOX" tabindex="124" value="Y" name="h1GroupHealthPlan" />(ID#)</td>
+<td valign="BOTTOM">FECA<br />BLK LUNG<br /><input type="CHECKBOX" tabindex="125" value="Y" name="h1FECABlkLung" />(ID#)</td>
+<td valign="BOTTOM">OTHER<br /><input type="CHECKBOX" tabindex="126" value="Y" name="h1Other" />(ID#)</td>
+</tr>
+</tbody></table>
+<table width="550" cellspacing="0" cellpadding="0">
+<tbody><tr><td><a name="Diagnosis And Services"><h2>DIAGNOSIS AND SERVICES</h2></a></td></tr>
+<tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+
+<table width="550" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="2">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td>DATE OF SERVICE<br /><input type="TEXT" "tabindex="5" onchange="checkDOS()" maxlength="10" size="15" name="enteredDateOfService" id="enteredDateOfService" /> (MM/DD/CCYY) </td>
+<td>  </td>
+<td><input type="CHECKBOX" tabindex="127" value="Y" name="WellVisionGiven" />I attest I will provide the patient/guardian with a <a tabindex="128" href="Javascript: parent.popSelect(parent.guiPage.document.forms[0],'/idc/html/rde1wvssdef.htm')">VSP Savings Statement</a>. </td>
+</tr>
+</tbody></table></td></tr>
+<tr><td>EXAM TYPE<br /><select tabindex="129" onchange="checkExam(document.forms[0])" name="emEntered">
+<option selected="selected"></option>
+<option value="92002">92002 - New Patient - Intermediate Exam</option>
+<option value="92004">92004 - New Patient - Comprehensive Exam</option>
+<option value="92012">92012 - Existing Patient - Intermediate Exam</option>
+<option value="92014">92014 - Existing Patient - Comprehensive Exam</option>
+<option value="S0620">S0620 - Routine ophthalmological examination including refraction; new patient</option>
+<option value="S0621">S0621 - Routine ophthalmological examination including refraction; existing patient</option>
+<option value=""></option>
+<option value="99201">99201 - New Patient - Problem focused exam - straightforward medical decision</option>
+<option value="99202">99202 - New Patient - Expanded problem focused exam - an expanded problem</option>
+<option value="99203">99203 - New Patient - Detailed exam - straightforward medical decision</option>
+<option value="99204">99204 - New Patient - Comprehensive exam - medical decision of low complexity</option>
+<option value="99205">99205 - New Patient - Comprehensive exam - medical decision of high complexity</option>
+<option value="99211">99211 - Existing Patient - Problem focused exam; straightforward medical decision</option>
+<option value="99212">99212 - Existing Patient - Expanded problem focused exam - an expanded problem</option>
+<option value="99213">99213 - Existing Patient - Detailed exam - straightforward medical decision</option>
+<option value="99214">99214 - Existing Patient - Comprehensive exam - medical decision of low complexity</option>
+<option value="99215">99215 - Existing Patient - Comprehensive exam - medical decision of high complexity</option>
+<option value=""></option>
+<option value="83861">83861 - Microfluidic analysis utilizing an integrated collection and analysis device, tear osmolarity</option>
+<option value="87809">87809 - Infectious Agent Antigen Detection With Direct Optical Observation; Adenovirus</option>
+</select></td>
+<td align="BOTTOM">
+<input type="CHECKBOX" tabindex="130" onclick="clickRefraction()" value="Y" name="ExamIsRefraction" />REFRACTION<br />
+       DILATION PERFORMED: </td><td><br /><select tabindex="131" name="ExamIsDilated">
+<option value=""> </option>
+<option value="Y">Yes</option>
+<option value="N">No-Reason On File</option>
+</select></td>
+</tr>
+</tbody></table>
+
+<table width="585" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+  <td>CONTACT LENS MATERIAL/TYPE<br />
+   <select tabindex="132" onchange="if (document.hcfa1500.contactsReason.selectedIndex == 0) document.hcfa1500.contactsReason.selectedIndex = 0;" name="contactsType">
+    <option value=""></option>
+    <option value="V2500">V2500 - Hard/PMMA, spherical</option>
+    <option value="V2501">V2501 - Hard/PMMA, toric or prism ballast</option>
+    <option value="V2502">V2502 - Hard/PMMA, bifocal</option>
+    <option value="V2503">V2503 - Hard/PMMA, color vision deficiency</option>
+    <option value="V2510">V2510 - Gas Permeable, spherical</option>
+    <option value="V2511">V2511 - Gas Permeable, toric, prism ballast</option>
+    <option value="V2512">V2512 - Gas Permeable, bifocal</option>
+    <option value="V2513">V2513 - Gas Permeable, extended wear</option>
+    <option value="V2520">V2520 - Soft/Hydrophilic, spherical</option>
+    <option value="V2521">V2521 - Soft/Hydrophilic, toric or prism ballast</option>
+    <option value="V2522">V2522 - Soft/Hydrophilic, bifocal</option>
+    <option value="V2523">V2523 - Soft/Hydrophilic, extended wear</option>
+    <option value="V2530">V2530 - Scleral, Gas Impermeable</option>
+    <option value="V2531">V2531 - Scleral, Gas Permeable</option>
+    <option value="V2599">V2599 - Other type</option>
+  </select></td>
+  <td width="273">
+ <a href="Javascript: parent.popSelect(parent.guiPage.document.forms[0],showCLCP() ? '/idc/html/CLCPdesc.htm' : '/idc/html/CLdesc.htm')">CONTACT LENS REASON</a><br />
+   <select tabindex="133" id="contactsReason" name="contactsReason">
+   <option value=""></option>
+  <option value="0">Elective Contact Lenses</option><option value="1">Necessary Contact Lenses</option></select>
+  </td>
+ </tr>
+</tbody></table>
+<table width="585" cellspacing="0" cellpadding="0" border="0">
+ <tbody><tr>
+  <td width="312"><a href="Javascript: parent.popSelect(parent.guiPage.document.forms[0],'/idc/html/FandEdesc.htm')">CONTACT LENS SERVICES</a><br />
+  <select tabindex="134" name="clService">
+    <option value=""></option>
+    <option value="92326">92326 - Replacement lens</option>
+    <option value="92310">92310 - New lens (New Fit/Refit)</option>
+    <option value="92311">92311 - Corneal lens for aphakia - one eye</option>
+    <option value="92312">92312 - Corneal lens for aphakia - both eyes</option>
+    <option value="92313">92313 - Script and fit contact lens - corneoscleral lens</option>
+    <option value="92072">92072 - Fitting of contact lens for management of keratoconus, initial fitting</option>
+   </select></td>
+  <td width="274" nowrap="nowrap">CONTACT LENS MANUFACTURER<br />
+   <select onchange="changeContactLensManufacturer(document.hcfa1500.contactsManufacturer);" tabindex="136" name="contactsManufacturer">
+   <option value=""></option><option value="B">Alcon</option><option value="C">Baush &amp; Lomb</option><option value="E">CooperVision</option><option value="H">Hydrogel</option><option value="A">Vistakon</option><option value="O">Other</option></select></td>
+ </tr>
+ <tr>
+   <td width="245">CONTACT LENS BRAND<br />
+   <select style="width: 280px;" disabled="disabled" tabindex="136" name="contactsBrand">
+   </select></td>
+  <td width="220">CONTACT LENS # OF BOXES<br />
+   <input type="TEXT" onblur="validateContactsBoxes()" disabled="disabled" maxlength="2" size="2" tabindex="136" name="contactsBoxes" />
+   <input type="hidden" name="contactsAnnualNumber" />
+  </td>
+  <td width="120" nowrap="nowrap">CONTACT LENS MODALITY<br />
+    <select disabled="disabled" tabindex="136" name="contactsModality">
+     <option value=""></option><option value="1D">Disposable - 1 day</option><option value="2W">Disposable - 2 weeks</option><option value="1M">Disposable - 1 month</option><option value="3M">Disposable - 3 months</option><option value="6M">Disposable - 6 months</option><option value="1Y">Conventional - 1 year</option><option value="2Y">Conventional - 2 years</option></select>
+  </td>
+ </tr>
+</tbody></table>
+
+<div style="display: block" id="MDCTDIV">
+
+<table cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP" colspan="7">CHECK CONDITION(S) PATIENT IS KNOWN TO HAVE:-<a title="Use this form to coordinate care with your patient’s primary care provider." onclick="setPCPFormChip()" href="javascript:parent.windowReports(parent.pC)">PCP FORM </a>    
+PCP COMMUNICATION COMPLETED/PLANNED: <select tabindex="136a" name="pcpIndicator">
+<option value=""> </option>
+<option value="1">Yes </option>
+<option value="0">No-Reason On File </option>
+</select>  </td>
+
+</tr>
+<tr><td><input type="CHECKBOX" value="Y" name="mdctDiab" />DIABETES</td>
+<td><input type="CHECKBOX" value="Y" name="mdctDiabRetin" /><label title="Diabetic Retinopathy" for="mdctDiabRetin">DIABETIC RETIN</label></td>
+<td><input type="CHECKBOX" value="Y" name="mdctHyprTnsn" />HYPERTENSION</td>
+<td><input type="CHECKBOX" value="Y" name="mdctHighChol" />HIGH CHOLESTEROL</td>
+<td><input type="CHECKBOX" value="Y" name="mdctNone" />NONE</td></tr>
+</tbody></table>
+</div>
+<table cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP" colspan="4"> <font color="#FF0000"><b>*</b></font>
+ 21. DIAGNOSIS OR NATURE OF ILLNESS OR INJURY.<br />  (RELATE ITEMS A-L TO ITEM 24E (DIAGNOSIS) BY LINE)</td>
+<td colspan="2">
+<a tabindex="143" href="Javascript: parent.popHCPCDesc('/idc/html/rde1hcpcdesc.htm')"><img border="0" src="/idc/images/eclaim_hcpcs_button.gif" /></a>
+</td>
+</tr><tr>
+<td><div class="flft"><a tabindex="137" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21A)"><div class="eclaim_button">A</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21A)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21A)" tabindex="1" maxlength="10" size="7" name="h21A" /></td>
+<td><div class="flft"><a tabindex="138" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21B)"><div class="eclaim_button">B</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21B)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21B)" tabindex="2" maxlength="10" size="7" name="h21B" /></td>
+<td><div class="flft"><a tabindex="139" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21C)"><div class="eclaim_button">C</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21C)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21C)" tabindex="3" maxlength="10" size="7" name="h21C" /></td>
+<td><div class="flft"><a tabindex="140" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21D)"><div class="eclaim_button">D</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21D)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21D)" tabindex="4" maxlength="10" size="7" name="h21D" /></td>
+<td><div class="flft"><a tabindex="141" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21E)"><div class="eclaim_button">E</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21E)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21E)" tabindex="5" maxlength="10" size="7" name="h21E" /></td>
+<td><div class="flft"><a tabindex="142" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21F)"><div class="eclaim_button">F</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21F)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21F)" tabindex="6" maxlength="10" size="7" name="h21F" /></td>
+</tr><tr>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21G)"><div class="eclaim_button">G</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21G)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21G)" tabindex="7" maxlength="10" size="7" name="h21G" disabled="disabled" /></td>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21H)"><div class="eclaim_button">H</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21H)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21H)" tabindex="8" maxlength="10" size="7" name="h21H" disabled="disabled" /></td>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21I)"><div class="eclaim_button">I</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21I)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21I)" tabindex="9" maxlength="10" size="7" name="h21I" disabled="disabled" /></td>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21J)"><div class="eclaim_button">J</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21J)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21J)" tabindex="10" maxlength="10" size="7" name="h21J" disabled="disabled" /></td>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21K)"><div class="eclaim_button">K</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21K)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21K)" tabindex="11" maxlength="10" size="7" name="h21K" disabled="disabled" /></td>
+<td><div class="flft"><a tabindex="-1" href="Javascript: doIcdListPopup(parent.guiPage.document.forms[0].h21L)"><div class="eclaim_button">L</div></a></div><input onclick="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21L)" onchange="javascript:checkToDisableDiagnosisLine2(parent.guiPage.document.forms[0].h21L)" tabindex="12" maxlength="10" size="7" name="h21L" disabled="disabled" /></td>
+</tr></tbody></table>
+
+
+<table vspace="0" hspace="0" cellspacing="0" cellpadding="0" border="0" id="claimLineTable">
+<tbody><tr><td>
+ <table cellspacing="1" cellpadding="1" border="0">
+ <tbody><tr><td><br /></td><td>24a</td><td><br /></td><td><font color="#FF0000"><b>*</b></font>24b</td><td>24c</td><td><font color="#FF0000"><b>*</b></font>24d</td><td><br /></td><td colspan="4">24e</td></tr>
+ <tr height="16"><td><br /></td><td> <font color="#FF0000"><b>*</b></font> FROM</td>
+ <td> <font color="#FF0000"><b>*</b></font> TO</td>
+ <td>POS</td>
+ <td valign="TOP">EMG</td>
+ <td><a href="Javascript: parent.popSelect(parent.guiPage.document.forms[0].h24b_0,'/idc/html/rde1hcfacptlist.htm')"><img border="0" tabindex="144" src="/idc/images/eclaim_proc_button.gif" /></a></td>
+ <td> MODS</td><td> <font color="#FF0000"><b>*</b></font> DIAGNOSIS</td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_0;"><td><h2 style="margin:0"> 1</h2></td><td><input tabindex="145" onblur="Javascript:resetSvcDate()" onfocus="prefillLine(parent.guiPage.document.forms[0],0)" maxlength="10" size="10" name="h24af_0" /></td><td>    <input tabindex="146" maxlength="10" size="10" name="h24at_0" /></td><td><input tabindex="147" maxlength="2" size="2" disabled="disabled" name="h24b_0" /></td><td><input type="CHECKBOX" tabindex="148" value="Y" name="h24i_0" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_0)" onfocus="whichProc=this;" tabindex="149" maxlength="6" size="5" name="h24dc_0" /></td><td><input tabindex="150" maxlength="11" size="7" name="h24dm_0" /></td><td><input tabindex="151" maxlength="1" size="2" name="h24eDiagP_0" /><input tabindex="152" maxlength="1" size="2" name="h24eDiagS_0" /><input tabindex="153" maxlength="1" size="2" name="h24eDiagT_0" /><input tabindex="154" maxlength="1" size="2" name="h24eDiagQ_0" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_1;"><td><h2 style="margin:0"> 2</h2></td><td><input tabindex="155" onblur="h24at_1.value = h24af_1.value" onfocus="prefillLine(parent.guiPage.document.forms[0],1)" maxlength="10" size="10" name="h24af_1" /></td><td><input tabindex="156" maxlength="10" size="10" name="h24at_1" /></td><td><input tabindex="157" maxlength="2" size="2" disabled="disabled" name="h24b_1" /></td><td><input type="CHECKBOX" tabindex="158" value="Y" name="h24i_1" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_1)" onfocus="whichProc=this;" tabindex="159" maxlength="6" size="5" name="h24dc_1" /></td><td><input tabindex="160" maxlength="11" size="7" name="h24dm_1" /></td><td><input tabindex="161" maxlength="1" size="2" name="h24eDiagP_1" /><input tabindex="162" maxlength="1" size="2" name="h24eDiagS_1" /><input tabindex="163" maxlength="1" size="2" name="h24eDiagT_1" /><input tabindex="164" maxlength="1" size="2" name="h24eDiagQ_1" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_2;"><td><h2 style="margin:0"> 3</h2></td><td><input tabindex="165" onblur="h24at_2.value = h24af_2.value" onfocus="prefillLine(parent.guiPage.document.forms[0],2)" maxlength="10" size="10" name="h24af_2" /></td><td><input tabindex="166" maxlength="10" size="10" name="h24at_2" /></td><td><input tabindex="167" maxlength="2" size="2" disabled="disabled" name="h24b_2" /></td><td><input type="CHECKBOX" tabindex="168" value="Y" name="h24i_2" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_2)" onfocus="whichProc=this;" tabindex="169" maxlength="6" size="5" name="h24dc_2" /></td><td><input tabindex="170" maxlength="11" size="7" name="h24dm_2" /></td><td><input tabindex="171" maxlength="1" size="2" name="h24eDiagP_2" /><input tabindex="172" maxlength="1" size="2" name="h24eDiagS_2" /><input tabindex="173" maxlength="1" size="2" name="h24eDiagT_2" /><input tabindex="174" maxlength="1" size="2" name="h24eDiagQ_2" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_3;"><td><h2 style="margin:0"> 4</h2></td><td><input tabindex="175" onblur="h24at_3.value = h24af_3.value" onfocus="prefillLine(parent.guiPage.document.forms[0],3)" maxlength="10" size="10" name="h24af_3" /></td><td><input tabindex="176" maxlength="10" size="10" name="h24at_3" /></td><td><input tabindex="177" maxlength="2" size="2" disabled="disabled" name="h24b_3" /></td><td><input type="CHECKBOX" tabindex="178" value="Y" name="h24i_3" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_3)" onfocus="whichProc=this;" tabindex="179" maxlength="6" size="5" name="h24dc_3" /></td><td><input tabindex="180" maxlength="11" size="7" name="h24dm_3" /></td><td><input tabindex="181" maxlength="1" size="2" name="h24eDiagP_3" /><input tabindex="182" maxlength="1" size="2" name="h24eDiagS_3" /><input tabindex="183" maxlength="1" size="2" name="h24eDiagT_3" /><input tabindex="184" maxlength="1" size="2" name="h24eDiagQ_3" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_4;"><td><h2 style="margin:0"> 5</h2></td><td><input tabindex="185" onblur="h24at_4.value = h24af_4.value" onfocus="prefillLine(parent.guiPage.document.forms[0],4)" maxlength="10" size="10" name="h24af_4" /></td><td><input tabindex="186" maxlength="10" size="10" name="h24at_4" /></td><td><input tabindex="187" maxlength="2" size="2" disabled="disabled" name="h24b_4" /></td><td><input type="CHECKBOX" tabindex="188" value="Y" name="h24i_4" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_4)" onfocus="whichProc=this;" tabindex="189" maxlength="6" size="5" name="h24dc_4" /></td><td><input tabindex="190" maxlength="11" size="7" name="h24dm_4" /></td><td><input tabindex="191" maxlength="1" size="2" name="h24eDiagP_4" /><input tabindex="192" maxlength="1" size="2" name="h24eDiagS_4" /><input tabindex="193" maxlength="1" size="2" name="h24eDiagT_4" /><input tabindex="194" maxlength="1" size="2" name="h24eDiagQ_4" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_5;"><td><h2 style="margin:0"> 6</h2></td><td><input tabindex="195" onblur="h24at_5.value = h24af_5.value" onfocus="prefillLine(parent.guiPage.document.forms[0],5)" maxlength="10" size="10" name="h24af_5" /></td><td><input tabindex="196" maxlength="10" size="10" name="h24at_5" /></td><td><input tabindex="197" maxlength="2" size="2" disabled="disabled" name="h24b_5" /></td><td><input type="CHECKBOX" tabindex="198" value="Y" name="h24i_5" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_5)" onfocus="whichProc=this;" tabindex="199" maxlength="6" size="5" name="h24dc_5" /></td><td><input tabindex="200" maxlength="11" size="7" name="h24dm_5" /></td><td><input tabindex="201" maxlength="1" size="2" name="h24eDiagP_5" /><input tabindex="202" maxlength="1" size="2" name="h24eDiagS_5" /><input tabindex="203" maxlength="1" size="2" name="h24eDiagT_5" /><input tabindex="204" maxlength="1" size="2" name="h24eDiagQ_5" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_6;"><td><h2 style="margin:0"> 7</h2></td><td><input tabindex="205" onblur="h24at_6.value = h24af_6.value" onfocus="prefillLine(parent.guiPage.document.forms[0],6)" maxlength="10" size="10" name="h24af_6" /></td><td><input tabindex="206" maxlength="10" size="10" name="h24at_6" /></td><td><input tabindex="207" maxlength="2" size="2" disabled="disabled" name="h24b_6" /></td><td><input type="CHECKBOX" tabindex="208" value="Y" name="h24i_6" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_6)" onfocus="whichProc=this;" tabindex="209" maxlength="6" size="5" name="h24dc_6" /></td><td><input tabindex="210" maxlength="11" size="7" name="h24dm_6" /></td><td><input tabindex="211" maxlength="1" size="2" name="h24eDiagP_6" /><input tabindex="212" maxlength="1" size="2" name="h24eDiagS_6" /><input tabindex="213" maxlength="1" size="2" name="h24eDiagT_6" /><input tabindex="214" maxlength="1" size="2" name="h24eDiagQ_6" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_7;"><td><h2 style="margin:0"> 8</h2></td><td><input tabindex="215" onblur="h24at_7.value = h24af_7.value" onfocus="prefillLine(parent.guiPage.document.forms[0],7)" maxlength="10" size="10" name="h24af_7" /></td><td><input tabindex="216" maxlength="10" size="10" name="h24at_7" /></td><td><input tabindex="217" maxlength="2" size="2" disabled="disabled" name="h24b_7" /></td><td><input type="CHECKBOX" tabindex="218" value="Y" name="h24i_7" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_7)" onfocus="whichProc=this;" tabindex="219" maxlength="6" size="5" name="h24dc_7" /></td><td><input tabindex="220" maxlength="11" size="7" name="h24dm_7" /></td><td><input tabindex="221" maxlength="1" size="2" name="h24eDiagP_7" /><input tabindex="222" maxlength="1" size="2" name="h24eDiagS_7" /><input tabindex="223" maxlength="1" size="2" name="h24eDiagT_7" /><input tabindex="224" maxlength="1" size="2" name="h24eDiagQ_7" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_8;"><td><h2 style="margin:0"> 9</h2></td><td><input tabindex="225" onblur="h24at_8.value = h24af_8.value" onfocus="prefillLine(parent.guiPage.document.forms[0],8)" maxlength="10" size="10" name="h24af_8" /></td><td><input tabindex="226" maxlength="10" size="10" name="h24at_8" /></td><td><input tabindex="227" maxlength="2" size="2" disabled="disabled" name="h24b_8" /></td><td><input type="CHECKBOX" tabindex="228" value="Y" name="h24i_8" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_8)" onfocus="whichProc=this;" tabindex="229" maxlength="6" size="5" name="h24dc_8" /></td><td><input tabindex="230" maxlength="11" size="7" name="h24dm_8" /></td><td><input tabindex="231" maxlength="1" size="2" name="h24eDiagP_8" /><input tabindex="232" maxlength="1" size="2" name="h24eDiagS_8" /><input tabindex="233" maxlength="1" size="2" name="h24eDiagT_8" /><input tabindex="234" maxlength="1" size="2" name="h24eDiagQ_8" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_9;"><td><h2 style="margin:0">10</h2></td><td><input tabindex="235" onblur="h24at_9.value = h24af_9.value" onfocus="prefillLine(parent.guiPage.document.forms[0],9)" maxlength="10" size="10" name="h24af_9" /></td><td><input tabindex="236" maxlength="10" size="10" name="h24at_9" /></td><td><input tabindex="237" maxlength="2" size="2" disabled="disabled" name="h24b_9" /></td><td><input type="CHECKBOX" tabindex="238" value="Y" name="h24i_9" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_9)" onfocus="whichProc=this;" tabindex="239" maxlength="6" size="5" name="h24dc_9" /></td><td><input tabindex="240" maxlength="11" size="7" name="h24dm_9" /></td><td><input tabindex="241" maxlength="1" size="2" name="h24eDiagP_9" /><input tabindex="242" maxlength="1" size="2" name="h24eDiagS_9" /><input tabindex="243" maxlength="1" size="2" name="h24eDiagT_9" /><input tabindex="244" maxlength="1" size="2" name="h24eDiagQ_9" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_10;"><td><h2 style="margin:0">11</h2></td><td><input tabindex="245" onblur="h24at_10.value = h24af_10.value" onfocus="prefillLine(parent.guiPage.document.forms[0],10)" maxlength="10" size="10" name="h24af_10" /></td><td><input tabindex="246" maxlength="10" size="10" name="h24at_10" /></td><td><input tabindex="247" maxlength="2" size="2" disabled="disabled" name="h24b_10" /></td><td><input type="CHECKBOX" tabindex="248" value="Y" name="h24i_10" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_10)" onfocus="whichProc=this;" tabindex="249" maxlength="6" size="5" name="h24dc_10" /></td><td><input tabindex="250" maxlength="11" size="7" name="h24dm_10" /></td><td><input tabindex="251" maxlength="1" size="2" name="h24eDiagP_10" /><input tabindex="252" maxlength="1" size="2" name="h24eDiagS_10" /><input tabindex="253" maxlength="1" size="2" name="h24eDiagT_10" /><input tabindex="254" maxlength="1" size="2" name="h24eDiagQ_10" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_11;"><td><h2 style="margin:0">12</h2></td><td><input tabindex="255" onblur="h24at_11.value = h24af_11.value" onfocus="prefillLine(parent.guiPage.document.forms[0],11)" maxlength="10" size="10" name="h24af_11" /></td><td><input tabindex="256" maxlength="10" size="10" name="h24at_11" /></td><td><input tabindex="257" maxlength="2" size="2" disabled="disabled" name="h24b_11" /></td><td><input type="CHECKBOX" tabindex="258" value="Y" name="h24i_11" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_11)" onfocus="whichProc=this;" tabindex="259" maxlength="6" size="5" name="h24dc_11" /></td><td><input tabindex="260" maxlength="11" size="7" name="h24dm_11" /></td><td><input tabindex="261" maxlength="1" size="2" name="h24eDiagP_11" /><input tabindex="262" maxlength="1" size="2" name="h24eDiagS_11" /><input tabindex="263" maxlength="1" size="2" name="h24eDiagT_11" /><input tabindex="264" maxlength="1" size="2" name="h24eDiagQ_11" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_12;"><td><h2 style="margin:0">13</h2></td><td><input tabindex="265" onblur="h24at_12.value = h24af_12.value" onfocus="prefillLine(parent.guiPage.document.forms[0],12)" maxlength="10" size="10" name="h24af_12" /></td><td><input tabindex="266" maxlength="10" size="10" name="h24at_12" /></td><td><input tabindex="267" maxlength="2" size="2" disabled="disabled" name="h24b_12" /></td><td><input type="CHECKBOX" tabindex="268" value="Y" name="h24i_12" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_12)" onfocus="whichProc=this;" tabindex="269" maxlength="6" size="5" name="h24dc_12" /></td><td><input tabindex="270" maxlength="11" size="7" name="h24dm_12" /></td><td><input tabindex="271" maxlength="1" size="2" name="h24eDiagP_12" /><input tabindex="272" maxlength="1" size="2" name="h24eDiagS_12" /><input tabindex="273" maxlength="1" size="2" name="h24eDiagT_12" /><input tabindex="274" maxlength="1" size="2" name="h24eDiagQ_12" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_13;"><td><h2 style="margin:0">14</h2></td><td><input tabindex="275" onblur="h24at_13.value = h24af_13.value" onfocus="prefillLine(parent.guiPage.document.forms[0],13)" maxlength="10" size="10" name="h24af_13" /></td><td><input tabindex="276" maxlength="10" size="10" name="h24at_13" /></td><td><input tabindex="277" maxlength="2" size="2" disabled="disabled" name="h24b_13" /></td><td><input type="CHECKBOX" tabindex="278" value="Y" name="h24i_13" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_13)" onfocus="whichProc=this;" tabindex="279" maxlength="6" size="5" name="h24dc_13" /></td><td><input tabindex="280" maxlength="11" size="7" name="h24dm_13" /></td><td><input tabindex="281" maxlength="1" size="2" name="h24eDiagP_13" /><input tabindex="282" maxlength="1" size="2" name="h24eDiagS_13" /><input tabindex="283" maxlength="1" size="2" name="h24eDiagT_13" /><input tabindex="284" maxlength="1" size="2" name="h24eDiagQ_13" /></td></tr>
+ <tr onclick="whichProc = document.forms[0].h24dc_14;"><td><h2 style="margin:0">15</h2></td><td><input tabindex="285" onblur="h24at_14.value = h24af_14.value" onfocus="prefillLine(parent.guiPage.document.forms[0],14)" maxlength="10" size="10" name="h24af_14" /></td><td><input tabindex="286" maxlength="10" size="10" name="h24at_14" /></td><td><input tabindex="287" maxlength="2" size="2" disabled="disabled" name="h24b_14" /></td><td><input type="CHECKBOX" tabindex="288" value="Y" name="h24i_14" /></td><td><input onchange="chkCPT(document.forms[0].h24dc_14)" onfocus="whichProc=this;" tabindex="289" maxlength="6" size="5" name="h24dc_14" /></td><td><input tabindex="290" maxlength="11" size="7" name="h24dm_14" /></td><td><input tabindex="291" maxlength="1" size="2" name="h24eDiagP_14" /><input tabindex="292" maxlength="1" size="2" name="h24eDiagS_14" /><input tabindex="293" maxlength="1" size="2" name="h24eDiagT_14" /><input tabindex="294" maxlength="1" size="2" name="h24eDiagQ_14" /></td></tr>
+
+ <tr>
+ <td align="RIGHT" colspan="8">
+ <input type="HIDDEN" name="fsaCode" value="�" />
+  <table cellspacing="0" cellpadding="2" border="0">
+  <tbody><tr>
+   <td colspan="7" style="visibility: hidden" id="fsa_NEW_txt">
+   <font color="#FF0000"><b>NEW: FSA Information   </b></font>
+   </td>
+   <td align="LEFT" style="visibility: hidden" id="fsa_Amt">
+    <hr noshade="noshade" /><font color="#FF0000"><b>*</b></font>
+    <a href="Javascript: parent.popSelect(parent.guiPage.document.forms[0],'/idc/html/FSAPopup.htm')">FSA</a> 
+    <br />
+    <input onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="fsaAmt" />
+    <a name="fsaAnchor" href="">
+   </a></td>
+   <td align="LEFT"><hr noshade="noshade" />28. TOTAL<br /><input tabindex="295" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h28" /></td>
+  </tr>
+  </tbody></table>
+ </td>
+ </tr>
+ </tbody></table>
+</td>
+<td>
+<table vspace="0" hspace="0" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td><br /></td><td>24f</td></tr>
+<tr height="16"><td><font color="#FF0000"><b>*</b></font></td><td>CHARGES</td></tr>
+<tr><td>$</td><td><input tabindex="6" onfocus="h24f_0.select()" onchange="forceCPTCode(document.forms[0].h24f_0)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_0" /></td></tr>
+<tr><td>$</td><td><input tabindex="7" onfocus="h24f_1.select()" onchange="forceCPTCode(document.forms[0].h24f_1)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_1" /></td></tr>
+<tr><td>$</td><td><input tabindex="8" onfocus="h24f_2.select()" onchange="forceCPTCode(document.forms[0].h24f_2)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_2" /></td></tr>
+<tr><td>$</td><td><input tabindex="9" onfocus="h24f_3.select()" onchange="forceCPTCode(document.forms[0].h24f_3)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_3" /></td></tr>
+<tr><td>$</td><td><input tabindex="10" onfocus="h24f_4.select()" onchange="forceCPTCode(document.forms[0].h24f_4)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_4" /></td></tr>
+<tr><td>$</td><td><input tabindex="11" onfocus="h24f_5.select()" onchange="forceCPTCode(document.forms[0].h24f_5)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_5" /></td></tr>
+<tr><td>$</td><td><input tabindex="12" onfocus="h24f_6.select()" onchange="forceCPTCode(document.forms[0].h24f_6)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_6" /></td></tr>
+<tr><td>$</td><td><input tabindex="13" onfocus="h24f_7.select()" onchange="forceCPTCode(document.forms[0].h24f_7)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_7" /></td></tr>
+<tr><td>$</td><td><input tabindex="14" onfocus="h24f_8.select()" onchange="forceCPTCode(document.forms[0].h24f_8)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_8" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_9.select()" onchange="forceCPTCode(document.forms[0].h24f_9)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_9" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_10.select()" onchange="forceCPTCode(document.forms[0].h24f_10)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_10" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_11.select()" onchange="forceCPTCode(document.forms[0].h24f_11)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_11" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_12.select()" onchange="forceCPTCode(document.forms[0].h24f_12)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_12" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_13.select()" onchange="forceCPTCode(document.forms[0].h24f_13)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_13" /></td></tr>
+<tr><td>$</td><td><input tabindex="15" onfocus="h24f_14.select()" onchange="forceCPTCode(document.forms[0].h24f_14)" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h24f_14" /></td></tr>
+<tr><td></td><td><hr noshade="noshade" /><font color="#FF0000"><b>*</b></font>29. PAID<br /><input tabindex="16" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h29" /></td></tr>
+</tbody></table></td>
+<td>
+<table vspace="0" hspace="0" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td>24g</td><td>24h</td></tr>
+<tr height="16"><td><font color="#FF0000"><b>*</b></font> UNITS</td><td align="CENTER">EPSDT</td></tr>
+<tr><td align="CENTER"><input tabindex="17" maxlength="3" size="3" name="h24g_0" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="18" value="Y" name="h24h_0" /></td></tr>
+<tr><td align="CENTER"><input tabindex="19" maxlength="3" size="3" name="h24g_1" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="20" value="Y" name="h24h_1" /></td></tr>
+<tr><td align="CENTER"><input tabindex="21" maxlength="3" size="3" name="h24g_2" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="22" value="Y" name="h24h_2" /></td></tr>
+<tr><td align="CENTER"><input tabindex="23" maxlength="3" size="3" name="h24g_3" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="24" value="Y" name="h24h_3" /></td></tr>
+<tr><td align="CENTER"><input tabindex="25" maxlength="3" size="3" name="h24g_4" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="26" value="Y" name="h24h_4" /></td></tr>
+<tr><td align="CENTER"><input tabindex="27" maxlength="3" size="3" name="h24g_5" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="28" value="Y" name="h24h_5" /></td></tr>
+<tr><td align="CENTER"><input tabindex="29" maxlength="3" size="3" name="h24g_6" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="30" value="Y" name="h24h_6" /></td></tr>
+<tr><td align="CENTER"><input tabindex="31" maxlength="3" size="3" name="h24g_7" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="32" value="Y" name="h24h_7" /></td></tr>
+<tr><td align="CENTER"><input tabindex="33" maxlength="3" size="3" name="h24g_8" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="34" value="Y" name="h24h_8" /></td></tr>
+<tr><td align="CENTER"><input tabindex="35" maxlength="3" size="3" name="h24g_9" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="36" value="Y" name="h24h_9" /></td></tr>
+<tr><td align="CENTER"><input tabindex="37" maxlength="3" size="3" name="h24g_10" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="38" value="Y" name="h24h_10" /></td></tr>
+<tr><td align="CENTER"><input tabindex="39" maxlength="3" size="3" name="h24g_11" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="40" value="Y" name="h24h_11" /></td></tr>
+<tr><td align="CENTER"><input tabindex="41" maxlength="3" size="3" name="h24g_12" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="42" value="Y" name="h24h_12" /></td></tr>
+<tr><td align="CENTER"><input tabindex="43" maxlength="3" size="3" name="h24g_13" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="44" value="Y" name="h24h_13" /></td></tr>
+<tr><td align="CENTER"><input tabindex="45" maxlength="3" size="3" name="h24g_14" /></td><td align="CENTER"><input type="CHECKBOX" tabindex="46" value="Y" name="h24h_14" /></td></tr>
+<tr><td colspan="3"><hr noshade="noshade" /><font color="#FF0000"><b>*</b></font>DUE<br /><input tabindex="47" onblur="sumHCFACharges(parent.d, document.forms[0])" maxlength="8" size="6" name="h30" /></td></tr>
+</tbody></table></td></tr>
+</tbody></table>
+<!-- Patient -->
+<table width="550">
+<tbody><tr><td><a name="Patient"><h2>PATIENT</h2></a></td></tr>
+<tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="top"><table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="2"> <font color="#FF0000"><b>*</b></font> 3. PATIENT'S DATE OF BIRTH   <br /> <input tabindex="48" maxlength="10" size="10" name="patDateOfBirth" /> (MM/DD/CCYY) </td><td valign="TOP" align="CENTER"> <font color="#FF0000"><b>*</b></font> SEX<br /><input type="RADIO" tabindex="49" value="M" name="patGender" />M <input type="RADIO" tabindex="50" value="F" name="patGender" />F</td></tr>
+<tr><td colspan="3"> <font color="#FF0000"><b>*</b></font> 5. PATIENT'S ADDRESS (No., Street)<br /> <input tabindex="51" maxlength="30" size="30" name="patAddr1" /></td></tr>
+<tr><td colspan="3"> <input tabindex="52" maxlength="30" size="30" name="patAddr2" /></td></tr>
+<tr><td colspan="3"> <font color="#FF0000"><b>*</b></font> CITY<br /> <input tabindex="53" maxlength="30" size="30" name="patCity" /></td></tr>
+<tr nowrap=""><td valign="BOTTOM"> <font color="#FF0000"><b>*</b></font> STATE<br /> <input tabindex="54" maxlength="2" size="3" name="patState" /></td>
+<td valign="BOTTOM"> <font color="#FF0000"><b>*</b></font> ZIP CODE<br /> <input tabindex="55" maxlength="10" size="10" name="patZip5" /></td>
+<td valign="BOTTOM">PHONE<br /> <input tabindex="56" maxlength="13" size="13" name="h5Phone" /></td><td><br /></td></tr>
+<!--TR><TD VALIGN=BOTTOM>&nbsp;<FONT COLOR="#FF0000"><B>*</B></FONT>&nbsp;STATE<BR>&nbsp;<INPUT NAME="patState" SIZE=3 MAXLENGTH=2></TD><TD VALIGN=BOTTOM>&nbsp;<FONT COLOR="#FF0000"><B>*</B></FONT>&nbsp;ZIP CODE<BR>&nbsp;<INPUT NAME="patZip5" SIZE=10 MAXLENGTH=10></TR><TD>PHONE<BR>&nbsp;<INPUT NAME="patPhone" SIZE=13 MAXLENGTH=13></TD><TD><BR></TD></TR-->
+</tbody></table>
+</td>
+<td valign="top"><table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="3"> 6. PATIENT RELATIONSHIP TO INSURED<br /> <input type="RADIO" tabindex="56" value="M" name="h6" />Self <input type="RADIO" tabindex="57" value="S" name="h6" />Spouse <input type="RADIO" tabindex="58" value="C" name="h6" />Child <input type="RADIO" tabindex="59" value="D" name="h6" />Other</td></tr>
+</tbody></table>
+</td></tr></tbody></table>
+<p>
+<!-- Insured -->
+<table width="550">
+<tbody><tr><td><a name="Insured"><h2>INSURED</h2></a></td></tr>
+<tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td valign="TOP" nowrap="nowrap" colspan="3"> <font color="#FF0000"><b>*</b></font> 4. INSURED'S NAME (Last, First, Middle Initial)
+<br /> <input tabindex="66" maxlength="30" size="30" name="mbrName" /></td></tr>
+<tr><td colspan="3">7. INSURED'S ADDRESS (No., Street)<br /> <input tabindex="67" maxlength="30" size="30" name="h7Addr1" /></td></tr>
+<tr><td colspan="3"> <input tabindex="68" maxlength="30" size="30" name="h7Addr2" /></td></tr>
+<tr><td colspan="3">CITY<br /> <input tabindex="69" maxlength="30" size="30" name="h7City" /></td></tr>
+<tr nowrap=""><td valign="BOTTOM">STATE<br /> <input tabindex="70" maxlength="2" size="3" name="h7State" /></td>
+<td valign="BOTTOM">ZIP CODE<br /> <input tabindex="71" maxlength="10" size="10" name="h7Zip" /></td>
+<td valign="BOTTOM">PHONE<br /> <input tabindex="72" maxlength="13" size="13" name="h7Phone" /></td></tr>
+</tbody></table>
+</td><td valign="TOP">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="2"> 11. INSURED'S POLICY GROUP OR FECA NUMBER<br /> <input tabindex="73" maxlength="30" size="35" name="h11" /></td></tr>
+<tr><td>11a. INSURED'S DATE OF BIRTH<br /> <input tabindex="74" maxlength="10" size="10" name="h11aDateOfBirth" /> (MM/DD/CCYY) </td><td valign="TOP">SEX<br /><input type="RADIO" tabindex="75" value="M" name="h11aGender" />M <input type="RADIO" tabindex="76" value="F" name="h11aGender" />F</td></tr>
+<tr><td colspan="2">11c. INSURANCE PLAN NAME OR PROGRAM NAME<br /> <input tabindex="78" maxlength="30" size="35" name="h11c" /></td></tr>
+<tr><td colspan="2"> <font color="#FF0000"><b>*</b></font> 11d. IS THERE ANOTHER HEALTH BENEFIT PLAN FOR EYECARE?<br /> (If yes, complete items 9, 9a and 9d below)<br /> <input type="RADIO" tabindex="79" value="Y" onclick="goAddl('h9')" name="h11d" />Yes <input type="RADIO" tabindex="80" value="N" name="h11d" />No</td></tr>
+<tr><td colspan="2">VSP COORDINATION OF BENEFITS SECONDARY AUTHORIZATION NUMBER<br /> <input tabindex="81" maxlength="8" size="10" name="cobAuthNum" /></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</p><p>
+<!-- Billing -->
+<table width="550">
+<tbody><tr><td><a name="Facility And Billing"><h2>FACILITY AND BILLING</h2></a></td></tr>
+<tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP" colspan="4"> <font color="#FF0000"><b>*</b></font> 25. FEDERAL TAX I.D. NUMBER<br /> SELECT PHYSICIAN OR SUPPLIER<br />
+<select name="doctorSelected">
+<option></option>
+<option value=""> </option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+</select>
+<input type="hidden" tabindex="82" name="h25" value="000001234" /><br /> <input type="hidden" tabindex="83" name="h25Type" value="S" /></td>
+<input type="hidden" name="docNPI" />
+<td valign="TOP">26. PATIENT'S<br /> ACCOUNT NO.<br /> <input tabindex="84" maxlength="30" size="10" name="h26" /></td>
+<td valign="TOP" nowrap="nowrap"> <font color="#FF0000"><b>*</b></font> 27. ACCEPT<br /> ASSIGNMENT?<br /><input type="RADIO" tabindex="85" value="Y" name="h27" />YES <input type="RADIO" tabindex="86" value="N" name="h27" />NO</td></tr>
+</tbody></table>
+</p><p>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP"> 31. <input type="CHECKBOX" tabindex="87" value="Y" name="h31Signature" /> SIGNATURE OF PHYSICIAN OR SUPPLIER ON FILE  -  DATE <input onfocus="h32Name.focus()" readonly="readonly" maxlength="10" size="8" name="h31Date" /></td></tr>
+</tbody></table>
+</p><p>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td valign="TOP"><table>
+<tbody><tr><td valign="TOP" colspan="4">32. FACILITY WHERE SERVICES WERE RENDERED</td></tr>
+<tr><td colspan="4"><font color="#FF0000"><b>*</b></font> NAME<br /><input tabindex="88" maxlength="30" size="30" name="h32Name" /></td></tr>
+<tr><td colspan="4">ADDRESS<br /><input tabindex="89" maxlength="30" size="30" name="h32Addr1" /></td></tr>
+<tr><td colspan="4"><input tabindex="90" maxlength="30" size="30" name="h32Addr2" /></td></tr>
+<tr><td colspan="4">CITY<br /><input tabindex="91" maxlength="30" size="30" name="h32City" /></td></tr>
+<tr><td colspan="2">STATE<br /><input tabindex="92" maxlength="2" size="3" name="h32State" /></td><td colspan="2">ZIP<br /><input tabindex="93" maxlength="10" size="10" name="h32Zip" /></td></tr>
+</tbody></table>
+</td>
+<td valign="TOP"><table>
+<tbody><tr><td colspan="3">33. PHYSICIAN'S, SUPPLIER'S BILLING ADDRESS</td></tr>
+<tr><td colspan="3">NAME<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="30" size="30" name="h33Name" /></td></tr>
+<tr><td colspan="3">ADDRESS<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="30" size="30" name="h33Addr1" /></td></tr>
+<tr><td colspan="3"><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="30" size="30" name="h33Addr2" /></td></tr>
+<tr><td colspan="3">CITY<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="30" size="30" name="h33City" /></td></tr>
+<tr><td>STATE<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="2" size="3" name="h33State" /></td><td>ZIP<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="10" size="10" name="h33Zip" /></td><td>PHONE<br /><input onfocus="h19.focus(); alert('You are not able to edit this field')" readonly="readonly" maxlength="14" size="15" name="h33Phone" /></td></tr>
+</tbody></table>
+</td></tr></tbody></table>
+</p><p>
+<!-- Additional Information -->
+<table width="600">
+<tbody><tr><td valign="BOTTOM"><a name="Additional Info"><h2>ADDITIONAL INFORMATION  </h2></a></td><td valign="BOTTOM">Selecting Yes on any of the questions below will navigate you to an additional page.</td></tr>
+<tr><td colspan="2"><hr noshade="noshade" /></td></tr>
+</tbody></table>
+</p><div class="F1">
+19. ADDITIONAL CLAIM INFORMATION <input tabindex="94" maxlength="100" size="75" name="h19" /><br />
+<input type="Radio" tabindex="94" onclick='parent.d[C3[0].value]="Y";goAddl(C3[0].value)' value="h10a" name="C3" />Yes<input type="Radio" tabindex="95" checked="checked" name="C3" />No   10a. IS PATIENT'S CONDITION RELATED TO EMPLOYMENT? (Current or Previous)<br />
+<input type="Radio" tabindex="96" onclick='parent.d[C4[0].value]="Y";goAddl(C4[0].value)' value="h10b" name="C4" />Yes<input type="Radio" tabindex="97" checked="checked" name="C4" />No   10b. IS PATIENT'S CONDITION RELATED TO AUTO ACCIDENT?<br />
+<input type="Radio" tabindex="98" onclick='parent.d[C5[0].value]="Y";goAddl(C5[0].value)' value="h10c" name="C5" />Yes<input type="Radio" tabindex="99" checked="checked" name="C5" />No   10c. IS PATIENT'S CONDITION RELATED TO OTHER ACCIDENT?<br />
+<input type="Radio" tabindex="100" onclick='parent.d[C6[0].value]="Y";goAddl(C6[0].value)' value="h10d" name="C6" />Yes<input type="Radio" tabindex="101" checked="checked" name="C6" />No   10d. IS THIS CLAIM FOR REPAIR OR REPLACEMENT?<br />
+<input type="Radio" tabindex="102" onclick="goAddl(C7[0].value)" value="h14" name="C7" />Yes<input type="Radio" tabindex="103" checked="checked" name="C7" />No   14. IS THE PATIENT'S CONDITION RELATED TO ILLNESS, INJURY, OR PREGNANCY?<br />
+<input type="Radio" tabindex="104" onclick="goAddl(C8[0].value)" value="h15" name="C8" />Yes<input type="Radio" tabindex="105" checked="checked" name="C8" />No   15. HAS THE PATIENT HAD A SAME OR SIMILAR ILLNESS?<br />
+<input type="Radio" tabindex="106" onclick="goAddl(C9[0].value)" value="h16From" name="C9" />Yes<input type="Radio" tabindex="107" checked="checked" name="C9" />No   16. WAS THE PATIENT UNABLE TO WORK IN CURRENT OCCUPATION?<br />
+<input type="Radio" tabindex="108" onclick="goAddl(C10[0].value)" value="h17a" name="C10" />Yes<input type="Radio" tabindex="109" checked="checked" name="C10" />No   17. WAS THE PATIENT REFERRED TO YOU BY ANOTHER PHYSICIAN?<br />
+<input type="Radio" tabindex="110" onclick="goAddl(C11[0].value)" value="h18From" name="C11" />Yes<input type="Radio" tabindex="111" checked="checked" name="C11" />No   18. WAS THE PATIENT HOSPITALIZED?<br />
+<input type="Radio" tabindex="112" onclick="goAddl(C12[0].value)" value="h22Code" name="C12" />Yes<input type="Radio" tabindex="113" checked="checked" name="C12" />No   22. IS THIS A RESUBMISSION?<br />
+<input type="Radio" tabindex="114" onclick="goAddl(C13[0].value)" value="h23" name="C13" />Yes<input type="Radio" tabindex="115" checked="checked" name="C13" />No   23. DO YOU HAVE A PRE-CERTIFICATION (PRIOR AUTHORIZATION)?<br />
+
+<!--INPUT TYPE=checkbox NAME=C14 value="preVARight" onclick='goAddl(C14.value)'-->
+<input type="checkbox" tabindex="116" onclick="clickAddl()" value="Y" name="C14" />Check here for additional CMS 1500 data: patient account number,
+  resubmission number, dates for similar illness, unable to work, or hospitalization dates.
+</div>
+
+<!-- Signatures -->
+<table width="550">
+<tbody><tr><td><a name="Signatures"><h2>SIGNATURES</h2></a></td></tr>
+<tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td> <font color="#FF0000"><b>*</b></font> 12.</td><td><input type="CHECKBOX" tabindex="117" value="Y" name="h12" /> PATIENT'S OR AUTHORIZED PERSON'S SIGNATURE ON FILE -   DATE <input tabindex="118" maxlength="10" size="10" name="h12Date" /></td></tr>
+<tr><td><br /></td><td>Signature authorizes the release of any medical or other information necessary to process the claim. Where applicable, also requests payment of government benefits to the party who accepts assignment.</td></tr>
+<tr><td> 13.</td><td><input type="CHECKBOX" tabindex="119" value="Y" name="h13" /> INSURED'S OR AUTHORIZED PERSON'S SIGNATURE ON FILE</td></tr>
+<tr><td><br /></td><td>Signature authorizes the payment of medical benefits to the physician or supplier for the services indicated.</td></tr>
+</tbody></table>
+<p>
+</p></form>
+
+<font size="1">
+
+</font></body><!-- Services --></html>

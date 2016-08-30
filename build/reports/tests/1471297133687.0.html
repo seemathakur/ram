@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<basefont size="3" />
+<title>eInsurance</title>
+
+<script src="/eyefinity/html/eyefinity.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	onerror = eyefinity.onErrorShowCacheWarning;
+</script>
+
+<script src="/global/html/common.js" language="Javascript"></script>
+<script src="/global/html/cookie.js" language="Javascript"></script>
+
+<!-- DR-2002: ICD-10 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/idc/html/validate_icd.js" language="Javascript"></script>
+<script src="/idc/html/rde1common.js" language="Javascript"></script>
+
+<script src="/idc/html/jointinvoice.js" language="Javascript"></script>
+<script src="/idc/html/jointinsuranceaction.js" language="Javascript"></script>
+<script src="/idc/html/rde1insuranceaction.js" language="Javascript"></script>
+<script src="/idc/html/eyefinitylensstyle.js" type="text/javascript"></script>
+<script src="/eyefinity/html/eBuy.js" language="JavaScript1.2"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+<script src="/eyefinity/html/datasync.js" language="JavaScript1.2"></script>
+<script src="/eyefinity/html/combobox.js" language="JavaScript1.2"></script>
+<script src="/eyefinity/html/lffo.js" language="JavaScript1.2"></script>
+
+
+
+<script language="Javascript">
+
+// jointinvoice.js support:
+var dataFrame = window;
+
+/*
+
+*/
+
+d=new Object
+//
+
+d["SSR"]="1125";
+d["officePhone"]="9498314144";
+d["officeId"]="33048415115  1";
+d["Opa1"]="15 MAREBLU STE 260";
+d["Opac"]="ALISO VIEJO";
+d["Opas"]="CA";
+d["Opaz"]="926563046";
+d["PAid"]="330484151";
+d["PAnm"]="SHAHLA ABEDI MD";
+d["Oma1"]="15 MAREBLU STE 260";
+d["Omac"]="ALISO VIEJO";
+d["Omas"]="CA";
+d["Omaz"]="926563046";
+d["PAnm"]="SHAHLA ABEDI MD";
+
+
+d["IOFOrder"]="Y";
+d["IOFPilot"]="Y";
+d["orderStatus"]="Started";
+d["popId"]="C";
+d["isASightForStudentsMember"]="N";
+d["isARCMember"]="N";
+d["IOFUPilot"]="N";
+d["IOFUOrder"]="Y";
+d["pilotDate"]="09/28/2011";
+d["claimId"]="18080049486367";
+d["examAvail"]="YES";
+d["frameAvail"]="YES";
+d["lensAvail"]="YES";
+d["clexAvail"]="N/A";
+d["clexOnPlan"]="N";
+d["eclAvail"]="YES";
+
+d["examDeductible"]="10.00";
+d["frameDeductible"]="";
+d["lensDeductible"]="25.00";
+d["totalDeductible"]="";
+
+d["eclType"]="";
+d["eclAllowance"]="";
+
+d["h24dc_0"]="V2200";
+d["h24af_0"]="04/01/2016";
+d["h24at_0"]="04/01/2016";
+d["h24b_0"]="11";
+d["h24c_0"]="Q";
+d["h24f_0"]="0.00";
+d["h24g_0"]="2";
+d["h24eDiagP_0"]="A";
+d["h24dc_1"]="V2020";
+d["h24af_1"]="04/01/2016";
+d["h24at_1"]="04/01/2016";
+d["h24b_1"]="11";
+d["h24c_1"]="Q";
+d["h24f_1"]="0.00";
+d["h24g_1"]="1";
+d["h24eDiagP_1"]="A";
+d["h24dc_2"]="V2781";
+d["h24af_2"]="04/01/2016";
+d["h24at_2"]="04/01/2016";
+d["h24b_2"]="11";
+d["h24c_2"]="Q";
+d["h24f_2"]="0.00";
+d["h24g_2"]="2";
+d["h24eDiagP_2"]="A";
+d["h28"]="0.00";
+d["h30"]="0.00";
+
+
+d["orderStatusCd"]="00";
+d["dateOfService"]="04/01/2016";
+d["insCarrierID"]="333444555";
+d["insCarrierName"]="vsp";
+d["examService"]="N";
+d["lensService"]="Y";
+d["frameService"]="Y";
+d["eclService"]="N";
+d["cclService"]="N";
+d["uncutLensIndicator"]="N";
+d["stockLensIndicator"]="N";
+d["whichLenses"]="1";
+d["balanceLens"]="1";
+d["OrigSystem"]="C";
+d["h1GroupHealthPlan"]="Y";
+d["fsaCode"]="&amp;";
+d["h11d"]="N";
+d["h12"]="Y";
+d["h12Date"]="04/01/2016";
+d["h13"]="Y";
+d["h10a"]="N";
+d["h10b"]="N";
+d["h10c"]="N";
+d["h10d"]="N";
+d["h25Type"]="E";
+d["h27"]="Y";
+d["doctorName"]="ABEDI, PARASTOU";
+d["doctorId"]="225272657";
+d["hRendNpin"]="1720067333";
+d["h31Signature"]="Y";
+d["Opas"]="CA";
+d["h32Addr1"]="15 MAREBLU STE 260";
+d["h32City"]="ALISO VIEJO";
+d["h32Zip"]="926563046";
+d["labId"]="0999";
+d["h25"]="330484151";
+d["rSphere"]="+2.25";
+d["lSphere"]="+2.25";
+d["rAdd"]="2.25";
+d["lAdd"]="2.25";
+d["diopterChange"]="0.0";
+d["pdType"]="2";
+d["rDist"]="23.0";
+d["lDist"]="23.0";
+d["seg"]="1";
+d["rSeg"]="23";
+d["lSeg"]="23";
+d["opt"]="1";
+d["lensStyle"]="4965";
+d["lensType"]="5";
+d["lensMatType"]="2";
+d["sample"]="0";
+d["authNum"]="10410721";
+d["benefitTypeDesc"]="ADVANTAGE";
+d["benefitType"]="Q";
+d["benefitForm"]="HCF+";
+d["authEffDate"]="04/01/2016";
+d["authExpDate"]="05/01/2016";
+d["fullGrpId"]="3002210900010001";
+d["groupName"]="IRON WORKERS WELFARE PLAN OF";
+d["h32State"]="CA";
+d["mbrID"]="521255841";
+d["mbrName"]="JONES, JIMXXX";
+d["h7Addr1"]="3333";
+d["h7City"]="SAC";
+d["h7State"]="CA";
+d["h7Zip"]="95670";
+d["deductName"]="MAT";
+d["deductAmt"]="25.0";
+d["deductName"]="EXAM";
+d["deductAmt"]="10.0";
+d["planId"]="892955";
+d["feeRuleCode"]="001";
+d["planProgramId"]="ADVTG";
+d["patName"]="LENSSTYLEUPDATES, ERIC";
+d["patDateOfBirth"]="09/11/2005";
+d["h6"]="C";
+d["patAddr1"]="3333";
+d["patCity"]="SAC";
+d["patState"]="CA";
+d["patZip5"]="95670";
+d["frameRetail"]="0.00";
+d["ucMaterialsFR"]="20.00";
+d["ucLens"]="0.0";
+d["ContactUccMatAmt"]="0.00";
+d["contactsAnnualSupply"]="N";
+d["ExamBilledAmt"]="0.00";
+d["ucExam"]="0.00";
+d["frameSupplier"]="3";
+d["frameType"]="1";
+d["frameManufacturer"]="OPTIMODE INTERNATIONAL";
+d["frameCollection"]="OPTIMODE COLLECTION";
+d["frameMasterId"]="-1";
+d["frameFrameId"]="-1";
+d["frameOrigCost"]="10.00";
+d["frameCost"]="10.00";
+d["ucMaterials"]="20.00";
+d["eyeSize"]="53";
+d["b"]="37.8";
+d["ed"]="55.4";
+d["dbl"]="16.0";
+d["temple"]="135";
+d["shape"]="0";
+d["frameName"]="OPTIMODE 162";
+d["frameColor"]="YELLOW/SATIN GOLD";
+
+d["lensStyle_Text"]="Accolade - Clear";
+
+d["fsaCode"]="&amp;";
+
+
+
+d["optCode_0"]="KA";
+d["optCodeDesc_0"]="PROGRESSIVE K PLASTIC";
+d["optCov_0"]="Patient Covered";
+d["optCode_1"]="  ";
+d["optCodeDesc_1"]="";
+d["optCov_1"]="";
+
+d["insCarrierName"]="vsp";
+d["insCarrierID"]="333444555";
+d["pageMode"]="HCFA";
+
+d["SQLException"]="";
+
+d["doctorSelected"]="1720067333:330484151:225272657:PARASTOU:ABEDI";
+d["isVizTecOrder"]="false";
+d["designatedEditor"]="labInvoice";
+
+d["mc"]=""
+d["msg"]=""
+d["cursorFocus"]="h21A"
+d["overrideGuiPage"]=""
+d["eCertMsg"]=""
+d["allServicesFlag"]=""
+d["popInd"]="C"
+d["authList"]=""
+d["authFileName"]=""
+d["first"]=""
+d["curRow"]=""
+d["issueDate"]=""
+d["startDate"]=""
+d["endDate"]=""
+d["searchType"]=""
+d["pilotForPatExpCalc"]="N"
+d["hcpclines"]="3"
+d["isVizTecOrder"] = "false"
+
+// lffo fix to trigger collection population
+if (d["frameManufacturer"] &amp;&amp; d["frameName"] &amp;&amp; !d["frameCollection"])
+{
+	d["frameCollection"]="Unknown"
+}
+
+docList = new Array()
+docList[0]="1720067333:330484151:225272657:PARASTOU:ABEDI"
+docList[1]="1467431072:330484151:578766496:SHAHLA:ABEDI"
+
+
+labList = new Array()
+labList.push(["0999", "VSPOne Sacramento", "Folsom", "CA", "ACSV"]);
+labList.push(["0961", "VSPOne San Diego", "Vista", "CA", "ACSV"]);
+labList.push(["0100", "Non IDC Lab Invoice", "", "", ""]);
+
+
+clManufacturerList = "B?Alcon:C?Baush &amp; Lomb:E?CooperVision:H?Hydrogel:A?Vistakon:O?Other";
+
+clBrandList = new Array();
+clBrandList["A"]="1-Day Acuvue Moist - 30Pk:1-Day Acuvue Moist - 90Pk:1-Day Acuvue Moist for Astigmatism - 30pk :1-Day Acuvue TruEye - 30Pk:1-Day Acuvue TruEye - 90Pk:Acuvue:Acuvue 2:Acuvue 2 Colours Enhancing:Acuvue 2 Colours Opaque:Acuvue Advance:Acuvue Advance for Astigmatism:Acuvue Advance Plus - 24 Pk:Acuvue Advance Plus - 6 Pk:Acuvue Bifocal:Acuvue Oasys for Astigmatism:Acuvue Oasys for Presbyopia:Acuvue Oasys with Hydraclear Plus - 12 Pk:Acuvue Oasys with Hydraclear Plus - 6 Pk:Acuvue Oasys with Hydraclear Plus -24pk:Other";
+clBrandList["B"]="Air Optix Aqua:Air Optix Aqua Multifocal:Air Optix for Astigmatism:Air Optix Night &amp; Day Aqua:Dailies AquaComfort Plus - 30-Pk:Dailies AquaComfort Plus - 90-Pk:Focus 1-2 Week Visitint (NewVues Visitint):Focus Dailies - 30-Pk:Focus Dailies - 90-Pk:Focus Dailies Toric - 30-Pk:Focus Dailies Toric - 90-Pk:Focus Monthly Toric Visitint (Focus Toric):Focus Monthly Visitint (Focus Visitint):FreshLook ColorBlends:FreshLook Colors:FreshLook Handling Tint:O2 Optix:Precision UV:Other";
+clBrandList["C"]="Biotrue ONEday 30-Pk:Biotrue ONEday 90-Pk:Biotrue ONEday for Presbyopia - 30pk:Optima 38 Spare Pair - 2pk:Optima Toric 2-Pk:PureVision:PureVision Multi-Focal - 6pk:PureVision Toric - 6pk:PureVision2 - 6pk:PureVision2 for Astigmatism - 6pk:PureVision2 Multi-Focal For Presbyopia - 6pk:SofLens 38 - 6pk:SofLens daily disposable For Astigmatism - 30Pk:SofLens Daily Disposable - 90Pk:SofLens Multifocal - 6pk:SofLens Toric - 6pk:ULTRA - 6pk:ULTRA for Presbyopia - 6pk:Other";
+clBrandList["E"]="Avaira:Avaira Toric:Biofinity:Biofinity Multifocal - 6pk:Biofinity Toric:Biomedics 38:Biomedics 55 Premier:Biomedics 55 UV:Biomedics XC:Clariti 1 day -90 pk:Clariti 1 day multifocal -30 pk:Clariti 1 day toric -30 pk:Frequency 38:Frequency 55 Aspheric:Frequency 55 Multifocal:Frequency 55 Sphere:Frequency 55 Toric:Frequency 55 Toric XR - 6pk:Proclear 1 Day - 30pk:Proclear 1 Day - 90pk:Proclear EP:Proclear Multifocal - 6pk:Proclear Sphere (Compatibles):Proclear Toric:Vertex Sphere (Encore Sphere):Other";
+clBrandList["H"]="Clarity H2O - 12pk:Clarity H2O - 6pk:Extreme H2O 54%:Extreme H2O 59% - Thin:Extreme H2O 59% - Xtra:Other";
+clBrandList["O"]="Other";
+
+clAnnualNumberList = "1-Day Acuvue Moist - 30Pk?24:1-Day Acuvue Moist - 90Pk?8:1-Day Acuvue Moist for Astigmatism - 30pk ?24:1-Day Acuvue TruEye - 30Pk?24:1-Day Acuvue TruEye - 90Pk?8:Acuvue?8:Acuvue 2?8:Acuvue 2 Colours Enhancing?8:Acuvue 2 Colours Opaque?8:Acuvue Advance?8:Acuvue Advance for Astigmatism?8:Acuvue Advance Plus - 24 Pk?2:Acuvue Advance Plus - 6 Pk?8:Acuvue Bifocal?8:Acuvue Oasys for Astigmatism?8:Acuvue Oasys for Presbyopia?8:Acuvue Oasys with Hydraclear Plus - 12 Pk?4:Acuvue Oasys with Hydraclear Plus - 6 Pk?8:Acuvue Oasys with Hydraclear Plus -24pk?2:Air Optix Aqua?4:Air Optix Aqua Multifocal?4:Air Optix for Astigmatism?4:Air Optix Night &amp; Day Aqua?4:Avaira?8:Avaira Toric?8:Biofinity?4:Biofinity Multifocal - 6pk?4:Biofinity Toric?4:Biomedics 38?8:Biomedics 55 Premier?8:Biomedics 55 UV?8:Biomedics XC?8:Biotrue ONEday 30-Pk?24:Biotrue ONEday 90-Pk?8:Biotrue ONEday for Presbyopia - 30pk?24:Clariti 1 day -90 pk?8:Clariti 1 day multifocal -30 pk?24:Clariti 1 day toric -30 pk?24:Clarity H2O - 12pk?4:Clarity H2O - 6pk?8:Dailies AquaComfort Plus - 30-Pk?24:Dailies AquaComfort Plus - 90-Pk?8:Extreme H2O 54%?8:Extreme H2O 59% - Thin?8:Extreme H2O 59% - Xtra?8:Focus 1-2 Week Visitint (NewVues Visitint)?8:Focus Dailies - 30-Pk?24:Focus Dailies - 90-Pk?8:Focus Dailies Toric - 30-Pk?24:Focus Dailies Toric - 90-Pk?8:Focus Monthly Toric Visitint (Focus Toric)?4:Focus Monthly Visitint (Focus Visitint)?4:Frequency 38?4:Frequency 55 Aspheric?4:Frequency 55 Multifocal?4:Frequency 55 Sphere?4:Frequency 55 Toric?4:Frequency 55 Toric XR - 6pk?4:FreshLook ColorBlends?8:FreshLook Colors?8:FreshLook Handling Tint?8:O2 Optix?4:Optima 38 Spare Pair - 2pk?1:Optima Toric 2-Pk?1:Precision UV?8:Proclear 1 Day - 30pk?24:Proclear 1 Day - 90pk?8:Proclear EP?8:Proclear Multifocal - 6pk?4:Proclear Sphere (Compatibles)?4:Proclear Toric?4:PureVision?4:PureVision Multi-Focal - 6pk?4:PureVision Toric - 6pk?4:PureVision2 - 6pk?4:PureVision2 for Astigmatism - 6pk?4:PureVision2 Multi-Focal For Presbyopia - 6pk?4:SofLens 38 - 6pk?8:SofLens daily disposable For Astigmatism - 30Pk?24:SofLens Daily Disposable - 90Pk?8:SofLens Multifocal - 6pk?8:SofLens Toric - 6pk?8:ULTRA - 6pk?4:ULTRA for Presbyopia - 6pk?4:Vertex Sphere (Encore Sphere)?8";
+
+clModalityList = "1D?Disposable - 1 day:2W?Disposable - 2 weeks:1M?Disposable - 1 month:3M?Disposable - 3 months:6M?Disposable - 6 months:1Y?Conventional - 1 year:2Y?Conventional - 2 years";
+
+
+isRoutedLabs = "true"
+
+eyeMeasureDeviceList = new Array()
+eyeMeasureDeviceList[0]="100:i.Scription Rx by ZEISS"
+
+
+definityLensStyleList="2617:2619:2621:2623:2721:2723:2727:2742:2743:2744:2745:2746:2747:2814:2819:2821"
+
+vspRevealLensStyleList="3703:3704:3705:3706:3707:3708:4533:4534:4535:4536:4537:4538:4844:4845:4846:4847:4848:4849:5531:5532:5533:5534:5535:5536:5541:5542:5543:5544:5545:5546:5547:5548:5549:5550:5551:5552:5553:5554:5555:5556:5557:5558:5561:5564:5567:5568:5569:5570:5571:5572:5573:5574:5575:5576:5577:5578:5579:6011:6012:6013:6014:6015:6016:6017:6018:6019:6020:6021:6022:6023:6024:6025:6026:6027:6028:6029:6030:6031:6032:6033:6034:6035:6036:6037:6038:6039:6040:6041:6042:6043:6044:6045:6046:6047:6048:6049:6267:6268:6269:6270:6271:6272:6273:6274:6275:6276:6277:6278:6279:6280:6281:6282:6283:6284:6285:6286:6287:6288:6289:6290:6291:6292:6293:6294:6295:6296:6297:6298:6299:6300:6301:6302:6303:6304:6305:6306:6307:6308:6309:6310:6311:6312:6313:6314:6315:6316:6317:6318:6319:6320:6321:6322:6323:6324:6325:6326:6327:6328:6329:6330:6331:6332:6333:6334:6335:6336:6337:6338:6339:6340:6341:6342:6343:6344:7686:7687:7688:7689:7690:7691:7692:7693:7694:7695:7696:7697:7698:7699:7700:7701:7702:7703:7704:7705:7706:7707:7708:7709:7710:7711:7712:7713:7714:7715:7716:7717:7718:7719:7720:7721:8091:8092:8093:8094:8095:8096:8097:8098:8099:8100:8101:8102:8106:8107:8108:8109:8110:8111:8113:8114:8115:8116:8117:8118:8119:8120:8121:8127:8128:8129:8205:9481:9482:9483:9484"
+benefitTypesThatAllowVSPRevealLens="A:B:G:H:K:L:O:P:Q:R:S:T:U:V:W:X:Y:7:8:9"
+iofPilotStates="AK:AL:AZ:FL:GA:HI:ID:NV:OR:PR:UT:WA:CA:TX:AR:LA:NM:SD:CO:IA:KS:MN:MO:MS:OK:ND:NE:OH:MI:MT:WY:IL:IN:KY:NC:PA:SC:TN:VA:WI:WV:CT:DC:DE:MA:MD:ME:NH:NJ:NY:VT:RI";
+clcpCOD="09/01/2011";
+vspInspireLensStyleList="5838:5839:5840:5841:5842:5843:5844:5845:5846:5847:5848:5849:5850:5851:5852:5853:5854:5855:5856:5857:5858:5859:5860:5861:5862:5863:5864:5865:5866:5867:5868:5869:5870:5871:5872:5873:5874:5875:5876:5877:5878:5879:5880:5881:5882:5883:5884:5885:5886:5887:5888:5889:5900:5901:5902:5903:5904:5895:5896:5897:5898:5899:5905:5906:5907:5908:5909:5910:5920:5921:5922:5923:5924:5915:5916:5917:5918:5919:5925:5926:5927:5928:5929:5930:5913:5914:5911:5912:"
+benefitTypesThatAllowVSPInspireLens="A:B:G:H:K:L:O:P:Q:R:S:T:U:V:W:X:Y:7:8:9"
+statesThatAllowVSPInspireLens="MI:IN:KY:OH:WV:VA:PA:MD:DC"
+displayReasonForNonIdcLabField="false"
+
+// Sreeram Pothukuchi: workaround for Netscape 7.0* browser - scroll frame to show gif image
+function scrollFrame()
+{
+    if(navigator.userAgent.toLowerCase().indexOf("netscape/7.0") != -1)
+    {
+      var scrollvalue = 12;
+      navPage.scrollTo(0,scrollvalue);
+    }
+}
+function makeNonVSPClaim()
+{
+  guiPage.makeNonVSPClaim();
+}
+
+function showClaim(claimtype)
+{
+  guiPage.showClaim(claimtype);
+}
+
+function enrollToday()
+{
+  guiPage.enrollToday();
+}
+
+function openEnrollmentOnline() {
+  guiPage.openEnrollmentOnline();
+}
+
+function init() {
+ f = parent.guiPage.document.forms[0]
+ var msg = "Please verify that each service on this secondary authorization is being coordinated.\r\n "
+ msg1 = "If not, delete this authorization and obtain a new authorization only for those services to be coordinated.  For assistance with obtaining authorizations for specific services, contact VSP Provider Services at (800) 615-1883.\n"
+ msg2 = "Click OK to go back to your claim and make any necessary changes.  If you have no changes, then click OK and then Submit again."
+
+ if (d["cobAuthNum"]!=""){
+   if (d["allServicesFlag"] &amp;&amp; d["allServicesFlag"]=="SubmitYes"){
+    fail(msg+msg1+msg2,"cobAuthNum",1,"Insured")
+   }
+   else if (d["allServicesFlag"] &amp;&amp; d["allServicesFlag"]=="CalcYes"){
+    fail(msg+msg1,"cobAuthNum",1,"Insured")
+   }
+}
+    //Check for empty doctor list
+    /* MARY O - BACKED OUT SEE PIDC1279
+    if(!docList[0] || docList[0] == "")
+    {
+        alert("You do not have a doctor number assigned to your account.  Please contact customer service at 877-448-0707.")
+		parent.location.replace("/eyefinity/html/home_page.htm")
+    }*/
+
+    scrollFrame();
+
+	if(!getSessionCookie()){
+		alert("Session information needed to continue\nis unavailable.\n\nYou must log on before continuing.")
+		parent.location.replace("/eyefinity/html/eyefinity_logon.htm")
+	}
+	removeCookie("VSPIDC_core")
+	if(d["overrideGuiPage"]!=""){
+ 		guiPage.location.replace(overrideGuiPage)
+ 		return
+	}
+	if((d["orderStatusCd"]=="00" || d["orderStatusCd"]=="04") &amp;&amp; d["eCertMsg"]!=""){
+		alert(d["eCertMsg"]);
+	}
+}
+
+function goHelp(){
+sWindow=window.open("/eyefinity/html/eclaim_tip.htm","HelpTips","width=300,height=300,scrollbars=yes,resizable=yes, left=100,screenX=50,top=100,screenY=100");
+      sWindow.focus();
+}
+function showFilingStatusTip(){
+sWindow=window.open("/eyefinity/html/eclaim_tip_filingstatus.htm","HelpTips","width=400,height=500,scrollbars=yes,resizable=yes, left=100,screenX=50,top=100,screenY=100");
+      sWindow.focus();
+}
+function openWintop() {
+  aWindow=window.open("http://mail.eyefinity.com/email_route.html","thewindow","width=500,height=300,scrollbars=yes,resizable=yes");
+  aWindow.focus();
+}
+
+</script>
+
+</head>
+<!-- Note that the height of that second row could be changed in rde1insurance -->
+<frameset onload="init()" framespacing="0" border="0" rows="70,64,0,*,0">
+ <frame scrolling="no" frameborder="no" name="portal" src="/idc/html/rde1insuranceportal.htm" />
+ <frame scrolling="no" frameborder="no" name="navPage" src="/eyefinity/html/rde1insurance.htm" />
+ <frame scrolling="no" frameborder="no" name="dataPage" src="/idc/html/rde1nodata.htm" />
+ <frame resize="" scrolling="auto" frameborder="no" name="guiPage" src="/idc/html/rde1hcfa.htm" />
+ <frame scrolling="no" frameborder="no" name="placeHolder" src="/idc/html/rde1placeholder.htm" />
+</frameset>
+</html>

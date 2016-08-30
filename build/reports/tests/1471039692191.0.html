@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- K Roach: 03/14/06: MAKE FILE SMALLER 4 RESIN-U CAN DO MORE! -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <base target="_parent" />
+    <basefont size="3" />
+    <title>NEXT CLAIM</title>
+    <link href="/global/html/querybox.css" type="text/css" rel="stylesheet" />
+    <link href="/eyefinity/html/eyefinity.css" type="text/css" rel="stylesheet" />
+    <script src="/idc/html/jquery-1.11.2.min.js" language="Javascript"></script>
+    <script src="/global/html/querybox.js" language="JavaScript1.2"></script>
+    <script src="/global/html/common.js" language="JavaScript"></script>
+    <script src="/global/html/quicklinks.js" language="JavaScript1.2"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+    <script src="/idc/html/rde1common.js" language="Javascript"></script>
+    <script src="/idc/html/jointinvoice_2012.js" language="Javascript"></script>
+    <script src="/global/html/cookie.js" language="Javascript"></script>
+    <script src="/eyefinity/html/SystemManager.js" language="Javascript"></script>
+    <script src="/eyefinity/html/eBuy.js" language="JavaScript1.2"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+    <script src="/idc/html/rde1nextinfo.js?relver=1.22" language="Javascript"></script>
+    <script src="/idc/html/claymoreGate.js" language="Javascript"></script>
+    <style>
+        .enrollStatCarrier {width:450px}
+        .enrollStatHeader {width:415px}
+        .enrollStatDrNotSelected {width:140px}
+        .enrollStat {width:70px}
+        .queryBox {left: 260px}
+    </style>
+    <script language="Javascript">
+
+/**
+ * return date in format 'MM/dd/yyyy'
+ */
+function getCurrentDate() {
+  var d = new Date();
+  var curr_day = d.getDate();
+  var curr_month = d.getMonth() + 1; //Months are zero based
+  var curr_year = d.getFullYear();
+  
+  if (curr_month &lt; 10) {
+	  curr_month = '0' + curr_month;
+  }
+  if (curr_day &lt; 10) {
+	  curr_day = '0' + curr_day;
+  }
+  return curr_month + "/" + curr_day + "/" + curr_year;	
+}
+
+function getText(){
+ var msg="This Authorization/Claim has been submitted.\n\nReports are available.\n\nDo you want to view the reports?"
+ var eCrtInd=parent.d["eCertInd"]
+ var eCrtMsg=parent.d["eCertMsg"]
+ if(!eCrtInd||eCrtInd==""||eCrtMsg=="")
+  return msg
+ else if(eCrtInd=="N")
+  return parent.d["eCertMsg"]+"\n\n"+msg
+ else if(eCrtInd=="P"||eCrtInd=="V")
+  return "This Authorization/Claim has been submitted.\n\n"+eCrtMsg+"\n\nReports are available.\n\nDo you want to view the reports?"
+ else
+  return msg
+}
+
+function init(){
+ var pd=parent.d
+ var formCalc=document.calculator // populate ofc phn hdn fld in calc frm
+ formCalc.officeId.value=pd["officePhone"]
+ //formCalc.marchonId.value=pd["ismarhcondirect"]
+ setChip("BATCH","DATE_OF_SVC",nodate)
+ if(pd["SQLException"].length&gt;0)
+  alert("A Database Error Has Occurred. Please call Eyefinity for assistance at 1-877-448-0707 before continuing.")
+ document.ins_page.PAid.value=pd["PAid"]
+ if(!pd["cursorFocus"]||pd["cursorFocus"]=="")
+  pd["cursorFocus"]="authNum"
+ parent.setCursorFocus()
+ var stat=pd["orderStatusCd"]
+ if(stat==SNT2LAB||stat==LAB_ACPT||stat==SUB_VSP||stat==PRNTABLE||stat==CLMABLE||stat==PRNTED||stat==CLAIMED){
+  queryBox.show(getText(),
+   function(confirmed){
+    var timeout=1000
+    if(confirmed){
+     if(pd["insCarrierName"]!="vsp")
+      parent.windowReports("/idc/html/rde1envoyinsurancereportsparent.htm")
+     else
+      parent.windowReports("/idc/html/reportparentredirect.htm")
+     timeout=3000
+    }
+    else if(pd["insCarrierName"]=="vsp")
+     parent.placeHolder.location="/idc/html/savestatement.htm"
+    postInit(timeout)
+   }
+  )
+ }
+ else
+  postInit(1000)
+}
+
+function postInit(timeout){
+ if(parent.d["authList"]!=null&amp;&amp;parent.d["authList"].length&gt;0&amp;&amp;parent.d["authList"].charAt(0)!='~')
+  setTimeout("backToList()",timeout)
+ else{
+  document.ins_page.AcctNbr.value=getCookie("ACCT_NBR")
+  bldDocLst(document.ins_page)
+ }
+}
+
+function validateForm(){ return true }
+
+</script>
+    <style type="text/css">
+        &lt;!--
+         #vspblock {position:relative; visibility:hidden;}
+         #nonvspblock {position:absolute; visibility:hidden;}
+         TD {color:#000000; font-size: 8pt; font-family:"Arial"}
+        --&gt;
+    </style>
+    <style>
+        .white_content {
+        display: none;
+        position: absolute;
+        top: -220px;
+        left: -90px;
+        width: 320px;
+        padding: 0px;
+        border: 2px solid #006FB4;
+        background-color: white;
+        font-size: 11pt;
+        z-index:9999;
+        overflow: auto;
+        -moz-box-shadow:    4px 4px 2px 0px #444;
+        -webkit-box-shadow: 4px 4px 2px 0px #444;
+        box-shadow:         4px 4px 2px 0px #444;
+        }
+    </style>
+</head>
+<body marginwidth="0" marginheight="0" bgcolor="#FFFFFF" background="/eyefinity/images/gradient.jpg" onload="init()" bottommargin="0" topmargin="0" rightmargin="0" leftmargin="0">
+<form onsubmit="return false" name="ins_page" method="POST" action="/servlet/IdcEligibility">
+<input type="hidden" value="" name="authNum" />
+<input type="hidden" value="" name="pmiEnvoyFileId" />
+<input type="hidden" value="" name="access" />
+<input type="hidden" value="" name="phone" />
+<input type="hidden" value="" name="formnbr" />
+<input type="hidden" value="" name="memberid" />
+<input type="hidden" value="110" name="msgProc" />
+<input type="hidden" value="" name="msgType" />
+<input type="hidden" value="" name="nextUrl" />
+<input type="hidden" value="" name="appCode" />
+<input type="hidden" value="" name="command" />
+<input type="hidden" name="PAid" value="330484151" />
+<input type="hidden" value="" name="doctorSelected" />
+<input type="hidden" value="" name="doctorDisplayed" />
+<input type="hidden" value="" name="doctorID" />
+<input type="hidden" value="" name="doctorInfo" />
+<input type="hidden" value="" name="hcfaTaxId" />
+<input type="hidden" value="" name="carrierApproved" />
+<input type="hidden" value="9000004146" name="AcctNbr" />
+<input type="hidden" value="" name="insCarrier" />
+<input type="hidden" value="" name="needingEnrollments" />
+<input type="hidden" value="" name="providerEnrollments" />
+<input type="hidden" value="N" name="handicapChildProg" />
+<input type="hidden" value="start" name="actionCommand" />
+<input type="hidden" value="" name="chs_practice_provider_id" />
+<input type="hidden" value="" name="patFirstName" />
+<input type="hidden" value="" name="patLastName" />
+<input type="hidden" value="N" name="for837" />
+<input type="hidden" value="" name="VSPIDC_core" />
+<!-- first sect: doc lst & promo -->
+ 
+<table width="700" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px">
+    <tbody><tr>
+        <td height="72">
+            <table width="270" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px" name="select_carrier">
+                <tbody><tr>
+                    <td><img width="6" height="24" src="/eyefinity/images/3_form_box_left.gif" /></td>
+                    <td bgcolor="D5D5D3">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px" cols="3">
+                            <tbody><tr>
+                                <td><p class="form_box_title"> Select Doctor</p></td>
+                                <td> </td>
+                                <td align="right"> </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td><img width="20" height="24" src="/eyefinity/images/3_3_form_box_corner_right.gif" /></td>
+                </tr>
+                <tr>
+                    <td><img width="6" height="2" src="/eyefinity/images/3_form_box_left.gif" /></td>
+                    <td></td>
+                    <td><img width="20" height="1" src="/eyefinity/images/4_2_corner_right_2.gif" /></td>
+                </tr>
+                <tr>
+                    <td background="/eyefinity/images/3_form_box_left.gif"></td>
+                    <td valign="top" align="left">
+                        <table cellspacing="2" cellpadding="" border="0" style="margin-bottom:0px;margin-top:0px">
+                            <tbody><tr>
+                                <td nowrap="nowrap"><p class="form_label">Doctor List</p></td>
+                                <td width="100%">
+                                    <select style="width:170px" onchange="showCarrStat(this.form);" name="doctorbox">
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    <option value="">                                                  </option><option value="1720067333:330484151:225272657:ABEDI:PARASTOU:MD:44054?AP?Unknown?ELIG_NOTOFFERED?NULL:47198?AP?330484151?ELIG_NOTOFFERED?NULL:77070?AP?Unknown?ELIG_NOTOFFERED?NULL:YYYYY?RQ?Unknown?ELIG_NOTOFFERED?NULL">PARASTOU ABEDI MD</option><option value="1467431072:330484151:578766496:ABEDI:SHAHLA:MD:44054?AP?Unknown?ELIG_NOTOFFERED?NULL:47198?AP?330484151?ELIG_NOTOFFERED?NULL:77070?AP?Unknown?ELIG_NOTOFFERED?NULL:YYYYY?RQ?Unknown?ELIG_NOTOFFERED?NULL">SHAHLA ABEDI MD</option></select>
+                                    <input type="hidden" value="" name="docNPI" />
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td background="/eyefinity/images/4_2_2_form_box_right.gif"><img width="6" height="1" src="/eyefinity/images/4_2_2_form_box_right.gif" /></td>
+                </tr>
+                <tr>
+                    <td valign="top"><img width="6" height="11" src="/eyefinity/images/3_form_box_left.gif" /></td>
+                    <td background="/eyefinity/images/4_form_bottom.gif"><img width="250" height="15" src="/eyefinity/images/4_form_bottom.gif" /></td>
+                    <td><img width="20" height="15" src="/eyefinity/images/4_2_form_bottom_corner_righ.gif" /></td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td width="100%" valign="top" height="68" nowrap="nowrap" style="margin-bottom:0px;margin-top:0px">
+            <iframe width="100%" height="100%" frameborder="0" style="margin-bottom:0px;margin-top:0px" marginwidth="0" marginheight="0" scrolling="no" src="/promocontent/communicationtile/eclaimpromo/template.html"></iframe>
+        </td>
+    </tr>
+</tbody></table>
+
+<!-- 2nd sect: carr list bx -->
+<table width="650" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px" name="select_carrier" valign="top">
+    <tbody><tr>
+        <td><img width="6" height="24" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td width="650" bgcolor="D5D5D3">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px">
+                <tbody><tr>
+                    <td><p class="form_box_title"> Select Insurance Carrier</p></td>
+                    <td align="center"><input type="button" id="editlist" value="Edit Your Carrier List" onclick="showTermCond(); return false" name="editcarrierlist" /> <font class="form_box_header_link"><a onclick="MyWindow=window.open('/eyefinity/html/online_enrollment.htm','MyWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=750,height=500'); return false;" href="#">Help</a></font></td>
+                    <td><p align="right" class="form_box_header_link"><a href="javascript:parent.showFees()">eClaim Processing Fees</a></p></td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td><img width="20" height="24" src="/eyefinity/images/3_3_form_box_corner_right.gif" /></td>
+    </tr>
+    <tr>
+        <td><img width="6" height="1" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td></td>
+        <td><img width="20" height="1" src="/eyefinity/images/4_2_corner_right_2.gif" /></td>
+    </tr>
+    <tr>
+        <td background="/eyefinity/images/3_form_box_left.gif"><img width="6" height="50" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td valign="top" align="left">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px" valign="top">
+                <tbody><tr>
+                    <td class="enrollStatHeader"><p class="form_label">Carrier List:</p></td>
+                    <td class="enrollStat">Eligibility</td>
+                    <td class="enrollStat">Claims</td>
+                    <td style="width:20px"> </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="4">
+                        <script>
+ var d=document
+ // mac ie brwsr not like ie/ne in wndoze-workaround
+ d.write('&lt;div id="carrierboxDIV" style="border:thin inset;height:84px;width:100%;'+(ieMac?'overflow:auto':'overflow-y:scroll;overflow:-moz-scrollbars-vertical')+'"&gt;'+
+  '&lt;table border="0" width="'+(ieMac?'95':'100')+'%" cellspacing="0" cellpadding="0" STYLE="margin-bottom:0px;margin-top:0px;-moz-user-focus:normal" id="carrierbox"&gt;')
+ var carrSlctd=false
+ var rowIdx=0 // keep track of row idx b/c VSP may not be present
+
+ var style
+ var slctd
+ // if vsp doc ofc, add VSP carr to bx
+ if(getDocTypeCookie()!="NONVSP"){
+  if(carrSlctd){  // check if carr already slctd
+   style=getRowStyle(rowIdx)
+   slctd="N"
+  }
+  else{
+   style='style="background-color:'+carrbxHiliteClr+';cursor:default"'
+   slctd="Y"
+   js_carrierManager.updateSelectedRowIndex(rowIdx)
+   carrSlctd=initPgForVspCarr=true // set init pg to vsp layout
+  }
+  var vspName='VSP'+(SystemManager.VSPAuthsClaimsOrders.isUp()?'':' claims: '+SystemManager.VSPAuthsClaimsOrders.getMsgShort())
+  d.write('&lt;tr '+style+' eyef:carrdetail="vsp" eyef:carrid="'+vspCarrierId+'" eyef:carrname="'+vspName + '" eyef:carrtype="CM" eyef:carrstatus="A" eyef:carraprind="A" eyef:roles="EC" eyef:allowlaborderind="Y" eyef:carrierselected="'+slctd+'" eyef:doctorenrollmentstatus="'+enrAprvdCd+'" eyef:doctorenrollmentstatusElig="ELIG_DRNOTSELECTED" eyef:chs_practice_provider_id="" eyef:rowIdx="'+rowIdx++ +'" eyef:doctortaxid="" onclick="carrierSelected(this)"&gt;')
+  d.write('&lt;td class="enrollStatCarrier"&gt;VSP'+(SystemManager.VSPAuthsClaimsOrders.isUp()?'':' claims: '+SystemManager.VSPAuthsClaimsOrders.getMsgShort())+'&lt;/td&gt;')
+  d.write('&lt;td class="enrollStat"&gt;'+enrAprvdImg+'&lt;/td&gt;')
+  d.write('&lt;td class="enrollStat"&gt;'+enrAprvdImg+'&lt;/td&gt;&lt;/tr&gt;')
+ }
+
+ if(!SystemManager.eClaimDatabase.isUp()){
+  var msg=SystemManager.eClaimDatabase.getMsgLong()
+  d.write('&lt;tr eyef:ignore="Y"&gt;&lt;td colspan="3"&gt;&lt;b&gt;&lt;u&gt;Additional Carriers Are Not Available:&lt;/u&gt;&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;')
+  d.write('&lt;tr eyef:ignore="Y"&gt;&lt;td colspan="3"&gt;')
+  d.write(msg)
+  d.write('&lt;/td&gt;&lt;/tr&gt;')
+ }
+ else{ // get all carr slctd by ofc
+  var carrs=parent.d["carriers"]
+  if(typeof carrs!="undefined"&amp;&amp;carrs!="Unavailable"){
+   // get carr list &amp; add to box
+   var list=carrs.split("¦")
+   for(var i=0;i&lt;list.length-1;i++){
+    var arr=list[i].split("?")
+    if(typeof arr!="undefined"&amp;&amp;arr!=""&amp;&amp;arr.length&gt;=3){
+     if(carrSlctd){ // if carr already slctd
+      style=getRowStyle(rowIdx)
+      slctd="N"
+     }
+     else{
+      style='style="background-color:'+carrbxHiliteClr+';cursor:default"'
+      slctd="Y"
+      carrSlctd=true
+      js_carrierManager.updateSelectedRowIndex(rowIdx)
+      initPgForVspCarr=false // set init pg to nonvsp layout
+     }
+
+     d.write('&lt;tr '+style+' eyef:carrdetail="'+list[i]+'" eyef:carrid="'+arr[0]+'" eyef:carrname="' + arr[2] + '" eyef:carrtype="' + arr[1] + '" eyef:carrstatus="' + arr[3] + '" eyef:carraprind="' + arr[4] + '" eyef:roles="' + arr[5] + '" eyef:allowlaborderind="' + arr[6] + '" eyef:carrierselected="' + slctd + '" eyef:doctorenrollmentstatus="" eyef:doctorenrollmentstatusElig="ELIG_DRNOTSELECTED" eyef:chs_practice_provider_id="" eyef:rowIdx="'+rowIdx++ +'" eyef:doctortaxid="" onclick="carrierSelected(this)"&gt;')
+     d.write('&lt;td class="enrollStatCarrier"&gt;'+arr[2]+'&lt;/td&gt;')
+     d.write('&lt;td class="enrollStat"&gt;&amp;nbsp;&lt;/td&gt;')
+     d.write('&lt;td class="enrollStat"&gt;&amp;nbsp;&lt;/td&gt;')
+     d.write('&lt;/tr&gt;')
+    }
+   }
+  }
+ }
+</script><div style="border:thin inset;height:84px;width:100%;overflow-y:scroll;overflow:-moz-scrollbars-vertical" id="carrierboxDIV"><table width="100%" cellspacing="0" cellpadding="0" border="0" id="carrierbox" style="margin-bottom:0px;margin-top:0px;-moz-user-focus:normal"><tbody><tr onclick="carrierSelected(this)" eyef:doctortaxid="" eyef:rowidx="0" eyef:chs_practice_provider_id="NULL" eyef:doctorenrollmentstatuselig="ELIG_READY" eyef:doctorenrollmentstatus="AP" eyef:carrselected="Y" eyef:allowlaborderind="Y" eyef:roles="EC" eyef:carraprind="A" eyef:carrstatus="A" eyef:carrtype="CM" eyef:carrname="VSP" eyef:carrid="333444555" eyef:carrdetail="vsp" style="background: rgb(206, 182, 107) none repeat scroll 0% 0%; cursor: default;" eyef:carrierselected="Y"> <td class="enrollStatCarrier">VSP</td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_green_status.gif" /></a></td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_green_status.gif" /></a></td></tr><tr onclick="carrierSelected(this)" eyef:doctortaxid="" eyef:rowidx="1" eyef:chs_practice_provider_id="NULL" eyef:doctorenrollmentstatuselig="ELIG_NOTOFFERED" eyef:doctorenrollmentstatus="" eyef:carrselected="N" eyef:allowlaborderind="Y" eyef:roles="C" eyef:carraprind="N" eyef:carrstatus="A" eyef:carrtype="CM" eyef:carrname="ADVANTAGE PREFERRED PLUS" eyef:carrid="77070" eyef:carrdetail="77070?CM?ADVANTAGE PREFERRED PLUS?A?N?C?Y" style="background-color:transparent;cursor:default"> <td class="enrollStatCarrier">ADVANTAGE PREFERRED PLUS</td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_gray_status.gif" /></a></td><td class="enrollStat">undefined</td></tr><tr onclick="carrierSelected(this)" eyef:doctortaxid="" eyef:rowidx="2" eyef:chs_practice_provider_id="NULL" eyef:doctorenrollmentstatuselig="ELIG_NOTOFFERED" eyef:doctorenrollmentstatus="" eyef:carrselected="N" eyef:allowlaborderind="Y" eyef:roles="C" eyef:carraprind="N" eyef:carrstatus="A" eyef:carrtype="B2" eyef:carrname="CA Blue Cross - Blue Cross of California" eyef:carrid="47198" eyef:carrdetail="47198?B2?CA Blue Cross - Blue Cross of California?A?N?C?Y" style="background-color:#D5D5D3;cursor:default"> <td class="enrollStatCarrier">CA Blue Cross - Blue Cross of California</td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_gray_status.gif" /></a></td><td class="enrollStat">undefined</td></tr><tr onclick="carrierSelected(this)" eyef:doctortaxid="" eyef:rowidx="3" eyef:chs_practice_provider_id="NULL" eyef:doctorenrollmentstatuselig="ELIG_NOTOFFERED" eyef:doctorenrollmentstatus="" eyef:carrselected="N" eyef:allowlaborderind="N" eyef:roles="CE" eyef:carraprind="S" eyef:carrstatus="A" eyef:carrtype="MD" eyef:carrname="CA Medicaid - MEDI-CAL" eyef:carrid="YYYYY" eyef:carrdetail="YYYYY?MD?CA Medicaid - MEDI-CAL?A?S?CE?N" style="background-color:transparent;cursor:default"> <td class="enrollStatCarrier">CA Medicaid - MEDI-CAL</td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_gray_status.gif" /></a></td><td class="enrollStat">undefined</td></tr><tr onclick="carrierSelected(this)" eyef:doctortaxid="" eyef:rowidx="4" eyef:chs_practice_provider_id="NULL" eyef:doctorenrollmentstatuselig="ELIG_NOTOFFERED" eyef:doctorenrollmentstatus="" eyef:carrselected="N" eyef:allowlaborderind="Y" eyef:roles="C" eyef:carraprind="N" eyef:carrstatus="A" eyef:carrtype="CM" eyef:carrname="Government Employees Hospital Association (GEHA)" eyef:carrid="44054" eyef:carrdetail="44054?CM?Government Employees Hospital Association (GEHA)?A?N?C?Y" style="background-color:#D5D5D3;cursor:default"> <td class="enrollStatCarrier">Government Employees Hospital Association (GEHA)</td><td class="enrollStat"><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_gray_status.gif" /></a></td><td class="enrollStat">undefined</td></tr></tbody></table></div>
+        </td>
+    </tr>
+    <tr>
+        <td align="right" colspan="5">
+            <table>
+                <tbody><tr>
+                    <td><script>document.write(enrInactvCarrImg+'&amp;nbsp;'+enrInactvCarrDsc)</script><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_gray_status.gif" /></a> <a href="javascript:parent.showFilingStatusTip()">Not Offered</a></td>
+                    <td><script>document.write(enrAprvdImg+'&amp;nbsp;'+enrAprvdDsc)</script><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_green_status.gif" /></a> <a href="javascript:parent.showFilingStatusTip()">Ready</a></td>
+                    <td><script>document.write(enrPndngImg+'&amp;nbsp;'+enrPndngDsc)</script><a href="javascript:parent.showFilingStatusTip()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_yellow_status.gif" /></a> <a href="javascript:parent.showFilingStatusTip()">Pending</a></td>
+                    <td><script>document.write(enrClk2EnrImg+'&amp;nbsp;'+enrEnrReqdDsc)</script><a href="javascript:parent.enrollToday()"><img width="10" height="10" border="0" src="/eyefinity/images/eins_red_status.gif" /></a> <a href="javascript:parent.showFilingStatusTip()">Enrollment Required</a></td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+</td>
+<td background="/eyefinity/images/4_2_2_form_box_right.gif"><img width="20" height="50" src="/eyefinity/images/4_2_2_form_box_right.gif" /></td>
+</tr>
+<tr>
+    <td valign="top"><img width="6" height="11" src="/eyefinity/images/3_form_box_left.gif" /></td>
+    <td background="/eyefinity/images/4_form_bottom.gif"><img width="670" height="15" src="/eyefinity/images/4_form_bottom.gif" /></td>
+    <td><img width="20" height="15" src="/eyefinity/images/4_2_form_bottom_corner_righ.gif" /></td>
+</tr>
+</tbody></table>
+
+<!-- 3rd & 4th sections: elig & auth/clm -->
+
+<!-- Outage messages -->
+<table width="698" cellspacing="0" cellpadding="0" border="0" id="outageMessage" style="margin-bottom:0px;margin-top:0px;display:none" name="select_carrier" valign="top">
+    <tbody><tr>
+        <td><img width="6" height="24" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td bgcolor="D5D5D3"><p class="form_box_title">Check Eligibility / Retrieve An Authorization By Number</p></td>
+        <td><img width="20" height="24" src="/eyefinity/images/3_3_form_box_corner_right.gif" /></td>
+    </tr>
+    <tr>
+        <td><img width="6" height="1" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td></td>
+        <td><img width="20" height="1" src="/eyefinity/images/4_2_corner_right_2.gif" /></td>
+    </tr>
+    <tr>
+        <td background="/eyefinity/images/ecl_form_box_left.gif"><img width="6" height="35" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+        <td valign="top" align="left">
+            <div style="margin:1em">
+                <script>document.write(SystemManager.VSPAuthsClaimsOrders.getMsgLong())</script>VSP Auths, Claims, and Orders is up.
+            </div>
+        </td>
+        <td background="/eyefinity/images/ecl_form_box_right.gif"><img width="20" height="35" src="/eyefinity/images/ecl_form_box_right.gif" /></td>
+    </tr>
+    <tr>
+        <td valign="top"><img width="6" height="11" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+        <td background="/eyefinity/images/ecl_form_bottom.gif"><img width="250" height="15" src="/eyefinity/images/ecl_form_bottom.gif" /></td>
+        <td><img width="20" height="15" src="/eyefinity/images/4_2_form_bottom_corner_righ.gif" /></td>
+    </tr>
+</tbody></table>
+
+<!-- Normal clm access forms -->
+<table width="650" cellspacing="0" cellpadding="0" border="0" id="actionBoxes" style="margin-bottom: 0px; margin-top: 0px; display: block;" name="select_carrier" valign="top">
+    <tbody><tr>
+        <td><img width="6" height="24" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td bgcolor="D5D5D3"><p class="form_box_title"> Check Eligibility</p></td>
+        <td><img width="20" height="24" src="/eyefinity/images/3_3_form_box_corner_right.gif" /></td>
+        <td><img width="6" height="24" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td bgcolor="D5D5D3"><p id="claimsectionlabel" class="form_box_title">Retrieve An Authorization By Number</p></td>
+        <td><img width="20" height="24" src="/eyefinity/images/3_3_form_box_corner_right.gif" /></td>
+    </tr>
+    <tr>
+        <td><img width="6" height="1" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td></td>
+        <td><img width="20" height="1" src="/eyefinity/images/4_2_corner_right_2.gif" /></td>
+        <td><img width="6" height="1" src="/eyefinity/images/3_form_box_left.gif" /></td>
+        <td></td>
+        <td><img width="20" height="1" src="/eyefinity/images/4_2_corner_right_2.gif" /></td>
+    </tr>
+    <tr>
+        <td background="/eyefinity/images/ecl_form_box_left.gif"><img width="6" height="35" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+        <td width="250" valign="top" align="left">
+
+            <div style="display: block;" id="div_checkelig_type">
+                <label style="padding-left:2px" class="form_label">Select Lookup Method</label><br />
+                <label id="label_SSN" for="mbr_lookup_search"><input type="radio" checked="checked" onkeypress="mbrLookup(this)" onclick="mbrLookup(this)" value="search" name="mbr_lookup" id="mbr_lookup_search" /> Member</label>
+                <label for="mbr_lookup_GC"><input type="radio" onkeypress="mbrLookup(this)" onclick="mbrLookup(this)" value="GC" name="mbr_lookup" id="mbr_lookup_GC" /> Gift Certificate</label>
+            </div>
+            <div style="padding:0.5em 0.5em 0">
+                <div id="div_search" style="display: block;">
+                    <input type="button" onclick="top.location = '/idc/html/membersearch.jsp'" value="Member Search" id="goToSearch" />
+                </div>
+                <div id="div_GC" style="display: none;">
+                    <table cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px">
+                        <tbody><tr>
+                            <td align="left" id="checkelig_r1c1_a" style="padding-left: 0px;">
+                                <table cellspacing="0" cellpadding="0" border="0">
+                                    <tbody><tr>
+                                        <td>
+                                            <label class="form_label" for="mbrID">Gift Certificate</label> 
+                                        </td>
+                                        <td>
+                                            <input onchange="javascript:this.value=this.value.toUpperCase();" onblur="removeHyphens(this)" size="14" maxlength="30" id="mbrID" name="mbrID" />
+                                        </td>
+                                        <td style="padding-left:10px;">
+                                            <input type="button" id="checkelig" value="GO" onclick="chkElig(this.form)" name="checkeligibility" />
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+            <div id="div_checkelig_r1c1" style="display: none;">
+                <div id="checkelig_r1c1_b"></div>
+            </div>
+            <div id="checkelig_r3c1" style="display: none;"></div>
+            <div id="checkelig_r4c1" style="display: none;"></div>
+        </td>
+        <td background="/eyefinity/images/ecl_form_box_right.gif"><img width="20" height="35" src="/eyefinity/images/ecl_form_box_right.gif" /></td>
+
+<td background="/eyefinity/images/ecl_form_box_left.gif"><img width="6" height="35" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+<td valign="top" align="left">
+
+    <script>// vsp block</script>
+    <div style="margin-bottom: 0px; margin-top: 0px; position: absolute; visibility: visible;" cellpadding="0" cellspacing="0" border="0" id="vspblock">
+        <form onsubmit="return false" id="vsp_page" name="vsp_page" method="POST" action="/servlet/IdcEligibility">
+            <table cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px">
+                <tbody><tr>
+                    <td width="50"> </td>
+                    <td width="150" nowrap="nowrap"><p class="form_label">Select Starting Page</p></td>
+                    <td width="100%">
+                        <input type="RADIO" checked="checked" value="HCFA" name="mode" /><span class="radio_label">CMS</span>
+                        <input type="RADIO" value="INVOICE" name="mode" /><span class="radio_label">Lab Invoice</span>
+                        <input type="RADIO" value="HCFA" name="mode" /><span class="radio_label">Reports</span>
+                        <script>
+		&lt;!--
+			if (parent.d["pilotForPatExpCalc"]=='Y') {
+				document.write('&lt;br&gt;&lt;INPUT NAME=mode TYPE=RADIO VALUE="EXP"&gt;&lt;span class="radio_label"&gt;Calculate Patient Option Expense&lt;/span&gt;');
+			}
+		// --&gt;
+		</script>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="50"> </td>
+                    <td width="150" nowrap="nowrap"><p class="form_label">Enter Authorization#</p></td>
+                    <td width="100%"><input size="14" maxlength="30" name="authNum" id="authNum" /><input type="button" value="GO" onclick='trimFormInputField("vsp_page","authNum"); showClaim("vsp");' /></td>
+                </tr>
+            </tbody></table>
+        </form>
+    </div>
+
+    <script>// nonvsp block</script>
+    <div style="margin-bottom: 0px; margin-top: 0px; position: absolute; transform: translate(3%, 0%); visibility: hidden;" cellpadding="0" cellspacing="0" border="0" id="nonvspblock">
+        <form onsubmit="return false" id="nonvsp_page" name="nonvsp_page" method="POST" action="/servlet/IdcEligibility">
+            <table cellspacing="0" cellpadding="0" border="0" style="margin-bottom:0px;margin-top:0px" valign="top">
+                <tbody><tr height="24px">
+                    <td width="0" align="center">
+
+                    </td>
+                    <script>
+		var d=document
+        if (SystemManager.eClaimDatabase.isUp()) {
+			d.write('&lt;td align="center" colspan="2"&gt;')
+	        d.write('&lt;table border="0" cellspacing="0" cellpadding="0"&gt;')
+	        d.write('&lt;tr&gt;')
+			d.write('&lt;td width="78"&gt;&lt;input style="vertical-align:middle" type="radio" checked="true" name="labOrder" id="labOrderN" value="N"&gt;&lt;label style="vertical-align:middle" for="labOrderN"&gt;Claim Only&lt;/label&gt;&lt;/td&gt;')
+			d.write('&lt;td width="128"&gt;&lt;input style="vertical-align:middle" type="radio" name="labOrder" id="labOrderY" value="Y"&gt;&lt;label style="vertical-align:middle" for="labOrderY"&gt;Claim with Lab Order&lt;/label&gt;&lt;/td&gt;')
+			d.write('&lt;td width="182"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;/table&gt;')
+			d.write('&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;tr height="3px"&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;&lt;INPUT id="gcClaimIdNumber" NAME="authNum" MAXLENGTH=30 SIZE=25&gt;&lt;/td&gt;')
+			d.write('&lt;td align="left" width="148px" style="padding-top: 5px;" rowspan="2"&gt;Enter an insured ID or claim tracking number&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;tr &gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;')
+
+            // This is the bit that handles displaying the opt-in dialog and deciding which version of the claim form
+            // to go to...
+			var onClickInsuredId = "claymoreGate('insuredId');"
+			var onClickTrackingNum = "claymoreGate('trackingNum');"
+			d.write('&lt;a id="insuredIdImg" onclick="' + onClickInsuredId + '"&gt;&lt;img src="/eyefinity/images/eins_nonvsp_newclaim_click.gif" border="0" style="cursor:hand"&gt;&lt;/a&gt;')
+			d.write('&lt;a id="trackingNbrImg" onclick="' + onClickTrackingNum + '")"&gt;&lt;img src="/eyefinity/images/eins_nonvsp_showclaim_click.gif" border="0" style="cursor:hand"&gt;&lt;/a&gt;')
+
+            // Make sure that hitting the Enter button doesn't submit the form.
+			$("#gcClaimIdNumber").keypress(function(event){
+			    if (event.keyCode == 13) {
+                    return false;
+			    }
+			});
+       }
+        else {
+			d.write('&lt;td align="center"&gt;')
+        	d.write('&lt;table border="0" cellspacing="0" cellpadding="0"&gt;')
+        	d.write('&lt;tr&gt;')
+			d.write('&lt;td&gt;' + SystemManager.eClaimDatabase.getMsgLong() + '&lt;/td&gt;')
+			d.write('&lt;td&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td&gt;&amp;nbsp&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;/table&gt;')
+			d.write('&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;tr &gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp&lt;/td&gt;')
+			d.write('&lt;td align="left" width="112"&gt;&amp;nbsp&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;tr &gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp&lt;/td&gt;')
+			d.write('&lt;td align="left" width="112"&gt;&amp;nbsp&lt;/td&gt;')
+			d.write('&lt;/tr&gt;')
+			d.write('&lt;tr&gt;')
+			d.write('&lt;td align="center"&gt;&amp;nbsp;&lt;/td&gt;')
+			d.write('&lt;td align="center"&gt;')
+			d.write('&amp;nbsp')
+			d.write('&amp;nbsp')
+        }
+        </script><td align="center" colspan="2"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td width="78"><input type="radio" value="N" id="labOrderN" name="labOrder" checked="true" style="vertical-align:middle" /><label for="labOrderN" style="vertical-align:middle">Claim Only</label></td><td width="128"><input type="radio" value="Y" id="labOrderY" name="labOrder" style="vertical-align:middle" /><label for="labOrderY" style="vertical-align:middle">Claim with Lab Order</label></td><td width="182"> </td></tr></tbody></table></td></tr><tr height="3px"><td> </td></tr><tr><td align="center"> </td><td align="center"><input size="25" maxlength="30" name="authNum" id="gcClaimIdNumber" /></td><td width="148px" align="left" rowspan="2" style="padding-top: 5px;">Enter an insured ID or claim tracking number</td></tr><tr><td align="center"> </td><td align="center"><a onclick="claymoreGate('insuredId');" id="insuredIdImg"><img border="0" style="cursor:hand" src="/eyefinity/images/eins_nonvsp_newclaim_click.gif" /></a><a )"="" onclick="claymoreGate('trackingNum');" id="trackingNbrImg"><img border="0" style="cursor:hand" src="/eyefinity/images/eins_nonvsp_showclaim_click.gif" /></a>
+                    </td>
+                </tr>
+            </tbody></table>
+        </form>
+    </div>
+</td>
+<td background="/eyefinity/images/ecl_form_box_right.gif"><img width="20" height="35" src="/eyefinity/images/ecl_form_box_right.gif" /></td>
+</tr>
+<tr>
+    <td valign="top"><img width="6" height="11" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+    <td background="/eyefinity/images/ecl_form_bottom.gif"><img width="250" height="15" src="/eyefinity/images/ecl_form_bottom.gif" /></td>
+    <td><img width="20" height="15" src="/eyefinity/images/4_2_form_bottom_corner_righ.gif" /></td>
+    <td valign="top"><img width="6" height="11" src="/eyefinity/images/ecl_form_box_left.gif" /></td>
+    <td background="/eyefinity/images/ecl_form_bottom.gif"><img width="400" height="15" src="/eyefinity/images/ecl_form_bottom.gif" /></td>
+    <td><img width="20" height="15" src="/eyefinity/images/4_2_form_bottom_corner_righ.gif" /></td>
+</tr>
+</tbody></table>
+<p></p>
+<iframe width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" src="/eyefinity/html/footers.inc?css=/global/html/querybox.css%7C/eyefinity/html/eyefinity.css" scrolling="no" name="xxx"></iframe>
+
+<script language="Javascript">
+ homef=document.vsp_page
+ nonvspf=document.nonvsp_page
+</script>
+
+<form onsubmit="return false" target="EnrollmentOnline" name="enroll_today" method="post" action="/servlet/InsCarrierServlet">
+    <input type="hidden" value="" name="access" />
+    <input type="hidden" value="enrollOnline" name="msgType" />
+    <input type="hidden" value="" name="needingEnrollments" />
+    <input type="hidden" value="" name="eligCarrs2Enr" />
+    <input type="hidden" value="" name="providerEnrollments" />
+</form>
+
+<form onsubmit="return false" name="calculator" method="post" action="/calculator/validate.do">
+    <input type="hidden" value="" name="authNum" />
+    <input type="hidden" value="9498314144" name="officeId" />
+    <input type="hidden" value="0" name="marchonId" />
+</form>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<center id="vspfooter" style="visibility: visible;"><font size="1"><a href="JavaScript:alert('Our records indicate that you are not certified to submit the lab attachment for your HIPAA 837 claim for professional services.  If you feel you have received this message in error, please call Eyefinity Customer Care at 877-448-0707 (toll free). Thank you.')">ASCX12N004010X098 Users</a></font></center>
+
+<script language="Javascript">
+
+if(initPgForVspCarr){ // set init pg layout
+ curPgForVspCarr=false
+ showVspBlk() // init pg layout for vsp carr
+}
+else{
+ curPgForVspCarr=true
+ showNonVspBlk() // slctd carr nonvsp-show nonvsp blk
+}
+
+</script>
+
+</form></body></html>

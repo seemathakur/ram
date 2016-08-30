@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+</head><body vlink="#663300" marginwidth="0" marginheight="0" link="#660066" bgcolor="#FFFFFF" alink="#660066" bottommargin="0" topmargin="0" rightmargin="0" leftmargin="0"><basefont size="3" />
+<title>OPTICAL CLAIM/ORDER</title>
+<link href="/idc/html/rde1form.css" type="text/css" rel="stylesheet" />
+<link href="/eyefinity/html/eyefinity.css" type="text/css" rel="stylesheet" />
+
+<script src="/eyefinity/html/eyefinity.js" type="text/javascript"></script>
+<script src="/global/html/prototype-1.6.0.3.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  onerror = eyefinity.onErrorShowCacheWarning;
+</script>
+
+<script src="/global/html/cookie.js" language="Javascript"></script>
+<script src="/idc/html/commonf.js" language="JavaScript"></script>
+<script src="/global/html/common.js" language="JavaScript"></script>
+<script src="/idc/html/rde1common.js" language="Javascript"></script>
+<script src="/eyefinity/html/rde1insurance.js" language="JavaScript"></script>
+<script src="/global/html/quicklinks.js" language="JavaScript1.2"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+<script src="/eyefinity/html/lffo.js" language="JavaScript1.2"></script>
+
+<script language="Javascript">
+
+if(parent.d["pageMode"]=="INVOICE") {
+
+	navSelector="&lt;SELECT NAME='nav1Selector' ONCHANGE='navigateGui()'&gt;\
+	&lt;OPTION VALUE=''&gt;&lt;B&gt;NAVIGATE TO SECTION&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;LAB INVOICE&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;--- Services&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;--- Invoice&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='lensType,2'&gt;&amp;nbsp;&amp;nbsp;--- Lens&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='rSphere,2'&gt;&amp;nbsp;&amp;nbsp;--- Prescription&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='frameSupplier,2'&gt;&amp;nbsp;&amp;nbsp;--- Frame&lt;/OPTION&gt;\
+	&lt;OPTION VALUE=' '&gt; &lt;/OPTION&gt;\&lt;/select&gt;"
+}
+else {
+
+	navSelector="&lt;SELECT NAME='nav1Selector' ONCHANGE='navigateGui()'&gt;\
+	&lt;OPTION VALUE=''&gt;&lt;B&gt;NAVIGATE TO SECTION&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='h21First,1'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;CMS 1500&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='emEntered,1'&gt;&amp;nbsp;&amp;nbsp;--- Diagnosis And Services&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='patDateOfBirth,1'&gt;&amp;nbsp;&amp;nbsp;--- Patient&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='mbrName,1'&gt;&amp;nbsp;&amp;nbsp;--- Insured&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='doctorSelected,1'&gt;&amp;nbsp;&amp;nbsp;--- Facility And Billing&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='h19,1'&gt;&amp;nbsp;&amp;nbsp;--- Additional Info&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='h12,1'&gt;&amp;nbsp;&amp;nbsp;--- Signatures&lt;/OPTION&gt;\
+	&lt;OPTION VALUE=' '&gt; &lt;/OPTION&gt;"
+
+	if (displayContinueToInvoice()) {
+	  navSelector+="&lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;LAB INVOICE&lt;/B&gt;&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;--- Services&lt;/B&gt;&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE='lensService,2'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;--- Invoice&lt;/B&gt;&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE='lensType,2'&gt;&amp;nbsp;&amp;nbsp;--- Lens&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE='rSphere,2'&gt;&amp;nbsp;&amp;nbsp;--- Prescription&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE='frameSupplier,2'&gt;&amp;nbsp;&amp;nbsp;--- Frame&lt;/OPTION&gt;\
+	  &lt;OPTION VALUE=' '&gt; &lt;/OPTION&gt;"
+	}
+
+	navSelector += "&lt;OPTION VALUE='preVARight,4'&gt;&amp;nbsp;&amp;nbsp;&lt;B&gt;CMS 1500 Addl Info Detail&lt;/B&gt;&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='preVARight,4'&gt;&amp;nbsp;&amp;nbsp;--- Additional Info Detail&lt;/OPTION&gt;\
+	&lt;OPTION VALUE='h9,4'&gt;&amp;nbsp;&amp;nbsp;--- Other Insured&lt;/OPTION&gt;\ "
+
+	if (isEyeconicOffice()){
+		navSelector += "&lt;OPTION VALUE=' '&gt; &lt;/OPTION&gt;\
+		&lt;OPTION VALUE='pricingTaxId,4'&gt;&amp;nbsp;&amp;nbsp;--- Pricing Service Location ID&lt;/OPTION&gt;\ "
+	}
+
+	navSelector += "&lt;OPTION VALUE=' '&gt; &lt;/OPTION&gt;\&lt;/select&gt;"
+}
+
+
+msIE = (navigator.appName.indexOf("Microsoft") != - 1)
+
+function init(){
+    return true
+}
+</script>
+
+<script language="javascript">
+Bgcolor = ""  ;  Bgtitle = ""  ;  DivWidth = "320"  ;  Above = "Y" ;
+Bordercolor = ""   ;  Background = "" ;  DivHeight = "10"        ;
+Bordercolor = "#660066" ; Bgcolor = "#FFFFCC" ; Bgtitle = "#80FF80"
+
+Help = new Array()
+Help[0] = "Calculating CPT/HCPCS codes will take approximately 30 seconds.&lt;BR&gt;This will overwrite codes that were previously entered."
+</script>
+
+<script src="/idc/html/rde1tips.js" language="javascript1.2"></script>
+
+<form name="insurform" method="POST" action="/servlet/IdcEligibility">
+<input type="HIDDEN" value="" name="authNum" />
+<input type="HIDDEN" value="" name="pmiEnvoyFileId" />
+<input type="HIDDEN" value="" name="access" />
+<input type="HIDDEN" value="" name="phone" />
+<input type="HIDDEN" value="" name="formnbr" />
+<input type="HIDDEN" value="" name="memberid" />
+<input type="HIDDEN" value="110" name="msgProc" />
+<input type="HIDDEN" value="" name="msgType" />
+<input type="HIDDEN" value="" name="nextUrl" />
+<input type="HIDDEN" value="" name="appCode" />
+<input type="HIDDEN" value="" name="command" />
+<input type="HIDDEN" name="PAid" />
+<map name="ecl__eins_title_Map">
+<area target="_top" href="/ebuy/redirect/claimresource.htm" coords="3,2,85,58" alt="" />
+<area target="_top" href="/ebuy/redirect/claim_started.htm" coords="90,4,180,20" alt="" />
+<area target="_blank" href="/eyefinity/html/eclaim_guide.pdf" coords="90,21,200,34" alt="" />
+<area target="_top" href="/ebuy/redirect/getWFC.htm" coords="90,35,235,50" alt="" />
+<area target="_top" href="/ebuy/redirect/claim_newpayer.htm" coords="241,4,357,20" alt="" />
+<area target="_top" href="/ebuy/redirect/claim_addgov.htm" coords="241,21,391,34" alt="" />
+<area target="_top" href="/ebuy/redirect/claim_enroll.htm" coords="241,35,345,50" alt="" />
+</map><table width="700" cellspacing="0" cellpadding="0">
+
+<script>
+if (parent.d &amp;&amp; parent.d["orderStatusCd"] &amp;&amp; parent.d["orderStatusCd"]!="05" &amp;&amp; parent.d["orderStatusCd"]!="21" &amp;&amp; parent.d["orderStatusCd"]!="27" )
+{
+    if (parent.d["orderStatusCd"]=="" || parent.d["orderStatusCd"]=="00" || parent.d["orderStatusCd"]=="04")
+    {
+        var firstBtn=""
+        var middleBtn=""
+        var lastBtn=""
+        var continurBtn=""
+
+        if (displayContinueToInvoice()) {
+            continurBtn="&lt;TD  BGCOLOR='#B9AB82' WIDTH=80&gt;&lt;A HREF='javascript:validateAndGuiPage();' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;CONTINUE&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"
+        }
+
+        if(parent.d["pageMode"]=="INVOICE" || parent.d["cfPage"]=="4" || parent.d["cfAnchor"]=="Additional Info Detail" || parent.d["nosubmit"]=="true" )
+        {
+            firstBtn="&lt;TD BGCOLOR='#B9AB82' WIDTH=100 HEIGHT=22&gt;&lt;A HREF='javascript:validateAndCalcHCPCs();' ONMOUSEOVER='St(0)';window.status='';return true; ONMOUSEOUT='Ht()' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;&amp;nbsp;CALCULATE&amp;nbsp;AND&lt;BR&gt;&amp;nbsp;CONTINUE&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"
+            parent.d["nosubmit"]="false"
+        }
+        else
+        {
+            firstBtn="&lt;TD BGCOLOR='#B9AB82' WIDTH=100 HEIGHT=22&gt;&lt;A HREF='javascript:validateAndCalcHCPCs();' ONMOUSEOVER='St(0)';window.status='';return true; ONMOUSEOUT='Ht()' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;&amp;nbsp;CALCULATE HCPCS&amp;nbsp;&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"
+            middleBtn="&lt;TD BGCOLOR='#B9AB82' WIDTH=80&gt;&lt;A HREF='javascript:validateAndSendWork();' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;SUBMIT&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"
+            lastBtn=continurBtn
+        }
+
+        document.write("&lt;TR&gt;&lt;TD VALIGN=TOP&gt;&lt;TABLE CELLSPACING=1 CELLPADDING=0&gt;&lt;TR&gt;"+firstBtn+"&lt;TD  BGCOLOR='#B9AB82' WIDTH=80&gt;&lt;A HREF='javascript:parent.saveWork()' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;SAVE&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"+middleBtn+"&lt;TD  BGCOLOR='#B9AB82' WIDTH=80&gt;&lt;A HREF='javascript:parent.windowReports(parent.pC)' CLASS='NAVLINK'&gt;&lt;DIV CLASS='NAVLINK'&gt;REPORTS&lt;/DIV&gt;&lt;/A&gt;&lt;/TD&gt;"+lastBtn+"&lt;/TR&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;TD align='right'&gt;" + navSelector + "&lt;/TD&gt;&lt;/TR&gt;")
+    }
+
+    document.write("&lt;TR&gt;&lt;TD VALIGN=TOP&gt;&amp;nbsp;&amp;nbsp;Patient: " + parent.d["patName"] + "&lt;/TD&gt;&lt;TD VALIGN=TOP ALIGN=right&gt;VSP Authorization Number: " + parent.d["authNum"] + "&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;")
+    document.write("&lt;TR&gt;&lt;TD VALIGN=TOP ALIGN=RIGHT&gt;&lt;FONT class=\"more_exp_content\"&gt;Submission of this order is HIPAA compliant.&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;")
+}
+else {
+    document.write('&lt;table width="698" border="0" cellspacing="0" cellpadding="0"');
+    document.write('&lt;tr&gt;');
+    document.write('&lt;td style="vertical-align: top"&gt;');
+    document.write('&lt;div id="outerdiv" style="margin-left:4px; width:692px; height:31px; border:0px solid; overflow:hidden;"&gt;');
+    document.write('&lt;iframe id="commTileFrame" src="/servlet/CommunicationTileProxy/communicationtile" width="692px" height="31px" frameborder="0" scrolling="no" &gt;&lt;/iframe&gt;');
+    document.write('&lt;/div&gt;');
+
+    // for a vsp doctor, we want to increase the height of this frame and show a vsp tile
+    if (getDocTypeCookie() == "VSP") {
+        //document.write('&lt;td&gt;&lt;a href="/eyefinity/html/vsponlinetransfer.htm?VSPOnlineRef=eClaim" target="_top"&gt;&lt;IMG SRC="https://doctor.vsp.com/vspdctr/images/ecl_vsp_promo.gif" WIDTH=290 HEIGHT=73 BORDER=0 ALT=""&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;');
+        //document.write('&lt;image src="../images/placeholder.png" style="margin-left:4px; width:692px; height:31px; /&gt;');
+        document.write('&lt;a href="/eyefinity/html/vsponlinetransfer.htm?VSPOnlineRef=eClaim" target="_top"&gt;&lt;image src="../images/VSPOnlineBanner.gif" style="margin-top:2px; margin-left:4px; width:692px; height:31px; border=0 alt="" /&gt;&lt;/a&gt;');
+
+        var frameSizeArr = (parent.document.getElementsByTagName("frameset")[ 0 ].rows).split(",");
+        frameSizeArr[1] = "64";
+        var newFrameSizes = frameSizeArr.join(",");
+        parent.document.getElementsByTagName( 'frameset' )[ 0 ].rows = newFrameSizes;
+    } else {
+        var frameSizeArr = (parent.document.getElementsByTagName("frameset")[ 0 ].rows).split(",");
+        frameSizeArr[1] = "30";
+        var newFrameSizes = frameSizeArr.join(",");
+        parent.document.getElementsByTagName( 'frameset' )[ 0 ].rows = newFrameSizes;
+    }
+    document.write('&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;');
+}
+
+function launchEctrain() {
+    site = getCookie('TEF_SURL') + '/contactus/jsp/ectrain.jsp';
+    sWindow=window.open(site,"eClaimTrainingSignup","width=670,height=600,scrollbars=yes,resizable=no,left=25,screenX=25,top=25,screenY=25");
+    sWindow.focus();
+}
+
+</script><tbody><tr><td valign="TOP"><table cellspacing="1" cellpadding="0"><tbody><tr><td width="100" height="22" bgcolor="#B9AB82"><a class="NAVLINK" onmouseout="Ht()" true;="" ;return="" ;window.status="" onmouseover="St(0)" href="javascript:validateAndCalcHCPCs();"><div class="NAVLINK"> CALCULATE AND<br /> CONTINUE</div></a></td><td width="80" bgcolor="#B9AB82"><a class="NAVLINK" href="javascript:parent.saveWork()"><div class="NAVLINK">SAVE</div></a></td><td width="80" bgcolor="#B9AB82"><a class="NAVLINK" href="javascript:parent.windowReports(parent.pC)"><div class="NAVLINK">REPORTS</div></a></td></tr></tbody></table></td><td align="right"><select onchange="navigateGui()" name="nav1Selector">	<option value="">NAVIGATE TO SECTION</option>	<option value="lensService,2">  LAB INVOICE</option>	<option value="lensService,2">  --- Services</option>	<option value="lensService,2">  --- Invoice</option>	<option value="lensType,2">  --- Lens</option>	<option value="rSphere,2">  --- Prescription</option>	<option value="frameSupplier,2">  --- Frame</option>	<option value=" "> </option></select></td></tr><tr><td valign="TOP">  Patient: LENSSTYLEUPDATES, ERIC</td><td valign="TOP" align="right">VSP Authorization Number: 10410721   </td></tr><tr><td valign="TOP" align="RIGHT"><font class="more_exp_content">Submission of this order is HIPAA compliant.</font></td></tr>
+
+<!--the claim resource center redirects can be found in navbar.xml-->
+</tbody></table> <p></p><p></p><p></p><p>
+
+</p></form>
+<div style="position: absolute; visibility: hidden; width: 320px;" id="tooltip"></div>
+
+<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="/eyefinity/html/footers.inc?css=/idc/html/rde1form.css%7C/eyefinity/html/eyefinity.css"></iframe>
+
+</body></html>

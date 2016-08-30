@@ -1,0 +1,1346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>INSURANCE LAB INVOICE ATTACHMENT</title>
+<meta content="IE=7" http-equiv="X-UA-Compatible" />
+
+<link href="/idc/html/rde1form.css" type="text/css" rel="stylesheet" />
+<script src="/eyefinity/html/eyefinity.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	onerror = eyefinity.onErrorShowCacheWarning;
+</script>
+
+<script src="/global/html/cookie.js" type="text/javascript"></script>
+<script src="/global/html/common.js" type="text/javascript"></script>
+<script src="/idc/html/rde1common.js" language="Javascript"></script>
+<script src="/idc/html/rde1onchange.js" type="text/javascript"></script>
+<script src="/idc/html/rde1invoice.js" type="text/javascript"></script>
+<script src="/idc/html/jointinvoice.js" type="text/javascript"></script>
+<script src="/idc/html/lensstyle.js" type="text/javascript"></script>
+<script src="/idc/html/eyefinitylensstyle.js" type="text/javascript"></script>
+<script src="/idc/html/optionservices.jsp" type="text/javascript"></script>
+<script src="/eyefinity/html/combobox.js" type="text/javascript"></script>
+<script src="/eyefinity/html/datasync.js" type="text/javascript"></script>
+<script src="/global/html/quicklinks.js" type="text/javascript"></script><script src="/global/html/cookie.js" type="text/javascript"></script><script src="/eyefinity/html/SystemManager.js" type="text/javascript"></script>
+<script src="/global/html/prototype-1.6.0.3.js" type="text/javascript"></script>
+
+<!-- ShadowBox -->
+<script src="/global/html/shadowbox/shadowbox-2.0-package.js" type="text/javascript"></script>
+<link href="/global/html/shadowbox/skin/classic/skin.css" type="text/css" rel="stylesheet" />
+
+<script src="/eyefinity/html/easyfind.js" type="text/javascript"></script>
+<link href="/eyefinity/html/easyfind.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript">
+Event.observe(window, 'load', function() {
+	Eyefinity.ModalSearch.init();
+	Eyefinity.ebuyExpress.init();
+
+	init(); // loads data
+
+	// If defined, load selected frame into form
+	var form =  document.forms[0];
+	if (form.frameManufacturer &amp;&amp; form.frameManufacturer.value != "")
+	{
+		var jsonObj = {"mfgName":form.frameManufacturer.value,"collectionName":form.frameCollection.value,"model":form.frameName.value,"mappedMaterialTypeId":form.frameType.value,"mappedShapeId":form.shape.value,"color":form.frameColor.value,"eyeSize":form.eyeSize.value,"dbl":form.dbl.value,"temple":form.temple.value,"b":form.b.value,"ed":form.ed.value,"sku":{"value":form.frameSku.value},"upc":{"value":form.frameUpc.value},"catalogSource":form.frameOrig.value,"wholeSalePrice":form.frameCost.value,"wholeSalePriceOrig":form.frameOrigCost.value};
+		Eyefinity.ModalSearch.handleSelection(jsonObj);				
+	}
+});
+
+// Helpers to allow joint handling of both VSP and private orders (see jointinvoice.js):
+var dataFrame = parent;
+var isVspOrder = true;
+var eyeMeasureDevice_Id;
+function miscOption(i) {
+	return 'miscOption_' + i;
+}
+// - end joint invoice support
+
+	ajaxIsProviderOptOut();
+
+	function ajaxIsProviderOptOut() {
+		var url = '/servlet/ProviderFinder?'+Math.random() * 8765478899; //Adding a random generating number so that call always go to the server and not get served from the browser cache itself
+		var myAjax = new Ajax.Request(url, {
+			method : 'get',
+			asynchronous : false,
+			requestHeaders : {
+				Accept : 'application/json'
+			},
+			onSuccess : function(transport) {
+				var returnedData = transport.responseText.evalJSON(true);
+				document.getElementById("isProviderOptOut").value = returnedData.isOptOut;
+				//return returnedData.isOptOut;
+			},
+			onFailure : function(response) {
+				alert(" A problem was encountered processing your request.");
+			}
+		});
+	}
+
+	function limitMaterialOptionsRde1(matField) {
+		limitMaterialOptions(matField, function(form, n, suffix) {
+			return form['miscOption' + (suffix ? suffix : '') + '_' + n];
+		});
+	}
+
+	function displayNonIdcLabField() {
+		if (isVspOrder) {
+			var f = parent.guiPage.document.forms[0];
+			var element = document.getElementById('nonIdcLabField');
+
+			if (element != null &amp;&amp; element != "undefined") {
+				if (f.labId.value == '0100' &amp;&amp; displayReasonForNonIdcLabField()) {
+					$('nonIdcLabField').show();
+				} else {
+					$('nonIdcLabField').hide();
+					f.reasonForNonIdcLab.value = "";
+				}
+			}
+		}
+	}
+
+	function displayReasonForNonIdcLabField() {
+		var displayReasonForNonIdcLabFieldBasedOnBackendValidation = dataFrame.displayReasonForNonIdcLabField;
+
+		if (displayReasonForNonIdcLabFieldBasedOnBackendValidation == "true"
+				&amp;&amp; !isSecondaryCOBorder() &amp;&amp; !isProprietaryLens()) {
+			return true;
+		}
+
+		return false;
+	}
+
+	function isProprietaryLens() {
+		//Manufacture  = Proprietary or based on Routing Code = R015
+		var form = document.forms[0];
+		var lensName = "";
+		var lensRoutingCode = "";
+
+		if (form.lensStyle.selectedIndex &gt; 0) {
+			var sIdx = form.lensStyle.selectedIndex;
+			lensRoutingCode = form.lensStyle[sIdx].routing;
+			lensName = form.lensStyle[sIdx].text
+		}
+
+		if (lensName.toLowerCase().indexOf("proprietary") != -1
+				|| lensRoutingCode == "R015") {
+			return true;
+		}
+
+		return false;
+	}
+
+	function isSecondaryCOBorder() {
+		var form = document.forms[0];
+		var cobAuthNumValue = "";
+		var h19Value = "";
+
+		if (d["cobAuthNum"] &amp;&amp; d["cobAuthNum"] != "undefined") {
+			cobAuthNumValue = d["cobAuthNum"];
+		}
+
+		if (d["h19"] &amp;&amp; d["h19"] != "undefined") {
+			h19Value = d["h19"];
+		}
+
+		if (cobAuthNumValue != ""
+				|| h19Value.toLowerCase().indexOf("secondary cob claim") != -1) {
+			return true;
+		}
+
+		return false;
+	}
+
+	function loadData() {
+		var form = document.forms[0];
+		prefillInvoice()
+		buildDoctorList(form)
+		buildLabList();
+		buildOptionLists(form);
+		parent.loadForm(form, parent.d)
+		selectLab(form);
+		ajaxIsProviderOptOut();
+		// Add the handler only now so that it does not fire during setup.
+		labListCombobox.onSelect = function() {
+			setLabID(form);
+			block2CLabs();
+			limitDefinityLabs(form);
+			if (getSelectedLabId() != parent.autoRoutedLab)
+				parent.autoRoutedLab = '';
+		};
+		if (form.lensType.selectedIndex != 0
+				&amp;&amp; form.lensMatType.selectedIndex != 0) {
+			buildLensStyleList(form)
+			limitMaterialOptionsRde1(form.lensMatType);
+		}
+		shouldWePopulateRefraction()
+		parent.loadForm(form, parent.d)
+		setListSelection(form.miscOptionDesc_0, form.miscOption_0)
+		setListSelection(form.miscOptionDesc_1, form.miscOption_1)
+		document.getElementById('hfchkbox').style.display = isHFgrp() ? 'block'
+				: 'none';
+		if (isHFgrp()) {
+			if (isEmpty(form.labId.value)) {
+				form.hfInKitClm.checked = true;
+			}
+		}
+		showDefaultLabField(form);
+		displayNonIdcLabField();
+	}
+
+	function shouldWePopulateRefraction() {
+		// if there is an s code exam in the claim lines don't check the refraction box
+		var sCodeProc = false
+		var RefractionProc = false
+		for (i = 0; i &lt; 15; i++) {
+			var fld = parent.d["h24dc_" + i]
+			if (fld == "S0620" || fld == "S0621") {
+				sCodeProc = true;
+			}
+			if (fld == "92015") {
+				RefractionProc = true;
+			}
+		}
+		if (RefractionProc &amp;&amp; sCodeProc) {
+			parent.d["ExamIsRefraction"] = "N";
+		}
+	}
+
+	var now = new Date()
+	var mm = now.getMonth()
+	var mm = (mm * 1) + 1
+	var today = mm + '/' + now.getDate() + '/' + now.getFullYear()
+
+	function checkDOS() {
+		setHCFADateOfService(document.rde1invoice);
+		if (parent.d["enteredDateOfService"] == "") {
+			document.rde1invoice.enteredDateOfService.focus();
+		} else {
+			parent
+					.populateIcdDiagnoses(document.rde1invoice.enteredDateOfService.value);
+		}
+	}
+
+	function init() {
+		initCombobox();
+		document.getElementById("scratchDesc").style.visibility = "hidden"
+		document.getElementById("uvDesc").style.visibility = "hidden"
+		addhandlers(document.rde1invoice)
+		document.forms[0].definityLensStyleList.value = parent.definityLensStyleList
+		if (parent.guiPage) {
+			loadData()
+			setMirrorOrSkiOnLoad(document.rde1invoice)
+			setProTecMsgOnLoad(document.rde1invoice);
+			jointInit();
+			checkAndDisplaySpecialLensStyle(document.forms[0]);
+			if (parent.d["cursorFocus"] == "") {
+				parent.d["cursorFocus"] = "labId"
+				parent.d["cfPage"] = 2
+				parent.d["cfAnchor"] = "Services"
+			}
+			setCursorFocus()
+			if (navigator.userAgent.toUpperCase().indexOf("MSIE") &gt;= 0)
+				parent.guiPage.scrollBy(0, -80)
+			getDateOfService()
+			//svcDate=getCookie("DATE_OF_SVC")
+			svcDate = getChip("BATCH", "DATE_OF_SVC")
+			if (svcDate != null &amp;&amp; svcDate != "")
+				document.rde1invoice.enteredDateOfService.value = svcDate
+			else
+				document.rde1invoice.enteredDateOfService.focus()
+		}
+		initDataSync();
+
+		eyeMeasureDevice_Id = parent.d["eyeMeasureDeviceId"];
+
+		substituteEyeMeasureDevice(parent.guiPage.document.forms[0]);
+		if (isLabPage())
+			Eyefinity.ebuyExpress.disable();
+
+		checkCustomizable();
+	}
+
+	function validateForm() {
+		var d = parent.d
+		if (top.location != self.location) { // do not run anything when this is not in a frame
+			f = parent.guiPage.document.forms[0]
+			window.status = "Document: Validating Information..."
+			if (!parent.getSessionCookie()) {
+				window.status = 'Document: Done'
+				return false
+			}
+
+			if (!editInvoice(f)) {
+				window.status = 'Document: Done'
+				return false
+			}
+			if (f.lensService.checked) {
+				if (!editLens(f)) {
+					window.status = 'Document: Done'
+					return false
+				}
+
+				if ((!labListCombobox.selectedOption || isEmpty(labListCombobox.selectedOption.value))
+						&amp;&amp; isEmpty(f.labId.value)) {
+					if (d["benefitType"]
+							&amp;&amp; (d["benefitType"] == "D"
+									|| d["benefitType"] == "M"
+									|| d["benefitType"] == "J"
+									|| d["benefitType"] == "N"
+									|| d["benefitType"] == "I" || d["benefitType"] == "H")
+							&amp;&amp; (d["benefitForm"] &amp;&amp; d["benefitForm"] == "HCFA")) {
+					} else {
+						if (!editPrescPage(f)) {
+							window.status = 'Document: Done'
+							return false
+						}
+					}
+				} else { //If there is a lab selected edit prescriptions.   EA 1231545 (DW)
+					if (!editPrescPage(f)) {
+						window.status = 'Document: Done'
+						return false
+					}
+				}
+				if (!editFrame(f)) {
+					window.status = 'Document: Done'
+					return false
+				}
+			} else {
+				if (f.frameService.checked) {
+					if (!editFrame(f)) {
+						window.status = 'Document: Done'
+						return false
+					}
+				}
+			}
+			window.status = 'Document: Done'
+		}
+		if (!checkMirrorOrSkiOther()) {
+			window.status = 'Document: Done';
+			f.miscOptionDesc_3.focus();
+			return false;
+		}
+		checkandSaveSpecialLensStyle(f);
+		return true;
+	}
+
+	function changeDefaultPDType() {
+		var form = document.forms[0];
+		if (form.lensType.selectedIndex == 5 &amp;&amp; !form.pdType[1].checked) //if progressive, use monocular as default.
+			form.pdType[1].checked = true;
+	}
+
+	function CheckLensType(f) {
+		nIdx = f.lensType.selectedIndex
+		if (f.lensType.options[nIdx].text == "Quad"
+				&amp;&amp; parent.d["benefitType"] == "S") {
+			alert("VSP does not allow QUADRIFOCAL LENSES for the Computer VisionCare (CVC) benefit.  Please see the CVC section of your Provider Reference Manual for a definition of allowed Lens Types.")
+			f.lensType.focus
+			f.lensType.selectedIndex = 0
+			return false
+		}
+		if (isHFclm() &amp;&amp; f.lensType.options[nIdx].value != ""
+				&amp;&amp; f.lensType.options[nIdx].value != "0"
+				&amp;&amp; f.lensType.options[nIdx].value != "1"
+				&amp;&amp; f.lensType.options[nIdx].value != "2"
+				&amp;&amp; f.lensType.options[nIdx].value != "4"
+				&amp;&amp; f.lensType.options[nIdx].value != "7"
+				&amp;&amp; f.lensType.options[nIdx].value != "8"
+				&amp;&amp; f.lensType.options[nIdx].value != "9") {
+			alert("Progressive and Quad are not allowed under the Healthy Families Program. Please edit your selection.")
+			f.lensType.focus
+			f.lensType.selectedIndex = 0
+			return false
+		}
+	}
+
+	function CheckMaterials(f) {
+		nIdx = f.lensMatType.selectedIndex
+		if (isHFclm() &amp;&amp; f.lensMatType.options[nIdx].value != ""
+				&amp;&amp; f.lensMatType.options[nIdx].value != "1"
+				&amp;&amp; f.lensMatType.options[nIdx].value != "2") {
+			alert("Only Plastic and Polycarbonate are allowed under the Healthy Families Program. Please edit your selection.")
+			f.lensMatType.focus
+			f.lensMatType.selectedIndex = 0
+			return false
+		}
+	}
+
+	function CheckTintType(f) {
+		if (isHFclm()) {
+			nIdx = f.tintType.selectedIndex
+			if (f.tintType.options[nIdx].value != ""
+					&amp;&amp; f.tintType.options[nIdx].value != "MM"
+					&amp;&amp; f.tintType.options[nIdx].value != "MN"
+					&amp;&amp; f.tintType.options[nIdx].value != "MP") {
+				alert("The following tint types are allowed under the Heallthy Families Program: Plastic Dyes ï¿½ Solid Pink 1 &amp; 2, Plastic Dyes ï¿½ Solid (except Pink 1 &amp; 2, or Plastic Dyes ï¿½ Gradient Color. Please edit your selection.")
+				f.tintType.focus
+				f.tintType.selectedIndex = 0
+				return false
+			}
+		}
+	}
+
+	function CheckTintColor(f) {
+		if (isHFclm()) {
+			nIdx = f.tintColor.selectedIndex
+			if (nIdx &gt; 0 &amp;&amp; f.tintType.selectedIndex == 0) {
+				alert("In order to select a tint color a tint type must first be selected.  Please choose again.")
+				f.tintType.focus
+				f.tintColor.selectedIndex = 0
+				return false
+			}
+		}
+	}
+
+	function addOption(slct, txt, val) {
+		var newOpt = document.createElement('option');
+		newOpt.text = txt;
+		newOpt.value = val;
+
+		try {
+			slct.add(newOpt, null); // standards compliant; doesn't work in IE
+		} catch (ex) {
+			slct.add(newOpt); // IE only
+		}
+	}
+
+	function getLensStyleText(lsNum, f) {
+		var alen = f.lensStyle.options.length
+		var i = 0
+		while (i &lt;= alen) {
+			if (f.lensStyle.options[i].value == lsNum) {
+				return f.lensStyle.options[i].text
+			}
+			i++
+		}
+	}
+
+	twoCList = "0299,0897,0291,0298,0293,0998,0898,0294,0295,0296,0899"
+	function block2CLabs() {
+		var form = document.forms[0];
+		labId = "" + getSelectedLabId();
+		if (labId &amp;&amp; twoCList.indexOf(labId) &gt;= 0) {
+			alert("It is no longer necessary to select a 2C lab for this lens.")
+			form.labId.value = "";
+			selectLab(form);
+		}
+	}
+
+	function checkARInherentLenses() {
+		var arInherentList = new Array("ACCLARO", "ACUITY", "CARAT", "CLARIS",
+				"CRIZAL", "DURALUX", "ENDURA", "GEMCOAT", "HIVISION", "KOMODO",
+				"TEFLON", "TRANSPARENCE", "UTMC", "VISTA2", "VIVIX");
+		f = document.forms[0];
+		if (f.lensStyle.selectedIndex &gt; 0) {
+			var sIdx = f.lensStyle.selectedIndex
+			lensDesc = f.lensStyle[sIdx].text.toUpperCase();
+			for (i = 0; i &lt; arInherentList.length; i++) {
+				if (lensDesc.indexOf(arInherentList[i]) &gt;= 0) {
+					alert("The Anti-Reflective coating selected is already included in the lens you selected from the lens list.");
+					f.miscOption_0.selectedIndex = 0;
+					f.miscOptionDesc_0.value = "";
+					break;
+				}
+			}
+		}
+	}
+
+	function controlLabFinishing() {
+		document.getElementById('iofDiv').style.display = showLabFinishing(document.forms[0]) ? 'block'
+				: 'none';
+		d = parent.d
+		var popIndicator = d["popId"];
+		var isIOFUpilot = d["IOFUPilot"];
+		var isIOFUOrder = d["IOFUOrder"];
+		var uncutOpt = document.createElement("OPTION");
+		uncutOpt.text = "In-Office Uncut Lenses";
+		uncutOpt.value = "uncut";
+		var pilotDate = d["pilotDate"];
+		var dos = d["dateOfService"];
+		var allowedDOS = "Y";
+		if (dos != "" &amp;&amp; dos != null) {
+			if (compareDates(dos, pilotDate) &gt; 0) {
+				allowedDOS = "N";
+				document.rde1invoice.lensFinishing.options.length = 2;
+			}
+		}
+		if (isIOFUOrder == "Y" &amp;&amp; popIndicator != "G" &amp;&amp; isIOFUpilot == "Y"
+				&amp;&amp; allowedDOS == "Y") {
+			document.rde1invoice.lensFinishing.options.add(uncutOpt);
+		}
+		var lensFinishing;
+		if (parent.d["uncutLensIndicator"] == "Y") {
+			lensFinishing = "uncut";
+		} else if (parent.d["stockLensIndicator"] == "Y") {
+			lensFinishing = "stock";
+		} else {
+			lensFinishing = "lab";
+		}
+		var sel = document.getElementsByName('lensFinishing')[0];
+		for (i = 0; i &lt; sel.length; i++) {
+			if (lensFinishing == sel.options[i].value) {
+				sel.selectedIndex = i;
+				break;
+			}
+		}
+	}
+
+	function setLensInd() {
+		var form = document.rde1invoice;
+		var fVal = form.lensFinishing.options[form.lensFinishing.selectedIndex].value;
+		switch (fVal) {
+		case "lab":
+			form.uncutLensIndicator.value = "N";
+			form.stockLensIndicator.value = "N";
+			break;
+		case "uncut":
+			form.uncutLensIndicator.value = "Y";
+			form.stockLensIndicator.value = "N";
+			break;
+		case "stock":
+			form.uncutLensIndicator.value = "N";
+			form.stockLensIndicator.value = "Y";
+			break;
+		}
+	}
+
+	function checkIOFURule() {
+		var form = document.forms[0];
+		var lensFinishingValue = form.lensFinishing.options[form.lensFinishing.selectedIndex].value;
+		var pilotDate = parent.d["pilotDate"];
+		var dos = "";
+		if (form.name == "pvtorderinvoice" &amp;&amp; isVspOrder) {
+			if (form.dateOfService)
+				dos = form.dateOfService.value;
+		} else if (form.name == "rde1invoice") {
+			if (form.enteredDateOfService)
+				dos = form.enteredDateOfService.value;
+		}
+		if (lensFinishingValue == "uncut") {
+			// To get msg if DOS before 10/1/2011.
+			if (compareDates(dos, pilotDate) &gt; 0) {
+				alert("All In-Office Finishing claims for date of service on or prior to 07/01/2011 are not allowed.");
+				form.lensFinishing.selectedIndex = 0;
+				form.lensFinishing.focus();
+				return false
+			}
+		}
+		setLensInd();
+		disableLabFields()
+		return true;
+	}
+
+	/* eBuy Epxress popup uses this to determine which Thankyou msg to show when returning to this form */
+	var isFrameConnectOrder = false;
+	function setFrameConnectOrder(fc) {
+		isFrameConnectOrder = fc;
+	}
+</script>
+</head>
+
+
+<body background="/eyefinity/images/gradient.jpg" id="rde1invoice">
+<form name="rde1invoice">
+<input type="HIDDEN" name="definityLabList" />
+<input type="HIDDEN" name="definityLensStyleList" value="2617:2619:2621:2623:2721:2723:2727:2742:2743:2744:2745:2746:2747:2814:2819:2821" />
+<input type="hidden" value="-1" name="frameMasterId" />
+<input type="hidden" value="-1" name="frameFrameId" />
+<input type="hidden" value="N" name="uncutLensIndicator" />
+<input type="hidden" value="N" name="stockLensIndicator" />
+
+<input type="hidden" value="OPTIMODE INTERNATIONAL" name="frameManufacturer" />
+<input type="hidden" value="OPTIMODE COLLECTION" name="frameCollection" />
+<input type="hidden" value="OPTIMODE 162" name="frameName" />
+<input type="hidden" value="1" name="frameType" />
+<input type="hidden" value="0" name="shape" />
+<input type="hidden" value="53" name="eyeSize" />
+<input type="hidden" value="16.0" name="dbl" />
+<input type="hidden" value="135" name="temple" />
+<input type="hidden" value="37.8" name="b" />
+<input type="hidden" value="55.4" name="ed" />
+<input type="hidden" value="YELLOW/SATIN GOLD" name="frameColor" />
+<input type="hidden" value="" name="frameSku" />
+<input type="hidden" value="" name="frameUpc" />
+<input type="hidden" value="" name="frameOrig" />
+<input type="hidden" value="10.00" name="frameCost" />
+<input type="hidden" value="10.00" name="frameOrigCost" />
+<input type="hidden" value="false" name="isVizTecOrder" />
+<input type="hidden" value="true" name="isAllAccessLensGroupApplicable" />
+<input type="hidden" name="isProviderOptOut" id="isProviderOptOut" value="false" />
+
+<table width="700" cellspacing="0" cellpadding="0">
+<tbody><tr><td><font color="#FF0000"><b>*</b></font> <i>INDICATES REQUIRED INFORMATION</i></td><td align="RIGHT" colspan="6"></td></tr>
+</tbody></table>
+
+<table width="700" cellspacing="1" cellpadding="1" border="0">
+  <tbody><tr>
+    <td><a name="Invoice"><h2>INVOICE SERVICES</h2></a></td>
+
+    <td align="center">
+   	  
+   	</td>
+
+  </tr>
+</tbody></table>
+
+<a name="Services"></a><table width="550" cellspacing="0" cellpadding="0" border="0">
+  
+  <tbody><tr><td colspan="2"><hr noshade="noshade" /></td></tr>
+</tbody></table>
+
+<table width="550" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="2">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td>DATE OF SERVICE<br /><input type="TEXT" onchange="checkDOS();checkIOFRule();checkIOFURule()" maxlength="10" size="15" name="enteredDateOfService" /> (MM/DD/YYYY) </td>
+<td>  </td>
+<td><input type="CHECKBOX" value="Y" name="WellVisionGiven" />
+I attest I will provide the patient/guardian with a <a href="Javascript: parent.popSelect(parent.guiPage.document.rde1invoice,'/idc/html/rde1wvssdef.htm')">VSP Savings Statement</a>.   
+</td>
+</tr>
+</tbody></table></td></tr>
+<tr><td>EXAM TYPE<br /><select onchange="checkExam(document.rde1invoice)" name="emEntered">
+<option selected="selected"></option>
+<option value="92002">92002 - New Patient - Intermediate Exam</option>
+<option value="92004">92004 - New Patient - Comprehensive Exam</option>
+<option value="92012">92012 - Existing Patient - Intermediate Exam</option>
+<option value="92014">92014 - Existing Patient - Comprehensive Exam</option>
+<option value="S0620">S0620 - Routine ophthalmological examination including refraction; new patient</option>
+<option value="S0621">S0621 - Routine ophthalmological examination including refraction; existing patient</option>
+<option value=""></option>
+<option value="99201">99201 - New Patient - Problem focused exam - straightforward medical decision</option>
+<option value="99202">99202 - New Patient - Expanded problem focused exam - an expanded problem</option>
+<option value="99203">99203 - New Patient - Detailed exam - straightforward medical decision</option>
+<option value="99204">99204 - New Patient - Comprehensive exam - medical decision of low complexity</option>
+<option value="99205">99205 - New Patient - Comprehensive exam - medical decision of high complexity</option>
+<option value="99211">99211 - Existing Patient - Problem focused exam; straightforward medical decision</option>
+<option value="99212">99212 - Existing Patient - Expanded problem focused exam - an expanded problem</option>
+<option value="99213">99213 - Existing Patient - Detailed exam - straightforward medical decision</option>
+<option value="99214">99214 - Existing Patient - Comprehensive exam - medical decision of low complexity</option>
+<option value="99215">99215 - Existing Patient - Comprehensive exam - medical decision of high complexity</option>
+</select>
+</td>
+<td align="BOTTOM">
+<input type="CHECKBOX" onclick="clickRefraction()" value="Y" name="ExamIsRefraction" />REFRACTION<br />
+       DILATION PERFORMED: </td><td><br /><select name="ExamIsDilated">
+<option value=""> </option>
+<option value="Y">Yes</option>
+<option value="N">No-Reason On File</option>
+</select></td>
+</tr>
+</tbody></table>
+
+<table width="550" cellspacing="0" border="0">
+<tbody><tr><td>
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="1"></td><td width="100"></td><td width="50"></td><td width="250"></td><td width="150"></td></tr>
+ <tr><td width="1"><font color="#FF0000"><b>*</b></font></td><td width="100"><b>DOCTOR </b></td>
+ <td colspan="2"><select name="doctorSelected">
+<option value=" "> </option>
+<option value="1720067333:330484151:225272657:PARASTOU:ABEDI">330484151 - PARASTOU ABEDI</option>
+<option value="1467431072:330484151:578766496:SHAHLA:ABEDI">330484151 - SHAHLA ABEDI</option>
+<option value=""> </option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+</select></td>
+<td></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+
+<table width="550" cellspacing="0" border="0">
+<tbody><tr><td>
+<input type="checkbox" onclick="clickLensService();if(!document.forms[0].lensService.checked) clrLensData();disableLabFields()" value="Y" name="lensService" /><font color="#FF0000"><b>*</b></font> LENS
+<input type="checkbox" onclick="clickFrameIndicator();if(!document.forms[0].frameService.checked) { Eyefinity.ModalSearch.clearSelection(); disableLabFields(); }" value="Y" name="frameService" /><font color="#FF0000"><b>*</b></font> FRAME
+</td></tr>
+</tbody></table>
+
+<table width="700" cellspacing="0" border="0">
+  <tbody><tr><td style="font-size:8pt;text-align:left;color:red;">
+	  <script type="text/javascript">
+	  if (isHFgrp()) {
+		  document.writeln('If the patient selected a frame that\'s not included in the Healthy Families Collection, &lt;I&gt;&lt;B&gt;uncheck the box below&lt;/B&gt;&lt;/I&gt; and complete the required information.')
+	  }
+       </script>
+  </td></tr>
+</tbody></table>
+
+<div style="display: none" id="hfchkbox">
+  <table width="550" cellspacing="0" border="0">
+    <tbody><tr><td>
+      <input type="checkbox" onclick="setHFoptions();" value="Y" name="hfInKitClm" /><font color="#FF0000"><b>*</b></font> Patient selected a frame from the Healthy Families Collection
+    </td></tr>
+  </tbody></table>
+</div>
+
+<p>
+</p><table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td><a name="Lens"><h2>LENS</h2></a></td></tr>
+<tr><td colspan="2"><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table width="550" cellspacing="0" border="0">
+
+<tbody><tr><td colspan="2">
+		<div style="display: block;" id="iofDiv">
+ 		<table width="550" cellspacing="0" border="0">
+ 		<tbody><tr><td width="7"><font color="#FF0000"><b>*</b></font></td><td width="100">LENS FINISHING</td><td width="190">
+			<select onchange="checkIOFRule();checkIOFURule();turnOnLensService();buildLensStyleList(document.rde1invoice);" name="lensFinishing">
+			<option value="lab">Lab Finishing</option>
+			<option value="stock">In-Office Stock Lenses</option>
+			</select>
+		</td><td><br /></td><td><br /></td></tr>
+ 		</tbody></table>
+		</div>
+</td></tr>
+
+<script type="text/javascript">
+	controlLabFinishing();
+</script>
+
+<tr><td width="400">
+ <table width="550" cellspacing="0" border="0">
+ <tbody><tr><td width="7"><font color="#FF0000"><b>*</b></font></td><td width="100">VISION TYPE </td>
+ <td width="190">
+ <select onchange="if(document.rde1invoice.lensType.selectedIndex!=0) turnOnLensService();buildLensStyleList(document.rde1invoice);changeDefaultPDType();clearBinocularValues(document.rde1invoice);CheckLensType(document.rde1invoice);disableLabFields()" name="lensType">
+ <option value=""></option>
+ <option value="0">Single Vision</option>
+ <option value="1">Bifocal</option>
+ <option value="2">Trifocal</option>
+ <option value="4">Double</option>
+ <option value="5">Progressive</option>
+ <option value="7">Lenticular Single Vision</option>
+ <option value="8">Lenticular Bifocal</option>
+ <option value="9">Lenticular Trifocal</option>
+ <option value="3">Quad</option>
+ <option value="6">Near Variable Focus</option>
+ </select>
+ </td>
+ <td rowspan="2">
+  <!--a href="/eyefinity/html/esp_kodakcamera.htm" target="w_kodakpromo">
+   <img src="/eyefinity/images/kodakpromo.gif" alt="Free Kodak Camera" border="0">
+  </a-->
+ </td>
+
+ </tr>
+ <tr><td><font color="#FF0000"><b>*</b></font></td><td>MATERIAL </td><td><select onchange="if(document.rde1invoice.lensMatType.selectedIndex!=0) turnOnLensService();buildLensStyleList(document.rde1invoice);limitMaterialOptionsRde1(document.rde1invoice.lensMatType);disableLabFields();CheckMaterials(document.rde1invoice)" name="lensMatType">
+ <option value=""></option>
+ <option value="0">Glass</option>
+ <option value="4">Glass Hi Index</option>
+ <option value="2">Plastic</option>
+ <option value="5">Plastic Mid Index</option>
+ <option value="3">Plastic Hi Index</option>
+ <option value="1">Polycarbonate</option>
+ <option value="6">Trivex</option>
+ </select></td><td><br /></td><td><br /></td></tr>
+ <tr><td><font color="#FF0000"><b>*</b></font></td><td>LENS </td><td colspan="3"><select onchange="if (document.rde1invoice.miscOption_0.selectedIndex!=0)checkARInherentLenses();checkCustomizable();limitDefinityLabs(document.rde1invoice);limitSelectOption(document.rde1invoice.lensStyle)" name="lensStyle">
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <option value=""></option><option value="1375" iscustomizable="N">C 25 - Clear</option><option value="1377" iscustomizable="N">C 28 - Clear</option><option value="1378" iscustomizable="N">C 28 - Photo Brown Extra</option><option value="110" iscustomizable="N">Flat Top 22 - Clear</option><option value="111" iscustomizable="N">Flat Top 22 - Photo Gray Extra</option><option value="122" iscustomizable="N">Flat Top 25 - Clear</option><option value="132" iscustomizable="N">Flat Top 25 - Photo Brown Extra</option><option value="135" iscustomizable="N">Flat Top 25 - Photo Gray Extra</option><option value="8162" iscustomizable="N">Flat Top 25 - Photo Gray Thin &amp; Dark</option><option value="125" iscustomizable="N">Flat Top 25 - Gray 3</option><option value="131" iscustomizable="N">Flat Top 25 - Pink 1</option><option value="967" iscustomizable="N">Flat Top 28 - Clear</option><option value="8152" iscustomizable="N">Flat Top 28 - Autumn Gold</option><option value="146" iscustomizable="N">Flat Top 28 - Photo Brown Extra</option><option value="142" iscustomizable="N">Flat Top 28 - Photo Gray Extra</option><option value="8163" iscustomizable="N">Flat Top 28 - Photo Gray Thin &amp; Dark</option><option value="8164" iscustomizable="N">Flat Top 28 - Photosun 2</option><option value="1793" iscustomizable="N">Flat Top 28 - Polarized Brown C</option><option value="1743" iscustomizable="N">Flat Top 28 - Polarized Gray C</option><option value="154" iscustomizable="N">Flat Top 28 - Gray 1</option><option value="143" iscustomizable="N">Flat Top 28 - Gray 2</option><option value="137" iscustomizable="N">Flat Top 28 - Gray 3</option><option value="140" iscustomizable="N">Flat Top 28 - Green 3</option><option value="147" iscustomizable="N">Flat Top 28 - Pink 1</option><option value="148" iscustomizable="N">Flat Top 28 - Pink 2</option><option value="150" iscustomizable="N">Flat Top 28 - Tan 3</option><option value="969" iscustomizable="N">Flat Top 35 - Clear</option><option value="157" iscustomizable="N">Flat Top 35 - Photo Brown Extra</option><option value="156" iscustomizable="N">Flat Top 35 - Photo Gray Extra</option><option value="159" iscustomizable="N">Flat Top 35 - Gray 3</option><option value="163" iscustomizable="N">Flat Top 35 - Pink 1</option><option value="162" iscustomizable="N">Flat Top 35 - Pink 2</option><option value="AA17" iscustomizable="Y">Proprietary Frame Mounting - Other</option><option value="A9FA" iscustomizable="Y">Proprietary Genuine Brand Lens &amp; Frame - Other</option><option value="986" iscustomizable="N">Round Seg 22 - Clear</option><option value="174" iscustomizable="N">Round Seg 22 - Photo Brown Extra</option><option value="178" iscustomizable="N">Round Seg 22 - Photo Gray Extra</option><option value="176" iscustomizable="N">Round Seg 22 - Gray 3</option><option value="995" iscustomizable="N">Round Seg 25 - Clear</option><option value="187" iscustomizable="N">Round Seg 25 - Photo Brown Extra</option><option value="186" iscustomizable="N">Round Seg 25 - Photo Gray Extra</option><option value="188" iscustomizable="N">Round Seg 25 - Gray 3</option></select></td></tr>
+
+ <tr><td></td><td> </td><td colspan="3"><input type="HIDDEN" maxlength="30" size="22" name="otherLens" /></td></tr>
+ <tr>
+   <td></td>
+   <td><label for="whichLenses">ONE LENS</label></td>
+   <td colspan="3"><select name="whichLenses" id="whichLenses">
+   	<option value=""></option>
+   	<option value="3">Right Lens Only</option>
+   	<option value="4">Left Lens Only</option>
+   </select></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td><label for="balanceLens">BALANCE LENS</label></td>
+   <td colspan="3"><select name="balanceLens" id="balanceLens">
+   	<option value="1"></option>
+   	<option value="2">Right Is Balance</option>
+   	<option value="3">Left Is Balance</option>
+   </select></td>
+ </tr>
+</tbody></table>
+</td>
+<td width="95" valign="BOTTOM" align="RIGHT">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="10"></td><td></td></tr>
+ <tr><td align="CENTER" colspan="2">BASE CURVE</td></tr>
+ <tr><td>R </td><td><input type="TEXT" maxlength="5" size="6" name="baseCurveRight" /></td></tr>
+ <tr><td>L </td><td><input type="TEXT" maxlength="5" size="6" name="baseCurveLeft" /></td></tr>
+ </tbody></table>
+</td>
+</tr>
+</tbody></table>
+<p>
+</p><table cellspacing="0" border="0">
+<tbody><tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="1"></td><td width="100"></td><td width="300"></td></tr><tr>
+ <td width="1"></td><td width="100">BEVEL</td>
+ <td width="200"><select name="bevel">
+ <option value=""></option>
+ <option value="1">1/3 to 2/3</option>
+ <option value="2">50/50</option>
+ <option value="3">Layover</option>
+ <option value="4">Rimless or Flat</option>
+ <option value="6">Hide-a-Bevel</option>
+ </select></td> </tr>
+ <tr><td width="1"></td><td>TINT COLOR </td>
+ <td><select onchange="limitSelectOption(document.rde1invoice.tintColor);CheckTintColor(document.rde1invoice)" name="tintColor" disabled="disabled">
+ <option value=""></option>
+ <option value="Brown 1">Brown 1</option>
+ <option value="Brown 2">Brown 2</option>
+ <option value="Brown 3">Brown 3</option>
+ <option value="Crux A">Crux A</option>
+ <option value="Crux AX">Crux AX</option>
+ <option value="G 15">G 15</option>
+ <option value="Gray 1">Gray 1</option>
+ <option value="Gray 2">Gray 2</option>
+ <option value="Gray 3">Gray 3</option>
+ <option value="Pink 1">Pink 1</option>
+ <option value="Pink 2">Pink 2</option>
+ <option value="Pink 3">Pink 3</option>
+ <option value="Rose 1">Rose 1</option>
+ <option value="Rose 2">Rose 2</option>
+ <option value="Rose 3">Rose 3</option>
+ <option value="other">Other - (Indicate Tint not listed)</option>
+ </select></td></tr>
+ <tr><td width="1"></td><td>TINT NOT LISTED </td><td><input type="text" maxlength="22" size="20" value="" name="otherTint" disabled="disabled" /></td></tr><tr>
+ <td width="1"></td><td>TINT TYPE </td>
+ <td><select onchange="limitSelectOption(document.rde1invoice.tintType);CheckTintType(document.rde1invoice)" id="tintTypeId" name="tintType" disabled="disabled">
+ <option value=""></option>
+ <option value="MM">Plastic Dyes - Solid Pink 1 &amp; 2</option>
+ <option value="MN">Plastic Dyes - Solid (except Pink 1 &amp; 2)</option>
+ <option value="MP">Plastic Dyes - Gradient Color</option>
+ <option value="IM">Dr Tint in-office - Solid Pink 1 &amp; 2</option>
+ <option value="IN">Dr Tint in-office - Solid (except Pink 1 &amp; 2)</option>
+ <option value="IP">Dr Tint in-office - Gradient Color</option>
+ </select></td></tr>
+ </tbody></table></td>
+ <td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="100"></td><td width="100"></td></tr><tr>
+ <td colspan="2">EDGE 
+ <select onchange="limitSelectOption(document.rde1invoice.edge)" name="edge"><option value="">
+ </option><option value="SP01">High Luster Edge Polish</option>
+ <option value="SP04">Roll and High Luster Polish</option>
+ <option value="SQ02">Edge Coating</option>
+ <option value="SQ01">Painted Groove</option>
+ <option value="SR">Facetted lenses</option>
+ <option value="SP03">Standard Finish</option>
+ <option value="SP02">Roll and Standard Finish</option>
+
+ </select> </td></tr>
+ <tr><td><input type="radio" onclick="" value="0" name="sample" disabled="disabled" />NO SAMPLE</td><td><input type="radio" onclick="" value="2" name="sample" disabled="disabled" />MATCH SAMPLE</td></tr>
+ <tr><td><input type="radio" onclick="" value="3" name="sample" disabled="disabled" />LIGHTEN</td><td><input type="radio" onclick="" value="4" name="sample" disabled="disabled" />DARKEN</td></tr>
+ <tr><td align="LEFT" colspan="2">LIGHTEN OR DARKEN BY <input type="text" maxlength="2" size="3" value="" name="tintMatchPercent" input="" disabled="disabled" />%</td></tr>
+ </tbody></table></td>
+</tr>
+</tbody></table>
+<p>
+</p><table cellspacing="0" border="0">
+<tbody><tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="1"></td><td width="100"></td><td width="195"></td></tr>
+ <tr><td width="1"></td><td>A/R COATING </td><td><select onchange="checkARInherentLenses();setDescription(document.rde1invoice.miscOption_0, document.rde1invoice.miscOptionDesc_0);disableLabFields()" name="miscOption_0"><option value=""></option><optgroup label="***AR Coating A***"><option value="QM">Lab Choice (AR Coating A)</option><option value="QM">Other (AR Coating A)</option></optgroup><option value=""></option><optgroup label="***AR Coating B***"><option value="QN">Carat</option><option value="QN">Carat Gold</option><option value="QN">Cobalt AR</option><option value="QN">Crizal Easy UV</option><option value="QN">Endura</option><option value="QN">HiVision</option><option value="QN">Hoya Premium</option><option value="QN">Hoya Premium ViewProtect</option><option value="QN">RF Endura</option><option value="QN">UNITY Classic</option><option value="QN">UNITY Classic UVR</option><option value="QN">Vivix</option><option value="QN">Lab Choice (AR Coating B)</option></optgroup><option value=""></option><optgroup label="***AR Coating C***"><option value="QT">Carat Advantage</option><option value="QT">Carat Advantage Gold</option><option value="QT">Cobalt Plus AR</option><option value="QT">Crizal Alize UV</option><option value="QT">HiVision ViewProtect</option><option value="QT">Kodak CleAR</option><option value="QT">RF Endura EZ</option><option value="QT">Sentinel AR</option><option value="QT">Super HiVision</option><option value="QT">TDN Plus</option><option value="QT">Teflon</option><option value="QT">ULTRA</option><option value="QT">UNITY Plus</option><option value="QT">UNITY Plus UVR</option><option value="QT">Vivix Stainless LUV</option><option value="QT">Xperio UV</option><option value="QT">ZEISS DuraVision Silver</option><option value="QT">Lab Choice (AR Coating C)</option></optgroup><option value=""></option><optgroup label="***AR Coating D***"><option value="QV">Aura</option><option value="QV">Crizal Avance UV</option><option value="QV">Crizal Prevencia</option><option value="QV">Crizal SunShield</option><option value="QV">Glacier Plus UV</option><option value="QV">Kodak Clean'N'CleAR</option><option value="QV">KODAK Clean'N'CleAR UV Lens</option><option value="QV">Natural AR</option><option value="QV">PureCoat</option><option value="QV">Recharge EX3</option><option value="QV">Retinal Bliss DES</option><option value="QV">Retinal Bliss UV</option><option value="QV">Sentinel Plus AR</option><option value="QV">Sentinel Plus UV AR</option><option value="QV">Sharper Image TechShield</option><option value="QV">Super HiVision EX3</option><option value="QV">Super Resistant</option><option value="QV">Super Resistant Blu</option><option value="QV">Teflon Elite</option><option value="QV">UNITY Elite</option><option value="QV">UNITY Elite UVR</option><option value="QV">ZEISS DuraVision BlueProtect</option><option value="QV">ZEISS DuraVision Platinum</option><option value="QV">Zeiss DuraVision Sun</option><option value="QV">Lab Choice (AR Coating D)</option></optgroup></select></td></tr>
+ <tr><td width="1"></td><td>DESCRIPTION </td><td><input type="text" onblur="setListSelection(this, miscOption_0)" maxlength="30" size="31" name="miscOptionDesc_0" />
+</td></tr>
+<tr>
+ <td width="1"></td><td>SCRATCH COATING </td><td><select onchange="setDescription(document.rde1invoice.miscOption_1, document.rde1invoice.miscOptionDesc_1);limitSelectOption(document.rde1invoice.miscOption_1);disableLabFields()" name="miscOption_1" disabled="disabled"><option value=""></option><option value="QQ">Factory Coated</option><option value="QS">Hoya Clarity Shield</option><option value="QS">UNITY HC</option><option value="QS">Foundation XT</option><option value="QS">TD2</option></select></td>
+ <td id="scratchDesc" style="visibility: hidden;"><input type="text" onblur="setListSelection(this, miscOption_1)" maxlength="15" size="16" name="miscOptionDesc_1" disabled="disabled" /></td>
+</tr>
+ <tr><td width="1"></td><td>GLASS COATING </td><td><select name="miscOption_2">
+ <option value=""></option>
+ <option value="MS">Solid Color Coating</option>
+ <option value="MT">Gradient Color Coating</option>
+ </select></td></tr>
+ <tr><td width="1"></td><td>DESCRIPTION </td><td><input type="text" maxlength="10" size="11" name="miscOptionDesc_2" />
+</td>
+</tr>
+ <tr>
+ <td width="1"></td>
+ <!-- When values from this list are modified from the Option Editor this list has to be manually updated in lens.htm, lensg.htm, pvtorderinvoice.htm, and rde1invoice.htm-->
+ <td>MIRROR/SKI COAT </td><td><select onchange="setMirrorOrSkiDesc()" name="miscOption_3">
+  <option value=""></option>
+  <optgroup label="***Gold/Silver Mirror Coating***">
+  <option value="QP">Silver Flash</option>
+  <option value="QP">Gold Flash</option>
+  <option value="QP">Solid Silver Mirror</option>
+  <option value="QP">Solid Gold Mirror</option>
+  <option value="QP">Silver Gradient Mirror</option>
+  <option value="QP">Gold Gradient Mirror</option>
+  <option value=""></option></optgroup>
+  <optgroup label="***Ski/Other Color Mirror Coating***">
+  <option value="QR">Gold Double Gradient</option>
+  <option value="QR">Silver Double Gradient</option>
+  <option value="QR">Blue Flash</option>
+  <option value="QR">Orange Solid Mirror</option>
+  <option value="QR">Green Solid Mirror</option>
+  <option value="QR">Blue Solid Mirror</option>
+  <option value="QR">Red Solid Mirror</option>
+  <option value="QR">Purple Solid Mirror</option>
+  <option value="QR">Pink Solid Mirror</option>
+  <option value="QR">* Other</option></optgroup>
+ </select>
+</td>
+</tr>
+<tr>
+<td width="1"></td>
+ <td id="MirrorOrSkiText" style="visibility: hidden;">DESCRIPTION</td>
+ <td id="MirrorOrSkiDesc" style="visibility: hidden;"><input type="text" maxlength="30" size="30" name="miscOptionDesc_3" /></td>
+</tr>
+</tbody></table>
+</td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td width="100"></td><td width="195"></td></tr>
+ <tr><td>UV </td><td><select name="miscOption_4">
+ <option value=""></option>
+ <option value="SV">UV</option>
+ <option value="IV">Doctor Supplied UV</option>
+ </select></td></tr>
+<tr><td id="uvDesc" style="visibility: hidden;"><input type="text" maxlength="10" size="11" name="miscOptionDesc_4" />
+</td></tr>
+ <tr><td><input type="CHECKBOX" value="SH" name="miscOption_5" />PRESS-ON PRISM </td><td><input type="text" maxlength="10" size="11" name="miscOptionDesc_5" /></td></tr>
+ <tr><td><input type="CHECKBOX" value="SS" name="miscOption_6" />NOSE PADS </td><td><input type="text" maxlength="10" size="11" name="miscOptionDesc_6" /></td></tr>
+ <tr><td><input type="CHECKBOX" value="ST" name="miscOption_7" />SLAB OFF </td><td><input type="text" maxlength="10" size="11" name="miscOptionDesc_7" /></td></tr>
+ <tr><td><br /></td><td><br /></td></tr>
+ <tr><td><br /></td><td><br /></td></tr>
+ <tr><td colspan="2">
+ </td></tr>
+ </tbody></table>
+</td></tr>
+</tbody></table>
+
+<table width="698" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr>
+    <td><a name="Lab"><h2>LAB</h2></a></td>
+</tr>
+</tbody></table>
+
+<table width="698" cellspacing="0" cellpadding="0" border="0">
+  <tbody><tr><td><hr noshade="noshade" /></td></tr>
+</tbody></table>
+
+<div id="selectLabsButtonDiv">
+<table width="550" cellspacing="0" border="0">
+
+<tbody><tr><td style="font-size:8pt;text-align:left;color:red;">
+ <input type="button" onclick="getLabList();" value=" Show Labs " name="showLabs" id="showLabs" />       
+Click on 'Show Labs' to select a lab
+</td></tr>
+
+</tbody></table>
+</div>
+
+<div style="display:none" id="plansLegendDiv">
+
+<table cellspacing="0" border="0">
+  <script type="text/javascript">
+		document.writeln(
+			'&lt;tr&gt;\n' +
+			'  &lt;td width="1"&gt;&lt;/td&gt;\n' +
+			'  &lt;td style="padding-right:0.5em;white-space:nowrap"&gt;PLANS LEGEND&lt;/td&gt;\n' +
+			'  &lt;td colspan="3"&gt;\n' +
+			'    &lt;table cellpadding="0" cellspacing="0" width="0" style="max-width:550px"&gt;\n' +
+			'      &lt;tr&gt;\n' +
+			'        &lt;td&gt;&lt;img src="/preference/images/blueball.gif" alt="" align="middle" width="10" height="10"/&gt;&lt;/td&gt;&lt;td style="font-size:11px"&gt;&amp;nbsp;= VSP CONTRACT LAB &amp;nbsp;&amp;nbsp;&lt;/td&gt;\n' +
+			'        &lt;td&gt;&lt;img src="/preference/images/greenball.gif" alt="" align="middle" width="10" height="10"/&gt;&lt;/td&gt;&lt;td style="font-size:11px"&gt;&amp;nbsp;= VALUE &amp;nbsp;&amp;nbsp;&lt;/td&gt;\n' +
+			'        &lt;td&gt;&lt;img src="/preference/images/orangeball.gif" alt="" align="middle" width="10" height="10"/&gt;&lt;/td&gt;&lt;td style="font-size:11px"&gt;&amp;nbsp;= CAL/RNP/HF &amp;nbsp;&amp;nbsp;&lt;/td&gt;\n' +
+			'        &lt;td&gt;&lt;img src="/preference/images/purpleball.gif" alt="" align="middle" width="10" height="10"/&gt;&lt;/td&gt;&lt;td style="font-size:11px"&gt;&amp;nbsp;= RNP/ADV EXAM+ &amp;nbsp;&amp;nbsp;&lt;/td&gt;\n' +
+			'        &lt;td&gt;&lt;img src="/preference/images/circle.gif" alt="" align="middle" width="10" height="10"/&gt;&lt;/td&gt;&lt;td style="font-size:11px"&gt;&amp;nbsp;= NOT OFFERED &amp;nbsp;&amp;nbsp;&lt;/td&gt;\n' +
+			'      &lt;/tr&gt;\n' +
+			'    &lt;/table&gt;\n' +
+			'  &lt;/td&gt;\n' +
+			'&lt;/tr&gt;'
+		);
+  </script><tbody><tr>
+  <td width="1"></td>
+  <td style="padding-right:0.5em;white-space:nowrap">PLANS LEGEND</td>
+  <td colspan="3">
+    <table width="0" cellspacing="0" cellpadding="0" style="max-width:550px">
+      <tbody><tr>
+        <td><img width="10" height="10" align="middle" alt="" src="/preference/images/blueball.gif" /></td><td style="font-size:11px"> = VSP CONTRACT LAB   </td>
+        <td><img width="10" height="10" align="middle" alt="" src="/preference/images/greenball.gif" /></td><td style="font-size:11px"> = VALUE   </td>
+        <td><img width="10" height="10" align="middle" alt="" src="/preference/images/orangeball.gif" /></td><td style="font-size:11px"> = CAL/RNP/HF   </td>
+        <td><img width="10" height="10" align="middle" alt="" src="/preference/images/purpleball.gif" /></td><td style="font-size:11px"> = RNP/ADV EXAM+   </td>
+        <td><img width="10" height="10" align="middle" alt="" src="/preference/images/circle.gif" /></td><td style="font-size:11px"> = NOT OFFERED   </td>
+      </tr>
+    </tbody></table>
+  </td>
+</tr>
+
+</tbody></table>
+
+</div>
+
+<table width="550" cellspacing="0" border="0">
+<tbody><tr><td width="1"></td><td style="padding-right:0.5em;white-space:nowrap">SELECT LAB</td><td colspan="3">
+ 	<script type="text/javascript">
+		/* create lab list then override default combobox method in combobox.js for Frame Connect
+		   we can do this as long as this is the only comboBox on the page, if there's more than one, each one will have this behavior */
+		createLabList();
+		Combobox.prototype.doOnSelect = function(force)
+		{
+    		if (this.onSelect &amp;&amp; (force || (this.selectedOption != this._lastoption)))
+    		{
+        		this._lastoption = this.selectedOption;
+        		this.onSelect();
+				Eyefinity.ebuyExpress.checkEbuyExpress();
+				displayNonIdcLabField();
+    		}
+		}
+	</script><div name="labList_cbxDiv" id="labList_cbxDiv"><input width="500" name="labList" id="labList_cbxInput" maxlength="70" tabindex="0" autocomplete="off" style="padding-left: 0px; height: 18px; width: 495px;" disabled="disabled" /><img id="labList_cbxButton" name="labList_cbxButton" src="/eyefinity/images/cbxdisable.gif" style="display: inline; position: absolute; width: 17px; left: 567px; top: 741px;" /><div id="labList_cbxSelect" style="display: none; position: absolute; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color silver silver; background-color: white; z-index: 999; width: 498px; overflow-x: hidden; overflow-y: scroll; left: 85px; top: 762px; height: 80px;"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr onmousedown="cbxList['labList'].cbxoOnMouseDown(0)" onmouseout="cbxList['labList'].cbxoOnMouseOut(0)" onmouseover="cbxList['labList'].cbxoOnMouseOver(0)" id="labList_cbxo_0" style="background-color: silver;"><td style="color: black; padding-left: 4px; padding-right: 4px; white-space: nowrap; cursor: default;"> </td></tr><tr onmousedown="cbxList['labList'].cbxoOnMouseDown(1)" onmouseout="cbxList['labList'].cbxoOnMouseOut(1)" onmouseover="cbxList['labList'].cbxoOnMouseOver(1)" id="labList_cbxo_1" style="background-color: white;"><td style="color: black; padding-left: 4px; padding-right: 4px; white-space: nowrap; cursor: default;"><table cellspacing="0" cellpadding="0" style="border-top:1px solid #999999;table-layout:fixed;width:470px"><tbody><tr><td style="color:black;width:220px">VSPOne Sacramento</td><td style="color:black;width:250px">CA - Folsom</td></tr></tbody></table></td></tr><tr onmousedown="cbxList['labList'].cbxoOnMouseDown(2)" onmouseout="cbxList['labList'].cbxoOnMouseOut(2)" onmouseover="cbxList['labList'].cbxoOnMouseOver(2)" id="labList_cbxo_2"><td style="color: black; padding-left: 4px; padding-right: 4px; white-space: nowrap; cursor: default;"><table cellspacing="0" cellpadding="0" style="border-top:1px solid #999999;table-layout:fixed;width:470px"><tbody><tr><td style="color:black;width:220px">VSPOne San Diego</td><td style="color:black;width:250px">CA - Vista</td></tr></tbody></table></td></tr><tr onmousedown="cbxList['labList'].cbxoOnMouseDown(3)" onmouseout="cbxList['labList'].cbxoOnMouseOut(3)" onmouseover="cbxList['labList'].cbxoOnMouseOver(3)" id="labList_cbxo_3"><td style="color: black; padding-left: 4px; padding-right: 4px; white-space: nowrap; cursor: default;"><table cellspacing="0" cellpadding="0" style="border-top:1px solid #999999;table-layout:fixed;width:470px"><tbody><tr><td style="color:black;width:220px">Non IDC Lab Invoice</td><td style="color:black;width:250px"> </td></tr></tbody></table></td></tr></tbody></table></div></div>
+</td></tr>
+<tr><td width="1"><font color="#FF0000"><b>*</b></font></td><td>LAB</td><td>
+	<input type="TEXT" onblur="selectLab(document.rde1invoice);limitDefinityLabs(document.rde1invoice);displayNonIdcLabField();" maxlength="4" size="5" name="labId" disabled="disabled" />
+</td><td colspan="2">
+
+</td></tr>
+<tr>
+	<td style="padding-top:0.5em" colspan="5">
+		<!-- Messaging placeholder. The lab routing "Why has my lab list changed?" message used to be here. -->
+	</td>
+</tr>
+<!--  </TABLE>   -->
+
+</tbody></table>
+
+<div id="nonIdcLabField" style="display: none;">
+    <table width="700" cellspacing="1" cellpadding="1" border="0">
+        <tbody><tr> 
+			<td>Reason for selecting Non IDC Lab  
+			<select name="reasonForNonIdcLab">
+				<option value=""></option>
+				<option value="Loss_theft_breakage">Loss, theft, or breakage - no substitute pair</option>
+				<option value="work_or_school">Immediate function for work/school - no substitute pair</option>
+				<option value="Jeopardized_Safety_and_well_being">Jeopardized Safety and well-being - no substitute pair</option>
+			</select>
+			</td>
+		</tr>        
+    </tbody></table>
+</div>
+
+<p>
+</p><table width="550" cellspacing="1" cellpadding="1" border="0">
+<tbody><tr><td><a name="Prescription"><h2>PRESCRIPTION</h2></a></td></tr>
+<tr><td colspan="2"><hr noshade="noshade" /></td></tr>
+</tbody></table>
+<table cellspacing="0" border="0">
+<tbody><tr><td valign="TOP" align="CENTER">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td valign="TOP" colspan="2">
+  <table width="290" cellspacing="0" border="0">
+   <tbody><tr><td></td><td rowspan="3" colspan="3">
+    <table cellspacing="0" border="0">
+     <tbody><tr><td><font color="#FF0000"><b>*</b></font> SPHERE</td><td>CYLINDER</td><td>AXIS</td></tr>
+     <tr><td><input size="6" maxlength="6" value="" name="rSphere" /></td><td><input size="6" maxlength="6" value="" name="rCyl" /></td><td><input size="6" maxlength="6" value="" name="rAxis" /></td></tr>
+     <tr><td><input size="6" maxlength="6" value="" name="lSphere" /></td><td><input size="6" maxlength="6" value="" name="lCyl" /></td><td><input size="6" maxlength="6" value="" name="lAxis" /></td></tr>
+    </tbody></table></td>
+    <td rowspan="3">
+    <table cellspacing="0" border="0">
+        <tbody><tr><td>ADD</td></tr>
+        <tr><td><input size="6" maxlength="5" value="" name="rAdd" /></td></tr>
+        <tr><td><input size="6" maxlength="5" value="" name="lAdd" /></td></tr>
+    </tbody></table></td></tr>
+    <tr><td>R </td></tr>
+    <tr><td>L </td></tr>
+
+   <tr>
+   	 <td></td>
+
+   	 <td align="left" colspan="3"><input type="CHECKBOX" value="100" style="visibility:hidden" name="eyeMeasureDeviceId" id="eyeMeasureDeviceIdId" />
+	 <label for="eyeMeasureDeviceIdId" style="visibility:hidden" id="eyeMeasureDeviceDesc">i.Scription Rx by ZEISS</label></td>
+
+   	 <!-- EyeMeasureDevice fields
+        <TD COLSPAN=3 ALIGN="left"><INPUT id="eyeMeasureDeviceIdId" TYPE="CHECKBOX" NAME="eyeMeasureDeviceId" VALUE=""/>
+        <LABEL id="eyeMeasureDeviceDesc" for="eyeMeasureDeviceIdId" /></TD>
+		-->
+        <td><br /></td>
+   </tr>
+
+
+   <tr><td><br /></td><td align="left" colspan="2"><input type="CHECKBOX" onclick="setSphere(document.forms[0])" value="Y" name="plano" id="planoInput" /><label for="planoInput">Plano Lenses</label></td><td><br /></td><td><input type="HIDDEN" value="0.0" name="diopterChange" /></td></tr>
+ </tbody></table>
+ </td>
+ </tr>
+</tbody></table>
+</td>
+<td valign="TOP">
+ <table width="290" cellspacing="0" border="0">
+ <tbody><tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+  </table><table cellspacing="0" border="0">
+   <tbody><tr><td width="150"></td><td></td><td></td><td></td></tr>
+   <tr><td><br /></td><td><br /></td><td align="CENTER"><font color="#FF0000"><b> *</b></font> DISTANT</td><td align="CENTER">NEAR</td></tr>
+   <tr>
+    <td colspan="3">
+     <table cellspacing="0" border="0">
+      <tbody><tr><td width="150" valign="BOTTOM"><input type="radio" onclick="clearMonocularValues(document.rde1invoice)" value="1" name="pdType" />BINOCULAR PD  </td><td width="15"> </td><td><input size="5" maxlength="4" value="" name="dist" /></td></tr>
+     </tbody></table></td>
+    <td>
+    <table cellspacing="0" border="0">
+     <tbody><tr><td><input size="5" maxlength="4" value="" name="near" /></td></tr>
+    </tbody></table></td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    <table cellspacing="0" border="0">
+     <tbody><tr><td width="150" valign="BOTTOM"><input type="radio" onclick="clearBinocularValues(document.rde1invoice)" value="2" name="pdType" />MONOCULAR PD  </td><td width="15">R </td><td><input size="5" maxlength="4" value="" name="rDist" /></td></tr>
+     <tr><td valign="TOP" align="CENTER"><font size="-1">( to center of bridge )  </font></td><td>L </td><td><input size="5" maxlength="4" value="" name="lDist" /></td></tr>
+    </tbody></table>
+    </td>
+    <td>
+    <table cellspacing="0" border="0">
+     <tbody><tr><td><input size="5" maxlength="4" value="" name="rNear" /></td></tr>
+     <tr><td><input size="5" maxlength="4" value="" name="lNear" /></td></tr>
+     </tbody></table>
+    </td>
+   </tr>
+  </tbody></table>
+  </td></tr></tbody></table>
+ </td></tr>
+ </tbody></table>
+
+
+
+<p>
+</p><table cellspacing="0" border="0">
+<tbody><tr><td colspan="2">SEGMENT HEIGHT</td><td></td><td colspan="2">OPTICAL CENTER HEIGHT</td></tr>
+<tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td><input type="radio" onclick="" value="1" name="seg" />BOTTOM OF FRAME</td></tr>
+ <tr><td><input type="radio" onclick="" value="2" name="seg" />GEOMETRIC CENTER</td></tr>
+ </tbody></table>
+</td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td>R </td><td><input size="6" maxlength="5" value="" name="rSeg" /></td></tr>
+ <tr><td>L </td><td><input size="6" maxlength="5" value="" name="lSeg" /></td></tr>
+ </tbody></table>
+</td>
+<td width="125"></td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td><input type="radio" onclick="" value="1" name="opt" />BOTTOM OF FRAME</td></tr>
+ <tr><td><input type="radio" onclick="" value="2" name="opt" />GEOMETRIC CENTER</td></tr>
+ </tbody></table>
+</td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td align="RIGHT">R </td><td><input size="6" maxlength="5" value="" name="rOpt" /></td></tr>
+ <tr><td align="RIGHT">L </td><td><input size="6" maxlength="5" value="" name="lOpt" /></td></tr>
+ </tbody></table>
+</td></tr>
+</tbody></table>
+<p>
+</p><table cellspacing="0" border="0">
+<tbody><tr><td>HORIZONTAL PRISM</td><td></td><td>VERTICAL PRISM</td><td></td><td>SAFETY THICKNESS</td>
+</tr><tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td>R </td><td><input size="6" maxlength="5" value="" name="rHoriz" /></td><td><input type="radio" onclick="" value="1" name="rHorizD" />IN</td><td><input type="radio" onclick="" value="2" name="rHorizD" />OUT</td></tr>
+ <tr><td>L </td><td><input size="6" maxlength="5" value="" name="lHoriz" /></td><td><input type="radio" onclick="" value="1" name="lHorizD" />IN</td><td><input type="radio" onclick="" value="2" name="lHorizD" />OUT</td></tr>
+ </tbody></table>
+</td>
+<td width="55"></td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td align="RIGHT">R </td><td><input size="6" maxlength="5" value="" name="rVert" /></td><td><input type="radio" onclick="" value="1" name="rVertD" />UP</td><td><input type="radio" onclick="" value="2" name="rVertD" />DOWN</td></tr>
+ <tr><td align="RIGHT">L </td><td><input size="6" maxlength="5" value="" name="lVert" /></td><td><input type="radio" onclick="" value="1" name="lVertD" />UP</td><td><input type="radio" onclick="" value="2" name="lVertD" />DOWN</td></tr>
+ </tbody></table>
+</td>
+<td width="30"></td>
+<td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td><select id="thicknessTypeId" name="thicknessType">
+ <option value=""></option>
+  <option value="3">Basic Impact 3.0 monogram lenses</option>
+  <option value="2">High Impact 2.0 monogram lenses</option>
+  <option value="4">Non-Industrial 3.0 not monogrammed</option>
+ </select></td></tr>
+ <tr><td>SPECIFIED THICKNESS <input type="text" maxlength="3" size="4" value="" id="thicknessId" name="thickness" /></td></tr>
+ </tbody></table>
+</td>
+
+
+<td width="55"></td>
+</tr></tbody></table><br /><br /><table cellspacing="0" border="0" id="customMeasurements" style="display: none;">
+
+<tbody><tr><td>CUSTOMIZED PROGRESSIVE MEASUREMENTS</td>
+</tr><tr><td valign="TOP">
+ <table cellspacing="0" border="0">
+ <tbody><tr><td>FRAME WRAP <br /><span style="font-size:10px;position:relative;top:-3px;">(in degrees)</span></td><td><input size="10" maxlength="6" value="" id="wrapAngleId" name="wrapAngle" /></td><td>      PANTOSCOPIC TILT <br /><span style="font-size:10px;position:relative;top:-3px;">      (in degrees)</span></td><td><input size="10" maxlength="6" value="" id="pantoscopicTiltId" name="pantoscopicTilt" /></td><td>      VERTEX <br /><span style="font-size:10px;position:relative;top:-3px;">      (in millimeters)</span></td><td><input size="10" maxlength="6" value="" id="vertexId" name="vertex" /></td></tr>
+ <tr></tr>
+ </tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<!-- EasyFind Frame Search -->
+<div id="form" class="eyeEasyFind form">
+   <div id="EasyFindHeader">
+      <table width="700" cellspacing="1" cellpadding="1" border="0">
+        <tbody><tr><td><a name="Frame"><h2>FRAME</h2></a></td></tr>
+        <tr><td colspan="2"><hr noshade="noshade" /></td></tr>
+      </tbody></table>
+   </div>
+
+   <table width="100%" border="0">
+     <tbody><tr>
+	      <td align="left" style="visibility: hidden; color:red;" id="protecframe_msg" colspan="2"></td>
+     </tr>
+      <tr>
+         <td>
+			   <div id="frameSupplier">
+			      <label for="frameSupplierSelect"><b>Supplier:</b></label>
+			      <select onchange="frameSupplierOnChange(document.rde1invoice.frameSupplier.selectedIndex, document.rde1invoice); Eyefinity.ebuyExpress.checkEbuyExpress();" id="frameSupplierSelect" name="frameSupplier">
+			         <option></option>
+			         <option value="3">Doctor Supplied - To Come</option>
+			         <option value="4">Patient Supplied - To Come</option>
+			         <option value="2">Lab Supplied</option>
+			         <option value="1">Lenses Only</option>
+			      </select>
+			   </div>
+         </td>
+         <td align="right">
+			   <div id="frameSearch">
+			      <label for="frameQueryInput">Frame:</label>
+			      <input onfocus="if(typeof(this.hasInput) == 'undefined') { this.value=''; this.hasInput = 'true'}" size="50" value="Enter UPC or Collection and Model Information" id="frameQueryInput" name="frameQuery" />
+			      <input type="button" value="Search" onclick="return Eyefinity.ModalSearch.doSearch(this);" id="frameQueryBtn" />
+			      <a onclick="frameSearchHelp();return false;" href="#">Help</a>
+			   </div>
+         </td>
+      </tr>
+   </tbody></table>
+
+    <div class="eyeEasyFindSelection selection" id="selectionDetail">
+        <table class="data"><tbody><tr><td><table><tbody><tr><td id="frameImg"><img src="https://secureb-vmeacpt1.eyefinity.com/darwin/images/general/no_image_sm.gif" onerror="Eyefinity.ModalSearch.setImagePlaceholder(this);" /><div>Selected color may not match displayed image</div><button onclick="Eyefinity.ModalSearch.clearSelection();" class="actionButton primary" id="removeFrame" type="button">Remove Frame</button><button onclick="Eyefinity.ModalSearch.changeSelection();" class="actionButton" id="editManually" type="button">Edit Manually</button></td></tr></tbody></table></td><td><table><tbody><tr><td class="key fd_mfgName"><span>*</span>Manufacturer:</td><td class="value fd_mfgName">OPTIMODE INTERNATIONAL</td><td class="key fd_color"><span>*</span>Color:</td><td class="value fd_color clearing">YELLOW/SATIN GOLD</td><td class="key fd_eyeSize"><span>*</span>Eye Size:</td><td class="value fd_eyeSize clearing">53</td></tr><tr><td class="key fd_collectionName"><span>*</span>Collection:</td><td class="value fd_collectionName">OPTIMODE COLLECTION</td><td class="key fd_temple"><span>*</span>Temple:</td><td class="value fd_temple clearing">135</td><td class="key fd_b optional">B:</td><td class="value fd_b">37.8</td></tr><tr><td class="key fd_model"><span>*</span>Model:</td><td class="value fd_model">OPTIMODE 162</td><td class="key fd_mappedShapeId optional caution">Shape:</td><td class="value fd_mappedShapeId mapped caution"></td><td class="key fd_ed optional">ED:</td><td class="value fd_ed">55.4</td></tr><tr><td class="key fd_upc optional">UPC:</td><td class="value fd_upc"></td><td class="key fd_mappedMaterialTypeId"><span>*</span>Material:</td><td class="value fd_mappedMaterialTypeId mapped">Metal</td><td class="key fd_dbl"><span>*</span>DBL:</td><td class="value fd_dbl">16.0</td></tr><tr><td class="key fd_sku optional">SKU:</td><td colspan="3" class="value fd_sku"></td></tr><tr><td colspan="2"><input type="hidden" maxlength="8" size="10" value="undefined" name="frameCostOrig" /></td></tr><tr><td class="key optional"><span>*</span>WHOLESALE<br />FRAME COST:</td><td colspan="2"><input type="text" onblur="checkFrameAmount(this)" maxlength="8" size="10" value="10.00" name="frameCostUser" /></td></tr></tbody></table></td></tr></tbody></table>
+    </div>
+</div>
+
+
+<div class="eyeEasyFind form">
+
+
+
+	<div id="ebuyExpress">
+         <div class="logo">
+           <img alt="eBuy Express" src="/eyefinity/images/ebx_tab_dark.gif" />
+         </div>
+         <div id="ebuy_DEFAULT" class="state active">
+            <h2><a onclick="return Eyefinity.ebuyExpress.help('LFFO_private')" href="#">Learn</a> how to order frames from this form with eBuy <em>Express</em>.</h2>
+	      </div>
+
+	      <div id="ebuy_PROCESSING" class="state">
+	        <h2>Searching for your frame in eBuy <em>Express</em> <img alt="Loading" src="/eyefinity/images/lffo_loading.gif" style="vertical-align: middle;" /></h2>
+	      </div>
+
+	      <div id="ebuy_ORDER" class="state">
+	        <h2>Reorder this frame from <span class="manufacturerName">the manufacturer</span> now using eBuy <em>Express</em>.</h2>
+	        <p>
+	           <input type="button" value="Ship to Lab" onclick="setFrameConnectOrder(false);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'PATIENT', 'VSP');" />
+	           <input type="button" value="Ship to Practice" onclick="setFrameConnectOrder(false);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'STOCK', 'VSP');" />
+	           <a onclick="return Eyefinity.ebuyExpress.help('LFFO_private')" href="#">How to use this feature</a>
+           </p>
+	      </div>
+		  <div id="ebuy_NOLABORDER" class="state">
+	        <h2>Reorder this frame from <span class="manufacturerName">the manufacturer</span> now using eBuy <em>Express</em>.</h2>
+	        <p>
+	           <input type="button" disabled="disabled" value="Ship to Lab" onclick="setFrameConnectOrder(false);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'PATIENT', 'VSP');" />
+	           <input type="button" value="Ship to Practice" onclick="setFrameConnectOrder(false);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'STOCK', 'VSP');" />
+	           <a onclick="return Eyefinity.ebuyExpress.help('LFFO_private')" href="#">How to use this feature</a><br /><br />
+			   <span style="font-size:9px;font-style:italic;"> <span class="manufacturerName">This manufacturer</span> does not ship to optical labs.</span>
+           </p>
+	      </div>
+
+		  <div style="" id="ebuy_FCORDER" class="state">
+        	<div align="center" style="font-size:14px; position:relative;top:-30px;"><b>This lab order is eligible for the FrameConnect<sup style="position:relative;top:3px;left:1px;font-size:10px;">®</sup> program!</b></div>
+			<table width="100%" cellspacing="0" cellpadding="0" border="0" style="">
+			<tbody><tr>
+				<td width="174"><img width="174" height="24" border="0" style="" alt="" src="/eyefinity/images/frame_connect_lg.gif" /></td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td colspan="2"><img width="16" height="16" border="0" style="position:relative;top:3px;" alt="" src="/eyefinity/images/frame_connect_sm.gif" /> -
+				Receive <b>free shipping</b> to VSP Lab - Sacramento from Marchon by selecting <i>FrameConnect® to Lab</i>.</td>
+			</tr>
+			<tr><td height="20"></td></tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="FrameConnect® to Lab" onclick="setFrameConnectOrder(true);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'PATIENT', 'VSP', '38');" />
+            		<input type="button" value="Ship to Practice" onclick="setFrameConnectOrder(false);return Eyefinity.ebuyExpress.order(document.rde1invoice, 'STOCK', 'VSP', '');" />
+            		<a onclick="return Eyefinity.ebuyExpress.help('LFFO_private','FRAME_CONNECT')" href="#">How to use this feature</a>
+				</td>
+			</tr>
+			</tbody></table>
+		   </div>
+
+			<div id="ebuy_CANCEL" class="state">
+			   <h2>You have canceled your replacement order for the frame above.</h2>
+			   <p>If this was a mistake, <a onclick="Eyefinity.ebuyExpress.checkEbuyExpress();return false;" href="#">please click here to try again</a>.</p>
+			</div>
+
+			<div id="ebuy_THANKS" class="state">
+			   <div onclick="" style="padding: 0 10px 10px 0;" class="fltLeft">
+               <img width="243" height="94" border="0" alt="eBuy Order Basket" src="/eyefinity/images/msgcenter_easyfind.gif" />
+			   </div>
+			   <h2>Your frame order is in the eBuy Order Basket.</h2> <p>To complete this order, please submit it to <span class="manufacturerName">the manufacturer</span> from the Order Basket. Thank you for your frame order.</p>
+			</div>
+
+		    <div id="ebuy_FCTHANKS" class="state">
+			   <div onclick="" style="padding: 0 10px 10px 0; height:145px;" class="fltLeft">
+               	<img width="243" height="94" border="0" alt="eBuy Order Basket" src="/eyefinity/images/msgcenter_easyfind.gif" />
+			   </div>
+			   <img width="174" height="24" border="0" style="position:relative;top:3px;" alt="" src="/eyefinity/images/frame_connect_lg.gif" /><br /><br />
+			   <p><b>Your FrameConnect<sup style="position:relative;top:3px;left:1px;font-size:10px;">®</sup> order is in the eBuy Order Basket marked with the FrameConnect icon.</b> <img width="16" height="16" border="0" style="position:relative;top:4px;" alt="" src="/eyefinity/images/frame_connect_sm.gif" /> </p><br />
+			   <p>This frame order will be automatically sent to <span class="manufacturerName">the manufacturer</span> when the Lab Order is submitted.<br /><br />
+			   Thank you for using <b>FrameConnect!</b></p>
+			</div>
+
+			<br class="clrBoth" />
+
+   </div>
+   <div id="frameMandatoryOptions">
+      <h2 style="margin-bottom: 0px;">Lab Special Instructions</h2>
+      <div>
+         <input type="checkbox" value="Y" name="selectLabSpecialInstructions" id="selectLabSpecialInstructions" />
+         <label style="font-style:italic" for="selectLabSpecialInstructions">Selecting special instructions may delay your order. Please enter special instructions only intended for the lab in this field regarding this order.</label>
+      </div>
+
+      <div id="labSpecialInstructionsSection" style="display:none;padding-top:3px">
+         <select name="labSpecialInstructionsOption" id="labSpecialInstructionsOption">
+            <option></option>
+            <option value="backsideArOnly">Backside AR Only</option>
+            <option value="redoOrder">Redo</option>
+            <option value="labSpecialInstructions">Other</option>
+         </select>
+         <span style="display:none" id="labSpecialInstructionsDetails_needByDate">
+            <label for="needByDate" style="display:none">Need by Date</label> <input maxlength="10" style="width:100px" name="needByDate" id="needByDate" /> <span style="font-style:italic">(mm/dd/yyyy)</span>
+         </span><span style="display:none" id="labSpecialInstructionsDetails_redoOrder">
+            <label for="redoOrder">Order</label> <input maxlength="8" style="width:100px" name="redoOrder" id="redoOrder" />
+            <br />						                           
+			<label for="redoReason">Details</label> <input style="width:180px" name="redoReason" id="labSpecialInstructions" />
+         </span><span style="display:none" id="labSpecialInstructionsDetails_labSpecialInstructions">
+            <label for="labSpecialInstructions" style="display:none">Other Instructions</label> <input style="width:180px" name="labSpecialInstructions" id="labSpecialInstructions" />
+         </span>
+      </div>
+   </div>
+
+</div> <!-- END - EasyFind -->
+
+
+</form>
+
+
+<div id="shadowbox_container"><div id="shadowbox_overlay"></div><div id="shadowbox"><div style="" id="shadowbox_title"><div id="shadowbox_title_close"><a onclick="Shadowbox.close()" title="Close" id="shadowbox_nav_close"><span>Close</span></a></div><div id="shadowbox_title_inner"></div></div><div id="shadowbox_body"><div id="shadowbox_body_inner"></div><div id="shadowbox_loading"><div id="shadowbox_loading_indicator"></div><span><a onclick="Shadowbox.close();">Cancel</a></span></div></div><div id="shadowbox_info"><div id="shadowbox_info_inner"><div id="shadowbox_counter"></div><div id="shadowbox_nav"><a onclick="Shadowbox.next()" title="Next" id="shadowbox_nav_next"></a><a onclick="Shadowbox.play()" title="Play" id="shadowbox_nav_play"></a><a onclick="Shadowbox.pause()" title="Pause" id="shadowbox_nav_pause"></a><a onclick="Shadowbox.previous()" title="Previous" id="shadowbox_nav_previous"></a></div><div class="shadowbox_clear"></div></div></div></div></div></body></html>

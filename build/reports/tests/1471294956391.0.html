@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Primary doctor.vsp.com Reports Interface Page</title><script src="/vspdctr/html/jquery.min.js" type="text/javascript"></script><script src="/vspdctr/html/jquery.simplemodal.min.js" type="text/javascript"></script><script language="JavaScript">
+jQuery(window).load(function() 
+{
+	var msgProc = 'ptrec';  
+	if ( msgProc === "ptrec" ) {
+		 $('#progressbar', window.parent.frames[0].document).hide(); 
+		 $('#postloadDiv', window.parent.frames[0].document).show(); 
+		}
+});
+	</script></head>
+
+
+
+
+
+<frameset name="rptFrameSet" border="0" rows="62,*,0">
+<frame scrolling="no" frameborder="no" name="rptTop" marginwidth="0" src="/reports/html/reporttop.jsp?rep=rep&amp;msgProc=ptrec&amp;cache=t&amp;msgProcessor=1&amp;authNum=10410721&amp;phone=9498314144&amp;origSys=C&amp;memberid=302726273030332926&amp;Opas=CA&amp;patRecOnly=true&amp;rep=rep&amp;ns71ss=f&amp;labIdWarning=false&amp;hst=doctor-a1.vsp.com" />
+<frame scrolling="auto" frameborder="no" id="rptPage" name="rptPage" marginwidth="0" src="/servlet/Reports?msgProc=ptrec&amp;msgProcessor=1&amp;authNum=10410721&amp;phone=9498314144&amp;origSys=C&amp;memberid=302726273030332926&amp;Opas=CA&amp;patRecOnly=true&amp;rep=rep&amp;ns71ss=f&amp;labIdWarning=false&amp;hst=doctor-a1.vsp.com&amp;act=/servlet/Reports?" />
+<frame scrolling="no" frameborder="no" name="rptPrint" marginwidth="0" src="/reports/html/reportblank.htm" />
+</frameset>
+</html>
