@@ -1,5 +1,6 @@
 package com.vsp.Mix.Pages.EInsureance;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,18 +34,22 @@ public class CMS1500Page {
     }
 
     public void clickCalculateAndContinueButton(){
+        $(calculateAndContinueButton).waitUntil(Condition.visible,5000);
         $(calculateAndContinueButton).click();
     }
 
     public void selectLensFinishing(String option){
+     $(lensFinishingDropDown).waitUntil(Condition.visible,5000);
      $(lensFinishingDropDown).selectOption(option);
     }
 
     public void selectionVisionType(String option){
+        $(visionTypeDropDown).waitUntil(Condition.visible,5000);
         $(visionTypeDropDown).selectOption(option);
     }
 
     public void selectMaterial(String option){
+        $(materialDropDown).waitUntil(Condition.visible,5000);
         $(materialDropDown).selectOption(option);
     }
 
@@ -60,11 +65,13 @@ public class CMS1500Page {
 //    }
 
     public void setDateOfServiceInput(String date){
+        $(dateOfServiceInput).waitUntil(Condition.visible,5000);
         $(dateOfServiceInput).setValue(date);
         sleep(1000);
     }
 
     public void setRSphereInput(String rsphere){
+        $(rSphereInput).waitUntil(Condition.visible,5000);
         $(rSphereInput).setValue(rsphere);
     }
 
@@ -74,6 +81,7 @@ public class CMS1500Page {
     }
 
     public void setRDistant(String dist){
+        $(rightDistance).waitUntil(Condition.visible,5000);
         $(rightDistance).setValue(dist);
     }
 
