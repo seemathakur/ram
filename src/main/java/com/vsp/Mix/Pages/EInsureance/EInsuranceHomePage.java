@@ -15,7 +15,7 @@ public class EInsuranceHomePage {
 
     public void navigateTo(){
         //TODO need this to be a relative URL not absolute so it can run on different environments
-        open("https://mixed-a1.eyefinity.com/eyefinity/html/eInsurance.htm");
+        open("https://mixed-a8.eyefinity.com/eyefinity/html/eInsurance.htm");
     }
 
     public void enterAuthorizationNumber(String auth){

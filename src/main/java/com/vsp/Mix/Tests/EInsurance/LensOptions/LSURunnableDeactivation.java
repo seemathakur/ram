@@ -87,83 +87,35 @@ public class LSURunnableDeactivation implements Runnable {
                 cms1500Page.selectionVisionType(testRows.get(i).getVisionType());
                 cms1500Page.selectMaterial(testRows.get(i).getMaterial());
 
-
-                String reportPageSource = getWebDriver().getPageSource();
-                Document doc = Jsoup.parse(reportPageSource);
-
-                //Elements options = doc.select("#rde1invoice > form > table:nth-child(35) > tbody > tr:nth-child(3) > td:nth-child(1) > table > tbody > tr:nth-child(3) > td:nth-child(3) > select > option");
-               // Elements options = doc.select(".//*[@id='rde1invoice']/form/table[9]/tbody/tr[2]/td[1]/table/tbody/tr[3]/td[3]/select");
-                Elements arCoatings = doc.select("#rde1invoice>form>table>tbody>tr>td>table>tbody>tr>td>select[name=miscOption_0] > optgroup > option");
-
-//                if(options.size() > 0 ){
-//                    //Checks to see if Lens Style is present in the dropdown
-//                    for (Element option : options) {
-//                        if (option.text().equals(testRows.get(i).getLensStyle())) {
-//                            //check the style codes to see if its not a false positive.
-//                            if (option.val().equals(testRows.get(i).getStyleCode())) {
-//                                //this is bad, return false to fail the test
-//                                lensOptionsTests.postTestResult(new TestResult(false, "Deactivation FAILED and is present for : " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-//                            }
-//                        } else {
-//                            lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-//                        }
-//                    }
-//                } else {
-//                    lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-//                }
-
-                for(Element arCoating : arCoatings){
-                    if(arCoating.text().contains(testRows.get(i).getARDescription())){
-                        lensOptionsTests.postTestResult(new TestResult(false, "Deactivation FAILED and was seen in arCoating dropdown : " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-                    }
-                }
-
-
-                // Boolean elementExists = $$(By.name("lensStyle")).contains(testRows.get(i).getLensStyle());//.size() == 0;
-                SelenideElement dropdown = $(By.name("lensStyle"));
-                Boolean elementExists = $$(By.name("lensStyle")).contains(testRows.get(i).getLensStyle());//;.size() > 0;
-
-                String[] values = $$(By.name("lensStyle")).getTexts();
-                //SelenideElement[] options = $$(By.name("lensStyle")).add();
-
+                // we need to click the drop down as a javascript populates the list when you click it
                 $(By.name("lensStyle")).click();
-                //ElementsCollection col = $$(By.xpath(".//*[@id='rde1invoice']/form/table[9]/tbody/tr[2]/td[1]/table/tbody/tr[3]/td[3]/select"));
-                ElementsCollection col = $$(By.xpath(".//*[@id='rde1invoice']/form/table[9]/tbody/tr[2]/td[1]/table/tbody/tr[3]"));
+
                 String pageSource = getWebDriver().getPageSource();
 
-                String optionVal = "<option value=";
-                String opValCode = "\"" + testRows.get(i).getStyleCode() + "\"";
-                String isCustomizable = " iscustomizable=\"N\">";
+                // we are testing if the Lens Style and its Option Code are BOTH present ; otherwise we might get false positive
+                int indexofOptionCode = pageSource.indexOf(testRows.get(i).getStyleCode());
 
-                String tempVal = optionVal + opValCode + isCustomizable + testRows.get(i).getLensStyle() + "</option>";
-                String tempVal2 = "<option value=\"3718\" iscustomizable=\"N\">Perfection - Clear</option>";
-
-                boolean stringsequal = tempVal.equals(tempVal2);
-
-                if(stringsequal){
-                    //
-                    // assertThat(stringsequal, is(true));
-                    lensOptionsTests.postTestResult(new TestResult(false, "Deactivation FAILED and is present for : " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-                }
-
-
-                pageSource.indexOf(tempVal);
-
-                if(elementExists){
-                    //TODO need to make sure the web element value is not the value on the LSU sheet to ensure not false positive
-
-                    cms1500Page.selectLens(testRows.get(i).getLensStyle());
-                    String value = $(By.name("lensStyle")).getSelectedOption().getValue();
-                    if(value == testRows.get(i).getStyleCode()){
-                        lensOptionsTests.postTestResult(new TestResult(false, "Deactivation FAILED and is present for : " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
-                    } else {
+                if(indexofOptionCode == -1){
+                    // PASS -1 is not found
+                     lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
+                } else {
+                    // note 34 below accounts for the text in between the option code and the closing option bracket so we can get the whole thing
+                    try {
+                        String optionText = pageSource.substring(indexofOptionCode, indexofOptionCode +(34 + testRows.get(i).getLensStyle().toString().length() ) );
+                        if(optionText == null){
+                            // PASS - it was not found
+                            lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
+                        } else if(optionText.contains(testRows.get(i).getLensStyle())){
+                            // FAIL option text and option code were found (avoids false positive when including option code)
+                            lensOptionsTests.postTestResult(new TestResult(false, "Deactivation FAILED and is present for : " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
+                        }
+                    } catch (IndexOutOfBoundsException iOOBE) {
+                        // if the index was out of bounds then this option isn't present
                         lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
                     }
 
-                } else {
-                    lensOptionsTests.postTestResult(new TestResult(true, "Deactivation passed and is not present for:  " + testRows.get(i).getFinishing() +  testRows.get(i).getVisionType() + testRows.get(i).getMaterial() + testRows.get(i).getLensStyle()));
                 }
-                lensOptionsTests.postTestResult(result);
+
             }
 
             Thread.sleep(100);

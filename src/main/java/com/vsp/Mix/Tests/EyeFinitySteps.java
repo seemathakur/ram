@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.is;
 public class EyeFinitySteps {
 
    // private WebDriver driver = null;
-    private static final String URL = "https://mixed-a1.eyefinity.com/eyefinity/html/eyefinity_logon.htm";
+    private static final String URL = "https://mixed-a8.eyefinity.com/eyefinity/html/eyefinity_logon.htm";
     private LogonPage logonPage = page(LogonPage.class);
 
     @Before
@@ -43,8 +43,8 @@ public class EyeFinitySteps {
 
     @When("^A user logs on with <credentials>$")
     public void aUserLogsOnWithUsernameAndPassword(Map<String, String> logons) throws Throwable {
-        String username = logons.get("username").toString();
-        String password = logons.get("password").toString();
+        String username = logons.get("username");
+        String password = logons.get("password");
         logonPage.logon(username,password);
     }
 

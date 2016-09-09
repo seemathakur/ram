@@ -4,6 +4,14 @@ Feature: Lens Option Updates
   As a user of the VSP Online portal.
   I want to be able to validate from a supplied spreadsheet that all options are present.
 
+  Scenario: [0]  Test Setup: Log on and navigate to setup for test
+    Given I navigate to the Eyefinity Logon Portal
+    When A user logs on with <credentials>
+      |username|9498314144|
+      |password|4314|
+    Then I navigate to EInsurance homepage and enter <auth> and click go
+    |auth|10410721|
+
   Scenario: [2] I run the Lens Options Update Additions from excel
     Given I load the excel file <filename>
       |filename|LSUDeactivations.xlsx|
@@ -14,13 +22,7 @@ Feature: Lens Option Updates
 # however be sure to set back to true when done
 # if you are going to submit the code otherwise this will not run on the selenium grid
 
-#  Scenario: [0]  Test Setup: Log on and navigate to setup for test
-#    Given I navigate to the Eyefinity Logon Portal
-#    When A user logs on with <credentials>
-#      |username|9498314144|
-##      |password|4314|
-#    Then I navigate to EInsurance homepage and enter <auth> and click go
-#    |auth|10410721|
+
 
 
 #  Scenario: [1]  Lens Additions

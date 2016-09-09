@@ -4,6 +4,7 @@ import com.vsp.Mix.Pages.EInsureance.CMS1500Page;
 import com.vsp.Mix.Pages.EInsureance.EInsuranceHomePage;
 import com.codeborne.selenide.Condition;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -35,13 +36,13 @@ public class LensOptionsTests {
     private static final Logger log = LoggerFactory.getLogger(RuntimeConfig.class);
 
     private CMS1500Page cms1500Page= page(CMS1500Page.class);
-    private EInsuranceHomePage eInsuranceHomePage = page(EInsuranceHomePage.class);;
+    private EInsuranceHomePage eInsuranceHomePage = page(EInsuranceHomePage.class);
     private String mainWindow = "eInsurance";
     private static XLSParser excelfile;
     private static int nextTest = 0;
     private static List<TestResult> results = new ArrayList<>();
 
-    private static final String excelFilePath = "C:\\Carls Documents\\eclipse_workspace\\iDrTestFW\\";
+    private static final String excelFilePath = "C:\\Carls Documents\\eclipse_workspace\\iDrTest\\";
 
     @Before
     public void init(){
@@ -119,23 +120,52 @@ public class LensOptionsTests {
             executor.execute(worker);
         }
 
-        if(excelfile.getArChanges().size() > 0){
-            // ARChanges iterate on one page instead of needing to login for each one
+        if(excelfile.getChanges().size() > 0){
+            // Changes iterate on one page instead of needing to login for each one
             // so we iterate in the runner not here
-            Runnable worker = new LSURunnableDeactivation(excelfile.getArChanges(),remote.get(0));
-            executor.execute(worker);
+            for (int k = 0; k < excelfile.getChanges().size(); k++) {
+                Runnable worker = new LSURunnableActivation(excelfile.getChanges().get(k),remote.get(0));
+                executor.execute(worker);
+            }
         }
 
-        if(excelfile.getChanges().size() > 0){
-            // Deactivations iterate on one page instead of needing to login for each one
+        if(excelfile.getArAdditions().size() > 0){
+            // AR Additions iterate on one page instead of needing to login for each one
             // so we iterate in the runner not here
-//            Runnable worker = new LSURunnableDeactivation(excelfile.getDeactivations(),remote.get(0));
-//            executor.execute(worker);
+
+            for (int n = 0; n < excelfile.getArAdditions().size(); n++) {
+                Runnable worker = new LSURunnableActivation(excelfile.getArAdditions().get(n),remote.get(0));
+                executor.execute(worker);
+            }
         }
+
+        if(excelfile.getArChanges().size() > 0){
+            // AR Changes iterate on one page instead of needing to login for each one
+            // so we iterate in the runner not here
+
+            for (int l = 0; l < excelfile.getArChanges().size(); l++) {
+                Runnable worker = new LSURunnableActivation(excelfile.getArChanges().get(l),remote.get(0));
+                executor.execute(worker);
+            }
+        }
+
+        if(excelfile.getArDeactivations().size() > 0){
+            // AR Deactivations iterate on one page instead of needing to login for each one
+            // so we iterate in the runner not here
+
+            for (int m = 0; m < excelfile.getDeactivations().size(); m++) {
+                Runnable worker = new LSURunnableARCoatingDeactivation(excelfile.getArDeactivations(),remote.get(0));
+                executor.execute(worker);
+            }
+        }
+
 
 
         executor.shutdown();
+
+
         while (!executor.isTerminated()) {
+            // just need to wait until this dies to do results afterwards
         }
         log.info("******************************************************************************");
         log.info("Test run complete. Total number of test rows processed was : " + results.size());
@@ -167,7 +197,7 @@ public class LensOptionsTests {
     @Then("^I verify the service report contains <results>$")
     public void iVerifyTheServiceReportConatinsResults(DataTable results) throws Throwable {
         List<String> optionResults = results.asList(String.class);
-        List<String> actualResults = new ArrayList<String>();
+        List<String> actualResults = new ArrayList<>();
 
         cms1500Page.clickReportsButton();
 
@@ -213,7 +243,7 @@ public class LensOptionsTests {
             //TODO get a method to wait until the barbershop pole/loading bar dissapears
             sleep(1500);
 
-            List<String> optionResults = new ArrayList<String>();
+            List<String> optionResults = new ArrayList<>();
 
             for (Map.Entry<String, Boolean> entry : row.getOptionCodes().entrySet())
             {
@@ -252,20 +282,8 @@ public class LensOptionsTests {
 
 
     public XLSParser parseExcelFile(String filename) {
-        XLSParser xlsParser = new XLSParser(filename, 0);
-        return xlsParser;
+        return new XLSParser(filename, 0);
     }
 
 
-
-    //##############################################################################
-    // Combined TestResult.class below with TestStage.class.
-    // START TestReporter.class
-    //##############################################################################
-
-
-
-    //##############################################################################
-    // END TestResult.class
-    //##############################################################################
 }
