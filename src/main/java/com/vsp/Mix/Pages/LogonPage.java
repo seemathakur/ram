@@ -1,6 +1,8 @@
 package com.vsp.Mix.Pages;
 
 import com.codeborne.selenide.Condition;
+import com.vsp.testfw.config.RuntimeConfig;
+import cucumber.api.java.Before;
 import org.openqa.selenium.By;
 
 import static com.vsp.testfw.WebHelper.*;
@@ -12,8 +14,12 @@ import static com.vsp.testfw.WebHelper.*;
 public class LogonPage  {
 
     //https://mixed-a1.eyefinity.com/eyefinity/html/eyefinity_logon.htm
-    private static final String URL = "https://mixed-a7.eyefinity.com/eyefinity/html/eyefinity_logon.htm";
+    private static final String URL =  RuntimeConfig.getStartingPage() + "/eyefinity/html/eyefinity_logon.htm";
+    @Before
+    public void defaultBeforeClass() {
+        RuntimeConfig.setDefaultConfig();
 
+    }
     public void navigateTo() {
         open(URL);
         //sleep(1500);
@@ -23,6 +29,7 @@ public class LogonPage  {
         $(By.xpath("//input[@name='accessID']")).shouldBe(Condition.visible).val(username);
         $(By.xpath("//*[@name='password']")).val(password);
         $(By.xpath("//*[@name='logon']")).click();
+
     }
 
 

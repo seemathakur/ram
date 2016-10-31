@@ -3,6 +3,7 @@ package com.vsp.Mix.Tests;
 
 import com.vsp.Mix.Pages.LogonPage;
 import com.codeborne.selenide.Condition;
+import com.vsp.testfw.config.RuntimeConfig;
 import cucumber.api.java.Before;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
@@ -22,14 +23,14 @@ import static org.hamcrest.Matchers.is;
  * Created by carlki on 8/1/2016.
  */
 @RunWith(Cucumber.class)
-public class EyeFinitySteps {
+public class EyeFinitySteps{
 
-   // private WebDriver driver = null;
-    private static final String URL = "https://mixed-a8.eyefinity.com/eyefinity/html/eyefinity_logon.htm";
+    private static final String URL = RuntimeConfig.getStartingPage() + "/eyefinity/html/eyefinity_logon.htm";
     private LogonPage logonPage = page(LogonPage.class);
 
     @Before
     public void init(){
+        RuntimeConfig.setDefaultConfig();
         ProfilesIni profile = new ProfilesIni();
         FirefoxProfile myprofile = new FirefoxProfile();
         //FirefoxProfile myprofile = profile.getProfile("automationQA");
@@ -52,9 +53,11 @@ public class EyeFinitySteps {
         logonPage.logon(username,password);
     }
 
-    @Then("^I should see  the VSP Online link$")
+    @Then("^I should click the VSP Online link$")
     public void iShouldSeeTheVSPOnlineLink() throws Throwable {
         assertThat($(By.linkText("VSPOnline")).is(Condition.present), is(true));
+        $(By.linkText("VSPOnline")).click();
+        $(By.className("fg-menu-container")).is(Condition.visible);
     }
 
 }

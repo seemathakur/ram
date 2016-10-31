@@ -13,7 +13,7 @@ public class VSPOnlinePage {
     public PracticeUpdatesPage admin_PracticeUpdates(){
         // need a direct nav here as the javascript leftnav menu is a hot mess
         //TODO do need to make this relative instead of hard coded to one server
-        open("https://doctor-a8.vsp.com/pr/html/updateinfo.htm");
+        open("https://doctor-a7.vsp.com/pr/html/updateinfo.htm");
         return page(PracticeUpdatesPage.class);
     }
 }

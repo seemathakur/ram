@@ -17,7 +17,7 @@ public class LoginAuthPool {
 
     static {
         drlogins.add(new LoginAuth.Builder("9498314144","4314","10410721").build());
-        drlogins.add(new LoginAuth.Builder("9168515050","Myeyes12","10629212").build());
+        //drlogins.add(new LoginAuth.Builder("9168515050","Myeyes12","10629212").build());
         drLoginDeque.addAll(drlogins);
     }
 

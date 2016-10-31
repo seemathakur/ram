@@ -1,8 +1,12 @@
 package com.vsp.Mix.Tests.EInsurance.Administration;
 
 import com.vsp.Mix.Pages.EInsureance.Administration.DrProfilePage;
+import com.vsp.testfw.DefaultSteps;
+import com.vsp.testfw.config.RuntimeConfig;
 import cucumber.api.CucumberOptions;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -33,7 +37,11 @@ import static com.vsp.testfw.WebHelper.*;
 public class ProviderProfileSteps {
 
     private DrProfilePage providerProfilePage;
+    @Before
+    public void defaultBeforeClass() {
+        RuntimeConfig.setDefaultConfig();
 
+    }
     @Given("^I navigate to the practice page to monitor my profile")
     public void navigateToProfilePage() {
         providerProfilePage = page(DrProfilePage.class);
@@ -206,7 +214,6 @@ public class ProviderProfileSteps {
     public void iRefreshThePageAndVerifyMyGender(String gender) throws Throwable {
         refresh();
         assertThat(providerProfilePage.getGender().contentEquals(gender), is(true));
-
     }
 
     @Then("^update my <gender>$")
@@ -214,5 +221,4 @@ public class ProviderProfileSteps {
         providerProfilePage.setGender(_gender);
 
     }
-
 }

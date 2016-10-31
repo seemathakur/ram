@@ -47,10 +47,10 @@ public class DrProfilePage {
     private static final By school4_City_Input = By.id("city4");
     private static final By school5_City_Input = By.id("city5");
 
-    private static final By school1_State_Dropdown = By.id("stateA");
-    private static final By school2_State_Dropdown = By.id("stateB");
-    private static final By school3_State_Dropdown = By.id("stateC");
-    private static final By school4_State_Dropdown = By.id("stateD");
+    private static final By school1_State_Dropdown = By.id("state1");
+    private static final By school2_State_Dropdown = By.id("state2");
+    private static final By school3_State_Dropdown = By.id("state3");
+    private static final By school4_State_Dropdown = By.id("state4");
     private static final By school5_State_Dropdown = By.id("state5");
 
     private static final By children03_Checkbox = By.id("prodAndSrvcsChildren0to3");
