@@ -1,6 +1,7 @@
 package com.vsp.Mix.Pages.EInsureance.Administration;
 
 import com.codeborne.selenide.Condition;
+import com.vsp.testfw.config.RuntimeConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -88,9 +89,9 @@ public class DrProfilePage {
     private static final By removeLanguageButton = By.id("rightSelect");
 
     public void navigateTo() {
-//        String destination = RuntimeConfig.getStartingPage() + "/pr/html/updateinfo.htm#tab2";
+         String destination = RuntimeConfig.getDoctorHost() + "/pr/html/updateinfo.htm#tab2";
         //TODO need this to be a relative URL not absolute so it can run on different environments
-        open("https://doctor-a1.vsp.com/pr/html/updateinfo.htm#tab2");
+        open(destination);
         sleep(3000);
     }
 

@@ -65,9 +65,11 @@ public class RuntimeConfig {
         }
 
         public static String getStartingPage() {
-            Configuration c = getConfig();
-            String mixhost = c.getString("mix_host");
-;            return mixhost;
+           return getConfig().getString("mix_host");
+        }
+
+        public static String getDoctorHost() {
+            return getConfig().getString("dr_host");
         }
 
 }
