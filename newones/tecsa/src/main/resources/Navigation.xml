@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="eINSURANCE">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/map/area[2]</locatorValue>
+    </element>
+    <element elementAlias="eLAB">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//area[3]</locatorValue>
+    </element>
+    <element elementAlias="eBUY">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//area[4]</locatorValue>
+    </element>
+    <element elementAlias="MANAGE ELIGIBILITY link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>MANAGE ELIGIBILITY</locatorValue>
+    </element>
+    <element elementAlias="BILLING link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>BILLING</locatorValue>
+    </element>
+    <element elementAlias="REPORTING link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="ENHANCE YOUR PLAN link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="DOCTOR DIRECTORY link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[5]/a</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Contact Us</locatorValue>
+    </element>
+    <element elementAlias="Manage Member Details link">
+      <locatorType>id</locatorType>
+      <locatorValue>manage</locatorValue>
+    </element>
+    <element elementAlias="Add Reinstate Member link">
+      <locatorType>id</locatorType>
+      <locatorValue>update</locatorValue>
+    </element>
+    <element elementAlias="View Member Benefits link">
+      <locatorType>id</locatorType>
+      <locatorValue>benefits</locatorValue>
+    </element>
+    <element elementAlias="Member ID link">
+      <locatorType>id</locatorType>
+      <locatorValue>textID</locatorValue>
+    </element>
+    <element elementAlias="Member Name link">
+      <locatorType>id</locatorType>
+      <locatorValue>textName</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>id</locatorType>
+      <locatorValue>go</locatorValue>
+    </element>
+    <element elementAlias="RECOURCES link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>RESOURCES</locatorValue>
+    </element>
+    <element elementAlias="HIPAA COMPLIANCE link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>HIPAA COMPLIANCE</locatorValue>
+    </element>
+    <element elementAlias="STAYING CONNECTED link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>STAYING CONNECTED</locatorValue>
+    </element>
+    <element elementAlias="MEMBER SUPPORT FAQS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>MEMBER SUPPORT FAQS</locatorValue>
+    </element>
+    <element elementAlias="EXCLUSIVE PROGRAMS AND OFFERS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="MEMBER SUPPORT AND COMMUNICATION link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</locatorValue>
+    </element>
+    <element elementAlias="SECURE MAIL link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</locatorValue>
+    </element>
+    <element elementAlias="EXISTING USER LOGIN link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="NEW USER/CREATE ACCOUNT link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</locatorValue>
+    </element>
+    <element elementAlias="SECURE MAIL FAQS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="Verify Contact Us link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Billing link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/p/img</locatorValue>
+    </element>
+    <element elementAlias="Verify Reporting link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Enhance Your Plan link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Doctor Directory link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Contact Us link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Member Support AND Communication link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Verify Exclusive Program AND Offers link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Verify Member Support FAQS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+  </elements>
+</page>

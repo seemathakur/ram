@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page>
+    <elements>
+        <element elementAlias="TAB">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[1]/nav[1]/a[2]</xpath>
+        </element>
+        <element elementAlias="UserID">
+            <id>userid</id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath></xpath>
+        </element>
+        <element elementAlias="Password">
+            <id>password</id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath></xpath>
+        </element>
+        <element elementAlias="LOG IN">
+            <id>login_0</id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath></xpath>
+        </element>
+        <element elementAlias="LOG OUT">
+            <id></id>
+            <name></name>
+            <className>logout</className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath></xpath>
+        </element>
+        <element elementAlias="MANAGE YOUR PLAN link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[1]/nav[2]/div/a[2]</xpath>
+        </element>        
+        <element elementAlias="ME Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[1]/h1</xpath>
+        </element>        
+                <element elementAlias="ENHANCE YOUR PLAN link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</xpath>
+        </element>
+        <element elementAlias="EYP Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>        
+        <element elementAlias="DOCTOR DIRECTORY link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</xpath>
+        </element>
+        <element elementAlias="DD Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="CONTACT US link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</xpath>
+        </element>
+        <element elementAlias="CU Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element> 
+        <element elementAlias="COUNTRY link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[1]/h3/a</xpath>
+        </element>
+        <element elementAlias="COUNTRY Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[1]/div/h2</xpath>
+        </element>        
+        <element elementAlias="ADDRESS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[2]/h3/a</xpath>
+        </element>
+        <element elementAlias="ADDRESS Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+         	<link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[2]/div/h2</xpath>
+        </element> 
+        <element elementAlias="NAME link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[3]/h3/a</xpath>
+        </element>
+        <element elementAlias="NAME Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[3]/div/h2</xpath>
+        </element> 
+        <element elementAlias="CITY link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[4]/h3/a</xpath>
+        </element>
+        <element elementAlias="CITY Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[6]/div[4]/div/h2</xpath>
+        </element>
+        <element elementAlias="RESOURCES link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</xpath>
+        </element>
+        <element elementAlias="MEMBER SUPPORT link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</xpath>
+        </element>
+        <element elementAlias="MS Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="EXCLUSIVE PROGRAMS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</xpath>
+        </element>
+        <element elementAlias="EP Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/p[1]</xpath>
+        </element>
+        <element elementAlias="MEMBER SUPPORT FAQS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[5]/a</xpath>
+        </element>
+        <element elementAlias="MSF Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="STAYING CONNECTED link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[6]/a</xpath>
+        </element>
+        <element elementAlias="SC Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="HIPAA COMPLIANCE link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[7]/a</xpath>
+        </element>
+        <element elementAlias="HIPAA Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="CONTACT US#2 link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[8]/a</xpath>
+        </element>
+        <element elementAlias="CU2 Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="ADMINISTRATION link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[1]/h3/a</xpath>
+        </element>
+        <element elementAlias="ADMIN BOX">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[1]/div/div[1]/div[1]/h4</xpath>
+        </element>
+        <element elementAlias="CLAIMS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[2]/h3/a</xpath>
+        </element>
+        <element elementAlias="CLAIMS BOX">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div[1]/h4</xpath>
+        </element> 
+        <element elementAlias="MS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[3]/h3/a</xpath>
+        </element>
+        <element elementAlias="MS BOX">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[3]/div/div/div[1]/h4</xpath>
+        </element> 
+        <element elementAlias="TECH SUPPORT link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[4]/h3/a</xpath>
+        </element>
+        <element elementAlias="OTHER link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[5]/h3/a</xpath>
+        </element>
+        <element elementAlias="OTHER BOX">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div/div[5]/div/div[1]/div[1]/h4</xpath>
+        </element> 
+        <element elementAlias="MANAGE ELIG link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</xpath>
+        </element> 
+        <element elementAlias="MANAGE FAQS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[2]/a</xpath>
+        </element>
+        <element elementAlias="MF BOX">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element> 
+        <element elementAlias="WHY VSP link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[1]/nav[2]/div/a[1]</xpath>
+        </element> 
+        <element elementAlias="TOPNAV RESOURCES link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[1]/nav[2]/div/a[3]</xpath>
+        </element>
+        <element elementAlias="RES Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[2]/div/h2</xpath>
+        </element>
+        <element elementAlias="SECURE MAIL link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[1]/nav[2]/div/a[4]</xpath>
+        </element>
+        <element elementAlias="SM Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="EXISTING USER LOGIN link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</xpath>
+        </element>
+        <element elementAlias="EUL Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="NEW USER link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</xpath>
+        </element>
+        <element elementAlias="NU Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>
+        <element elementAlias="SECURE MAIL FAQS link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</xpath>
+        </element>
+        <element elementAlias="SMF Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element> 
+        <element elementAlias="CENTERNAV SM image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[1]/area[1]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV MS image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[1]/area[2]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV DD image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[1]/area[3]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV EP image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[1]/area[4]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV EC image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[2]/area[1]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV COE tab link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/div[1]/ul/li[2]/a</xpath>
+        </element>
+        <element elementAlias="CENTERNAV WW image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[2]/area[2]</xpath>
+        </element>
+        <element elementAlias="CENTERNAV COE image link">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div/div[3]/div[2]/map[2]/area[3]</xpath>
+        </element>
+        <element elementAlias="EC Header">
+            <id></id>
+            <name></name>
+            <className></className>
+            <tagName></tagName>
+            <link></link>
+            <css></css>
+            <xpath>html/body/div[1]/div[3]/div[2]/h1</xpath>
+        </element>                                          
+    </elements>
+</page>

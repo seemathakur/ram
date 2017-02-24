@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Client ID field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/form/select</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>className</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="MANAGE ELIGIBILITY link">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.leftNav>li>a[href="/em.html"]</locatorValue>
+    </element>
+    <element elementAlias="BILLING link">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.leftNav>li>a[href="/billing-online.html"]</locatorValue>
+    </element>
+    <element elementAlias="REPORTING link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[3]/a</locatorValue>
+    </element>
+    <element elementAlias="ENHANCE YOUR PLAN link">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.leftNav>li>a[href="/enhance-plan.html"]</locatorValue>
+    </element>
+    <element elementAlias="DOCTOR DIRECTORY link">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.leftNav>li>a[href="/doc-directory.html"]</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.leftNav>li>a[href="/contact-us.html"]</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Billing label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[5]/div</locatorValue>
+    </element>
+    <element elementAlias="Reporting label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Enhance Your Plan field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Doctor Directory label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[6]/a</locatorValue>
+    </element>
+    <element elementAlias="Contact Us label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Update Pop-Up Message">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/ul/li/span</locatorValue>
+    </element>
+  </elements>
+</page>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Last Name">
+      <locatorType>name</locatorType>
+      <locatorValue>lastName</locatorValue>
+    </element>
+    <element elementAlias="First Name">
+      <locatorType>name</locatorType>
+      <locatorValue>firstName</locatorValue>
+    </element>
+    <element elementAlias="Doctor">
+      <locatorType>name</locatorType>
+      <locatorValue>doctor</locatorValue>
+    </element>
+    <element elementAlias="Date of Service">
+      <locatorType>name</locatorType>
+      <locatorValue>dateOfService</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) *Sphere">
+      <locatorType>name</locatorType>
+      <locatorValue>rightSphere</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) *Sphere">
+      <locatorType>name</locatorType>
+      <locatorValue>leftSphere</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) Cylinder">
+      <locatorType>name</locatorType>
+      <locatorValue>rightCylinder</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) Cylinder">
+      <locatorType>name</locatorType>
+      <locatorValue>leftCylinder</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) Axis">
+      <locatorType>name</locatorType>
+      <locatorValue>rightAxis</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) Axis">
+      <locatorType>name</locatorType>
+      <locatorValue>leftAxis</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) Add">
+      <locatorType>name</locatorType>
+      <locatorValue>rightAdd</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) Add">
+      <locatorType>name</locatorType>
+      <locatorValue>leftAdd</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) Horizontal Prism">
+      <locatorType>name</locatorType>
+      <locatorValue>rightHorizontalPrism</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) Horizontal Prism">
+      <locatorType>name</locatorType>
+      <locatorValue>leftHorizontalPrism</locatorValue>
+    </element>
+    <element elementAlias="Right Eye(OD) Distant">
+      <locatorType>name</locatorType>
+      <locatorValue>rightMonoPdDistant</locatorValue>
+    </element>
+    <element elementAlias="Left Eye(OD) Distant">
+      <locatorType>name</locatorType>
+      <locatorValue>leftMonoPdDistant</locatorValue>
+    </element>
+    <element elementAlias="Right Eye(OD) Near">
+      <locatorType>name</locatorType>
+      <locatorValue>rightMonoPdNear</locatorValue>
+    </element>
+    <element elementAlias="Left Eye(OD) Near">
+      <locatorType>name</locatorType>
+      <locatorValue>leftMonoPdNear</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) O.C Height">
+      <locatorType>name</locatorType>
+      <locatorValue>rightOpticalCenterHeight</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) O.C. Height">
+      <locatorType>name</locatorType>
+      <locatorValue>leftOpticalCenterHeight</locatorValue>
+    </element>
+    <element elementAlias="Right Eye (OD) Seg.Height">
+      <locatorType>name</locatorType>
+      <locatorValue>rightSegmentHeight</locatorValue>
+    </element>
+    <element elementAlias="Left Eye (OS) Seg.Height ">
+      <locatorType>name</locatorType>
+      <locatorValue>leftSegmentHeight</locatorValue>
+    </element>
+    <element elementAlias="Continue to Frame Selection">
+      <locatorType>id</locatorType>
+      <locatorValue>patientSubmitBtn</locatorValue>
+    </element>
+    <element elementAlias="Find a Frame">
+      <locatorType>name</locatorType>
+      <locatorValue>frameSearchInput</locatorValue>
+    </element>
+    <element elementAlias="GO">
+      <locatorType>id</locatorType>
+      <locatorValue>frameSearchBtn</locatorValue>
+    </element>
+    <element elementAlias="Binocular PD">
+      <locatorType>name</locatorType>
+      <locatorValue>pdType</locatorValue>
+    </element>
+    <element elementAlias="Distant">
+      <locatorType>name</locatorType>
+      <locatorValue>dist</locatorValue>
+    </element>
+    <element elementAlias="Near">
+      <locatorType>name</locatorType>
+      <locatorValue>near</locatorValue>
+    </element>
+    <element elementAlias="Segment Height Bottom of Frame R">
+      <locatorType>name</locatorType>
+      <locatorValue>rSeg</locatorValue>
+    </element>
+    <element elementAlias="Segment Height Geometric Center L">
+      <locatorType>name</locatorType>
+      <locatorValue>lSeg</locatorValue>
+    </element>
+    <element elementAlias="Optical Center Height Bottom of Frame R">
+      <locatorType>name</locatorType>
+      <locatorValue>rOpt</locatorValue>
+    </element>
+    <element elementAlias="Optical Center Height Geometric Center L">
+      <locatorType>name</locatorType>
+      <locatorValue>lOpt</locatorValue>
+    </element>
+    <element elementAlias="Frame Wrap">
+      <locatorType>name</locatorType>
+      <locatorValue>wrapAngle</locatorValue>
+    </element>
+    <element elementAlias="Pantoscopic Tilt">
+      <locatorType>name</locatorType>
+      <locatorValue>pantoscopicTilt</locatorValue>
+    </element>
+    <element elementAlias="Vertex">
+      <locatorType>name</locatorType>
+      <locatorValue>vertex</locatorValue>
+    </element>
+    <element elementAlias="Supplier:">
+      <locatorType>name</locatorType>
+      <locatorValue>frameSupplier</locatorValue>
+    </element>
+    <element elementAlias="Frame:">
+      <locatorType>name</locatorType>
+      <locatorValue>frameQuery</locatorValue>
+    </element>
+    <element elementAlias="Search">
+      <locatorType>id</locatorType>
+      <locatorValue>frameQueryBtn</locatorValue>
+    </element>
+    <element elementAlias="Frame:">
+      <locatorType>id</locatorType>
+      <locatorValue>frameQueryInput</locatorValue>
+    </element>
+    <element elementAlias="Manufacturer:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_mfgName</locatorValue>
+    </element>     
+    <element elementAlias="Collection:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_collectionName</locatorValue>
+    </element>
+    <element elementAlias="Model:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_model</locatorValue>
+    </element>
+    <element elementAlias="Color:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_color</locatorValue>
+    </element>
+    <element elementAlias="Temple:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_temple</locatorValue>
+    </element>
+    <element elementAlias="Material:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_mappedMaterialTypeId</locatorValue>
+    </element>
+    <element elementAlias="Eye Size:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_eyeSize</locatorValue>
+    </element>
+    <element elementAlias="DBL:">
+      <locatorType>className</locatorType>
+      <locatorValue>key fd_dbl</locatorValue>
+    </element>
+    <element elementAlias="Add to Lab Order">
+      <locatorType>id</locatorType>
+      <locatorValue>addToLabOrder</locatorValue>
+    </element>
+    <element elementAlias="Frame Wrap">
+      <locatorType>name</locatorType>
+      <locatorValue>fr</locatorValue>
+    </element>
+    <element elementAlias="Pantoscopic Tilt">
+      <locatorType>className</locatorType>
+      <locatorValue>Pantoscopic Tilt</locatorValue>
+    </element>
+    <element elementAlias="Vertex">
+      <locatorType>className</locatorType>
+      <locatorValue>Vertex</locatorValue>
+    </element>
+    <element elementAlias="Continue to Lens Selection">
+      <locatorType>id</locatorType>
+      <locatorValue>frameSubmitBtn</locatorValue>
+    </element>
+    <element elementAlias="Select Vision Type">
+      <locatorType>id</locatorType>
+      <locatorValue>visionType</locatorValue>
+    </element>
+    <element elementAlias="Material">
+      <locatorType>id</locatorType>
+      <locatorValue>material</locatorValue>
+    </element>
+  </elements>
+</page>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+    </elements>
+</page>

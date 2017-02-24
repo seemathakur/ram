@@ -1,0 +1,1 @@
+delete from vvsp001.clm2342t where clm_nbr='claimNumber' and clm_ext_nbr='claimExtNumber' 

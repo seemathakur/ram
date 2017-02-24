@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="My Account Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[1]/a[1]/span</locatorValue>
+    </element>
+    <element elementAlias="View My Account link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/ul/li[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Create Doctor Directory link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/ul/li[3]/a</locatorValue>
+    </element>
+    <element elementAlias="Member Support link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="View and Pay Bills link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/ul/li[5]/a</locatorValue>
+    </element>
+    <element elementAlias="My Account label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/h1</locatorValue>
+    </element>
+    <element elementAlias="Doctor Directory label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Member Support label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Billing label">
+      <locatorType>CssSelector</locatorType>
+      <locatorValue>select#clientId option[selected="selected"]</locatorValue>
+    </element>
+  </elements>
+</page>

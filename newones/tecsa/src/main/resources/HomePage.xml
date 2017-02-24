@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Benefits Managers User Name field">
+      <locatorType>id</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="Password field">
+      <locatorType>id</locatorType>
+      <locatorValue>password</locatorValue>
+    </element>
+    <element elementAlias="LOG IN link">
+      <locatorType>id</locatorType>
+      <locatorValue>login_0</locatorValue>
+    </element>
+    <element elementAlias="LOG OUT link">
+      <locatorType>className</locatorType>
+      <locatorValue>logout</locatorValue>
+    </element>
+    <element elementAlias="BENEFITS MANAGERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>BENEFITS MANAGERS</locatorValue>
+    </element>
+    <element elementAlias="MANAGE YOUR PLAN link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>MANAGE YOUR PLAN</locatorValue>
+    </element>
+    <element elementAlias="Client ID field">
+      <locatorType>id</locatorType>
+      <locatorValue>clientId</locatorValue>
+    </element>
+    <element elementAlias="Client ID search">
+      <locatorType>classname</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="EMPLOYERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>EMPLOYERS</locatorValue>
+    </element>
+    <element elementAlias="LOG IN FAILURE label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Broker User Name field">
+      <locatorType>id</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+  </elements>
+</page>

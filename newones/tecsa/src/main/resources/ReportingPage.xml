@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Performance Standards Reports link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[1]/h3/a</locatorValue>
+    </element>
+    <element elementAlias="Utilization Reports link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[2]/h3/a</locatorValue>
+    </element>
+    <element elementAlias="Claim Reports link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/h3/a</locatorValue>
+    </element>
+    <element elementAlias="Call Response Summary link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[4]/h3/a</locatorValue>
+    </element>
+    <element elementAlias="Utilization Report PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[2]/div/p[1]/b/a[1]</locatorValue>
+    </element>
+    <element elementAlias="Utilization Report (Div/Class/Benefit) PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[2]/div/p[2]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Utilization Overview PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[2]/div/p[3]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Utilization Report XLS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[2]/div/p[1]/b/a[2]</locatorValue>
+    </element>
+    <element elementAlias="In-Network Claims Percentage PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[1]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Total Number Of Claims Paid PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[2]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Total Amount Of Claims Dollars Paid PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[3]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Average Cost Per Paid Claim PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[4]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Claim Summary Graph PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[5]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Service Summary Graph PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[3]/div/p[6]/b/a</locatorValue>
+    </element>
+    <element elementAlias="Call Response Summary PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[4]/div/p/b/a</locatorValue>
+    </element>
+      <element elementAlias="Select a Quarter dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>selectedQuarter</locatorValue>
+    </element>
+          <element elementAlias="View Report button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[5]/div[1]/div/form/input[1]</locatorValue>
+    </element>
+          <element elementAlias="Service Summary Graph PDF label">
+      <locatorType>classname</locatorType>
+      <locatorValue>lessbigbold</locatorValue>
+    </element>
+          <element elementAlias="Utilization Overview label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/table/thead/tr[1]/th[4]</locatorValue>
+    </element>
+          <element elementAlias="Utilization Overview label2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='iframeBody']/div[1]/p[2]/strong</locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+          <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+  </elements>
+</page>

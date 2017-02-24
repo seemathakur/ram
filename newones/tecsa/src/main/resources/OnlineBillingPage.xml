@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="View and Pay Bills link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[6]/ul/li[1]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Turn Off Paper Billing link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/ul/li[2]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Automatic Payments link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/ul/li[4]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Bill Delivery Preferences link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/ul/li[5]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Billing FAQs link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/ul/li[6]/a/span</locatorValue>
+    </element>
+    <element elementAlias="View Online Billing Tour link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Back to Manage Your Plan link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[1]/a</locatorValue>
+    </element>
+    <element elementAlias="What is Online Billing? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What is Online Billing?</locatorValue>
+    </element>
+    <element elementAlias="What are the advantages of Online Billing? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What are the advantages of Online Billing?</locatorValue>
+    </element>
+    <element elementAlias="Can I edit/change account information? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Can I edit/change account information?</locatorValue>
+    </element>
+    <element elementAlias="When will I be able to view account activity? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>When will I be able to view account activity?</locatorValue>
+    </element>
+    <element elementAlias="If I do not switch to Online Billing will I still receive paper bills? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>If I do not switch to Online Billing will I still receive paper bills?</locatorValue>
+    </element>
+    <element elementAlias="Can I receive both online and paper statements? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Can I receive paper statements instead of Online Billing statements?</locatorValue>
+    </element>
+    <element elementAlias="Will I be able to print copies of invoices and statements from the online site? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Will I be able to print copies of invoices and statements from the online site?</locatorValue>
+    </element>
+    <element elementAlias="Which browsers do you support? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Which browsers do you support?</locatorValue>
+    </element>
+    <element elementAlias="What information do I need to set up a bill for electronic/eCheck payment? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What information do I need to set up a bill for electronic/eCheck payment?</locatorValue>
+    </element>
+    <element elementAlias="What if I decide not to pay a bill online anymore? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I decide not to pay a bill online anymore?</locatorValue>
+    </element>
+    <element elementAlias="I’m trying to delete a Payment Account for a checking account that I’m closing, and the system won’t let me delete it. Why not? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>I’m trying to delete a Payment Account for a checking account that I’m closing, and the system won’t let me delete it. Why not?</locatorValue>
+    </element>
+    <element elementAlias="What do I use the Automatic Payments for? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What do I use the Automatic Payments for?</locatorValue>
+    </element>
+    <element elementAlias="What if I forget my user ID or password? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I forget my user ID or password?</locatorValue>
+    </element>
+    <element elementAlias="What if I change my email address? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I change my email address?</locatorValue>
+    </element>
+    <element elementAlias="What if I change bank accounts? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I change bank accounts?</locatorValue>
+    </element>
+    <element elementAlias="Is it safe to pay bills online using your service? Can my personal information be seen by others? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Is it safe to pay bills online using your service? Can my personal information be seen by others?</locatorValue>
+    </element>
+    <element elementAlias="Do you use cookies? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Do you use cookies?</locatorValue>
+    </element>
+    <element elementAlias="Will I be able to view previous invoices and statements? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Will I be able to view previous invoices and statements?</locatorValue>
+    </element>
+    <element elementAlias="Download Membership link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Download Membership</locatorValue>
+    </element>
+    <element elementAlias="Payment Accounts link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/ul/li[3]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Payment Accounts field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h2</locatorValue>
+    </element>
+    <element elementAlias="Automatic Payments field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/form/div/h2</locatorValue>
+    </element>
+    <element elementAlias="View and Pay Bills field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='main']/div[4]/div[1]/h2</locatorValue>
+    </element>
+    <element elementAlias="Turn Off Paper Billing field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#ui-tabs-2>h1</locatorValue>
+    </element>
+    <element elementAlias="Automatic Payment field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='main']/h2</locatorValue>
+    </element>
+    <element elementAlias="Bill Delivery Preferences field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='main']/div[2]/h2</locatorValue>
+    </element>
+    <element elementAlias="Can I receive paper statements instead of Online Billing statements? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Can I receive paper statements instead of Online Billing statements?</locatorValue>
+    </element>
+    <element elementAlias="What are coverage codes? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What are coverage codes?</locatorValue>
+    </element>
+    <element elementAlias="When I try to display a bill, all I see is a little symbol. What could be the problem? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>When I try to display a bill, all I see is a little symbol. What could be the problem?</locatorValue>
+    </element>
+    <element elementAlias="What if my payment account does not have sufficient funds to cover a payment? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if my payment account does not have sufficient funds to cover a payment?</locatorValue>
+    </element>
+    <element elementAlias="Download Membership field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Back to Manage Your Plan field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/h1</locatorValue>
+    </element>
+    <element elementAlias="Back to Manage Your Plan link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Back to Manage Your Plan</locatorValue>
+    </element>
+    <element elementAlias="View Online Billing Tour link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>View Online Billing Tour</locatorValue>
+    </element>
+    <element elementAlias="Client ID field">
+      <locatorType>ID</locatorType>
+      <locatorValue>clientId</locatorValue>
+    </element>
+    <element elementAlias="Client ID button">
+      <locatorType>classname</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+  </elements>
+</page>

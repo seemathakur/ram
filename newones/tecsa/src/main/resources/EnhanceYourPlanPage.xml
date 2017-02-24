@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Anti-Reflective Coating link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Anti-Reflective Coating</locatorValue>
+    </element>
+    <element elementAlias="Computer VisionCare link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Increased Allowances link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/div[3]</locatorValue>
+    </element>
+    <element elementAlias="ProTec Safety Plan link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/div[5]</locatorValue>
+    </element>
+    <element elementAlias="Scratch-Resistant Coating link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/div[6]</locatorValue>
+    </element>
+    <element elementAlias="Progressive Lenses link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/div[4]</locatorValue>
+    </element>
+    <element elementAlias="Scratch-Resistant Coating label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[6]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="ProTec Safety Plan label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[5]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Progressive Lenses label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[4]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Increased Allowances label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[3]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Computer VisionCare label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Anti-Reflective Coating label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div[1]/p[1]</locatorValue>
+    </element>
+        <element elementAlias="Supplemental Plans label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div[1]/p[1]</locatorValue>
+    </element>
+        <element elementAlias="Supplemental Plans label2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div[2]/p[1]</locatorValue>
+    </element>
+        <element elementAlias="Supplemental Plans label3">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div[3]/p[1]</locatorValue>
+    </element>
+  </elements>
+</page>

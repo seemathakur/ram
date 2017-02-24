@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="MANAGE FAQS">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Client Details">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[8]/a</locatorValue>
+    </element>
+    <element elementAlias="xxxxx6611">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/table/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+     <element elementAlias="xxxxx3839">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[10]/table/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Previous">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/a[1]</locatorValue>
+    </element>
+        <element elementAlias="ID Selection dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>idType</locatorValue>
+    </element>
+    <element elementAlias="Member Terminated message">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[8]/ul/li/span</locatorValue>
+    </element>
+    <element elementAlias="Next">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/a</locatorValue>
+    </element>
+    <element elementAlias="Coverage Start Date heading">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[10]/table/thead/tr/th[6]</locatorValue>
+    </element>
+  </elements>
+</page>

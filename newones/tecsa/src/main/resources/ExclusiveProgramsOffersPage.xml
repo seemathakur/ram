@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="REBATES SPECIAL OFFERS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div/a/img</locatorValue>
+    </element>
+    <element elementAlias="Flyer field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[1]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="ONLINE OPTICAL STORE link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div/a/img</locatorValue>
+    </element>
+    <element elementAlias="Eyeconic field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/h2</locatorValue>
+    </element>
+    <element elementAlias="Complete Benefits Communications field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[1]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="24 Hours of Employee Convenience field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[2]/ul/li[1]</locatorValue>
+    </element>
+    <element elementAlias="The Complete Overview field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[3]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="See Overview">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[3]/div/a</locatorValue>
+    </element>
+    <element elementAlias="VSP EYE HEALTH MANAGEMENT PROGRAM link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div/a/img</locatorValue>
+    </element>
+    <element elementAlias="VSP Eye Health Management Program field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h3</locatorValue>
+    </element>
+    <element elementAlias="Identify with a WellVision Exam field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[1]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Share with Smart Data Management field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[2]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Engage with VSP Smart Patient Outreach field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[3]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="The Proof is in the Savings field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[4]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="More Special Offers field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/p/strong</locatorValue>
+    </element>
+  </elements>
+</page>

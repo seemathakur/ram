@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="VIDEO LIBRARY link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>VIDEO LIBRARY</locatorValue>
+    </element>
+    <element elementAlias="Educational Video 1 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[4]/div[1]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Educational Video 2 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[4]/div[2]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Educational Video 3 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[4]/div[3]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Educational Video 4 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div[4]/div[4]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Video Close link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[3]/div/div/div[1]/span/a</locatorValue>
+    </element>
+    <element elementAlias="Client Stories link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[2]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Client Video link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Doctor Stories link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[3]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Doctor Video link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div[3]/div/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Broker Stories link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[4]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Broker Video 1 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[4]/div[3]/div[1]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="Broker Video 2 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[4]/div[3]/div[2]/div[2]/div[1]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="ENROLLMENT MATERIALS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[1]/div/div/a/img</locatorValue>
+    </element>
+    <element elementAlias="ENROLLMENT MATERIALS field">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="MEMBER VISION CARD link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[1]/p[1]/a</locatorValue>
+    </element>
+    <element elementAlias="VSP GETFIT PROGRAM link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/p[1]/a</locatorValue>
+    </element>
+    <element elementAlias="GetFit Program field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/p</locatorValue>
+    </element>
+    <element elementAlias="GetFit Overview link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div[3]/div/a[1]/img</locatorValue>
+    </element>
+    <element elementAlias="VSP.COM link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div/p[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Icon 1 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/ol/li[1]/table/tbody/tr/td[1]/a/label/img</locatorValue>
+    </element>
+    <element elementAlias="Organization Name field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/ol/li[2]/table/tbody/tr/td[1]/input</locatorValue>
+    </element>
+    <element elementAlias="Create Button link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/ol/li[2]/table/tbody/tr/td[2]/button</locatorValue>
+    </element>
+    <element elementAlias="HTML Code field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/ol/li[3]/textarea</locatorValue>
+    </element>
+    <element elementAlias="LITERATURE LIBRARY link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[1]/p[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Pre-Enrollment Poster field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div/div[1]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Two Plans Are Better Than One field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div/div[2]/div[2]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Everyone Needs Vision field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div/div[3]/div[2]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Smarter Vision Care field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[1]/div/div[4]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="For Your Employees link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[2]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Eye Health link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[3]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Post-Enrollment Poster field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div/div[1]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Exclusive Rebates Special Offers For VSP Members field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div/div[2]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Real Cost of Vision Flyer field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div/div[3]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="What Do Your Eyes Say About You field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[3]/div/div/div[2]/p[2]</locatorValue>
+    </element>
+  </elements>
+</page>

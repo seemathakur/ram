@@ -1,0 +1,1147 @@
+{
+    "effectivePeriod": {
+        "begin": "2011-04-01",
+        "end": "9999-12-31"
+    },
+    "versionPeriod": {
+        "begin": "2013-01-31T10:08:24.838Z",
+        "end": "9999-12-31T23:59:59.999Z"
+    },
+    "lastModifiedId": "PamCo",
+    "lastModifiedDateTime": "2013-01-31T10:08:26.130Z",
+    "createdBy": "PamCo",
+    "createdDateTime": "2013-01-31T10:08:13.693Z",
+    "productAuthorizations": [
+        {
+            "approvedDeniedDateTime": "2012-12-04T11:34:48.229-08:00"
+        }
+    ],
+    "productPackages": [
+        {
+            "patientRelationships": [
+                {
+                    "relationshipType": "Child"
+                },
+                {
+                    "relationshipType": "DisabledDependent"
+                },
+                {
+                    "relationshipType": "Member"
+                },
+                {
+                    "relationshipType": "Spouse"
+                },
+                {
+                    "relationshipType": "Student"
+                }
+            ],
+            "productItems": [
+                {
+                    "coverageConstraints": [
+                        {
+                            "feeScheduleRelationships": [
+                                {
+                                    "feeScheduleCategoryId": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleCategoryIdCode",
+                                        "codeValue": "Choice"
+                                    },
+                                    "feeScheduleType": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleTypeCode",
+                                        "codeValue": "ProviderAssignedFeeSchedule"
+                                    }
+                                },
+                                {
+                                    "feeScheduleCategoryId": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleCategoryIdCode",
+                                        "codeValue": "EHMConditionAddOn"
+                                    },
+                                    "feeScheduleType": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleTypeCode",
+                                        "codeValue": "ProviderRegionalFeeSchedule"
+                                    }
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.CoveredInFull",
+                                "levelOfCoverageType": "COVERED_IN_FULL"
+                            },
+                            "frequency": {
+                                "periods": 12,
+                                "periodUnit": "Monthly",
+                                "periodStartType": "Service"
+                            },
+                            "coPay": {
+                                "amount": {
+                                    "dollarValue": 10,
+                                    "centValue": 0
+                                },
+                                "applyToDeductible": false,
+                                "appliesTo": {
+                                    "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.AppliedToCode",
+                                    "codeValue": "Maximum"
+                                },
+                                "frequency": {
+                                    "codeType": "com.vsp.xl.codes.product.ProductFrequencyCode",
+                                    "codeValue": "PerFrequencyPeriod"
+                                }
+                            },
+                            "unitCoverage": {
+                                "timePeriod": {
+                                    "codeType": "com.vsp.xl.codes.product.FrequencyType",
+                                    "codeValue": "PerFrequencyPeriod"
+                                },
+                                "numberOfUnits": 1,
+                                "isUnlimited": false
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "GenExam",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    },
+                    "productItemAuthorization": {
+                        "endOf": {
+                            "codeType": "com.vsp.xl.codes.product.coverage.AuthEndsCode",
+                            "codeValue": "endOfMonth"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "feeScheduleRelationships": [
+                                {
+                                    "feeScheduleCategoryId": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleCategoryIdCode",
+                                        "codeValue": "Choice"
+                                    },
+                                    "feeScheduleType": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleTypeCode",
+                                        "codeValue": "ProviderAssignedFeeSchedule"
+                                    }
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "GenExam",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.CoveredInFull",
+                                "levelOfCoverageType": "COVERED_IN_FULL"
+                            },
+                            "frequency": {
+                                "periods": 12,
+                                "periodUnit": "Monthly",
+                                "periodStartType": "Service"
+                            },
+                            "unitCoverage": {
+                                "timePeriod": {
+                                    "codeType": "com.vsp.xl.codes.product.FrequencyType",
+                                    "codeValue": "PerFrequencyPeriod"
+                                },
+                                "numberOfUnits": 1
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "Refraction",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Refraction",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                }
+            ],
+            "name": "ExamOnly",
+            "pooledRatingConfiguration": {},
+            "primaryProduct": true,
+            "benefitOffering": {}
+        },
+        {
+            "patientRelationships": [
+                {
+                    "relationshipType": "Child"
+                },
+                {
+                    "relationshipType": "DisabledDependent"
+                },
+                {
+                    "relationshipType": "Member"
+                },
+                {
+                    "relationshipType": "Spouse"
+                },
+                {
+                    "relationshipType": "Student"
+                }
+            ],
+            "productItems": [
+                {
+                    "coverageConstraints": [
+                        {
+                            "feeScheduleRelationships": [
+                                {
+                                    "feeScheduleCategoryId": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleCategoryIdCode",
+                                        "codeValue": "PEC"
+                                    },
+                                    "feeScheduleType": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleTypeCode",
+                                        "codeValue": "ProviderAssignedFeeSchedule"
+                                    }
+                                },
+                                {
+                                    "feeScheduleCategoryId": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleCategoryIdCode",
+                                        "codeValue": "PEC"
+                                    },
+                                    "feeScheduleType": {
+                                        "codeType": "com.vsp.xl.codes.feeschedule.FeeScheduleTypeCode",
+                                        "codeValue": "ProviderRegionalFeeSchedule"
+                                    }
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "1000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/1000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.CoveredInFull",
+                                "levelOfCoverageType": "COVERED_IN_FULL"
+                            },
+                            "frequency": {
+                                "periodUnit": "Unlimited"
+                            },
+                            "coPay": {
+                                "amount": {
+                                    "dollarValue": 10,
+                                    "centValue": 0
+                                },
+                                "applyToDeductible": false,
+                                "appliesTo": {
+                                    "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.AppliedToCode",
+                                    "codeValue": "Visit"
+                                },
+                                "frequency": {
+                                    "codeType": "com.vsp.xl.codes.product.ProductFrequencyCode",
+                                    "codeValue": "PerOccurrence"
+                                }
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "Examination",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Examination",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                }
+            ],
+            "name": "PEC",
+            "pooledRatingConfiguration": {},
+            "primaryProduct": false,
+            "benefitOffering": {}
+        },
+        {
+            "patientRelationships": [
+                {
+                    "relationshipType": "Child"
+                },
+                {
+                    "relationshipType": "DisabledDependent"
+                },
+                {
+                    "relationshipType": "Member"
+                },
+                {
+                    "relationshipType": "Spouse"
+                },
+                {
+                    "relationshipType": "Student"
+                }
+            ],
+            "productItems": [
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 15,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  15%"
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "frequency": {
+                                "periodUnit": "Unlimited"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "ContactLensService",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/ContactLensService",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Lens",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "frequency": {
+                                "periodUnit": "Unlimited"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "Frame",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Frame",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lens",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "FrameAddOn",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/FrameAddOn",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "frequency": {
+                                "periodUnit": "Unlimited"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "GenExam",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Frame",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "frequency": {
+                                "periodUnit": "Unlimited"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "Lens",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Frame",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lens",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "LensAttachment",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/LensAttachment",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Frame",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lens",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "LensEnhancement",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/LensEnhancement",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "includeExcludes": [
+                                {
+                                    "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                    "type": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                        "codeValue": "Include"
+                                    },
+                                    "productCatalogKeys": [
+                                        {
+                                            "name": "Frame",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Frame",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        },
+                                        {
+                                            "name": "Lens",
+                                            "self": {
+                                                "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Lens",
+                                                "type": "application/vnd.vsp.productcatalog",
+                                                "rel": "self"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "LensUpgrade",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/LensUpgrade",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                },
+                {
+                    "coverageConstraints": [
+                        {
+                            "discounts": [
+                                {
+                                    "appliesTo": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountAppliesToCode",
+                                        "codeValue": "Benefit"
+                                    },
+                                    "percentage": 20,
+                                    "valueType": {
+                                        "codeType": "com.vsp.xl.codes.product.coverage.DiscountValueTypeCode",
+                                        "codeValue": "percent"
+                                    },
+                                    "description": "Discounted  20%"
+                                }
+                            ],
+                            "patientHistoryConstraints": [
+                                {
+                                    "frequency": {
+                                        "periods": 12,
+                                        "periodUnit": "Monthly",
+                                        "periodStartType": "Service"
+                                    },
+                                    "includeExcludes": [
+                                        {
+                                            "_class": "com.vsp.api.product.model.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "classType": "com.vsp.bl.product.dm.coverage.includeexclude.ProductItemIncludeExcludeRequirement",
+                                            "type": {
+                                                "codeType": "com.vsp.xl.codes.product.coverage.coverageconstraint.IncludeExcludeTypeCode",
+                                                "codeValue": "Include"
+                                            },
+                                            "productCatalogKeys": [
+                                                {
+                                                    "name": "GenExam",
+                                                    "self": {
+                                                        "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/GenExam",
+                                                        "type": "application/vnd.vsp.productcatalog",
+                                                        "rel": "self"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "providerNetwork": {
+                                "networkId": "2000",
+                                "self": {
+                                    "href": "http://ea-app0395.vsp.com:80/product-web/providernetworks/2000",
+                                    "type": "application/vnd.vsp.providernetwork",
+                                    "rel": "self"
+                                }
+                            },
+                            "levelOfCoverage": {
+                                "_class": "com.vsp.api.product.model.levelofcoverage.NotCovered",
+                                "levelOfCoverageType": "NOT_COVERED"
+                            },
+                            "serviceVerificationRequirement": false
+                        }
+                    ],
+                    "referralRequired": false,
+                    "productCatalogKey": {
+                        "name": "Refraction",
+                        "self": {
+                            "href": "http://ea-app0395.vsp.com:80/product-web/productcatalogs/Refraction",
+                            "type": "application/vnd.vsp.productcatalog",
+                            "rel": "self"
+                        }
+                    }
+                }
+            ],
+            "name": "ValueAddedDiscounts",
+            "pooledRatingConfiguration": {},
+            "primaryProduct": false,
+            "benefitOffering": {}
+        }
+    ],
+    "valid": true,
+    "activatedDateTime": "2013-01-31T10:08:24.838Z",
+    "validationOverride": false,
+    "clientProductKey": {
+        "clientId": "09110517",
+        "memberListId": "6431",
+        "primaryMarketProduct": {
+            "marketProductTier": "3000",
+            "network": "2000",
+            "identifier": "00000021"
+        }
+    },
+    "annualCommission": {
+        "dollarValue": 0,
+        "centValue": 0
+    },
+    "equivalentFlatCommissionPercent": 0,
+    "active": true,
+    "name": "WELBORN HEALTH PLANS",
+    "self": {
+        "href": "http://ea-app0395.vsp.com:80/product-web/clientproducts/09110517-6431-3000-2000-00000021?asofdate=2011-04-01",
+        "type": "application/vnd.vsp.clientproduct",
+        "rel": "self"
+    }
+}

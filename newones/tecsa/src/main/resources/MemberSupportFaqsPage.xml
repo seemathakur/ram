@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="How can VSP help communicate and promote the VSP eyecare benefit to my members link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How can VSP help communicate and promote the VSP eyecare benefit to my members?</locatorValue>
+    </element>
+    <element elementAlias="How do my members obtain a list of VSP network doctors link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How do my members obtain a list of VSP network doctors?</locatorValue>
+    </element>
+    <element elementAlias="If members have a question about plan coverage eligibility or eyecare wellness information where should I direct them link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>If members have questions about plan coverage, eligibility or eyecare wellness information, where should I direct them?</locatorValue>
+    </element>
+    <element elementAlias="Can we put a link on our intranet or Web site to VSPs Web site link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Can we put a link on our intranet or Web site to VSP's Web site?</locatorValue>
+    </element>
+    <element elementAlias="What if a member is dissatisfied with a VSP network doctor of the materials received through the VSP benefit link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if a member is dissatisfied with a VSP network doctor or the materials received through the VSP benefit?</locatorValue>
+    </element>
+    <element elementAlias="May members visit a non-VSP provider link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>May members visit a non-VSP provider?</locatorValue>
+    </element>
+    <element elementAlias="How do members collect reimbursement after visiting an open access provider link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How do members collect reimbursement after visiting an open access provider?</locatorValue>
+    </element>
+    <element elementAlias="What if I suspect fraud link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I suspect fraud?</locatorValue>
+    </element>
+    <element elementAlias="What if I have questions regarding the American Recovery and Reinvestment Act link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What if I have questions regarding the American Recovery and Reinvestment Act?</locatorValue>
+    </element>
+  </elements>
+</page>

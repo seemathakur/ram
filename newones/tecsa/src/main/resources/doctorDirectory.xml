@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+        <element elementAlias="Create by County link">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/div[1]/h3/a</locatorValue>
+        </element>
+        <element elementAlias="Create by Address link">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/div[2]/h3/a</locatorValue>
+        </element>
+        <element elementAlias="Create by Doctor or Office Name link">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[1]/div[7]/div[3]/h3/a</locatorValue>
+        </element>
+        <element elementAlias="Create by City or State">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[4]/h3/a</locatorValue>
+        </element>
+        <element elementAlias="City field">
+            <locatorType>id</locatorType>
+            <locatorValue>city</locatorValue>
+        </element>
+        <element elementAlias="State dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>//*[@class='rowElem']/*[@class='jqTransformSelectWrapper']/*/a[@class='jqTransformSelectOpen']</locatorValue>
+        </element>
+        <element elementAlias="Font size Large button">
+            <locatorType>XPATH</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[4]/div[1]/div/div[2]/span/a</locatorValue>
+        </element>
+        <element elementAlias="Create button">
+            <locatorType>id</locatorType>
+            <locatorValue>doc-directory-submit_0</locatorValue>
+        </element>
+        <element elementAlias="Office name field">
+            <locatorType>id</locatorType>
+            <locatorValue>practice</locatorValue>
+        </element>
+        <element elementAlias="Doctor Last Name field">
+            <locatorType>id</locatorType>
+            <locatorValue>lname</locatorValue>
+        </element>
+        <element elementAlias="Div/Class dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[1]/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Doctor or Office-Name Div/Class dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[1]/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Address-Div/Class dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[1]/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Address field">
+            <locatorType>id</locatorType>
+            <locatorValue>street</locatorValue>
+        </element>
+        <element elementAlias="City field">
+            <locatorType>id</locatorType>
+            <locatorValue>city</locatorValue>
+        </element>
+        <element elementAlias="Doctor or Office Name-State dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[2]/div/div/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Address State dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[2]/div[3]/div/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Travel Distance dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[2]/div/form/div[2]/div[4]/div/div/div/span</locatorValue>
+        </element>
+        <element elementAlias="ZIP code field">
+            <locatorType>id</locatorType>
+            <locatorValue>zip</locatorValue>
+        </element>
+        <element elementAlias="User Agreement box">
+            <locatorType>id</locatorType>
+            <locatorValue>agreement</locatorValue>
+        </element>
+        <element elementAlias="VSPs Terms of Service">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[2]/div/form/div[4]/p[1]/label/a</locatorValue>
+        </element>
+        <element elementAlias="County State dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[2]/div[1]/div/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="County field">
+            <locatorType>ID</locatorType>
+            <locatorValue>county</locatorValue>
+        </element>
+        <element elementAlias="Format Excel button">
+            <locatorType>classname</locatorType>
+            <locatorValue>outputxls jqTransformRadio</locatorValue>
+        </element>
+        <element elementAlias="Created for field">
+            <locatorType>id</locatorType>
+            <locatorValue>createdfor</locatorValue>
+        </element>
+        <element elementAlias="Prepared by field">
+            <locatorType>id</locatorType>
+            <locatorValue>createdby</locatorValue>
+        </element>
+        <element elementAlias="Doctor Office State Drop-down link">
+            <locatorType>XPATH</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[3]/div/form/div[2]/div/div/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="County-Div/Class dropdown">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[1]/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="Select All Counties box">
+            <locatorType>xpath</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[2]/div[2]/p[1]/span/a</locatorValue>
+        </element>
+        <element elementAlias="Close Button">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[3]/div/div/div[2]/form/button</locatorValue>
+        </element>
+        <element elementAlias="City field">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[4]/div/form/div[2]/div[1]/div/input</locatorValue>
+        </element>
+        <element elementAlias="excel radio button">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/div[3]/div/form/div[5]/div[2]/div/div[2]/span/a</locatorValue>
+        </element>
+        <element elementAlias="message close button">
+            <locatorType>id</locatorType>
+            <locatorValue> class=</locatorValue>
+        </element>
+        <element elementAlias="City or State Div/Class dropdown">
+            <locatorType>XPATH</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[1]/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="City or State state dropdown">
+            <locatorType>XPATH</locatorType>
+            <locatorValue>.//*[@id='doc-directory-submit']/div[2]/div[2]/div/div/div/a</locatorValue>
+        </element>
+        <element elementAlias="No Doctors found CLOSE">
+            <locatorType>XPATH</locatorType>
+            <locatorValue>html/body/div[3]/div/div/div[2]/form</locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+    </elements>
+</page>

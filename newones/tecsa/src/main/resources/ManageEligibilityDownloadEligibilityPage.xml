@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Client ID field">
+      <locatorType>className</locatorType>
+      <locatorValue>mediumSearchField</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>className</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="Download Eligibility link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>Download Eligibility</locatorValue>
+    </element>
+    <element elementAlias="Client/Member ID field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/form/span[1]/img</locatorValue>
+    </element>
+    <element elementAlias=" MANAGE ELIGIBILITY link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>MANAGE ELIGIBILITY</locatorValue>
+    </element>
+   <element elementAlias="AsOf Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[1]</locatorValue>
+    </element>
+   <element elementAlias="AsOf Date Day dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue></locatorValue>
+    </element>
+   <element elementAlias="AsOf Date Year dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Active only Status button">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="MS Excel format button">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="Active and Termed Member Status button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[1]/input[2]</locatorValue>
+    </element>
+    <element elementAlias="CSV format button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[3]/input[2]</locatorValue>
+    </element>
+    <element elementAlias="PDF format button">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="Download button">
+      <locatorType>id</locatorType>
+      <locatorValue>submitRequest</locatorValue>
+    </element>
+    <element elementAlias="0001 0001 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0001-0001"]</locatorValue>
+    </element>
+    <element elementAlias="0002 0002 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0002-0002"]</locatorValue>
+    </element>
+   <element elementAlias="Select All link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Select All</locatorValue>
+    </element>
+    <element elementAlias="Clear All link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Clear All</locatorValue>
+    </element>
+    <element elementAlias="error message">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[6]/div/label</locatorValue>
+    </element> 
+    <element elementAlias="Email popup title">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Submit Request</locatorValue>
+    </element>
+    <element elementAlias="Note">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[13]</locatorValue>
+    </element>
+    <element elementAlias="Report Date field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[3]/fieldset/div[1]/input</locatorValue>
+    </element> 
+   </elements>
+</page>

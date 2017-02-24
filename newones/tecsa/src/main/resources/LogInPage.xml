@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Log In Types">
+      <locatorType>name</locatorType>
+      <locatorValue>logonType</locatorValue>
+    </element>
+    <element elementAlias="User ID">
+      <locatorType>name</locatorType>
+      <locatorValue>user</locatorValue>
+    </element>
+    <element elementAlias="Password">
+      <locatorType>name</locatorType>
+      <locatorValue>password</locatorValue>
+    </element>
+    <element elementAlias="Submit">
+      <locatorType>className</locatorType>
+      <locatorValue>input75</locatorValue>
+    </element>
+  </elements>
+</page>

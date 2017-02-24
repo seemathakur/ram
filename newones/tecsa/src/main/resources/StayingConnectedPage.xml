@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="EYECARE CONNECTION link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[1]/div[1]/div/a/img</locatorValue>
+    </element>
+    <element elementAlias="ACA Video link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[1]/div/span/a</locatorValue>
+    </element>
+    <element elementAlias="Your Employees get an Extra $20 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[2]/div/span/a</locatorValue>
+    </element>
+    <element elementAlias="CNBC Video link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[3]/div/span/a</locatorValue>
+    </element>
+    <element elementAlias="Exclusive Member Extra link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[4]/div/span/a</locatorValue>
+    </element>
+    <element elementAlias="Its Not Too Late for a New Years Resolution link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[5]/div/span/a</locatorValue>
+    </element>
+    <element elementAlias="Google Glass and VSP Network Providers link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[6]/span/a</locatorValue>
+    </element>
+    <element elementAlias="VSP Responds to ABC News link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/div[7]/span/a</locatorValue>
+    </element>
+    <element elementAlias="Previous Articles Dropdown link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="3 Tools to Increase Enrollment link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="3 Tools to Increase Enrollment field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Back link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/span/a[1]</locatorValue>
+    </element>
+    <element elementAlias="Proven ways benefit managers link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[3]/a</locatorValue>
+    </element>
+    <element elementAlias="Proven ways benefits managers field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="HR manager boots employee link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="HR manager boots employee field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Educating Employees about Benefits link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[5]/a</locatorValue>
+    </element>
+    <element elementAlias="Educating Employees about Benefits field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Competitive Pricing on Progressive Lenses link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[6]/a</locatorValue>
+    </element>
+    <element elementAlias="Competitive Pricing on Progressive Lenses field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Online tools make it easy to manage link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div[2]/div/ul/li[7]/a</locatorValue>
+    </element>
+    <element elementAlias="Online tools make it easy to manage field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Calendar of Events link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="WELLNESS WIRE field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[1]/div/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Calendar of Events field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[2]/div[1]/div[1]</locatorValue>
+    </element>
+  </elements>
+</page>

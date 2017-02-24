@@ -1,0 +1,89 @@
+ {
+            "serviceLocation": {
+                "key": {
+                    "providerTaxId": "330484151",
+                    "serviceLocationHashCode": "15  ",
+                    "serviceLocationSequence": "1",
+                    "self": {
+                        "href": "http://ea-loadbal150.vsp.com:80/provider-web/servicelocations/330484151-15%20%20-1?asofdate=2016-01-15",
+                        "type": "application/vnd.vsp.servicelocation",
+                        "rel": "self"
+                    }
+                },
+                "altairInd": false,
+                "disabilityAccess": false,
+                "dispensingInd": false,
+                "equipmentLevel": "A",
+                "name": "SHAHLA ABEDI MD",
+                "salesTaxExemptInd": false,
+                "serviceType": "FS",
+                "type": "M",
+                "phoneNumber": "9498314144",
+                "faxNumber": "9498516161",
+                "identifyingAddress": {
+                    "street1": "15 MAREBLU STE 260",
+                    "city": "ALISO VIEJO",
+                    "stateCode": "CA",
+                    "zipCode": "92656",
+                    "zipExtension": "3046"
+                },
+                "physicalAddress": {
+                    "street1": "15 MAREBLU STE 260",
+                    "city": "ALISO VIEJO",
+                    "stateCode": "CA",
+                    "zipCode": "92656",
+                    "zipExtension": "3046"
+                },
+                "mailingAddress": {
+                    "street1": "15 MAREBLU STE 260",
+                    "stateCode": "CA",
+                    "zipCode": "92656",
+                    "zipExtension": "3046"
+                },
+                "provider": {
+                    "href": "http://ea-loadbal150.vsp.com:80/provider-web/providers/330484151?asofdate=2016-01-15",
+                    "type": "application/vnd.vsp.provider",
+                    "rel": "urn://vnd.vsp.rels/provider"
+                },
+                "providerNetworkAccessPoints": {
+                    "href": "http://ea-loadbal150.vsp.com:80/provider-web/providernetworkaccesspoints?providertaxid=330484151&servicelocationhashcode=15++&servicelocationsequence=1&asofdate=2016-01-15&startposition=0&maxresults=0",
+                    "type": "application/vnd.vsp.providernetworkaccesspoints",
+                    "rel": "urn://vnd.vsp.rels/providernetworkaccesspoints"
+                }
+            },
+            "doctor": {
+                "key": {
+                    "doctorId": "225272657",
+                    "self": {
+                        "href": "http://ea-loadbal150.vsp.com:80/provider-web/doctors/225272657?asofdate=2016-01-15",
+                        "type": "application/vnd.vsp.doctor",
+                        "rel": "self"
+                    }
+                },
+                "degreeCode": "MD",
+                "phone": "0000000000",
+                "name": {
+                    "firstName": "PARASTOU",
+                    "lastName": "ABEDI"
+                },
+                "medicaidId": "000A79258",
+                "nationalProviderId": "1720067333",
+                "lastUpdate": "2016-01-15T14:41:05.293-08:00",
+                "upin": "I26627",
+                "membershipType": "M",
+                "providerNetworkAccessPoints": {
+                    "href": "http://ea-loadbal150.vsp.com:80/provider-web/providernetworkaccesspoints?nationalProviderId=225272657&asofdate=2016-01-15&startposition=0&maxresults=0",
+                    "type": "application/vnd.vsp.providernetworkaccesspoints",
+                    "rel": "urn://vnd.vsp.rels/providernetworkaccesspoints"
+                }
+            },
+            "providerNetworkKey": {
+                "networkId": "1000",
+                "self": {
+                    "href": "http://ea-loadbal150.vsp.com:80/product-web/providernetworks/1000",
+                    "type": "application/vnd.vsp.providernetwork",
+                    "rel": "self"
+                }
+            },
+            "accessPointEffectiveDate": "2009-03-01"
+        }

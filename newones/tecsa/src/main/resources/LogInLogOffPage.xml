@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="FORGOT YOUR PASSWORD link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Forgot your Password</locatorValue>
+    </element>
+    <element elementAlias="REGISTRATION link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Registration</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>CONTACT US</locatorValue>
+    </element>
+    <element elementAlias="LOG IN Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[1]/a[1]/span</locatorValue>
+    </element>
+    <element elementAlias="Benefits Managers User Name Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/form/fieldset/div/div[1]/div/input</locatorValue>
+    </element>
+    <element elementAlias="Password Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/form/fieldset/div/div[2]/div/input</locatorValue>
+    </element>
+    <element elementAlias="NEW to VSP">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Current Customers">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[1]/a</locatorValue>
+    </element>
+    <element elementAlias="California Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[2]/div[1]/form/div[1]/div/ul/li[7]/a</locatorValue>
+    </element>
+    <element elementAlias="LOG IN">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Benefits Managers User Name">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/fieldset/div/div[1]/div/input</locatorValue>
+    </element>
+    <element elementAlias="Password">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/fieldset/div/div[2]/div/input</locatorValue>
+    </element>
+    <element elementAlias="LOG IN Button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/form/fieldset/input</locatorValue>
+    </element>
+    <element elementAlias="LOG IN Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/form/fieldset/input</locatorValue>
+    </element>
+  </elements>
+</page>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Division Class">
+      <locatorType>id</locatorType>
+      <locatorValue>didcid</locatorValue>
+    </element>
+ <element elementAlias="Member ID">
+      <locatorType>id</locatorType>
+      <locatorValue>memberid</locatorValue>
+    </element>
+  <element elementAlias="None checkbox">
+      <locatorType>id</locatorType>
+      <locatorValue>none</locatorValue>
+    </element>
+!-- use for non electronic clients -->
+    <element elementAlias="Original Effective Date">
+      <locatorType>id</locatorType>
+      <locatorValue>when_value</locatorValue>
+    </element>
+!-- use for electronic clients -->
+    <element elementAlias="Original Month Effective Date">
+      <locatorType>id</locatorType>
+      <locatorValue>indRoleBasedEffDate_month</locatorValue>
+    </element>
+     <element elementAlias="Add to Division Class dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[2]/select</locatorValue>
+    </element>
+       <element elementAlias="Original Day Effective Date download">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[3]/div[1]/div[1]/div[1]/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Original Month Effective Date dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[3]/div[1]/div[1]/div[1]/select[1]</locatorValue>
+    </element>
+     <element elementAlias="Original Year Effective Date dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[3]/div[1]/div[1]/div[1]/input[1]</locatorValue>
+    </element>
+         <element elementAlias="error message must select">
+      <locatorType>id</locatorType>
+      <locatorValue>mid_error</locatorValue>
+    </element>
+       <element elementAlias="error message not 9 numbers">
+      <locatorType>id</locatorType>
+      <locatorValue>mid_error</locatorValue>
+    </element>
+       <element elementAlias="error message less than">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/label</locatorValue>
+    </element>
+        <element elementAlias="Member ID 9-digit number box">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[1]/div[4]/input[1]</locatorValue>
+    </element>
+            <element elementAlias="None check box">
+      <locatorType>id</locatorType>
+      <locatorValue>nonemid</locatorValue>
+    </element>
+   <element elementAlias="Original Day Effective Date">
+      <locatorType>id</locatorType>
+      <locatorValue>indRoleBasedEffDate_day</locatorValue>
+    </element>
+ <element elementAlias="Original Year Effective Date">
+      <locatorType>id</locatorType>
+      <locatorValue>indRoleBasedEffDate_year</locatorValue>
+    </element>
+    <element elementAlias="Coverage Code">
+      <locatorType>id</locatorType>
+      <locatorValue>covcode</locatorValue>
+    </element>
+    <element elementAlias="First Name">
+      <locatorType>id</locatorType>
+      <locatorValue>firstname</locatorValue>
+    </element>
+    <element elementAlias="Last Name">
+      <locatorType>id</locatorType>
+      <locatorValue>lastname</locatorValue>
+    </element>
+    <element elementAlias="DOB Month">
+      <locatorType>id</locatorType>
+      <locatorValue>birthDate_month</locatorValue>
+    </element>
+    <element elementAlias="DOB Day">
+      <locatorType>id</locatorType>
+      <locatorValue>birthDate_day</locatorValue>
+    </element>
+    <element elementAlias="DOB Year">
+      <locatorType>id</locatorType>
+      <locatorValue>birthDate_year</locatorValue>
+    </element>
+    <element elementAlias="Gender">
+      <locatorType>id</locatorType>
+      <locatorValue>sex</locatorValue>
+    </element>
+    <element elementAlias="Home Email Address">
+      <locatorType>id</locatorType>
+      <locatorValue>emailHome</locatorValue>
+    </element>
+    <element elementAlias="Work Email Address">
+      <locatorType>id</locatorType>
+      <locatorValue>emailWork</locatorValue>
+    </element>
+    <element elementAlias="Address">
+      <locatorType>id</locatorType>
+      <locatorValue>street</locatorValue>
+    </element>
+    <element elementAlias="Address 2">
+      <locatorType>id</locatorType>
+      <locatorValue>street2</locatorValue>
+    </element>
+    <element elementAlias="City">
+      <locatorType>id</locatorType>
+      <locatorValue>city</locatorValue>
+    </element>
+    <element elementAlias="State">
+      <locatorType>id</locatorType>
+      <locatorValue>state</locatorValue>
+    </element>
+    <element elementAlias="Zip">
+      <locatorType>id</locatorType>
+      <locatorValue>zip</locatorValue>
+    </element>
+    <element elementAlias="Add button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[3]/div[7]/input</locatorValue>
+    </element>
+   <element elementAlias="Add button2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[14]/form/div[3]/div[7]/input</locatorValue>
+    </element>
+    <element elementAlias="Phone">
+      <locatorType>id</locatorType>
+      <locatorValue>phoneNumber</locatorValue>
+    </element>
+    <element elementAlias="Coverage Duration">
+      <locatorType>name</locatorType>
+      <locatorValue>coverageDuration</locatorValue>
+    </element>
+    <element elementAlias="Classification Code">
+      <locatorType>name</locatorType>
+      <locatorValue>classificationCode</locatorValue>
+    </element>        
+    <element elementAlias="Broker 1">
+      <locatorType>name</locatorType>
+      <locatorValue>broker1</locatorValue>
+    </element>
+    <element elementAlias="Broker 2">
+      <locatorType>name</locatorType>
+      <locatorValue>broker2</locatorValue>
+    </element>
+    <element elementAlias="Broker 3">
+      <locatorType>name</locatorType>
+      <locatorValue>broker3</locatorValue>
+    </element>
+    <element elementAlias="Broker 4">
+      <locatorType>name</locatorType>
+      <locatorValue>broker4</locatorValue>
+    </element>
+    <element elementAlias="Broker 5">
+      <locatorType>name</locatorType>
+      <locatorValue>broker5</locatorValue>
+    </element>
+    <element elementAlias="Prefix">
+      <locatorType>id</locatorType>
+      <locatorValue>prefix</locatorValue>
+    </element>
+    <element elementAlias="Suffix">
+      <locatorType>id</locatorType>
+      <locatorValue>suffix</locatorValue>
+    </element> 
+    <element elementAlias="Add Pop-Up Message">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>.actionMessage>li>span</locatorValue>
+    </element>
+  <element elementAlias="Error message label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[2]/div</locatorValue>
+    </element>                                                
+  </elements>
+</page>

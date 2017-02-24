@@ -1,0 +1,105 @@
+{
+    "claimLines": [
+        {
+            "lineNumber": 1,
+            "productPackageName" : "Signature",
+            "productCatalogKey": "GenExam",
+          	"copayCollectedDate":"2014-06-30",
+          	"overrideEligibilityIndicator":false,
+          	"copayCollectedDate":"2014-06-30",
+          	"reservationInterval":
+	          	{
+	          		"begin":"2014-07-01",
+	          		"end":"2014-07-30"
+	          	}
+        }, 
+        {
+            "lineNumber": 2,
+            "productPackageName" : "Signature",
+            "productCatalogKey": "Lens",
+            "copayCollectedDate":"2014-06-30",
+            "overrideEligibilityIndicator":false,
+          	"copayCollectedDate":"2014-06-30",
+          	"reservationInterval":
+	          	{
+	          		"begin":"2014-06-27",
+	          		"end":"2014-06-27"
+	          	}
+        },
+        {
+            "lineNumber": 3,
+            "productPackageName" : "Signature",
+            "productCatalogKey": "Frame",
+            "copayCollectedDate":"2014-06-30",
+            "overrideEligibilityIndicator":false,
+          	"copayCollectedDate":"2014-06-30",
+          	"reservationInterval":
+	          	{
+	          		"begin":"2014-06-27",
+	          		"end":"2014-06-27"
+	          	}
+        }
+    ],
+    "patient": {
+        "consumerId": "2106163",
+        "name": {
+            "firstName": "ERIN",
+            "lastName": "MIRECKI"
+        },
+        "suppliedFirstName": "ERIN",
+        "suppliedLastName": "MIRECKI",
+        "addresses": [
+                {
+                    "street1": "3333 QUALITY DRIVE",
+                    "city": "RANCHO CORDOVA",
+                    "stateCode": "CA",
+                    "zipCode": "95670",
+                    "zipExtension": "7985",
+                    "countryCode": "US ",
+                    "addressType": "UN"
+                }
+         ],
+		"emails": [
+                {
+                    "address": "erinmi2@vsp.com",
+                    "emailType": "PC"
+                },
+                {
+                    "address": "erinmi2@vsp.com",
+                    "emailType": "PR"
+                }
+            ],
+            "phones": [
+                {
+                    "number": "9999999",
+                    "prefix": "999",
+                    "phoneType": "PR"
+                },
+                {
+                    "number": "4128906",
+                    "prefix": "916",
+                    "phoneType": "PC"
+                }
+            ],
+        "memberPolicyKey": {
+            "clientId": "12219130",
+            "divisionId": "0006",
+            "policyId": "412890606"
+        },
+        "membershipId": "412890606",
+        "status": "A",
+        "relationToSubscriber": "Member",
+        "dateOfBirth": "1990-9-15",
+        "originalEffectiveDate": "2013-01-01",
+        "gender": "F"
+    },
+	
+	"reservationSourceCode" : "E",
+	"reservationIssueDate": "2014-07-01",
+	
+	"providerNetworkAccessPoint" : {
+		"providerNetworkKey": {
+			"networkId": "1000"
+		}
+	}
+}

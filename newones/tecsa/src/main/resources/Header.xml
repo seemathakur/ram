@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="LOG OUT link">
+      <locatorType>className</locatorType>
+      <locatorValue>logout</locatorValue>
+    </element>
+    <element elementAlias="BENEFITS MANAGERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>BENEFITS MANAGERS</locatorValue>
+    </element>
+    <element elementAlias="MEMBERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>MEMBERS</locatorValue>
+    </element>
+    <element elementAlias="BROKERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>BROKERS</locatorValue>
+    </element>
+    <element elementAlias="WHY VSP link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>WHY VSP</locatorValue>
+    </element>
+    <element elementAlias="MANAGE YOUR PLAN link">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>a[href="/manage-plan.html"]</locatorValue>
+    </element>
+    <element elementAlias="RESOURCES link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>RESOURCES</locatorValue>
+    </element>
+    <element elementAlias="SECURE MAIL link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>SECURE MAIL</locatorValue>
+    </element>
+    <element elementAlias="Secure Mail label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Resources label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//div[3]/div[2]/div</locatorValue>
+    </element>
+    <element elementAlias="Manage Your label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[7]/div/p</locatorValue>
+    </element>
+    <element elementAlias="LOG IN dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[1]/a[1]/span</locatorValue>
+    </element>
+    <element elementAlias="USER NAME dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="PASSWORD dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>password</locatorValue>
+    </element>
+    <element elementAlias="LOG IN link">
+      <locatorType>id</locatorType>
+      <locatorValue>login_0</locatorValue>
+    </element>
+    <element elementAlias="Client ID field">
+      <locatorType>id</locatorType>
+      <locatorValue>clientId</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Client ID button">
+      <locatorType>classname</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="ID Selection dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>idType</locatorValue>
+    </element>
+    <element elementAlias="Member Selection 1 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/tbody/tr[2]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Member Selection 2 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/tbody/tr[2]/td[1]/a</locatorValue>
+    </element>
+        <element elementAlias="Member Selection 3 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[11]/table/tbody/tr[1]/td[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Last Name label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[1]</locatorValue>
+    </element>
+    <element elementAlias="First Name label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[2]</locatorValue>
+    </element>
+    <element elementAlias="Member ID label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[3]</locatorValue>
+    </element>
+    <element elementAlias="Client ID label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[4]</locatorValue>
+    </element>
+    <element elementAlias="Division-Class label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[5]</locatorValue>
+    </element>
+    <element elementAlias="Status label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/thead/tr/th[6] </locatorValue>
+    </element>
+    <element elementAlias="Update Pop-Up Message">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.actionerror>li>span</locatorValue>
+    </element>
+    <element elementAlias="Search Results Message">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.tableTitleContainer>h3</locatorValue>
+    </element>
+        <element elementAlias="Client/Member ID dropdown">
+      <locatorType>ID</locatorType>
+      <locatorValue>idtype</locatorValue>
+    </element>
+    <element elementAlias="Client/Member ID field">
+      <locatorType>ID</locatorType>
+      <locatorValue>idValue</locatorValue>
+    </element>
+    <element elementAlias="Client/Member ID button">
+      <locatorType>classname</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="Masked Member ID field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[9]/table/tbody/tr[1]/td[3]/a</locatorValue>
+    </element>
+    <element elementAlias="Update Message">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#jqueryerror>.error</locatorValue>
+    </element>
+   <element elementAlias="Update Button">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#jqueryerror>.error</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>className</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+ <element elementAlias="Save button1">
+      <locatorType>className</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+     <element elementAlias="Save button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[4]/div[2]/form/table[2]/tbody/tr/td[2]/input</locatorValue>
+    </element>
+      <element elementAlias="Non Electronic field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[4]/div[2]/form/table[2]/tbody/tr/td[1]</locatorValue>
+    </element>
+  <element elementAlias="Error message field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Log In label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+  </elements>
+</page>

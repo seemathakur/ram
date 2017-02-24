@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+    <element elementAlias="LogonType">
+      <locatorType>ID</locatorType>
+      <locatorValue>logonType</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>CONTACT US</locatorValue>
+    </element>
+    <element elementAlias="Outreach link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Outreach</locatorValue>
+    </element>
+    <element elementAlias="Newsroom link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Newsroom</locatorValue>
+    </element>
+    <element elementAlias="Privacy Policy link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Privacy Policy</locatorValue>
+    </element>
+    <element elementAlias="Newsroom link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Newsroom</locatorValue>
+    </element>
+    <element elementAlias="Report Fraud link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Report Fraud</locatorValue>
+    </element>
+    <element elementAlias="Header HOME link">
+       <locatorType>CSSSELECTOR</locatorType>
+       <locatorValue>a[href="#a"]</locatorValue>
+    </element>
+    <element elementAlias="Header DESIGN link">
+       <locatorType>CSSSELECTOR</locatorType>
+       <locatorValue>a[href="#b"]</locatorValue>
+    </element>
+    <element elementAlias="Header COLLECTIONS link">
+       <locatorType>CSSSELECTOR</locatorType>
+       <locatorValue>a[href="#c"]</locatorValue>
+    </element>
+    <element elementAlias="Header ABOUT link">
+       <locatorType>CSSSELECTOR</locatorType>
+       <locatorValue>a[href="#d"]</locatorValue>
+    </element>
+    <element elementAlias="VSP Mobile Site link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>VSP Mobile Site</locatorValue>
+    </element>
+    <element elementAlias="HIPAA link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>HIPAA</locatorValue>
+    </element>
+    <element elementAlias="Terms of Service link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Terms of service</locatorValue>
+    </element> 
+    <element elementAlias="Remember User ID CheckBox">
+      <locatorType>ID</locatorType>
+      <locatorValue>login_rememberme</locatorValue>
+    </element>
+    <element elementAlias="UserId Field">
+      <locatorType>ID</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="UserPassword Field">
+      <locatorType>ID</locatorType>
+      <locatorValue>password</locatorValue>
+    </element> 
+    <element elementAlias="LogIn Button">
+      <locatorType>ID</locatorType>
+      <locatorValue>login_0</locatorValue>
+    </element>
+    <element elementAlias="LogOut Button">
+      <locatorType>CLASSNAME</locatorType>
+      <locatorValue>logout</locatorValue>
+    </element>
+    <element elementAlias="Eyefinity UserId Field">
+      <locatorType>ID</locatorType>
+      <locatorValue>user</locatorValue>
+    </element> 
+    <element elementAlias="Eyefinity UserPassword Field">
+      <locatorType>ID</locatorType>
+      <locatorValue>password</locatorValue>
+    </element> 
+    <element elementAlias="Eyefinity LogIn Button">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>input.input75[onclick="login(document.mf);"]</locatorValue>
+    </element>
+    <element elementAlias="eClaim Tracking link">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>area[href="/servlet/EClaimTrkServlet?msgProc=530"]</locatorValue>
+    </element>
+    <element elementAlias="File Claims link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>File Claims</locatorValue>
+    </element>
+    <element elementAlias="Track Other Claims link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>Track Other Claims</locatorValue>
+    </element>
+    <element elementAlias="Member Search button">
+      <locatorType>ID</locatorType>
+      <locatorValue>goToSearch</locatorValue>
+    </element>
+    <element elementAlias="DOCTOR DIRECTORY link">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>a[href="/doc-directory.html"]</locatorValue>
+    </element> 
+    <element elementAlias="Copay Amount dropdown">
+      <locatorType>ID</locatorType>
+      <locatorValue>copayAmount</locatorValue>
+    </element> 
+    <element elementAlias="Frequency of Service dropdown">
+      <locatorType>ID</locatorType>
+      <locatorValue>frequency</locatorValue>
+    </element> 
+    <element elementAlias="Effective Date dropdown">
+      <locatorType>ID</locatorType>
+      <locatorValue>effectiveDate_month</locatorValue>
+    </element>
+    <element elementAlias="Effective Month dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>.//*[@id='clientSetup']/div[2]/div[3]/div[1]/div/a</locatorValue>
+    </element>
+    <element elementAlias="Effective Year dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>.//*[@id='clientSetup']/div[2]/div[3]/div[2]/div/a</locatorValue>
+    </element>
+    <element elementAlias="View and Pay Bills field">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>.//*[@id='main']/div[4]/div[1]/h2</locatorValue>
+    </element>
+    <element elementAlias="Continue button">
+      <locatorType>ID</locatorType>
+      <locatorValue>btnPay</locatorValue>
+    </element>
+    <element elementAlias="County select box">
+      <locatorType>ID</locatorType>
+      <locatorValue>county</locatorValue>
+    </element>
+    <element elementAlias="MemberDependent dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/form/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="Well Vision Table">
+      <locatorType>ID</locatorType>
+      <locatorValue>Benefit</locatorValue>
+    </element>
+    <element elementAlias="WellVision Table">
+      <locatorType>ID</locatorType>
+      <locatorValue>ExamBenefit</locatorValue>
+    </element>
+    <element elementAlias="Choose Member dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/form/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="Client Headquarters dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/form/div[1]/div[2]/div[1]/div/a</locatorValue>
+    </element>
+    <element elementAlias="FIND dropdown">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>a.white.txtLg.bold[onclick="showHeaderMenu($('#browseMenu'));"]</locatorValue>
+    </element>
+    <element elementAlias="Member UserId Field">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#accBody > #login > fieldset > div > div.relativePosition > div.longFieldWrapper > #userid</locatorValue>
+    </element> 
+    <element elementAlias="Member UserPassword Field">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#accBody > #login > fieldset > div > div.relativePosition > div.longFieldWrapper > #password</locatorValue>
+    </element>
+    <element elementAlias="Member LogIn Button">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#accBody > #login > fieldset > #login_0</locatorValue>
+    </element>
+    <element elementAlias="Claim Status dropdown">
+      <locatorType>name</locatorType>
+      <locatorValue>statusType</locatorValue>
+    </element>
+    <element elementAlias="Insurance Carrier dropdown">
+      <locatorType>name</locatorType>
+      <locatorValue>SelectedInsCosList</locatorValue>
+    </element>
+    <element elementAlias="Claim Tracking Search Button">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/form/table[3]/tbody/tr/td[2]/table/tbody/tr[2]/td/input[2]</locatorValue>
+    </element>
+    <element elementAlias="Insured ID Radio Button">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>input[value="MemberId"]</locatorValue>
+    </element>
+    <element elementAlias="Insurance Carrier Radio Button">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>input[value="CarrieID"]</locatorValue>
+    </element>
+    <element elementAlias="Promo Image">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>div.homePromoContainer > a > img</locatorValue>
+    </element>
+    <element elementAlias="Effective SelectMonth dropdown">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#updatePane #columnarForm .formSection .formColumn #birthDate_month</locatorValue>
+    </element>
+    <element elementAlias="Effective SelectDay dropdown">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#updatePane #columnarForm .formSection .formColumn #birthDate_day</locatorValue>
+    </element>
+    <element elementAlias="Effective TypeYear Field">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>#updatePane #columnarForm .formSection .formColumn #birthDate_year</locatorValue>
+    </element>
+    <element elementAlias="Effective Month jQuery dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/form/div[4]/div[3]/div[1]/div/a</locatorValue>
+    </element>
+    <element elementAlias="Effective Year jQuery dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/form/div[4]/div[3]/div[2]/div/a</locatorValue>
+    </element>
+    </elements>
+</page>

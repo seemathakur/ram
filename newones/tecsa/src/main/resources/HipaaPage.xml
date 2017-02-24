@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="What is HIPAA? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What is HIPAA?</locatorValue>
+    </element>
+    <element elementAlias="Who is covered by the electronic data interchange (EDI) rules? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Who is covered by the electronic data interchange (EDI) rules?</locatorValue>
+    </element>
+    <element elementAlias="Decribe the actions your organization has taken to be compliant with the HIPAA regulations. link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Describe the actions your organization has taken to be compliant with the HIPAA regulations.</locatorValue>
+    </element>
+    <element elementAlias="Does VSP have staff members assigned to assuring its HIPAA EDI, Privacy, and Security compliance? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP have staff members assigned to assuring its HIPAA EDI, Privacy, and Security compliance?</locatorValue>
+    </element>
+    <element elementAlias="What is a HIPAA certificate? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What is a HIPAA certificate?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP provide HIPAA certificates? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP provide HIPAA certificates?</locatorValue>
+    </element>
+    <element elementAlias="Where can I get more information? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Where can I get more information?</locatorValue>
+    </element>
+    <element elementAlias="Are VSP's systems capable of sending and receiving X12N transaction standards? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Are VSP's systems capable of sending and receiving X12N transaction standards?</locatorValue>
+    </element>
+    <element elementAlias="Which of the following transaction types will VSP be exchanging? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Which of the following transaction types will VSP be exchanging?</locatorValue>
+    </element>
+    <element elementAlias="Will VSP require that clients submit enrollment in the 834 format? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Will VSP require that clients submit enrollment in the 834 format?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP use the medical data code sets mandated by HIPAA? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP use the medical data code sets mandated by HIPAA?</locatorValue>
+    </element>
+    <element elementAlias="Is VSP utilizing a clearinghouse to accept the Transaction Standards? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Is VSP utilizing a clearinghouse to accept the Transaction Standards?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP require Trading Partner Agreements? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP require Trading Partner Agreements?</locatorValue>
+    </element>
+    <element elementAlias="Has VSP designated a Privacy Officer? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Has VSP designated a Privacy Officer?</locatorValue>
+    </element>
+    <element elementAlias="How does VSP provide a Notice of Privacy Practices to VSP members? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How does VSP provide a Notice of Privacy Practices to VSP members?</locatorValue>
+    </element>
+    <element elementAlias="What is included in the Notice of Privacy Practices? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>What is included in the Notice of Privacy Practices?</locatorValue>
+    </element>
+    <element elementAlias="How does VSP use and disclose PHI? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How does VSP use and disclose PHI?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP consider its clients to be business associates? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP consider its clients to be business associates?</locatorValue>
+    </element>
+    <element elementAlias="How will VSP members be informed of the process for complaining about VSP Privacy Practices? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>How will VSP members be informed of the process for complaining about VSP Privacy Practices?</locatorValue>
+    </element>
+    <element elementAlias="Has VSP appointed a Security Officer? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Has VSP appointed a Security Officer?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP have an action plan for HIPAA Security compliance? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP have an action plan for HIPAA Security compliance?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP have procedures in place to ensure that officers, workforce members, and vendors comply with security policies? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP have procedures in place to ensure that the officers, workforce members, and vendors comply with security policies?</locatorValue>
+    </element>
+    <element elementAlias="Will VSP provide its security and privacy policies to clients? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Will VSP provide its security and privacy policies to clients?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP have entity authentication capability? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP have entity authentication capability?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP control access to work areas and equipment based on business requirements? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP control access to work areas and equipment based on business requirements?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP offer secure transmission options? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP offer secure transmission options?</locatorValue>
+    </element>
+    <element elementAlias="Does VSP have a Business Continuity Plan and/or a Disaster Recovery Plan? link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Does VSP have a Business Continuity Plan and/or a Disaster Recovery Plan?</locatorValue>
+    </element>
+    <element elementAlias="Have VSP employees received training on its privacy practices? link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[3]/h3[5]/a</locatorValue>
+    </element>
+    <element elementAlias="Will VSP be requesting authorizations from members for PHI use and disclosures? link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[3]/h3[6]/a</locatorValue>
+    </element>
+    <element elementAlias="How can VSP members access their PHI? link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[3]/h3[7]/a</locatorValue>
+    </element>
+    <element elementAlias="Does VSP consider its clients to be business associates? link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[3]/h3[8]/a</locatorValue>
+    </element>
+    <element elementAlias="Resources field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]</locatorValue>
+    </element>
+    <element elementAlias="Doctor Directory field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Member Support Communication field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Exclusive Programs Offers field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Member Support FAQS field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Staying Connected field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="HIPAA COMPLIANCE link">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>a[href="/Resources/hipaa/hipaa-compliance.html"]</locatorValue>
+    </element>
+    <element elementAlias="HIPPA Compliance field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Contact Us field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="HIPAA COMPLIANCE link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[7]/a</locatorValue>
+    </element>
+    <element elementAlias="HIPAA EDI RULES link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]/ul/li[2]/a/span</locatorValue>
+    </element>
+    <element elementAlias="Transaction Standards and Code Sets link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Transaction Standards and Code Sets</locatorValue>
+    </element>
+    <element elementAlias="Unique Identifiers link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Unique Identifiers</locatorValue>
+    </element>
+    <element elementAlias="Privacy Rule link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Privacy Rule</locatorValue>
+    </element>
+    <element elementAlias="Security Rule link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Security Rule</locatorValue>
+    </element>
+  </elements>
+</page>

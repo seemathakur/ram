@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Outreach link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Outreach</locatorValue>
+    </element>
+    <element elementAlias="Newsroom link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Newsroom</locatorValue>
+    </element>
+    <element elementAlias="Company Facts link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Company Facts</locatorValue>
+    </element>
+    <element elementAlias="Find a Rep link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[5]/footer[2]/a[2]</locatorValue>
+    </element>
+    <element elementAlias="Email Webmaster link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Email Webmaster</locatorValue>
+    </element>
+    <element elementAlias="Webmaster@vsp.com link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>webmaster@vsp.com</locatorValue>
+    </element>
+    <element elementAlias="Report Fraud link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Report Fraud</locatorValue>
+    </element>
+    <element elementAlias="Secure Mail link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/nav[2]/div/a[4]</locatorValue>
+    </element>
+    <element elementAlias="Online Billing link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Online Billing</locatorValue>
+    </element>
+    <element elementAlias="Member Support link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Member Support</locatorValue>
+    </element>
+    <element elementAlias="HIPAA link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>HIPAA</locatorValue>
+    </element>
+    <element elementAlias="Sitemap link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Sitemap</locatorValue>
+    </element>
+    <element elementAlias="Privacy Policy link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Privacy Policy</locatorValue>
+    </element>
+    <element elementAlias="Terms of Service link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Terms of service</locatorValue>
+    </element>        
+    <element elementAlias="VSP Mobile Site link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>VSP Mobile Site</locatorValue>
+    </element>
+    <element elementAlias="VSP Global link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>VSP Global</locatorValue>
+    </element>
+    <element elementAlias="VSP Blog link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>VSP Blog</locatorValue>
+    </element>
+    <element elementAlias="Facebook link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Facebook</locatorValue>
+    </element>                                
+    <element elementAlias="Twitter link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Twitter</locatorValue>
+    </element>
+    <element elementAlias="YouTube link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>YouTube</locatorValue>
+    </element>
+    <element elementAlias="CAREERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>CAREERS</locatorValue>
+    </element>
+    <element elementAlias="CAREERS label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Outreach label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[4]/div[2]/div/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Newsroom label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Company Facts label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h3</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[5]/footer[2]/a[1]/b</locatorValue>
+    </element>
+    <element elementAlias="Contact Us label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Report Fraud label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="About This Site label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="ABOUT THIS SITE link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[5]/footer[4]/a[1]/b</locatorValue>
+    </element>
+    <element elementAlias="Sitemap label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/h1</locatorValue>
+    </element>
+    <element elementAlias="Privacy Policy label">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>div.bodyContainer.clearfix div.bodyContent.clearfix.grid_16.omega h1</locatorValue>
+    </element>
+    <element elementAlias="Terms of Service label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/h1</locatorValue>
+    </element>  
+    <element elementAlias="Current Customers tab">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/ul/li[1]/a</locatorValue>
+    </element>                               
+  </elements>
+</page>

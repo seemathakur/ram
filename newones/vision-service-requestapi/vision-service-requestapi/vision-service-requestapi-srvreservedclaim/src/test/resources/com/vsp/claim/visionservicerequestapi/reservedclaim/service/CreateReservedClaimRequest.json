@@ -1,0 +1,99 @@
+{
+    "claimKey": {
+        "claimNumber": "100046580",
+        "claimExtNumber": "00"
+    },
+    "productPackageName" : "Signature",
+    "claimLines": [
+        {
+            "lineNumber": 1,
+            "productCatalogKey": "GenExam",
+            "reservationInterval":{
+            	"begin": "2015-01-01"
+            }
+        },
+        {
+            "lineNumber": 2,
+            "productCatalogKey": "Lens",
+            "reservationInterval":{
+            	"begin": "2015-01-01"
+            }
+        },
+        {
+            "lineNumber": 3,
+            "productCatalogKey": "Frame",
+            "reservationInterval":{
+            	"begin": "2015-01-01"
+            }            
+        }
+    ],
+    "patient": {
+        "consumerId": "2106163",
+        "name": {
+            "firstName": "ERIN",
+            "lastName": "MIRECKI"
+        },
+        "suppliedFirstName": "ERIN",
+        "suppliedLastName": "MIRECKI",
+        "addresses": [
+                {
+                    "street1": "3333 QUALITY DRIVE",
+                    "city": "RANCHO CORDOVA",
+                    "stateCode": "CA",
+                    "zipCode": "95670",
+                    "zipExtension": "7985",
+                    "countryCode": "US ",
+                    "addressType": "UN"
+                }
+         ],
+		"emails": [
+                {
+                    "address": "erinmi2@vsp.com",
+                    "emailType": "PC"
+                },
+                {
+                    "address": "erinmi2@vsp.com",
+                    "emailType": "PR"
+                }
+            ],
+            "phones": [
+                {
+                    "number": "9999999",
+                    "prefix": "999",
+                    "phoneType": "PR"
+                },
+                {
+                    "number": "4128906",
+                    "prefix": "916",
+                    "phoneType": "PC"
+                }
+            ],
+        "memberPolicyKey": {
+            "clientId": "12219130",
+            "divisionId": "0006",
+            "policyId": "412890606"
+        },
+        "membershipId": "412890606",
+        "status": "A",
+        "relationToSubscriber": "Member",
+        "dateOfBirth": "1990-9-15",
+        "originalEffectiveDate": "2013-01-01",
+        "gender": "F"
+    },
+    "subscriber": {
+      "consumerId": "2106163",
+      "memberPolicyKey": {
+          "clientId": "12219130",
+          "divisionId": "0006",
+          "policyId": "412890606"
+      },
+      "membershipId": "412890606"
+  },
+	"reservationSourceCode" : "E",
+	
+	"providerNetworkAccessPoint" : {
+		"providerNetworkKey": {
+			"networkId": "1000"
+		}
+	}
+}

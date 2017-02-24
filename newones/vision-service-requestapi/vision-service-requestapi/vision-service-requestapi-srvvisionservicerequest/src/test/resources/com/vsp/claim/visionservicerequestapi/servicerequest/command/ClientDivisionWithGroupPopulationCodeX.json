@@ -1,0 +1,26 @@
+{
+  "key": {
+    "clientId": "30042506",
+    "divisionId": "0004"
+  },
+  "customer": {
+    "strategicAlliance": {
+      "codeValue": "VHPEX"
+    }
+  },
+  "client": {
+    "status": "Active",
+    "key": {
+      "clientId": "30042506"
+    },
+    "claimPaymentPeriod": 180,
+    "tracksDependents": false,
+    "tracksAddresses": false,
+    "pastServiceClients": [
+      "00000000",
+      "00000000",
+      "00000000"
+    ],
+    "groupPopulationCode": "X"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "key": {
+    "clientId": "00857001",
+    "divisionId": "0100"
+  },
+  "customer": {
+    "strategicAlliance": {}
+  },
+  "client": {
+    "status": "Active",
+    "key": {
+      "clientId": "00857001"
+    },
+    "claimPaymentPeriod": 180,
+    "tracksDependents": true,
+    "pastServiceClients": [
+      "12425575",
+      "12423788",
+      "12355443"
+    ]
+  }
+}

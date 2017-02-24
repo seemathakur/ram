@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+	    <groupId>com.vsp.claim</groupId>
+    	<artifactId>vision-service-requestapi</artifactId>
+		<version>1.33</version>
+	</parent>
+	
+	<artifactId>vision-service-requestapi-web</artifactId>
+	<name>vision-service-requestapi-web</name>
+	
+	<packaging>war</packaging>
+	
+	<dependencies>
+		
+		<!-- Model -->
+		<dependency>
+			<groupId>com.vsp.api</groupId>
+			<artifactId>api-gb-resource</artifactId>
+		</dependency>
+
+		<!-- Camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-javaconfig</artifactId>
+		</dependency>
+
+		<!-- Active MQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-kahadb-store</artifactId>
+		</dependency>
+		
+		<!-- Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		
+		<!-- IBM MQ -->
+		<dependency>
+        	<groupId>com.ibm.mq</groupId>
+        	<artifactId>mq</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.mq</groupId>
+        	<artifactId>jmqi</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.mqjms</groupId>
+        	<artifactId>mqjms</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.mq</groupId>
+        	<artifactId>headers</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.mq.dhbcore</groupId>
+        	<artifactId>dhbcore</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.mq</groupId>
+        	<artifactId>commonservices</artifactId>
+        	<version>7.0.1.11</version>
+        </dependency>
+		
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>	
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vsp.api</groupId>
+			<artifactId>api-srvint-camel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>vision-service-requestapi-srvreservedclaim</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>vision-service-requestapi-srvvisionservicerequest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>vision-service-requestapi-shared</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>integration-test</phase>
+						<configuration>
+							<excludes>
+								<exclude>none</exclude>
+							</excludes>
+							<includes>
+								<include>**/*IntegrationTest.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+  		</plugins>
+	</build>
+</project>

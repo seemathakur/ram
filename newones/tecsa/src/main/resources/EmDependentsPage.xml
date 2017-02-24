@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+        <element elementAlias="Select Dependent dropdown">
+            <locatorType>ID</locatorType>
+            <locatorValue>dependent</locatorValue>
+        </element>
+        <element elementAlias="Update link">
+            <locatorType>id</locatorType>
+            <locatorValue>updateDepLink</locatorValue>
+        </element>
+        <element elementAlias="Relationship dropdown">">
+            <locatorType>id</locatorType>
+            <locatorValue>relationship2</locatorValue>
+        </element>
+        <element elementAlias="Gender dropdown">
+            <locatorType>id</locatorType>
+            <locatorValue>update-dependent_sex</locatorValue>
+        </element>
+        <element elementAlias="Birth Date Month dropdown">
+            <locatorType>id</locatorType>
+            <locatorValue>birthDate_month</locatorValue>
+        </element>
+        <element elementAlias="Birth Date Day dropdown">
+            <locatorType>id</locatorType>
+            <locatorValue>birthDate_day</locatorValue>
+        </element>
+        <element elementAlias="Birth Date Year field">
+            <locatorType>id</locatorType>
+            <locatorValue>effDate_year</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Month dropdown">
+            <locatorType>id</locatorType>
+            <locatorValue>effDate_month</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Day dropdown">
+            <locatorType>id</locatorType>
+            <locatorValue>effDate_day</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Year field">
+            <locatorType>id</locatorType>
+            <locatorValue>effDate_year</locatorValue>
+        </element>
+        <element elementAlias="View Dependent link">
+            <locatorType>id</locatorType>
+            <locatorValue>dependentLink</locatorValue>
+        </element>
+        <element elementAlias="Relationship label">
+            <locatorType>name</locatorType>
+            <locatorValue>relationship</locatorValue>
+        </element>
+        <element elementAlias="Birth Date label">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[2]/div/table/tbody/tr[5]/td[1]</locatorValue>
+        </element>
+        <element elementAlias="Gender label">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[2]/div/table/tbody/tr[6]/td/span</locatorValue>
+        </element>
+        <element elementAlias="Update button">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[4]/form/div[6]/div/div/input</locatorValue>
+        </element>
+        <element elementAlias="Terminate link">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[1]/div[3]/a[2]</locatorValue>
+        </element>
+        <element elementAlias="Terminate Button">
+            <locatorType>id</locatorType>
+            <locatorValue>depStatusButton</locatorValue>
+        </element>
+        <element elementAlias="Yes Button">
+            <locatorType>CLASSNAME</locatorType>
+            <locatorValue>yes</locatorValue>
+        </element>
+        <element elementAlias="Reinstate link">
+            <locatorType>id</locatorType>
+            <locatorValue>depStatusLink</locatorValue>
+        </element>
+        <element elementAlias="Reinstate Button">
+            <locatorType>id</locatorType>
+            <locatorValue>depStatusButton</locatorValue>
+        </element>
+        <element elementAlias="Birthdate Year field">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[4]/form/div[4]/div[1]/input[1]</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Month dropdown-two">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[4]/form/div[5]/div/div/select[1]</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Day dropdown-two">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[4]/form/div[5]/div/div/select[2]</locatorValue>
+        </element>
+        <element elementAlias="Effective Date Year field-two">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[16]/div[2]/div[4]/form/div[5]/div/div/input[1]</locatorValue>
+        </element>
+        <element elementAlias="Dependent Terminated label">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/ul/li/span</locatorValue>
+        </element>
+        <element elementAlias="Dependent Reinstated label">
+            <locatorType>xpath</locatorType>
+            <locatorValue>html/body/div[1]/div[3]/div[2]/div[6]/ul/li/span</locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+    </elements>
+</page>

@@ -1,0 +1,787 @@
+<form>
+  <label>claim-preclaimapi</label>
+  <fieldset autoRun="true" submitButton="false">
+    <input type="time" searchWhenChanged="true">
+      <label></label>
+      <default>
+        <earliest>-4h@m</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="dropdown" token="Env" searchWhenChanged="true">
+      <label>Environment</label>
+      <choice value="host=ea-app0580 index=kpi">DEV</choice>
+      <choice value="host=ea-app0590 index=kpi">TEST</choice>
+      <choice value="host=gtsacptas-0408 env=ACPT index=main">ACPT</choice>
+      <choice value="host=gtsprodas-1273 env=PROD index=main">PROD-1273</choice>
+      <default>host=ea-app0580 index=kpi</default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <title>Average Response Time: Reserve Eligible Items(ms)</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Reserve eligible items - Result=Success" | chart avg(time) as X</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Average Response Time: Add Eligible Items(ms)</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Add eligible items - Result=Success" | chart avg(time) as X</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Average Response Time: Remove Eligible Items(ms)</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Remove eligible items - Result=Success" | chart avg(time) as X</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <title>Average Response Time: Retrieve reserved claim(ms)</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Retrieve reserved claim - Result=Success" | chart avg(time) as X</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Reserve Eligible Items : Avg Response Time over time</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Reserve eligible items - Result=Success" | timechart avg(time) span=2min</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">1</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.bubbleMaximumSize">100</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Total number of requests over time: Reserve Eligible Items</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Calling API:reserveEligibleProductItemsForProductPackage():"  NOT "- Result=Success" | timechart  span=5min count by host</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.resultTruncationLimit">5000</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Total number of requests over time: Add Eligible Items</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Calling API:addEligibilityProductItemsToReservation()"  NOT "- Result=Success" | timechart  span=5min count by host</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.resultTruncationLimit">5000</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Total number of requests over time: Remove Eligible Item</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Calling API:removeEligibilityProductItemFromReservation()"  NOT "- Result=Success"  | timechart  span=5min count by host</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.resultTruncationLimit">5000</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Total number of requests over time: Retrieve reserved claim</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Calling API:retrieve()"  NOT "- Result=Success"  | timechart  span=5min count by host</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.resultTruncationLimit">5000</option>
+      </chart>
+    </panel>
+  </row>
+  	<row>
+	<panel>
+	      <chart>
+	        <title>Total number of requests to each Host: Reserve Eligible Items</title>
+	        <search>
+	          <query>$Env$ sourcetype=syslog "Calling API:reserveEligibleProductItemsForProductPackage():"  NOT "- Result=Success"  | stats count by  host</query>
+	        </search>
+	        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+	        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+	        <option name="charting.axisTitleX.visibility">visible</option>
+	        <option name="charting.axisTitleY.visibility">collapsed</option>
+	        <option name="charting.axisTitleY2.visibility">collapsed</option>
+	        <option name="charting.axisX.scale">linear</option>
+	        <option name="charting.axisY.scale">linear</option>
+	        <option name="charting.axisY2.enabled">false</option>
+	        <option name="charting.axisY2.scale">inherit</option>
+	        <option name="charting.chart">column</option>
+	        <option name="charting.chart.nullValueMode">gaps</option>
+	        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+	        <option name="charting.chart.stackMode">default</option>
+	        <option name="charting.chart.style">shiny</option>
+	        <option name="charting.drilldown">all</option>
+	        <option name="charting.layout.splitSeries">0</option>
+	        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+	        <option name="charting.legend.placement">none</option>
+	        <option name="wrap">true</option>
+	        <option name="rowNumbers">false</option>
+	        <option name="dataOverlayMode">none</option>
+	        <option name="charting.chart.bubbleMaximumSize">50</option>
+	        <option name="charting.chart.bubbleMinimumSize">10</option>
+	        <option name="charting.chart.bubbleSizeBy">area</option>
+	      </chart>
+	    </panel>
+	<panel>
+	      <chart>
+	        <title>Total number of requests to each Host: Add Eligible Items</title>
+	        <search>
+	          <query>$Env$ sourcetype=syslog "Calling API:addEligibilityProductItemsToReservation()"  NOT "- Result=Success"  | stats count by host</query>
+	        </search>
+	        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+	        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+	        <option name="charting.axisTitleX.visibility">visible</option>
+	        <option name="charting.axisTitleY.visibility">collapsed</option>
+	        <option name="charting.axisTitleY2.visibility">collapsed</option>
+	        <option name="charting.axisX.scale">linear</option>
+	        <option name="charting.axisY.scale">linear</option>
+	        <option name="charting.axisY2.enabled">false</option>
+	        <option name="charting.axisY2.scale">inherit</option>
+	        <option name="charting.chart">column</option>
+	        <option name="charting.chart.nullValueMode">gaps</option>
+	        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+	        <option name="charting.chart.stackMode">default</option>
+	        <option name="charting.chart.style">shiny</option>
+	        <option name="charting.drilldown">all</option>
+	        <option name="charting.layout.splitSeries">0</option>
+	        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+	        <option name="charting.legend.placement">none</option>
+	        <option name="wrap">true</option>
+	        <option name="rowNumbers">false</option>
+	        <option name="dataOverlayMode">none</option>
+	        <option name="charting.chart.bubbleMaximumSize">50</option>
+	        <option name="charting.chart.bubbleMinimumSize">10</option>
+	        <option name="charting.chart.bubbleSizeBy">area</option>
+	      </chart>
+	    </panel>
+	<panel>
+	      <chart>
+	        <title>Total number of requests to each Host: Remove Eligible Item</title>
+	        <search>
+	          <query>$Env$ sourcetype=syslog "Calling API:removeEligibilityProductItemFromReservation()"  NOT "- Result=Success"  | stats count by  host</query>
+	        </search>
+	        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+	        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+	        <option name="charting.axisTitleX.visibility">visible</option>
+	        <option name="charting.axisTitleY.visibility">collapsed</option>
+	        <option name="charting.axisTitleY2.visibility">collapsed</option>
+	        <option name="charting.axisX.scale">linear</option>
+	        <option name="charting.axisY.scale">linear</option>
+	        <option name="charting.axisY2.enabled">false</option>
+	        <option name="charting.axisY2.scale">inherit</option>
+	        <option name="charting.chart">column</option>
+	        <option name="charting.chart.nullValueMode">gaps</option>
+	        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+	        <option name="charting.chart.stackMode">default</option>
+	        <option name="charting.chart.style">shiny</option>
+	        <option name="charting.drilldown">all</option>
+	        <option name="charting.layout.splitSeries">0</option>
+	        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+	        <option name="charting.legend.placement">none</option>
+	        <option name="wrap">true</option>
+	        <option name="rowNumbers">false</option>
+	        <option name="dataOverlayMode">none</option>
+	        <option name="charting.chart.bubbleMaximumSize">50</option>
+	        <option name="charting.chart.bubbleMinimumSize">10</option>
+	        <option name="charting.chart.bubbleSizeBy">area</option>
+	      </chart>
+	    </panel>
+	<panel>
+	      <chart>
+	        <title>Total number of requests to each Host: Retrieve reserved claim</title>
+	        <search>
+	          <query>$Env$ sourcetype=syslog "Calling API:retrieve()" NOT "- Result=Success"  | stats count by  host</query>
+	        </search>
+	        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+	        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+	        <option name="charting.axisTitleX.visibility">visible</option>
+	        <option name="charting.axisTitleY.visibility">collapsed</option>
+	        <option name="charting.axisTitleY2.visibility">collapsed</option>
+	        <option name="charting.axisX.scale">linear</option>
+	        <option name="charting.axisY.scale">linear</option>
+	        <option name="charting.axisY2.enabled">false</option>
+	        <option name="charting.axisY2.scale">inherit</option>
+	        <option name="charting.chart">column</option>
+	        <option name="charting.chart.nullValueMode">gaps</option>
+	        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+	        <option name="charting.chart.stackMode">default</option>
+	        <option name="charting.chart.style">shiny</option>
+	        <option name="charting.drilldown">all</option>
+	        <option name="charting.layout.splitSeries">0</option>
+	        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+	        <option name="charting.legend.placement">none</option>
+	        <option name="wrap">true</option>
+	        <option name="rowNumbers">false</option>
+	        <option name="dataOverlayMode">none</option>
+	        <option name="charting.chart.bubbleMaximumSize">50</option>
+	        <option name="charting.chart.bubbleMinimumSize">10</option>
+	        <option name="charting.chart.bubbleSizeBy">area</option>
+	      </chart>
+	    </panel>
+	</row>
+  <row>
+    <panel>
+      <chart>
+        <title>Failures By Operation</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" | 
+            timechart span=10min count(eval(operation="reserveEligibleProductItemsForProductPackage")) as RESERVE_ELIGIBLE_ITEMS
+            count(eval(operation="addEligibilityProductItemsToReservation")) as ADD_ELIGIBLE_ITEMS
+            count(eval(operation="removeEligibilityProductItemFromReservation")) as REMOVE_ELIGIBLE_ITEM
+            count(eval(operation="retrieve")) as RETRIEVE_CLAIM
+            count(eval(operation="update")) as UPDATE_CLAIM
+            count(eval(operation="updateLines")) as UPDATE_CLAIM_LINES
+            count(eval(operation="create")) as CREATE_CLAIM
+            count(eval(operation="createLines")) as CREATE_CLAIM_LINES
+            count(eval(operation="delete")) as DELETE_CLAIM
+            count(eval(operation="deleteLine")) as DELETE_CLAIM_LINE by sourcetype</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Total success vs failure</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "- Result=Success"| eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            chart count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Success vs failure: Reserve Eligible Items</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "- Result=Success"  AND operation=reserveEligibleProductItemsForProductPackage  | eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            chart count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Success vs failure: Add Eligible Items</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "- Result=Success"  AND operation=addEligibilityProductItemsToReservation | eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            chart count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Success vs failure: Remove Eligible Item</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "- Result=Success"  AND operation=removeEligibilityProductItemFromReservation | eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            chart count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Success vs failure: Retrieve Reserved Claim</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "- Result=Success"  AND operation=retrieve | eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            chart count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Total success vs failure Over Time</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Uncaught exception occurred(ErrorId:" OR "Result=Success" | eval fields=split(_raw,"|") | eval class=mvindex(fields,5) |
+            eval success = case(class=="ExceptionProcessor.java","Failure",class=="TimerEventLogger.java","Success") |
+            timechart span=10min count by success</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel> 
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Number of Requests by Consumer</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "ReservedClaimsResource." OR "ReservedEligibleItemsResource." 
+            |WHERE client_id!="claim-preclaimapi"
+			|eval count_half=1/2
+            |chart sum(count_half) by client_id</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Number of Requests by Consumer Over Time</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "ReservedClaimsResource." OR "ReservedEligibleItemsResource." 
+            |WHERE client_id!="claim-preclaimapi"
+			| eval count_half=1/2
+            |timechart span=10min sum(count_half) by client_id</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel> 
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Average response time by API</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Result=Success" AND "Calling Service"
+            |chart avg(time) as average_time by calling_service</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Time consumption proportion by API</title>
+        <search>
+          <query>$Env$ sourcetype=syslog "Result=Success" AND "Calling Service" | chart sum(time) as total_time by calling_service</query>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.axisLabelsX.majorUnit">10</option>
+        <option name="charting.axisLabelsX.minorTickVisibility">show</option>
+      </chart>
+    </panel>
+  </row>
+</form>

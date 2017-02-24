@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="MANAGE FAQS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Member ID label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[12]/form/div[1]/div[1]/label</locatorValue>
+    </element>
+    <element elementAlias="Member ID field">
+      <locatorType>ID</locatorType>
+      <locatorValue>textID</locatorValue>
+    </element>
+    <element elementAlias="Member ID vic field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/div[6]/input</locatorValue>
+    </element>
+    <element elementAlias="Last Name field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/div[6]/input</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/select[1]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Day dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Year dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/input[1]</locatorValue>
+    </element>
+        <element elementAlias="Please Confirm Terminate button">
+      <locatorType>classname</locatorType>
+      <locatorValue>yes</locatorValue>
+    </element>
+        <element elementAlias="Update Pop-Up Message">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>.actionerror>li>span</locatorValue>
+    </element>
+        <element elementAlias="Termination Reason dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[2]/select</locatorValue>
+    </element>
+    <element elementAlias="Terminate Reason dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[2]/select</locatorValue>
+    </element>
+        <element elementAlias="Reinstate Date Year 2 field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[23]/form/div/div[1]/input[1]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Reason dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[2]/select</locatorValue>
+    </element>
+    <element elementAlias="Reinstate Vic link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/div[3]/a[2]</locatorValue>
+    </element>
+     <element elementAlias="Reinstate Vic 2 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[11]/div/div[3]/a[2]</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[4]/input</locatorValue>
+    </element>
+        <element elementAlias="Termination Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[21]/form/div[1]/div/select[1]</locatorValue>
+    </element>
+            <element elementAlias="Terminate Vic link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/div[3]/a[3]</locatorValue>
+    </element>
+    <element elementAlias="Kris Kris link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='member']/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Kris Kris link-two">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='member']/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+      <element elementAlias="Reinstate 3 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/div[3]/a[2]</locatorValue>
+    </element>
+    <element elementAlias="Kris Kris link-three">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[11]/table/tbody/tr[3]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Test Kris link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='member']/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Last Name field">
+      <locatorType>id</locatorType>
+      <locatorValue>textName</locatorValue>
+    </element>
+    <element elementAlias="ID Selection dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>idType</locatorValue>
+    </element>
+    <element elementAlias="Error Message">
+      <locatorType>CSSSELECTOR</locatorType>
+      <locatorValue>.error</locatorValue>
+    </element>
+     <element elementAlias="Upload Eligibility link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>Upload Eligibility</locatorValue>
+    </element>     
+     <element elementAlias="0001-0001 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/table/tbody/tr[1]/td[1]/a</locatorValue>
+    </element>
+    <element elementAlias="MANAGE ELIGIBILITY link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[1]/a</locatorValue>
+    </element>
+     <element elementAlias="Download Eligibility link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>Download Eligibility</locatorValue>
+    </element> 
+     <element elementAlias="Add Reinstate button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/div[3]/input</locatorValue>
+    </element>     
+         <element elementAlias="Add Reinstate button2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/div[4]/input</locatorValue>
+    </element>   
+        <element elementAlias="Terminate Vic button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[3]/input</locatorValue>
+    </element> 
+    <element elementAlias="Division/Class Number">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/table/tbody/tr[1]/td[1]/a</locatorValue>
+    </element>
+    <element elementAlias="Member 1 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[10]/table/tbody/tr[1]/td[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Select Client dropdown">
+      <locatorType>id</locatorType>
+      <locatorValue>select-client_clientId</locatorValue>
+    </element>
+    <element elementAlias="Manage Eligibility label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Transmit Eligibility link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Transmit Eligibility</locatorValue>
+    </element>
+    <element elementAlias="Terminate Vic3 link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[9]/div/div[3]/a[3]</locatorValue>
+    </element>
+    <element elementAlias="Adjustment Summary link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Adjustment Summary</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/select[1]</locatorValue>
+    </element>
+     <element elementAlias="Terminate Date Day vic dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[21]/form/div[1]/div[1]/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Month vic dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div/select[1]</locatorValue>
+    </element>
+        <element elementAlias="Terminate Date Month2 dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[21]/form/div[1]/div/select[1]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Day dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Terminate Date Year dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[1]/input[1]</locatorValue>
+    </element>
+    <element elementAlias="Termination Reason dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div[2]/select</locatorValue>
+    </element>
+     <element elementAlias="Terminate Full Date dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[19]/form/div[1]/div/select</locatorValue>
+    </element>
+    <element elementAlias="Terminate Full Date vic dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[21]/form/div[1]/div/select</locatorValue>
+    </element>
+    <element elementAlias="Terminate button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[21]/form/div[3]/input</locatorValue>
+    </element>
+    <element elementAlias="error message less than">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[2]/label</locatorValue>
+    </element>
+    <element elementAlias="error message less than">
+      <locatorType>id</locatorType>
+      <locatorValue>fasttrackError</locatorValue>
+    </element>
+    <element elementAlias="Search button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/form/div/div[4]/input</locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+  </elements>
+</page>

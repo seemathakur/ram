@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Client ID field">
+      <locatorType>className</locatorType>
+      <locatorValue>mediumSearchField</locatorValue>
+    </element>
+    <element elementAlias="Search link">
+      <locatorType>className</locatorType>
+      <locatorValue>searchSubmitImage</locatorValue>
+    </element>
+    <element elementAlias="Download Eligibility link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>Download Eligibility</locatorValue>
+    </element>
+    <element elementAlias="Client/Member ID field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[3]/form/span[1]/img</locatorValue>
+    </element>
+    <element elementAlias=" MANAGE ELIGIBILITY link">
+      <locatorType>LINKTEXT</locatorType>
+      <locatorValue>MANAGE ELIGIBILITY</locatorValue>
+    </element>
+   <element elementAlias="Effective Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[1]</locatorValue>
+    </element>
+   <element elementAlias="Effective Date Day field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/table/tbody/tr[2]/td[3]/a</locatorValue>
+    </element>
+   <element elementAlias="Effective Date Year dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Active Only Status button">
+      <locatorType>ID</locatorType>
+      <locatorValue>actMbr</locatorValue>
+    </element>
+    <element elementAlias="MS Excel format button">
+      <locatorType>ID</locatorType>
+      <locatorValue>typeexcel</locatorValue>
+    </element>
+    <element elementAlias="Active and Termed Member Status button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[2]/input[2]</locatorValue>
+    </element>
+    <element elementAlias="Active/Termed/Futures Status button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[2]/input[2]</locatorValue>
+    </element>
+    <element elementAlias="CSV format button">
+      <locatorType>ID</locatorType>
+      <locatorValue>typecsv</locatorValue>
+    </element>
+    <element elementAlias="PDF format button">
+      <locatorType>ID</locatorType>
+      <locatorValue>typepdf</locatorValue>
+    </element>
+    <element elementAlias="Note">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/div[13]</locatorValue>
+    </element>
+    <element elementAlias="Download button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[6]/input</locatorValue>
+    </element>
+    <element elementAlias="Submit button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[4]/div/div/div[2]/form/div[3]/input[1]</locatorValue>
+    </element>
+    <element elementAlias="Close link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[4]/div/div/div[1]/span[2]/a</locatorValue>
+    </element>
+   <element elementAlias="Cancel button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[3]/div/div/div[2]/form/div[3]/input[2]</locatorValue>
+    </element>
+    <element elementAlias="0001 0001 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0001-0001"]</locatorValue>
+    </element>
+    <element elementAlias="0002 0002 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0002-0002"]</locatorValue>
+    </element>
+   <element elementAlias="0003 0003 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0003-0003"]</locatorValue>
+    </element>
+  <element elementAlias="0003 0005 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0003-0005"]</locatorValue>
+    </element>
+   <element elementAlias="0004 0004 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0004-0004"]</locatorValue>
+    </element>
+    <element elementAlias="0004 0009 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0004-0009"]</locatorValue>
+    </element>
+       <element elementAlias="0005 0005 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0005-0005"]</locatorValue>
+    </element>
+       <element elementAlias="0006 0006 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0006-0006"]</locatorValue>
+    </element>
+       <element elementAlias="0007 0007 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0007-0007"]</locatorValue>
+    </element>
+       <element elementAlias="0010 0010 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0010-0010"]</locatorValue>
+    </element>
+   <element elementAlias="0100 0100 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0100-0100"]</locatorValue>
+    </element>
+    <element elementAlias="0111 0111 Div/Class checkbox">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>#didcid[value="0111-0111"]</locatorValue>
+    </element>
+   <element elementAlias="Select All link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Select All</locatorValue>
+    </element>
+    <element elementAlias="Clear All link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Clear All</locatorValue>
+    </element>
+     <element elementAlias="Email popup title">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[3]/div/div/div[2]/div/b</locatorValue>
+    </element>
+   <element elementAlias="Open popup title">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[4]/div/div/div[2]/div/b</locatorValue>
+    </element>
+    <element elementAlias="Report Date field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[1]/input</locatorValue>
+    </element> 
+     <element elementAlias="Calendar field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[1]/img</locatorValue>
+    </element> 
+    <element elementAlias="AsOf Date Month dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[1]</locatorValue>
+     </element> 
+    <element elementAlias="AsOf Date Year dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[2]/div/div/select[2]</locatorValue>
+    </element>
+    <element elementAlias="9">
+      <locatorType>linktext</locatorType>
+      <locatorValue>9</locatorValue>
+    </element>
+   <element elementAlias="10">
+      <locatorType>linktext</locatorType>
+      <locatorValue>10</locatorValue>
+    </element>
+  <element elementAlias="11">
+      <locatorType>linktext</locatorType>
+      <locatorValue>11</locatorValue>
+    </element>
+<element elementAlias="12">
+      <locatorType>linktext</locatorType>
+      <locatorValue>12</locatorValue>
+    </element>
+   <element elementAlias="20">
+      <locatorType>linktext</locatorType>
+      <locatorValue>20</locatorValue>
+    </element>
+    <element elementAlias="21">
+      <locatorType>linktext</locatorType>
+      <locatorValue>21</locatorValue>
+    </element>
+   <element elementAlias="24">
+      <locatorType>linktext</locatorType>
+      <locatorValue>24</locatorValue>
+    </element>
+  <element elementAlias="30">
+      <locatorType>linktext</locatorType>
+      <locatorValue>30</locatorValue>
+    </element>
+    <element elementAlias="31">
+      <locatorType>linktext</locatorType>
+      <locatorValue>31</locatorValue>
+    </element>
+  <element elementAlias="Error Message no selection">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[7]/div/label</locatorValue>
+    </element>
+   <element elementAlias="Error Message over limit">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div/form/div[2]/fieldset/div[6]/div/p</locatorValue>
+    </element>
+   </elements>
+</page>

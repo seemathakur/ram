@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Spending Less link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]</locatorValue>
+    </element>
+    <element elementAlias="Spending Less Watch link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[5]/p/div/div[2]/ul[2]/li[1]/a/img</locatorValue>
+    </element>
+    <element elementAlias="X link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[3]/div/div[1]/span[2]</locatorValue>
+    </element> 
+    <element elementAlias="Why VSP field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]</locatorValue>
+    </element> 
+    <element elementAlias="Contact Us link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]</locatorValue>
+    </element>
+    <element elementAlias="Spending Less radio 2 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[5]/p/div/div[2]/div/span[2]</locatorValue>
+    </element>
+    <element elementAlias="Spending Less radio 3 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[5]/p/div/div[2]/div/span[3]</locatorValue>
+    </element>
+    <element elementAlias="Spending Less Watch link 2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[5]/p/div/div[2]/ul[2]/li[2]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Spending Less PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[5]/p/div/div[2]/ul[2]/li[3]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Less Complication link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>/html/body/div/div[3]/div[4]/p[2]/img</locatorValue>
+    </element>
+    <element elementAlias="Less Complication Watch link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[6]/p/div/div[2]/ul[2]/li[1]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Less Complication radio 2 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[6]/p/div/div[2]/div/span[2]</locatorValue>
+    </element>
+    <element elementAlias="Less Complication radio 3 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[6]/p/div/div[2]/div/span[3]</locatorValue>
+    </element>
+    <element elementAlias="Less Complication PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[6]/p/div/div[2]/ul[2]/li[2]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Less Complication PDF link 2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[6]/p/div/div[2]/ul[2]/li[2]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[3]/p[2]</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days Watch link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[7]/p/div/div[2]/ul[2]/li[1]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days PDF link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[7]/p/div/div[2]/ul[2]/li[2]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days Watch link 2">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[7]/p/div/div[2]/ul[2]/li[3]/a/img</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days radio 2 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[7]/p/div/div[2]/div/span[2]</locatorValue>
+    </element>
+    <element elementAlias="Fewer Sick Days radio 3 button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[7]/p/div/div[2]/div/span[3]</locatorValue>
+    </element>
+    <element elementAlias="Contact Us label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[10]/div[1]/p/span/span/b</locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+    <element elementAlias="">
+      <locatorType></locatorType>
+      <locatorValue></locatorValue>
+    </element>
+  </elements>
+</page>

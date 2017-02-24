@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Administration link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Administration</locatorValue>
+    </element>
+    <element elementAlias="Account Administration label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[1]/div/div[1]/div[1]/h4</locatorValue>
+    </element>
+    <element elementAlias="Claims link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Claims</locatorValue>
+    </element>
+    <element elementAlias="Claims label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[2]/div/div[1]/div[1]/h4</locatorValue>
+    </element>
+    <element elementAlias="Member Support link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Member Support</locatorValue>
+    </element>
+    <element elementAlias="Member Support label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[3]/div/div/div[1]/div/b[1]</locatorValue>
+    </element>
+    <element elementAlias="Technical Support link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Technical Support</locatorValue>
+    </element>
+    <element elementAlias="Technical Support label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[4]/div/div/div/p[1]/span</locatorValue>
+    </element>
+    <element elementAlias="Other link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Other</locatorValue>
+    </element>
+    <element elementAlias="Other label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div[5]/div/div[1]/div[1]/h4</locatorValue>
+    </element>
+    <element elementAlias="Current VSP Client label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='tabs-1']/div/div/p[1]/span</locatorValue>
+    </element>
+    <element elementAlias="State Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='contactForm']/div[1]/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="California Dropdown link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>California</locatorValue>
+    </element>
+    <element elementAlias="County Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='contactForm']/div[2]/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="Sacramento County Dropdown link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Sacramento County</locatorValue>
+    </element>
+    <element elementAlias="2-9 employees link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>2 - 9 employees or members</locatorValue>
+    </element>
+    <element elementAlias="10-499 employees link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>10 - 499 employees or members</locatorValue>
+    </element>
+    <element elementAlias="500+ employees link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>500 + employees or members</locatorValue>
+    </element>
+    <element elementAlias="Health Plans link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Health Plans</locatorValue>
+    </element>
+    <element elementAlias="2-9 employees label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='tabs-2']/div[3]/div/div[1]/div/div[1]/p/span</locatorValue>
+    </element>
+    <element elementAlias="10-499 employees label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='tabs-2']/div[3]/div/div[2]/p/strong</locatorValue>
+    </element>
+    <element elementAlias="500+ employees label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='tabs-2']/div[3]/div/div[3]/p[3]/strong[1]</locatorValue>
+    </element>
+    <element elementAlias="Health Plans label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>.//*[@id='tabs-2']/div[3]/div/div[4]/p[3]/strong</locatorValue>
+    </element>
+    <element elementAlias="NEW to VSP link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>NEW to VSP?</locatorValue>
+    </element>
+  </elements>
+</page>

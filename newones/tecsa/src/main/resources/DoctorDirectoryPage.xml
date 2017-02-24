@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Create by City or State link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Create by City or State</locatorValue>
+    </element>
+    <element elementAlias="Create by Doctor or Office Name link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Create by Doctor or Office Name</locatorValue>
+    </element>
+    <element elementAlias="Create by Address link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Create by Address</locatorValue>
+    </element>
+    <element elementAlias="Create by County link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Create by County</locatorValue>
+    </element>
+    <element elementAlias="Division Class link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//*[@id='doc-directory-submit']/div[1]/div/div/span</locatorValue>
+    </element>
+    <element elementAlias="0001-0001 - TESTING-NBS DIVISION-BENEFITS A, B, C, D, V TEST link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//*[@id='doc-directory-submit']/div[1]/div/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Address link">
+      <locatorType>id</locatorType>
+      <locatorValue>street</locatorValue>
+    </element>
+    <element elementAlias="City link">
+      <locatorType>id</locatorType>
+      <locatorValue>city</locatorValue>
+    </element>
+    <element elementAlias="State link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//*[@id='doc-directory-submit']/div[2]/div/div/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="Pennsylvania link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>Pennsylvania</locatorValue>
+    </element>
+    <element elementAlias="York link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//*[@id='county']/option[68]</locatorValue>
+    </element>
+    <element elementAlias="Select All Counties link">
+      <locatorType>id</locatorType>
+      <locatorValue>CountiesAll</locatorValue>
+    </element>
+    <element elementAlias="Travel distance link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>//*[@id='doc-directory-submit']/div[2]/div[4]/div/div/div/a</locatorValue>
+    </element>
+    <element elementAlias="50 Miles link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>50 Miles</locatorValue>
+    </element>
+    <element elementAlias="ZIP code link">
+      <locatorType>id</locatorType>
+      <locatorValue>zip</locatorValue>
+    </element>
+    <element elementAlias="Doctor last name link">
+      <locatorType>id</locatorType>
+      <locatorValue>lname</locatorValue>
+    </element>
+    <element elementAlias="Office name link">
+      <locatorType>id</locatorType>
+      <locatorValue>practice</locatorValue>
+    </element>
+    <element elementAlias="Created for link">
+      <locatorType>id</locatorType>
+      <locatorValue>createdfor</locatorValue>
+    </element>
+    <element elementAlias="Prepared by link">
+      <locatorType>id</locatorType>
+      <locatorValue>createdby</locatorValue>
+    </element>
+    <element elementAlias="Create link">
+      <locatorType>id</locatorType>
+      <locatorValue>doc-directory-submit_0</locatorValue>
+    </element>
+    <element elementAlias="LOG OUT link">
+      <locatorType>className</locatorType>
+      <locatorValue>logout</locatorValue>
+    </element>
+    <element elementAlias="BENEFITS MANAGERS link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>BENEFITS MANAGERS</locatorValue>
+    </element>
+    <element elementAlias="County Div/Class dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[7]/div[1]/div/form/div[1]/div/div/span</locatorValue>
+    </element>
+    <element elementAlias="County state dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[7]/div[1]/div/form/div[2]/div[1]/div/div/div/span</locatorValue>
+    </element>
+    <element elementAlias="Select All Counties box">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[7]/div[1]/div/form/div[2]/div[2]/p[1]/span/a</locatorValue>
+    </element>
+    <element elementAlias="CLIENT ID link">
+      <locatorType>id</locatorType>
+      <locatorValue>clientId</locatorValue>
+    </element>
+  </elements>
+</page>

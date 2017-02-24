@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+        <element elementAlias="R Region Radio Button">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:subview1:ChooseRegionForm:region:1</locatorValue>
+        </element>
+        <element elementAlias="Select Button">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:subview1:ChooseRegionForm:j_id_jsp_2078611699_13pc2</locatorValue>
+        </element>
+        <element elementAlias="Success Message">
+            <locatorType>ID</locatorType>
+            <locatorValue>successMessage</locatorValue>
+        </element>
+        <element elementAlias="Delete Claim Tool link">
+            <locatorType>ID</locatorType>
+            <locatorValue>menu:deleteclaim</locatorValue>
+        </element>
+        <element elementAlias="All Tables Radio Button">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:deleteclaimform:table:0</locatorValue>
+        </element>
+        <element elementAlias="Claim Number List Field">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:deleteclaimform:claimfile</locatorValue>
+        </element>
+        <element elementAlias="Claim Number Field">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:deleteclaimform:claimnbr</locatorValue>
+        </element>
+        <element elementAlias="Delete Button">
+            <locatorType>ID</locatorType>
+            <locatorValue>subview1:deleteclaimform:j_id_jsp_1566442573_20pc2</locatorValue>
+        </element>
+        <element elementAlias="Error Message">
+            <locatorType>ID</locatorType>
+            <locatorValue>errorMessage</locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+    </elements>
+</page>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="MEMBER RESOURCES link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>MEMBER RESOURCES</locatorValue>
+    </element>
+    <element elementAlias="DOCTOR DIRECTORY link">
+      <locatorType>linktext</locatorType>
+      <locatorValue>DOCTOR DIRECTORY</locatorValue>
+    </element>
+    <element elementAlias="EXCLUSIVE PROGRAMS OFFERS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[4]/a</locatorValue>
+    </element>
+    <element elementAlias="EYECARE CONNECTION link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div/div[3]/div[2]/map[2]/area[1]</locatorValue>
+    </element>
+    <element elementAlias="WELLNESS WIRE link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div/div[3]/div[2]/map[2]/area[2]</locatorValue>
+    </element>
+    <element elementAlias="CALENDAR OF EVENTS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div/div[3]/div[2]/map[2]/area[3]</locatorValue>
+    </element>
+    <element elementAlias="MEMBER SUPPORT FAQS link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[5]/a</locatorValue>
+    </element>
+    <element elementAlias="Resources label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]</locatorValue>
+    </element>
+    <element elementAlias="Doctor Directory label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="MEMBER RESOURCES field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Exclusive Programs Offers label">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/p[1]</locatorValue>
+    </element>
+    <element elementAlias="Member Support FAQS label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Staying Connected label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="HIPAA COMPLIANCE link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[7]/a</locatorValue>
+    </element>
+    <element elementAlias="HIPPA Compliance label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="CONTACT US link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[8]/a</locatorValue>
+    </element>
+    <element elementAlias="Contact Us label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Member Support label">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="Sitemap label field">
+      <locatorType>cssselector</locatorType>
+      <locatorValue>h1</locatorValue>
+    </element>
+    <element elementAlias="STAYING CONNECTED link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[6]/a</locatorValue>
+    </element>
+  </elements>
+</page>

@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://authorization.service.claim.bl.vsp.com" xmlns:impl="http://authorization.service.claim.bl.vsp.com" xmlns:intf="http://authorization.service.claim.bl.vsp.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns10="http://v001.dto.xl.vsp.com" xmlns:tns11="http://v004.plan.dto.consumer.bl.vsp.com" xmlns:tns12="http://v002.plan.dto.consumer.bl.vsp.com" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns14="http://v007.eligibility.dto.consumer.bl.vsp.com" xmlns:tns15="http://v006.eligibility.dto.consumer.bl.vsp.com" xmlns:tns16="http://v004.eligibility.dto.consumer.bl.vsp.com" xmlns:tns17="http://v002.coverage.dto.product.bl.vsp.com" xmlns:tns18="http://v001.dto.inventory.bl.vsp.com" xmlns:tns19="http://v002.coverageconstraint.dto.product.bl.vsp.com" xmlns:tns2="http://v001.service.bl.vsp.com" xmlns:tns20="http://v001.coverage.dto.product.bl.vsp.com" xmlns:tns21="http://v001.coverageconstraint.dto.product.bl.vsp.com" xmlns:tns22="http://v001.industry.dto.xl.vsp.com" xmlns:tns23="http://v002.levelofcoverage.dto.product.bl.vsp.com" xmlns:tns24="http://v002.dto.product.bl.vsp.com" xmlns:tns25="http://v001.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns:tns26="http://v002.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns:tns27="http://v002.dto.network.bl.vsp.com" xmlns:tns28="http://v002.cob.dto.product.bl.vsp.com" xmlns:tns29="http://v002.relationshipservice.dto.product.bl.vsp.com" xmlns:tns3="http://v001.authorization.dto.claim.bl.vsp.com" xmlns:tns30="http://v002.rate.dto.product.bl.vsp.com" xmlns:tns31="http://v005.eligibility.dto.consumer.bl.vsp.com" xmlns:tns4="http://v001.helper.service.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:tns7="http://v002.service.bl.vsp.com" xmlns:tns8="http://v001.member.dto.consumer.bl.vsp.com" xmlns:tns9="http://v001.personandcontact.dto.ancillary.bl.vsp.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://authorization.service.claim.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns11="http://v004.plan.dto.consumer.bl.vsp.com" xmlns:tns14="http://v007.eligibility.dto.consumer.bl.vsp.com" xmlns:tns2="http://v001.service.bl.vsp.com" xmlns:tns3="http://v001.authorization.dto.claim.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns7="http://v002.service.bl.vsp.com" xmlns:tns8="http://v001.member.dto.consumer.bl.vsp.com" xmlns:tns9="http://v001.personandcontact.dto.ancillary.bl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v007.eligibility.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v004.plan.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v001.personandcontact.dto.ancillary.bl.vsp.com"/>
+   <import namespace="http://v001.member.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v002.service.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.authorization.dto.claim.bl.vsp.com"/>
+   <import namespace="http://v001.service.bl.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="DeleteAuthorizationForDoctorRequest">
+    <complexContent>
+     <extension base="impl:DeleteAuthorizationRequest">
+      <sequence>
+       <element name="doctorPhoneNumber" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DeleteAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="comments" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="DeleteAuthorizationForDoctorRequest" nillable="true" type="impl:DeleteAuthorizationForDoctorRequest"/>
+   <complexType name="DeleteAuthorizationForDoctorResponse">
+    <complexContent>
+     <extension base="impl:DeleteAuthorizationResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DeleteAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="DeleteAuthorizationForDoctorResponse" nillable="true" type="impl:DeleteAuthorizationForDoctorResponse"/>
+   <complexType name="HoldAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="dispositionReason" nillable="true" type="tns5:SimpleCode"/>
+       <element name="approvedBy" nillable="true" type="xsd:string"/>
+       <element name="comments" nillable="true" type="xsd:string"/>
+       <element name="priority" nillable="true" type="soapenc:int"/>
+       <element name="routeIndicator" nillable="true" type="soapenc:boolean"/>
+       <element name="notify" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="HoldAuthorizationRequest" nillable="true" type="impl:HoldAuthorizationRequest"/>
+   <complexType name="HoldAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="HoldAuthorizationResponse" nillable="true" type="impl:HoldAuthorizationResponse"/>
+   <complexType name="DenyAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="comments" nillable="true" type="xsd:string"/>
+       <element name="dispositionReason" nillable="true" type="tns5:SimpleCode"/>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="DenyAuthorizationRequest" nillable="true" type="impl:DenyAuthorizationRequest"/>
+   <complexType name="DenyAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="DenyAuthorizationResponse" nillable="true" type="impl:DenyAuthorizationResponse"/>
+   <complexType name="HasAccessRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="doctorPhone" nillable="true" type="xsd:string"/>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="HasAccessRequest" nillable="true" type="impl:HasAccessRequest"/>
+   <complexType name="HasAccessResponse">
+    <complexContent>
+     <extension base="tns7:ServiceResponse">
+      <sequence>
+       <element name="hasAccess" type="xsd:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="HasAccessResponse" nillable="true" type="impl:HasAccessResponse"/>
+   <element name="DeleteAuthorizationRequest" nillable="true" type="impl:DeleteAuthorizationRequest"/>
+   <element name="DeleteAuthorizationResponse" nillable="true" type="impl:DeleteAuthorizationResponse"/>
+   <complexType name="FaxAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="faxNumber" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="FaxAuthorizationRequest" nillable="true" type="impl:FaxAuthorizationRequest"/>
+   <complexType name="FaxAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="FaxAuthorizationResponse" nillable="true" type="impl:FaxAuthorizationResponse"/>
+   <complexType name="IssueAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="akaMembers" nillable="true" type="impl:ArrayOf_459425844_1853898024_nillable_MemberKey"/>
+       <element name="asOfDate" nillable="true" type="tns5:Date"/>
+       <element name="memberKey" nillable="true" type="tns8:MemberKey"/>
+       <element name="address" nillable="true" type="tns9:Address"/>
+       <element name="benefitType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="classId" nillable="true" type="xsd:string"/>
+       <element name="cobSSN" nillable="true" type="xsd:string"/>
+       <element name="drPhoneNumber" nillable="true" type="xsd:string"/>
+       <element name="isMemberAddress" nillable="true" type="soapenc:boolean"/>
+       <element name="originationSource" nillable="true" type="tns5:SimpleCode"/>
+       <element name="processSource" nillable="true" type="tns5:SimpleCode"/>
+       <element name="serviceTypes" nillable="true" type="impl:ArrayOf_459425844_455905349_nillable_SimpleCode"/>
+       <element name="approvedBy" nillable="true" type="xsd:string"/>
+       <element name="bypassCodes" nillable="true" type="impl:ArrayOf_459425844_455905349_nillable_SimpleCode"/>
+       <element name="claimCode" nillable="true" type="tns5:SimpleCode"/>
+       <element name="previousAuthorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="replacePreviousAuthorization" nillable="true" type="soapenc:boolean"/>
+       <element name="comments" nillable="true" type="xsd:string"/>
+       <element name="faxNumber" nillable="true" type="xsd:string"/>
+       <element name="validateEligibility" nillable="true" type="soapenc:boolean"/>
+       <element name="coverageType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="benefitOverrides" nillable="true" type="tns11:BenefitSummary"/>
+       <element name="affectsFutureEligibility" nillable="true" type="soapenc:boolean"/>
+       <element name="issueWithSuspend" nillable="true" type="soapenc:boolean"/>
+       <element name="addMemberIndicator" nillable="true" type="soapenc:boolean"/>
+       <element name="memberID9Digit" nillable="true" type="xsd:string"/>
+       <element name="memberName" nillable="true" type="tns9:Name"/>
+       <element name="memberDOB" nillable="true" type="tns5:Date"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_459425844_1853898024_nillable_MemberKey">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns8:MemberKey[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_459425844_455905349_nillable_SimpleCode">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns5:SimpleCode[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <element name="IssueAuthorizationRequest" nillable="true" type="impl:IssueAuthorizationRequest"/>
+   <complexType name="IssueAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="eligibility" nillable="true" type="tns14:MemberEligibility"/>
+       <element name="akaMembers" nillable="true" type="impl:ArrayOf_459425844_1853898024_nillable_MemberKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="IssueAuthorizationResponse" nillable="true" type="impl:IssueAuthorizationResponse"/>
+   <complexType name="ReleaseAuthorizationRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="approvedBy" nillable="true" type="xsd:string"/>
+       <element name="comments" nillable="true" type="xsd:string"/>
+       <element name="releaseDate" nillable="true" type="tns5:Date"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="ReleaseAuthorizationRequest" nillable="true" type="impl:ReleaseAuthorizationRequest"/>
+   <complexType name="ReleaseAuthorizationResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="ReleaseAuthorizationResponse" nillable="true" type="impl:ReleaseAuthorizationResponse"/>
+   <complexType name="UpdateServicesRequest">
+    <complexContent>
+     <extension base="tns2:ServiceRequest">
+      <sequence>
+       <element name="akaMembers" nillable="true" type="impl:ArrayOf_459425844_1853898024_nillable_MemberKey"/>
+       <element name="asOfDate" nillable="true" type="tns5:Date"/>
+       <element name="memberKey" nillable="true" type="tns8:MemberKey"/>
+       <element name="classId" nillable="true" type="xsd:string"/>
+       <element name="serviceTypes" nillable="true" type="impl:ArrayOf_459425844_455905349_nillable_SimpleCode"/>
+       <element name="previousAuthorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="comments" nillable="true" type="xsd:string"/>
+       <element name="memberID9Digit" nillable="true" type="xsd:string"/>
+       <element name="memberName" nillable="true" type="tns9:Name"/>
+       <element name="memberDOB" nillable="true" type="tns5:Date"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="UpdateServicesRequest" nillable="true" type="impl:UpdateServicesRequest"/>
+   <complexType name="UpdateServicesResponse">
+    <complexContent>
+     <extension base="tns2:ServiceResponse">
+      <sequence>
+       <element name="authorizationKey" nillable="true" type="tns3:AuthorizationKey"/>
+       <element name="eligibility" nillable="true" type="tns14:MemberEligibility"/>
+       <element name="akaMembers" nillable="true" type="impl:ArrayOf_459425844_1853898024_nillable_MemberKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="UpdateServicesResponse" nillable="true" type="impl:UpdateServicesResponse"/>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.service.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ServiceRequest">
+    <sequence>
+     <element name="serviceThreadId" nillable="true" type="xsd:string"/>
+     <element name="businessTransactionId" nillable="true" type="xsd:string"/>
+     <element name="requesterProcessName" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServiceResponse">
+    <sequence>
+     <element name="severeMessageList" nillable="true" type="tns2:ArrayOf_911774180_889808838_nillable_ServiceMessage"/>
+     <element name="errorMessageList" nillable="true" type="tns2:ArrayOf_911774180_889808838_nillable_ServiceMessage"/>
+     <element name="warningMessageList" nillable="true" type="tns2:ArrayOf_911774180_889808838_nillable_ServiceMessage"/>
+     <element name="informationMessageList" nillable="true" type="tns2:ArrayOf_911774180_889808838_nillable_ServiceMessage"/>
+     <element name="messagesEmpty" type="xsd:boolean"/>
+     <element name="severe" type="xsd:boolean"/>
+     <element name="error" type="xsd:boolean"/>
+     <element name="warning" type="xsd:boolean"/>
+     <element name="information" type="xsd:boolean"/>
+     <element name="severeCount" type="xsd:int"/>
+     <element name="errorCount" type="xsd:int"/>
+     <element name="warningCount" type="xsd:int"/>
+     <element name="informationCount" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_911774180_889808838_nillable_ServiceMessage">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns4:ServiceMessage[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.authorization.dto.claim.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AuthorizationKey">
+    <sequence>
+     <element name="authorizationKey" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.helper.service.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ServiceMessage">
+    <sequence>
+     <element name="detail" nillable="true" type="xsd:string"/>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="vars" nillable="true" type="tns4:ArrayOf_889808838_1440052060_nillable_string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_889808838_1440052060_nillable_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.dto.xl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="SimpleCode">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="codeType" nillable="true" type="xsd:string"/>
+       <element name="codeValue" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Date">
+    <sequence>
+     <element name="day" type="xsd:int"/>
+     <element name="month" type="xsd:int"/>
+     <element name="year" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="IdentifiableDTO">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="id" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DatePeriod">
+    <sequence>
+     <element name="endDate" nillable="true" type="tns5:Date"/>
+     <element name="startDate" nillable="true" type="tns5:Date"/>
+    </sequence>
+   </complexType>
+   <complexType name="EntityDTO">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="lockCount" nillable="true" type="soapenc:int"/>
+       <element name="userId" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DayInYear">
+    <sequence>
+     <element name="day" type="xsd:int"/>
+     <element name="month" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="RequirementChoice">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="isRequirement" nillable="true" type="soapenc:boolean"/>
+       <element name="numberOfChoices" type="xsd:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.base.il.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType abstract="true" name="RootDTOObject">
+    <sequence/>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.service.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ServiceResponse">
+    <sequence>
+     <element name="errorMessageList" nillable="true" type="tns7:ArrayOf_1320598405_889808838_nillable_ServiceMessage"/>
+     <element name="warningMessageList" nillable="true" type="tns7:ArrayOf_1320598405_889808838_nillable_ServiceMessage"/>
+     <element name="informationMessageList" nillable="true" type="tns7:ArrayOf_1320598405_889808838_nillable_ServiceMessage"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_1320598405_889808838_nillable_ServiceMessage">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns4:ServiceMessage[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.member.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:tns9="http://v001.personandcontact.dto.ancillary.bl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.personandcontact.dto.ancillary.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="MemberKey">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="memberDateOfBirth" nillable="true" type="tns5:Date"/>
+       <element name="memberName" nillable="true" type="tns9:Name"/>
+       <element name="memberRelationship" nillable="true" type="tns5:SimpleCode"/>
+       <element name="subscriberKey" nillable="true" type="tns8:SubscriberKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SubscriberKey">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="clientId" nillable="true" type="xsd:string"/>
+       <element name="divisionId" nillable="true" type="xsd:string"/>
+       <element name="subscriberId" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.personandcontact.dto.ancillary.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns10="http://v001.dto.xl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.dto.xl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Name">
+    <sequence>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="honorific" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="middleInitial" nillable="true" type="xsd:string"/>
+     <element name="title" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Address">
+    <complexContent>
+     <extension base="tns9:ContactChannel">
+      <sequence>
+       <element name="city" nillable="true" type="xsd:string"/>
+       <element name="county" nillable="true" type="xsd:string"/>
+       <element name="state" nillable="true" type="tns5:SimpleCode"/>
+       <element name="streetAddress1" nillable="true" type="xsd:string"/>
+       <element name="streetAddress2" nillable="true" type="xsd:string"/>
+       <element name="streetAddress3" nillable="true" type="xsd:string"/>
+       <element name="zip" nillable="true" type="xsd:string"/>
+       <element name="zipExtension" nillable="true" type="xsd:string"/>
+       <element name="type" nillable="true" type="xsd:string"/>
+       <element name="countryCode" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType abstract="true" name="ContactChannel">
+    <complexContent>
+     <extension base="tns5:IdentifiableDTO">
+      <sequence>
+       <element name="effectivePeriod" nillable="true" type="tns5:DatePeriod"/>
+       <element name="noMarketingInd" nillable="true" type="soapenc:boolean"/>
+       <element name="preferredContactDays" nillable="true" type="xsd:string"/>
+       <element name="preferredContactHours" nillable="true" type="tns10:TimePeriod"/>
+       <element name="preferredMethod" nillable="true" type="soapenc:int"/>
+       <element name="preferredMethodInd" nillable="true" type="soapenc:boolean"/>
+       <element name="usage" nillable="true" type="xsd:string"/>
+       <element name="preferred" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.dto.xl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="TimePeriod">
+    <sequence>
+     <element name="endTime" nillable="true" type="tns10:TimeString"/>
+     <element name="startTime" nillable="true" type="tns10:TimeString"/>
+    </sequence>
+   </complexType>
+   <complexType name="TimeString">
+    <sequence>
+     <element name="timeValue" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v004.plan.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns12="http://v002.plan.dto.consumer.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.plan.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="BenefitSummary">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="cobExclusions" nillable="true" type="tns11:ArrayOf_666080644_643448390_nillable_COBExclusion"/>
+       <element name="windDownDate" nillable="true" type="tns5:Date"/>
+       <element name="commentCodes" nillable="true" type="tns11:ArrayOf_666080644_643448390_nillable_CommentCode"/>
+       <element name="fedCOB" nillable="true" type="soapenc:boolean"/>
+       <element name="allowances" nillable="true" type="tns12:AllowanceSummary"/>
+       <element name="copays" nillable="true" type="tns11:CopaySummary"/>
+       <element name="grid" nillable="true" type="tns12:Grid"/>
+       <element name="planNumber" nillable="true" type="xsd:string"/>
+       <element name="name" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_666080644_643448390_nillable_COBExclusion">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns12:COBExclusion[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_666080644_643448390_nillable_CommentCode">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns12:CommentCode[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="CopaySummary">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="examCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="frameCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="lensFrameCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="totalCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="contactLensCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="lensCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="clExamCopayment" nillable="true" type="tns12:Copay"/>
+       <element name="isCoveredContactLens" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.plan.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="COBExclusion">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="code" nillable="true" type="xsd:string"/>
+       <element name="description" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CommentCode">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="code" nillable="true" type="xsd:string"/>
+       <element name="description" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AllowanceSummary">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="electiveConactLensAllowance" nillable="true" type="tns12:Allowance"/>
+       <element name="retailFrameAllowance" nillable="true" type="tns12:Allowance"/>
+       <element name="wholesaleFrameAllowance" nillable="true" type="tns12:Allowance"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Allowance">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="type" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Copay">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="nextCollectionDate" nillable="true" type="tns5:Date"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Grid">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="gridNumber" nillable="true" type="xsd:string"/>
+       <element name="antiReflective" nillable="true" type="tns12:GridValue"/>
+       <element name="blendedBifocals" nillable="true" type="tns12:GridValue"/>
+       <element name="color" nillable="true" type="tns12:GridValue"/>
+       <element name="edgeTreatments" nillable="true" type="tns12:GridValue"/>
+       <element name="electiveContacts" nillable="true" type="tns12:GridValue"/>
+       <element name="highIndex" nillable="true" type="tns12:GridValue"/>
+       <element name="lowVision" nillable="true" type="tns12:GridValue"/>
+       <element name="mirror" nillable="true" type="tns12:GridValue"/>
+       <element name="necessaryContacts" nillable="true" type="tns12:GridValue"/>
+       <element name="oversized" nillable="true" type="tns12:GridValue"/>
+       <element name="photochromic" nillable="true" type="tns12:GridValue"/>
+       <element name="plano" nillable="true" type="tns12:GridValue"/>
+       <element name="plasticGradientDye" nillable="true" type="tns12:GridValue"/>
+       <element name="polarized" nillable="true" type="tns12:GridValue"/>
+       <element name="polycarbonate" nillable="true" type="tns12:GridValue"/>
+       <element name="progressiveMultifocals" nillable="true" type="tns12:GridValue"/>
+       <element name="rimlessMounting" nillable="true" type="tns12:GridValue"/>
+       <element name="scratchResistent" nillable="true" type="tns12:GridValue"/>
+       <element name="solidTintDye" nillable="true" type="tns12:GridValue"/>
+       <element name="ultraViolet" nillable="true" type="tns12:GridValue"/>
+       <element name="visionTherapy" nillable="true" type="tns12:GridValue"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="GridValue">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="code" nillable="true" type="xsd:string"/>
+       <element name="description" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v003.dto.xl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="CurrencyValue">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="dollarValue" nillable="true" type="soapenc:int"/>
+       <element name="centValue" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="IntegerRange">
+    <sequence>
+     <element name="high" nillable="true" type="soapenc:int"/>
+     <element name="low" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v007.eligibility.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns31="http://v005.eligibility.dto.consumer.bl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:tns8="http://v001.member.dto.consumer.bl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v005.eligibility.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v001.member.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="MemberEligibility">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="member" nillable="true" type="tns8:MemberKey"/>
+       <element name="productPackages" nillable="true" type="tns14:ArrayOf_492434833_822200594_nillable_EligibilityProductPackage"/>
+       <element name="patient" nillable="true" type="tns8:MemberKey"/>
+       <element name="fehbPlanCode" nillable="true" type="xsd:string"/>
+       <element name="fehbPlanName" nillable="true" type="xsd:string"/>
+       <element name="planServiceDetail" nillable="true" type="tns31:EligibilityPlanServiceDetail"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_492434833_822200594_nillable_EligibilityProductPackage">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns15:EligibilityProductPackage[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v006.eligibility.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns11="http://v004.plan.dto.consumer.bl.vsp.com" xmlns:tns24="http://v002.dto.product.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v004.plan.dto.consumer.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v002.dto.product.bl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EligibilityProductPackage">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="productItems" nillable="true" type="tns15:ArrayOf_822200594_1481732116_nillable_EligibilityProductItem"/>
+       <element name="productPackage" nillable="true" type="tns24:ProductPackage"/>
+       <element name="label" nillable="true" type="xsd:string"/>
+       <element name="isAvailable" nillable="true" type="soapenc:boolean"/>
+       <element name="patientHistory" nillable="true" type="tns15:ArrayOf_822200594_1481732116_nillable_PatientHistory"/>
+       <element name="reportName" nillable="true" type="xsd:string"/>
+       <element name="windDownDate" nillable="true" type="tns5:Date"/>
+       <element name="windDownStatus" nillable="true" type="xsd:string"/>
+       <element name="benefitSummary" nillable="true" type="tns11:BenefitSummary"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_822200594_1481732116_nillable_EligibilityProductItem">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:EligibilityProductItem[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_822200594_1481732116_nillable_PatientHistory">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:PatientHistory[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v004.eligibility.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns17="http://v002.coverage.dto.product.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EligibilityProductItem">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="nextAvailableDate" nillable="true" type="tns5:Date"/>
+       <element name="productItem" nillable="true" type="tns17:ProductItem"/>
+       <element name="isAvailable" nillable="true" type="soapenc:boolean"/>
+       <element name="label" nillable="true" type="xsd:string"/>
+       <element name="state" nillable="true" type="xsd:string"/>
+       <element name="status" nillable="true" type="tns5:SimpleCode"/>
+       <element name="serviceReportName" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PatientHistory">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="authorization" nillable="true" type="xsd:string"/>
+       <element name="authorizationExt" nillable="true" type="xsd:string"/>
+       <element name="state" nillable="true" type="xsd:string"/>
+       <element name="status" nillable="true" type="tns5:SimpleCode"/>
+       <element name="serviceDate" nillable="true" type="tns5:Date"/>
+       <element name="providedItems" nillable="true" type="tns16:ArrayOfProvidedItem"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProvidedItem">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="availableDate" nillable="true" type="tns5:Date"/>
+       <element name="productItem" nillable="true" type="tns17:ProductItem"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfProvidedItem">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:ProvidedItem[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="PlanServiceDetail">
+    <sequence>
+     <element name="serviceId" nillable="true" type="xsd:string"/>
+     <element name="serviceCategory" nillable="true" type="tns16:ArrayOfServiceCategory"/>
+     <element name="deductionProductTypeCode" nillable="true" type="xsd:string"/>
+     <element name="deductionAmount" type="xsd:float"/>
+     <element name="freqProductTypeCode" nillable="true" type="xsd:string"/>
+     <element name="freqProductMM" type="xsd:int"/>
+     <element name="freqProductCode" nillable="true" type="xsd:string"/>
+     <element name="freqProductCount" type="xsd:int"/>
+     <element name="maxAmount" type="xsd:float"/>
+     <element name="coveragePercent" type="xsd:float"/>
+     <element name="percentOrderCode" nillable="true" type="xsd:string"/>
+     <element name="serviceILOInfo" nillable="true" type="tns16:ArrayOfServiceILOInfo"/>
+     <element name="serviceRuleConstant" nillable="true" type="tns16:ArrayOfServiceRuleConstant"/>
+     <element name="ruleCode" nillable="true" type="xsd:string"/>
+     <element name="maxAmountLocationCode" nillable="true" type="xsd:string"/>
+     <element name="standardSHDAmount" type="xsd:float"/>
+     <element name="deductibleOrderCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServiceCategory">
+    <sequence>
+     <element name="categoryId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfServiceCategory">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:ServiceCategory[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiceILOInfo">
+    <sequence>
+     <element name="iloId" nillable="true" type="xsd:string"/>
+     <element name="iloRequiredInd" nillable="true" type="xsd:string"/>
+     <element name="iloEligibilityInd" nillable="true" type="xsd:string"/>
+     <element name="iloFreqAmountInd" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfServiceILOInfo">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:ServiceILOInfo[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ServiceRuleConstant">
+    <sequence>
+     <element name="ruleId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfServiceRuleConstant">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:ServiceRuleConstant[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.coverage.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns18="http://v001.dto.inventory.bl.vsp.com" xmlns:tns20="http://v001.coverage.dto.product.bl.vsp.com" xmlns:tns22="http://v001.industry.dto.xl.vsp.com" xmlns:tns24="http://v002.dto.product.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.product.bl.vsp.com"/>
+   <import namespace="http://v001.industry.dto.xl.vsp.com"/>
+   <import namespace="http://v001.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.dto.inventory.bl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ProductItem">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="inventoryKey" nillable="true" type="tns18:InventoryKey"/>
+       <element name="descriptor" nillable="true" type="tns5:SimpleCode"/>
+       <element name="contributionSources" nillable="true" type="tns17:ArrayOfContributionSource"/>
+       <element name="coverageConstraints" nillable="true" type="tns17:ArrayOf_1692648310_132185849_nillable_CoverageConstraint"/>
+       <element name="discountConstraints" nillable="true" type="tns17:ArrayOf_1692648310_418642059_nillable_DiscountConstraint"/>
+       <element name="eligibilityRequirement" nillable="true" type="tns24:EligibilityRequirement"/>
+       <element name="referralRequired" nillable="true" type="soapenc:boolean"/>
+       <element name="refinement" nillable="true" type="tns20:ProductItemRefinement"/>
+       <element name="productItemAuthorization" nillable="true" type="tns17:ProductItemAuthorization"/>
+       <element name="patientService" nillable="true" type="tns17:PatientService"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContributionSource">
+    <sequence>
+     <element name="contributionAmount" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="contributionFrequency" nillable="true" type="tns5:SimpleCode"/>
+     <element name="contributionPercent" nillable="true" type="soapenc:float"/>
+     <element name="contributionValueType" nillable="true" type="tns5:SimpleCode"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfContributionSource">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:ContributionSource[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="Discount">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="appliesTo" nillable="true" type="tns5:SimpleCode"/>
+       <element name="frequency" nillable="true" type="tns20:Frequency"/>
+       <element name="valueType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="effectivePeriod" nillable="true" type="tns5:DatePeriod"/>
+       <element name="percentage" nillable="true" type="soapenc:float"/>
+       <element name="reason" nillable="true" type="xsd:string"/>
+       <element name="rules" nillable="true" type="xsd:string"/>
+       <element name="constraint" nillable="true" type="tns20:DiscountConstraint"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Condition">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="diagnosticCondition" nillable="true" type="tns22:DiagnosticConditionKey"/>
+       <element name="prescriptionConstraints" nillable="true" type="tns17:ArrayOfPrescriptionConstraint"/>
+       <element name="doctorRecommendation" nillable="true" type="soapenc:boolean"/>
+       <element name="conditionType" nillable="true" type="tns5:RequirementChoice"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PrescriptionConstraint">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="constraintType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="prescription" nillable="true" type="tns22:Prescription"/>
+       <element name="nbrOfEyeChartLines" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfPrescriptionConstraint">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:PrescriptionConstraint[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="FrequencyChange">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="frequency" nillable="true" type="tns20:Frequency"/>
+       <element name="changedInventoryKey" nillable="true" type="tns18:InventoryKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_1692648310_132185849_nillable_CoverageConstraint">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns19:CoverageConstraint[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_1692648310_418642059_nillable_DiscountConstraint">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns20:DiscountConstraint[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ProductItemAuthorization">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="elapsedDays" nillable="true" type="soapenc:int"/>
+       <element name="endOf" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PatientService">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="earlyEligibility" nillable="true" type="tns20:EarlyEligibility"/>
+       <element name="interimBenefit" nillable="true" type="tns20:InterimBenefit"/>
+       <element name="replace" nillable="true" type="tns17:Replace"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Replace">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="replaceConditions" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PatientRelationship">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="ageRange" nillable="true" type="tns13:IntegerRange"/>
+       <element name="expirationType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="relationshipType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="startType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="expirationMm" nillable="true" type="soapenc:int"/>
+       <element name="startMm" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CombinedProductItem">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="coverageConstraints" nillable="true" type="tns17:ArrayOf_1692648310_132185849_nillable_CoverageConstraint"/>
+       <element name="productItems" nillable="true" type="tns17:ArrayOfProductItem"/>
+       <element name="preCertificationRequired" nillable="true" type="soapenc:boolean"/>
+       <element name="referralRequired" nillable="true" type="soapenc:boolean"/>
+       <element name="sharedBenefit" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfProductItem">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:ProductItem[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.dto.inventory.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="InventoryKey">
+    <complexContent>
+     <extension base="tns5:EntityDTO">
+      <sequence>
+       <element name="name" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.coverageconstraint.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns17="http://v002.coverage.dto.product.bl.vsp.com" xmlns:tns20="http://v001.coverage.dto.product.bl.vsp.com" xmlns:tns21="http://v001.coverageconstraint.dto.product.bl.vsp.com" xmlns:tns23="http://v002.levelofcoverage.dto.product.bl.vsp.com" xmlns:tns25="http://v001.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns:tns26="http://v002.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns:tns27="http://v002.dto.network.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.network.bl.vsp.com"/>
+   <import namespace="http://v002.lenscharacteristic.dto.inventory.bl.vsp.com"/>
+   <import namespace="http://v001.lenscharacteristic.dto.inventory.bl.vsp.com"/>
+   <import namespace="http://v002.levelofcoverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v001.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v001.coverageconstraint.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="CoverageConstraint">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="coPay" nillable="true" type="tns19:CoPay"/>
+       <element name="costControlled" nillable="true" type="tns19:CostControlled"/>
+       <element name="discount" nillable="true" type="tns17:Discount"/>
+       <element name="unitCoverage" nillable="true" type="tns21:UnitCoverage"/>
+       <element name="conditions" nillable="true" type="tns19:ArrayOf_132185849_1692648310_nillable_Condition"/>
+       <element name="frequency" nillable="true" type="tns20:Frequency"/>
+       <element name="levelOfCoverage" nillable="true" type="tns23:LevelOfCoverage"/>
+       <element name="patientHistoryConstraints" nillable="true" type="tns19:ArrayOfPatientHistoryConstraint"/>
+       <element name="constraintType" nillable="true" type="tns19:ArrayOfConstraintType"/>
+       <element name="deductible" nillable="true" type="tns19:Deductible"/>
+       <element name="includeExcludes" nillable="true" type="tns19:ArrayOf_132185849_648270224_nillable_ProductItemIncludeExclude"/>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="conversionFactor" nillable="true" type="soapenc:float"/>
+       <element name="locType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="outOfPocketMax" nillable="true" type="tns19:OutOfPocketMax"/>
+       <element name="overageDeniesCoverage" nillable="true" type="tns19:CoverageConstraint"/>
+       <element name="percentCovered" nillable="true" type="soapenc:float"/>
+       <element name="labNetwork" nillable="true" type="tns27:NetworkKey"/>
+       <element name="providerNetwork" nillable="true" type="tns27:NetworkKey"/>
+       <element name="inventoryInLieuOf" nillable="true" type="tns19:InventoryInLieuOf"/>
+       <element name="preCertificationRequired" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CoPay">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="appliesTo" nillable="true" type="tns5:SimpleCode"/>
+       <element name="applyToDeductible" type="xsd:boolean"/>
+       <element name="frequency" nillable="true" type="tns5:SimpleCode"/>
+       <element name="coPayType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="waiverRule" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CostControlled">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="notToExceedPayable" nillable="true" type="soapenc:boolean"/>
+       <element name="priceCap" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="volumeConstraint" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_132185849_1692648310_nillable_Condition">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:Condition[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="PatientHistoryConstraint">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="patientHistoryConstraintCode" nillable="true" type="tns5:SimpleCode"/>
+       <element name="frequency" nillable="true" type="tns20:Frequency"/>
+       <element name="includeExcludes" nillable="true" type="tns19:ArrayOf_132185849_648270224_nillable_ProductItemIncludeExclude"/>
+       <element name="inventoryKeys" nillable="true" type="tns19:ArrayOf_132185849_39001852_nillable_InventoryKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_132185849_648270224_nillable_ProductItemIncludeExclude">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns24:ProductItemIncludeExclude[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_132185849_39001852_nillable_InventoryKey">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns18:InventoryKey[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfPatientHistoryConstraint">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns19:PatientHistoryConstraint[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ConstraintType">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="leaveOut" nillable="true" type="soapenc:boolean"/>
+       <element name="constraintTypeValues" nillable="true" type="tns19:ArrayOf_132185849_455905349_nillable_SimpleCode"/>
+       <element name="contactLensCharacteristic" nillable="true" type="tns25:ContactLensCharacteristic"/>
+       <element name="constraintType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="color" nillable="true" type="tns19:Color"/>
+       <element name="lensCharacteristic" nillable="true" type="tns26:LensCharacteristic"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_132185849_455905349_nillable_SimpleCode">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns5:SimpleCode[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="Color">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="absorptionLevel" nillable="true" type="tns19:AbsorptionLevel"/>
+       <element name="colorCode" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AbsorptionLevel">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="absorptionLevelCode" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfConstraintType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns19:ConstraintType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="Deductible">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="periodType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="periodBegins" nillable="true" type="tns5:DayInYear"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="OutOfPocketMax">
+    <sequence>
+     <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="timePeriod" nillable="true" type="tns5:SimpleCode"/>
+    </sequence>
+   </complexType>
+   <complexType name="InventoryInLieuOf">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="frequencyChange" nillable="true" type="tns17:FrequencyChange"/>
+       <element name="inventoryKeys" nillable="true" type="tns19:ArrayOf_132185849_39001852_nillable_InventoryKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.coverage.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Frequency">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="numberOfTimePeriods" nillable="true" type="soapenc:int"/>
+       <element name="periodBegins" nillable="true" type="tns5:DayInYear"/>
+       <element name="periodType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="timePeriod" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DiscountConstraint">
+    <sequence>
+     <element name="validPeriod" nillable="true" type="tns5:DatePeriod"/>
+    </sequence>
+   </complexType>
+   <complexType name="ProductItemRefinement">
+    <sequence>
+     <element name="isOversizeRefinement" nillable="true" type="soapenc:boolean"/>
+     <element name="size" nillable="true" type="soapenc:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="EarlyEligibility">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="gracePeriodDays" nillable="true" type="soapenc:int"/>
+       <element name="numberMonthsEarly" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="InterimBenefit">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="futureEligibility" nillable="true" type="soapenc:boolean"/>
+       <element name="minimumElapsedDays" nillable="true" type="soapenc:int"/>
+       <element name="minimumElapsedMonths" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ExternalRule">
+    <sequence/>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.coverageconstraint.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="UnitCoverage">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="numberOfUnits" nillable="true" type="soapenc:int"/>
+       <element name="timePeriod" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.industry.dto.xl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="DiagnosticConditionKey">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Prescription">
+    <sequence>
+     <element name="add" nillable="true" type="soapenc:float"/>
+     <element name="axis" nillable="true" type="soapenc:int"/>
+     <element name="cylinder" nillable="true" type="soapenc:float"/>
+     <element name="horizPrism" nillable="true" type="soapenc:float"/>
+     <element name="segHeight" nillable="true" type="soapenc:int"/>
+     <element name="segWidth" nillable="true" type="soapenc:int"/>
+     <element name="sphere" nillable="true" type="soapenc:float"/>
+     <element name="vertPrism" nillable="true" type="soapenc:float"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.levelofcoverage.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns19="http://v002.coverageconstraint.dto.product.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.coverageconstraint.dto.product.bl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LevelOfCoverage">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="levelOfCoverageType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="allowanceAmount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="allowanceFrequency" nillable="true" type="tns5:SimpleCode"/>
+       <element name="allowanceType" nillable="true" type="tns5:SimpleCode"/>
+       <element name="coinsurancePercentage" nillable="true" type="soapenc:int"/>
+       <element name="conversionFactor" nillable="true" type="soapenc:float"/>
+       <element name="allowanceScheduleEntries" nillable="true" type="tns23:ArrayOfAllowanceScheduleEntry"/>
+       <element name="overageDeniesCoverage" nillable="true" type="tns19:CoverageConstraint"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AllowanceScheduleEntry">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+       <element name="lensCharacteristicType" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfAllowanceScheduleEntry">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns23:AllowanceScheduleEntry[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns20="http://v001.coverage.dto.product.bl.vsp.com" xmlns:tns29="http://v002.relationshipservice.dto.product.bl.vsp.com" xmlns:tns30="http://v002.rate.dto.product.bl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.rate.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.relationshipservice.dto.product.bl.vsp.com"/>
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ProductItemIncludeExclude">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="type" nillable="true" type="tns5:SimpleCode"/>
+       <element name="inventoryKeys" nillable="true" type="tns24:ArrayOf_648270224_39001852_nillable_InventoryKey"/>
+       <element name="classType" nillable="true" type="xsd:string"/>
+       <element name="numberOfChoices" nillable="true" type="soapenc:int"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_648270224_39001852_nillable_InventoryKey">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns18:InventoryKey[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="EligibilityRequirement">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="eligibilityRequired" nillable="true" type="soapenc:boolean"/>
+       <element name="inventoryKeys" nillable="true" type="tns24:ArrayOf_648270224_39001852_nillable_InventoryKey"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProductPackage">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="name" nillable="true" type="xsd:string"/>
+       <element name="patientRelationships" nillable="true" type="tns24:ArrayOf_648270224_1692648310_nillable_PatientRelationship"/>
+       <element name="cobExceptionRules" nillable="true" type="tns24:ArrayOf_648270224_725974552_nillable_COBExceptionRule"/>
+       <element name="combinedProductItems" nillable="true" type="tns24:ArrayOf_648270224_1692648310_nillable_CombinedProductItem"/>
+       <element name="commission" nillable="true" type="tns29:Commission"/>
+       <element name="compositeRate" nillable="true" type="tns30:CompositeRate"/>
+       <element name="pooledRatingConfiguration" nillable="true" type="tns5:SimpleCode"/>
+       <element name="primaryProduct" nillable="true" type="soapenc:boolean"/>
+       <element name="productItems" nillable="true" type="tns24:ArrayOf_648270224_1692648310_nillable_ProductItem"/>
+       <element name="externalRule" nillable="true" type="tns20:ExternalRule"/>
+       <element name="productPackageInLieuOfs" nillable="true" type="tns24:ArrayOfProductPackageInLieuOf"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_648270224_1692648310_nillable_PatientRelationship">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:PatientRelationship[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_648270224_725974552_nillable_COBExceptionRule">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns28:COBExceptionRule[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_648270224_1692648310_nillable_CombinedProductItem">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:CombinedProductItem[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_648270224_1692648310_nillable_ProductItem">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:ProductItem[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ProductPackageInLieuOf">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="productPackage" nillable="true" type="tns24:ProductPackage"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfProductPackageInLieuOf">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns24:ProductPackageInLieuOf[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v001.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ContactLensCharacteristic">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.lenscharacteristic.dto.inventory.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LensCharacteristic">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="description" nillable="true" type="xsd:string"/>
+       <element name="segmentedMultifocal" nillable="true" type="tns26:SegmentedMultifocalDTO"/>
+       <element name="category" nillable="true" type="tns5:SimpleCode"/>
+       <element name="name" nillable="true" type="tns5:SimpleCode"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SegmentedMultifocalDTO">
+    <sequence>
+     <element name="powerSplit" nillable="true" type="tns5:SimpleCode"/>
+     <element name="segmentSize" nillable="true" type="tns5:SimpleCode"/>
+     <element name="shapeType" nillable="true" type="tns5:SimpleCode"/>
+     <element name="name" nillable="true" type="tns5:SimpleCode"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.dto.network.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="NetworkKey">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="networkId" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.cob.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns6="http://v001.base.il.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.base.il.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="COBExceptionRule">
+    <complexContent>
+     <extension base="tns6:RootDTOObject">
+      <sequence>
+       <element name="cobConstraintType" nillable="true" type="tns28:ArrayOf_725974552_455905349_nillable_SimpleCode"/>
+       <element name="cobOutcomeType" nillable="true" type="tns28:ArrayOf_725974552_455905349_nillable_SimpleCode"/>
+       <element name="patientRelationships" nillable="true" type="tns28:ArrayOf_725974552_1692648310_nillable_PatientRelationship"/>
+       <element name="required" nillable="true" type="soapenc:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_725974552_455905349_nillable_SimpleCode">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns5:SimpleCode[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_725974552_1692648310_nillable_PatientRelationship">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns17:PatientRelationship[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.relationshipservice.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns20="http://v001.coverage.dto.product.bl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v001.coverage.dto.product.bl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Commission">
+    <sequence>
+     <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="frequency" nillable="true" type="tns20:Frequency"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v002.rate.dto.product.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns13="http://v003.dto.xl.vsp.com" xmlns:tns5="http://v002.dto.xl.vsp.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v002.dto.xl.vsp.com"/>
+   <import namespace="http://v003.dto.xl.vsp.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="CompositeRate">
+    <sequence>
+     <element name="employeeOnlyRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusChildrenRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusFamilyRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusOneRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="tierType" nillable="true" type="tns5:SimpleCode"/>
+     <element name="compositeRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="contractType" nillable="true" type="tns5:SimpleCode"/>
+     <element name="rateDiscounts" nillable="true" type="tns30:ArrayOfRateDiscount"/>
+     <element name="asp" nillable="true" type="tns30:ASP"/>
+    </sequence>
+   </complexType>
+   <complexType name="RateDiscount">
+    <sequence>
+     <element name="amount" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="type" nillable="true" type="tns5:SimpleCode"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfRateDiscount">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns30:RateDiscount[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ASP">
+    <sequence>
+     <element name="employeeOnlyClaimCostRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusChildrenClaimCostRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusFamilyClaimCostRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="employeePlusOneClaimCostRate" nillable="true" type="tns13:CurrencyValue"/>
+     <element name="claimCostAmount" nillable="true" type="tns13:CurrencyValue"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://v005.eligibility.dto.consumer.bl.vsp.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EligibilityPlanServiceDetail">
+    <sequence>
+     <element name="planStatusCode" nillable="true" type="xsd:string"/>
+     <element name="numberOfBenefits" type="xsd:int"/>
+     <element name="numberOfServices" type="xsd:int"/>
+     <element name="planServiceBenefits" nillable="true" type="tns31:ArrayOfPlanServiceBenefit"/>
+     <element name="planStateCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PlanServiceBenefit">
+    <sequence>
+     <element name="specialClaimProcessingCode" nillable="true" type="tns31:ArrayOf_1151966355_1440052060_nillable_string"/>
+     <element name="benefitType" nillable="true" type="xsd:string"/>
+     <element name="benefitProviderCode" nillable="true" type="xsd:string"/>
+     <element name="benefitProgramId" nillable="true" type="xsd:string"/>
+     <element name="planServiceDetail" nillable="true" type="tns31:ArrayOf_1151966355_1481732116_nillable_PlanServiceDetail"/>
+     <element name="planProgramFeeRuleCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_1151966355_1440052060_nillable_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_1151966355_1481732116_nillable_PlanServiceDetail">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns16:PlanServiceDetail[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfPlanServiceBenefit">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns31:PlanServiceBenefit[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="holdAuthorizationRequest">
+    <wsdl:part name="request" type="intf:HoldAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAuthorizationForDoctorResponse">
+    <wsdl:part name="deleteAuthorizationForDoctorReturn" type="intf:DeleteAuthorizationForDoctorResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="denyAuthorizationResponse">
+    <wsdl:part name="denyAuthorizationReturn" type="intf:DenyAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="denyAuthorizationRequest">
+    <wsdl:part name="request" type="intf:DenyAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="releaseAuthorizationRequest">
+    <wsdl:part name="request" type="intf:ReleaseAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAuthorizationRequest">
+    <wsdl:part name="request" type="intf:DeleteAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateServicesRequest">
+    <wsdl:part name="request" type="intf:UpdateServicesRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="issueAuthorizationRequest">
+    <wsdl:part name="request" type="intf:IssueAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="releaseAuthorizationResponse">
+    <wsdl:part name="releaseAuthorizationReturn" type="intf:ReleaseAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="faxAuthorizationRequest">
+    <wsdl:part name="request" type="intf:FaxAuthorizationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="faxAuthorizationResponse">
+    <wsdl:part name="faxAuthorizationReturn" type="intf:FaxAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAuthorizationResponse">
+    <wsdl:part name="deleteAuthorizationReturn" type="intf:DeleteAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasAccessRequest">
+    <wsdl:part name="request" type="intf:HasAccessRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="hasAccessResponse">
+    <wsdl:part name="hasAccessReturn" type="intf:HasAccessResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="issueAuthorizationResponse">
+    <wsdl:part name="issueAuthorizationReturn" type="intf:IssueAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="holdAuthorizationResponse">
+    <wsdl:part name="holdAuthorizationReturn" type="intf:HoldAuthorizationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateServicesResponse">
+    <wsdl:part name="updateServicesReturn" type="intf:UpdateServicesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAuthorizationForDoctorRequest">
+    <wsdl:part name="request" type="intf:DeleteAuthorizationForDoctorRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Authorization">
+    <wsdl:operation name="deleteAuthorizationForDoctor" parameterOrder="request">
+      <wsdl:input message="intf:deleteAuthorizationForDoctorRequest" name="deleteAuthorizationForDoctorRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:deleteAuthorizationForDoctorResponse" name="deleteAuthorizationForDoctorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="holdAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:holdAuthorizationRequest" name="holdAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:holdAuthorizationResponse" name="holdAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="denyAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:denyAuthorizationRequest" name="denyAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:denyAuthorizationResponse" name="denyAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasAccess" parameterOrder="request">
+      <wsdl:input message="intf:hasAccessRequest" name="hasAccessRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:hasAccessResponse" name="hasAccessResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:deleteAuthorizationRequest" name="deleteAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:deleteAuthorizationResponse" name="deleteAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="faxAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:faxAuthorizationRequest" name="faxAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:faxAuthorizationResponse" name="faxAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:issueAuthorizationRequest" name="issueAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:issueAuthorizationResponse" name="issueAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="releaseAuthorization" parameterOrder="request">
+      <wsdl:input message="intf:releaseAuthorizationRequest" name="releaseAuthorizationRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:releaseAuthorizationResponse" name="releaseAuthorizationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServices" parameterOrder="request">
+      <wsdl:input message="intf:updateServicesRequest" name="updateServicesRequest">
+    </wsdl:input>
+      <wsdl:output message="intf:updateServicesResponse" name="updateServicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorizationSoapBinding" type="intf:Authorization">
+<wsaw:UsingAddressing wsdl:required="false"/>
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="deleteAuthorizationForDoctor">
+      <wsdlsoap:operation soapAction="deleteAuthorizationForDoctor"/>
+      <wsdl:input name="deleteAuthorizationForDoctorRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="deleteAuthorizationForDoctorResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="holdAuthorization">
+      <wsdlsoap:operation soapAction="holdAuthorization"/>
+      <wsdl:input name="holdAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="holdAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="denyAuthorization">
+      <wsdlsoap:operation soapAction="denyAuthorization"/>
+      <wsdl:input name="denyAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="denyAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasAccess">
+      <wsdlsoap:operation soapAction="hasAccess"/>
+      <wsdl:input name="hasAccessRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="hasAccessResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAuthorization">
+      <wsdlsoap:operation soapAction="deleteAuthorization"/>
+      <wsdl:input name="deleteAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="deleteAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="faxAuthorization">
+      <wsdlsoap:operation soapAction="faxAuthorization"/>
+      <wsdl:input name="faxAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="faxAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="issueAuthorization">
+      <wsdlsoap:operation soapAction="issueAuthorization"/>
+      <wsdl:input name="issueAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="issueAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="releaseAuthorization">
+      <wsdlsoap:operation soapAction="releaseAuthorization"/>
+      <wsdl:input name="releaseAuthorizationRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="releaseAuthorizationResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServices">
+      <wsdlsoap:operation soapAction="updateServices"/>
+      <wsdl:input name="updateServicesRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="updateServicesResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://authorization.service.claim.bl.vsp.com" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthorizationService">
+    <wsdl:port binding="intf:AuthorizationSoapBinding" name="Authorization">
+      <wsdlsoap:address location="http://wasacpt02:9620/eligibility.auth_8.0/services/Authorization"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

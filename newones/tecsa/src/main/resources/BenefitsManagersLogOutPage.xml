@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="LOG IN Dropdown">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[1]/a[1]</locatorValue>
+    </element>
+    <element elementAlias="Benefit Managers User Name field">
+      <locatorType>id</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="Password field">
+      <locatorType>id</locatorType>
+      <locatorValue>password</locatorValue>
+    </element>
+    <element elementAlias="LOG IN Button">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[1]/div[2]/div/div[2]/div[2]/form/fieldset/input</locatorValue>
+    </element>
+    <element elementAlias="FORGOT YOUR PASSWORD link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[1]/a</locatorValue>
+    </element>
+    <element elementAlias="LOG IN link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Forgot Your Password field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="Log In field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/h1</locatorValue>
+    </element>
+    <element elementAlias="REGISTRATION link">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/nav/ul/li[2]/a</locatorValue>
+    </element>
+    <element elementAlias="Registration field">
+      <locatorType>xpath</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[1]/div/div/h1</locatorValue>
+    </element>
+    <element elementAlias="Log In">
+      <locatorType>id</locatorType>
+      <locatorValue>userid</locatorValue>
+    </element>
+    <element elementAlias="Password">
+      <locatorType>id</locatorType>
+      <locatorValue>password</locatorValue>
+    </element>
+    <element elementAlias="Log In Button">
+      <locatorType>id</locatorType>
+      <locatorValue>login_0</locatorValue>
+    </element>
+  </elements>
+</page>

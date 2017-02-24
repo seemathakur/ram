@@ -1,0 +1,1 @@
+INSERT INTO "UVSP001"."CLM2344T"("CLM_NBR", "CLM_EXT_NBR", "ERROR_CATEGORY", "ID", "ERROR_NBR", "ISD_LUPD_ID")  VALUES (?, ?, 'Claim                    ', '          ', 'PRELIQ0014', '        ')

@@ -1,0 +1,123 @@
+{ 
+    "policyKey": {
+        "clientId": "00857001",
+        "divisionId": "0100",
+        "policyId": "858017570"
+    },
+    "memberships": [
+        {
+            "consumerId": "1564175",
+            "name": {
+                "firstName": "JASPER",
+                "lastName": "JACKSXXX"
+            },
+            "suppliedFirstName": "JASPER",
+            "suppliedLastName": "JACKSXXX",
+            "emails": [
+                {
+                    "address": "pamco@vsp.com",
+                    "emailType": "HM"
+                },
+                {
+                    "address": "pamco@vsp.com",
+                    "emailType": "WR"
+                },
+                {
+                    "address": "andrno@vsp.com",
+                    "emailType": "PR"
+                }
+            ],
+            "memberPolicyKey": {
+                "clientId": "00857001",
+                "divisionId": "0100",
+                "policyId": "858017570"
+            },
+            "membershipId": "858017570",
+            "status": "A",
+            "relationToSubscriber": "Member",
+            "dateOfBirth": "1971-06-11",
+            "originalEffectiveDate": "2013-07-01",
+            "gender": "M",
+            "eligibility": {
+                "href": "http://ea-app0459:8080/eligibility-web/eligibility/00857001-0100-858017570-1564175?asofdate=2015-04-17",
+                "type": "application/vnd.vsp.eligibility",
+                "rel": "urn://vnd.vsp.rels/eligibility"
+            },
+            "coverage": {
+                "href": "http://ea-app0459:8080/eligibility-web/coverage/00857001-0100-858017570-1564175?asofdate=2015-04-17",
+                "type": "application/vnd.vsp.eligibility",
+                "rel": "urn://vnd.vsp.rels/coverage"
+            },
+            "alternatePolicies": {
+                "href": "http://ea-app0459:8080/consumer-web/memberpolicies?consumerId=1564175&asofdate=2015-04-17",
+                "type": "application/vnd.vsp.memberpolicies",
+                "rel": "urn://vnd.vsp.rels/alternatepolicies"
+            }
+        },
+        {
+            "consumerId": "2106195",
+            "name": {
+                "firstName": "CHILD",
+                "lastName": "JACKSXXX"
+            },
+            "suppliedFirstName": "CHILD",
+            "suppliedLastName": "JACKSXXX",
+            "memberPolicyKey": {
+                "clientId": "00857001",
+                "divisionId": "0100",
+                "policyId": "858017570"
+            },
+            "membershipId": "000000000",
+            "status": "A",
+            "relationToSubscriber": "Child",
+            "dateOfBirth": "1999-01-01",
+            "originalEffectiveDate": "2013-07-01",
+            "gender": "M",
+            "eligibility": {
+                "href": "http://ea-app0459:8080/eligibility-web/eligibility/00857001-0100-858017570-2106195?asofdate=2015-04-17",
+                "type": "application/vnd.vsp.eligibility",
+                "rel": "urn://vnd.vsp.rels/eligibility"
+            },
+            "coverage": {
+                "href": "http://ea-app0459:8080/eligibility-web/coverage/00857001-0100-858017570-2106195?asofdate=2015-04-17",
+                "type": "application/vnd.vsp.eligibility",
+                "rel": "urn://vnd.vsp.rels/coverage"
+            },
+            "alternatePolicies": {
+                "href": "http://ea-app0459:8080/consumer-web/memberpolicies?consumerId=2106195&asofdate=2015-04-17",
+                "type": "application/vnd.vsp.memberpolicies",
+                "rel": "urn://vnd.vsp.rels/alternatepolicies"
+            }
+        }
+    ],
+    "memberCoverageCode": "MemberPlusFamily",
+    "policyEffectiveDate": "2013-07-01",
+    "classId": "0100",
+    "marketProductTier": "1000",
+    "marketProductIdentifier": "00000010",
+    "self": {
+        "href": "http://ea-app0459:8080/consumer-web/memberpolicies/00857001-0100-858017570?asofdate=2015-04-17",
+        "type": "application/vnd.vsp.memberpolicy",
+        "rel": "self"
+    },
+    "patienthistories": {
+        "href": "http://ea-app0459:8080/eligibility-web/patientHistories/00857001-858017570",
+        "type": "application/vnd.vsp.patienthistories",
+        "rel": "urn://vnd.vsp.rels/patienthistories"
+    },
+    "clientproduct": {
+        "href": "http://ea-app0459:8080/product-web/clientproducts/00857001-4098-1000-1000-00000010?asofdate=2015-04-17",
+        "type": "application/vnd.vsp.clientproduct",
+        "rel": "urn://vnd.vsp.rels/clientproduct"
+    },
+    "clientdivision": {
+        "href": "http://ea-app0459:8080/client-web/clientdivision/00857001-0100?asofdate=2015-04-17&classid=0100",
+        "type": "application/vnd.vsp.clientdivision",
+        "rel": "urn://vnd.vsp.rels/clientdivision"
+    },
+    "coveredrelationships": {
+        "href": "http://ea-app0459:8080/eligibility-web/coveredrelationships/00857001-0100-858017570-0100?asofdate=2015-04-17",
+        "type": "application/vnd.vsp.coveredrelationships",
+        "rel": "urn://vnd.vsp.rels/coveredrelationships"
+    }
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+    <elements>
+        <element elementAlias="Password field">
+            <locatorType>Name</locatorType>
+            <locatorValue>password</locatorValue>
+        </element>
+        <element elementAlias="Access ID field">
+            <locatorType>Name</locatorType>
+            <locatorValue>accessID</locatorValue>
+        </element>
+        <element elementAlias="Logon button">
+            <locatorType>Name</locatorType>
+            <locatorValue>logon</locatorValue>
+        </element>
+        <element elementAlias="Get Authorizations and Check Eligibility link">
+            <locatorType>PARTIALLINKTEXT</locatorType>
+            <locatorValue>Get Authorizations</locatorValue>
+        </element>
+        <element elementAlias="Authorization field">
+            <locatorType>ID</locatorType>
+            <locatorValue>authNum</locatorValue>
+        </element>
+        <element elementAlias="GO button">
+            <locatorType>Xpath</locatorType>
+            <locatorValue>.//*[@id='vsp_page']/table/tbody/tr[2]/td[3]/input[2]</locatorValue>
+        </element>
+        <element elementAlias="Reports tab">
+            <locatorType>Xpath</locatorType>
+            <locatorValue>html/body/form/table/tbody/tr[1]/td[1]/table/tbody/tr/td[4]/a/div</locatorValue>
+        </element>
+        <element elementAlias="Lens Enhancements Charges tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgpatientop</locatorValue>
+        </element>
+        <element elementAlias="Savings Statement tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgwvss</locatorValue>
+        </element>
+        <element elementAlias="Service Report tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgdrsvcrpt</locatorValue>
+        </element>
+        <element elementAlias="CMS Service Report tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgcms</locatorValue>
+        </element>
+        <element elementAlias="Packing Slip tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgpkslp</locatorValue>
+        </element>
+        <element elementAlias="PCP Form tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgpcp</locatorValue>
+        </element>
+        <element elementAlias="Patient History tab">
+            <locatorType>Name</locatorType>
+            <locatorValue>imgphr</locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+        <element elementAlias="">
+            <locatorType></locatorType>
+            <locatorValue></locatorValue>
+        </element>
+    </elements>
+</page>

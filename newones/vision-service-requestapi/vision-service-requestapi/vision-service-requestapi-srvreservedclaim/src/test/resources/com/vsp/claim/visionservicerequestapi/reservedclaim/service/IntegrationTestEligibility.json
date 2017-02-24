@@ -1,0 +1,1648 @@
+{
+  "networks": [
+    {
+      "packages": [
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Exam",
+              "productCatalogKey": "GenExam",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Contact Lens Service",
+              "productCatalogKey": "ContactLensService",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Lens",
+              "productCatalogKey": "Lens",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Frame",
+              "productCatalogKey": "Frame",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Contact Lens",
+              "productCatalogKey": "ContactLens",
+              "status": "UNAVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Retinal Screening",
+              "productCatalogKey": "RetinalScreening",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Frame With Sun Lens Insert",
+              "productCatalogKey": "FrameWithSunLensInsert",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "GenExam"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Lens"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "inLieuOf": {
+                "productCatalogKeys": [
+                  "ContactLens",
+                  "ContactLensService"
+                ]
+              },
+              "patientResponsibilities": {
+                "Lens": {
+                  "copayType": "FIRST_MATERIAL_SERVICE_RECEIVED",
+                  "copayAppliesTo": "MAXIMUM",
+                  "copayAmount": 10,
+                  "copayNextDueDate": "2016-01-14"
+                }
+              }
+            },
+            {
+              "criteriaDescription": "Altair Eyewear, Marchon",
+              "productCatalogKeys": [
+                "Frame"
+              ],
+              "levelOfCoverage": "ALLOWANCE",
+              "allowance": 260,
+              "wholesaleAllowance": 100,
+              "allowanceRemaining": 260,
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "Frame": {
+                  "copayType": "FIRST_MATERIAL_SERVICE_RECEIVED",
+                  "copayAppliesTo": "MAXIMUM",
+                  "copayAmount": 10,
+                  "copayNextDueDate": "2016-01-14",
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "OVERAGE"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Frame"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "Frame": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "criteriaDescription": "NCL",
+              "productCatalogKeys": [
+                "ContactLens",
+                "ContactLensService"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "inLieuOf": {
+                "productCatalogKeys": [
+                  "Frame",
+                  "Lens"
+                ]
+              },
+              "patientResponsibilities": {
+                "ContactLens": {
+                  "copayType": "FIRST_MATERIAL_SERVICE_RECEIVED",
+                  "copayAppliesTo": "MAXIMUM",
+                  "copayAmount": 10,
+                  "copayNextDueDate": "2016-01-14"
+                },
+                "ContactLensService": {
+                  "copayType": "FIRST_MATERIAL_SERVICE_RECEIVED",
+                  "copayAppliesTo": "MAXIMUM",
+                  "copayAmount": 10,
+                  "copayNextDueDate": "2016-01-14"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "ContactLens",
+                "ContactLensService"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "inLieuOf": {
+                "productCatalogKeys": [
+                  "Frame",
+                  "Lens"
+                ]
+              },
+              "patientResponsibilities": {
+                "ContactLens": {
+                  "copayType": "FIRST_SERVICE_RECEIVED",
+                  "copayAppliesTo": "CHARGE",
+                  "copayAmount": 50,
+                  "copayNextDueDate": "2016-01-14"
+                },
+                "ContactLensService": {
+                  "copayType": "FIRST_SERVICE_RECEIVED",
+                  "copayAppliesTo": "CHARGE",
+                  "copayAmount": 50,
+                  "copayNextDueDate": "2016-01-14"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "RetinalScreening"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "RetinalScreening": {
+                  "priceCap": 39
+                }
+              }
+            },
+            {
+              "criteriaDescription": "Altair Eyewear, Marchon",
+              "productCatalogKeys": [
+                "FrameWithSunLensInsert"
+              ],
+              "levelOfCoverage": "ALLOWANCE",
+              "allowance": 260,
+              "wholesaleAllowance": 100,
+              "allowanceRemaining": 260,
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "inLieuOf": {
+                "productCatalogKeys": [
+                  "Frame"
+                ]
+              },
+              "patientResponsibilities": {
+                "FrameWithSunLensInsert": {
+                  "copayType": "FIRST_MATERIAL_SERVICE_RECEIVED",
+                  "copayAppliesTo": "MAXIMUM",
+                  "copayAmount": 10,
+                  "copayNextDueDate": "2016-01-14",
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "OVERAGE"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "FrameWithSunLensInsert"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "inLieuOf": {
+                "productCatalogKeys": [
+                  "Frame"
+                ]
+              },
+              "patientResponsibilities": {
+                "FrameWithSunLensInsert": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "criteriaDescription": "Sharper Image, UNITY",
+              "productCatalogKeys": [
+                "AntiReflective"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "AntiReflective"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "AntiReflective": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Aspheric"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "Aspheric": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "BlendedBifocal"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "EdgeCoat"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "EdgeCoat": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "EdgeHighLuster"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "EdgeHighLuster": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "EdgeSatin"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Facets"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "Facets": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "FrameCase"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "GlassCoat"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "GlassCoat": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "GlassTint"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "GlassTintCovPink"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "HiIndex"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "HiIndex": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Mirror"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "Mirror": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "NearVariableFocus"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "NearVariableFocus": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Occupational"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Oversize"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Photochromic"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "PlasticDyeGrad"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "PlasticDyeSol"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "PlasticDyeSolCovPink"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Polarized"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Polycarbonate"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "PressOnBifocal"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Prism"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "criteriaDescription": "UNITY",
+              "productCatalogKeys": [
+                "ProgressiveUp"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "ProgressiveUp"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "ProgressiveUp": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "GenExam"
+              ],
+              "productCatalogKeys": [
+                "Refraction"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "Rimless"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "SafetyThickness"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "ScratchResistant"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "ScratchResistant": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "SlabOff"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "TechAddOnA"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "TechAddOnA": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "TechAddOnB"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "TechAddOnB": {
+                  "priceCap": 0
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens"
+              ],
+              "productCatalogKeys": [
+                "UVProtection"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "units": 2,
+              "unitsRemaining": 2,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Plan",
+                "periodStart": {
+                  "day": 1,
+                  "month": 1
+                }
+              },
+              "patientResponsibilities": {
+                "UVProtection": {
+                  "priceCap": 0
+                }
+              }
+            }
+          ],
+          "name": "Signature",
+          "description": "Signature",
+          "primaryProduct": true,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-Signature",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        },
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2017-12-31"
+              },
+              "description": "Low Vision Eval",
+              "productCatalogKey": "LowVisionEval",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2017-12-31"
+              },
+              "description": "Visual Aid",
+              "productCatalogKey": "VisualAid",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "LowVisionEval",
+                "VisualAid"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "frequency": {
+                "periods": 24,
+                "periodUnit": "Monthly",
+                "periodStartType": "Service"
+              }
+            }
+          ],
+          "name": "LowVision",
+          "description": "Low Vision",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-LowVision",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        },
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Examination",
+              "productCatalogKey": "Examination",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "Examination"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "Examination": {
+                  "copayAppliesTo": "VISIT",
+                  "copayAmount": 15,
+                  "copayNextDueDate": "2016-01-14"
+                }
+              }
+            }
+          ],
+          "name": "PEC",
+          "description": "PEC",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-PEC",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        },
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Exam",
+              "productCatalogKey": "GenExam",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Contact Lens Service",
+              "productCatalogKey": "ContactLensService",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Lens",
+              "productCatalogKey": "Lens",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Frame",
+              "productCatalogKey": "Frame",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "GenExam"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "GenExam": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Lens"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "Lens": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Frame"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "Frame": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "ContactLensService"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "ContactLensService": {
+                  "discount": 15,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "FrameAddOn"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "FrameAddOn": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensAttachment"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensAttachment": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensEnhancement"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensEnhancement": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensUpgrade"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensUpgrade": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Refraction"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "Refraction": {
+                  "discount": 20,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            }
+          ],
+          "name": "ValueAddedDiscounts",
+          "description": "Value Added Discounts",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-ValueAddedDiscounts",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        },
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Contact Lens Service",
+              "productCatalogKey": "ContactLensService",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Lens",
+              "productCatalogKey": "Lens",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Frame",
+              "productCatalogKey": "Frame",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "Lens"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "Lens": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "Frame"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "Frame": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "ContactLensService"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              },
+              "patientResponsibilities": {
+                "ContactLensService": {
+                  "discount": 15,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "FrameAddOn"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "FrameAddOn": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensAttachment"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensAttachment": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensEnhancement"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensEnhancement": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            },
+            {
+              "eligibleItemKeys": [
+                "Lens",
+                "Frame"
+              ],
+              "productCatalogKeys": [
+                "LensUpgrade"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "patientResponsibilities": {
+                "LensUpgrade": {
+                  "discount": 30,
+                  "discountValueType": "PERCENT",
+                  "discountAppliesTo": "BENEFIT"
+                }
+              }
+            }
+          ],
+          "name": "ValueAddedDiscountsSameDay",
+          "description": "Value Added Discounts Same Day",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-ValueAddedDiscountsSameDay",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        },
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Vision Therapy Evaluation",
+              "productCatalogKey": "VisionTherapyEvaluation",
+              "status": "AVAILABLE"
+            },
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-01",
+                "end": "2016-12-31"
+              },
+              "description": "Vision Therapy Sessions",
+              "productCatalogKey": "VisionTherapySessions",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "VisionTherapyEvaluation"
+              ],
+              "levelOfCoverage": "COVERED_IN_FULL",
+              "units": 1,
+              "unitsRemaining": 1,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Service"
+              }
+            },
+            {
+              "productCatalogKeys": [
+                "VisionTherapySessions"
+              ],
+              "levelOfCoverage": "COINSURANCE",
+              "coinsurancePercentage": 75,
+              "frequency": {
+                "periods": 12,
+                "periodUnit": "Monthly",
+                "periodStartType": "Service"
+              }
+            }
+          ],
+          "name": "VisionTherapy",
+          "description": "Vision Therapy",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-1000-VisionTherapy",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        }
+      ],
+      "networkId": "1000",
+      "networkName": "VSP",
+      "networkType": "VSP"
+    },
+    {
+      "packages": [
+        {
+          "eligibleItems": [
+            {
+              "eligibilityInterval": {
+                "begin": "2016-01-14",
+                "end": "2016-01-14"
+              },
+              "description": "Refractive Surgery",
+              "productCatalogKey": "RefractiveSurgery",
+              "status": "AVAILABLE"
+            }
+          ],
+          "coverages": [
+            {
+              "productCatalogKeys": [
+                "RefractiveSurgery"
+              ],
+              "levelOfCoverage": "NOT_COVERED",
+              "frequency": {
+                "periodUnit": "Unlimited"
+              }
+            }
+          ],
+          "name": "LVC",
+          "description": "LVC",
+          "primaryProduct": false,
+          "reservedEligibleProductItems": {
+            "href": "http://ea-loadbal153.vsp.com:80/service-requestapi-web/reservedeligibleitems/00857001-0100-850314717-303175227-6001-LVC",
+            "type": "application/vnd.vsp.reservedeligibleproductitems",
+            "rel": "urn://vnd.vsp.rels/reservedeligibleproductitems"
+          }
+        }
+      ],
+      "networkId": "6001",
+      "networkName": "LVC01",
+      "networkType": "VSP"
+    }
+  ]
+}

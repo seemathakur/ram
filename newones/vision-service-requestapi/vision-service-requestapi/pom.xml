@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion> 
+
+	<parent>
+	    <groupId>com.vsp.api</groupId>
+    	<artifactId>api-gb</artifactId>
+    	<version>3.2.366</version>
+	</parent>
+
+  	<name>vision-service-requestapi multi-module</name>
+	<groupId>com.vsp.claim</groupId>
+	<artifactId>vision-service-requestapi</artifactId>
+	<version>1.33</version>
+	<packaging>pom</packaging>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- api-gb over-rides the compiler version to 1.6 - over-ride here back to 1.7 -->
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			<plugin>
+        		<groupId>org.jacoco</groupId>
+       		 	<artifactId>jacoco-maven-plugin</artifactId>
+       		 	<version>0.7.4.201502262128</version>
+    		</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+  <modules>
+    <module>vision-service-requestapi-web</module>
+    <module>vision-service-requestapi-srvreservedclaim</module>
+    <module>vision-service-requestapi-srvvisionservicerequest</module>
+    <module>vision-service-requestapi-shared</module>
+  </modules>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<version>1.0.1.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+  		<dependency>
+  			<groupId>${project.groupId}</groupId>
+  			<artifactId>vision-service-requestapi-srvreservedclaim</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>${project.groupId}</groupId>
+  			<artifactId>vision-service-requestapi-srvvisionservicerequest</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>${project.groupId}</groupId>
+  			<artifactId>vision-service-requestapi-shared</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+			<groupId>com.vsp.claim</groupId>
+			<artifactId>claim-common</artifactId>
+			<version>2.8</version>
+        <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-annotations</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-ext</artifactId>
+				<version>1.7.12</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  <properties>
+  	<api.version>2.3.4</api.version>
+  	<junit.version>4.12</junit.version>
+  </properties>
+</project>

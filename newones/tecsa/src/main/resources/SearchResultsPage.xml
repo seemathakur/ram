@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Valid Locator Types are (not case sensitive):
+  ID
+  CLASSNAME
+  TAGNAME
+  NAME
+  LINKTEXT
+  PARTIALLINKTEXT
+  CSSSELECTOR
+  XPATH
+  DEFAULT
+ -->
+<page>
+  <elements>
+    <element elementAlias="Dr1Name Field">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[2]/div[3]/div[2]/div[9]/table/tbody/tr[1]/td[1]/b</locatorValue>
+    </element>
+    <element elementAlias="Change Zip">
+      <locatorType>ID</locatorType>
+      <locatorValue>zip</locatorValue>
+    </element>
+    <element elementAlias="Update Button">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[2]/div[3]/div[1]/form/div/div[2]/table/tbody/tr[1]/td/button</locatorValue>
+    </element>
+    <element elementAlias="Effective Date dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[17]/form/div[2]/div[2]/select[1]</locatorValue>
+    </element>
+    <element elementAlias="Effective Day dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[17]/form/div[2]/div[2]/select[2]</locatorValue>
+    </element>
+    <element elementAlias="Effective Year Field">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[17]/form/div[2]/div[2]/input[1]</locatorValue>
+    </element>
+    <element elementAlias="Effective Month dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/form/div[4]/div[3]/div[1]/div/a</locatorValue>
+    </element>
+    <element elementAlias="Effective Year dropdown">
+      <locatorType>XPATH</locatorType>
+      <locatorValue>html/body/div[1]/div[3]/div[2]/div[1]/div[3]/form/div[4]/div[3]/div[2]/div/a</locatorValue>
+    </element>
+  </elements>
+</page>
